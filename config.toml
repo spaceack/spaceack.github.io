@@ -1,4 +1,4 @@
-baseURL = "https://spaceack.github.io"
+baseURL = "spaceack.github.io"
 # [en, zh-cn, fr, pl, ...] determines default content language
 #[zh-cn] 设置默认的语言
 defaultContentLanguage = "zh-cn"
@@ -86,7 +86,7 @@ enableEmoji = true
         pre = "<i class='fab fa-github fa-fw'></i>"
         post = ""
         name = ""
-        url = "https://github.com/dillonzq/LoveIt"
+        url = "https://github.com/spaceack"
         title = "GitHub"
         weight = 6
     [languages.zh-cn.params]
