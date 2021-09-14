@@ -19,19 +19,3 @@
 
 如果可以，即使死亡带来分离，我的爱永不言弃。
 
-<meting-js
-	name="rainymood"
-	artist="rainymood"
-	url="我如何爱你.m4a"
-	cover=""
-	fixed="true">
-	<pre hidden>
-		[00:00.00]This
-		[00:04.01]is
-		[00:08.02]lyric
-	</pre>
-</meting-js>
-
-<!-- {% aplayer "我如何爱你" "小丸子" "我如何爱你.m4a" "autoplay"  %} -->
-
-<!-- {% aplayer "我如何爱你" "小丸子" "http://qiniu.aimiter.com/我如何爱你.m4a" "autoplay"  %} -->
