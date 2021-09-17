@@ -1,0 +1,509 @@
+<!doctype html><html lang=zh-cn>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=robots content="noodp">
+<meta http-equiv=x-ua-compatible content="IE=edge, chrome=1">
+<title>Django常用配置-setting.py 模板 - Spaceack's Blog</title><meta name=Description content="Spaceck的个人Blog 编程之舞"><meta property="og:title" content="Django常用配置-setting.py 模板">
+<meta property="og:description" content="DATABASES 模板 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 ## DATABASES ### sqlite3 DATABASES = { 'default': { 'ENGINE': 'django.db.backends.sqlite3', 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'), } } ### mysql DATABASES = { 'default': { 'ENGINE': 'django.db.backends.mysql', 'NAME': 'mydb', #数据库名">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://spaceack.github.io/20160302-django%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE/"><meta property="og:image" content="https://spaceack.github.io/logo.png"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2016-03-02T12:00:00+00:00">
+<meta property="article:modified_time" content="2016-03-02T12:00:00+00:00">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://spaceack.github.io/logo.png">
+<meta name=twitter:title content="Django常用配置-setting.py 模板">
+<meta name=twitter:description content="DATABASES 模板 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 ## DATABASES ### sqlite3 DATABASES = { 'default': { 'ENGINE': 'django.db.backends.sqlite3', 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'), } } ### mysql DATABASES = { 'default': { 'ENGINE': 'django.db.backends.mysql', 'NAME': 'mydb', #数据库名">
+<meta name=application-name content="Spaceack's Blog">
+<meta name=apple-mobile-web-app-title content="Spaceack's Blog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://spaceack.github.io/20160302-django%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE/><link rel=prev href=https://spaceack.github.io/20141012-ubuntu%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/><link rel=next href=https://spaceack.github.io/20160305-djangoadmin%E6%89%A9%E5%B1%95/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Django常用配置-setting.py 模板","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/spaceack.github.io\/20160302-django%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE\/"},"image":["https:\/\/spaceack.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"Django","wordcount":923,"url":"https:\/\/spaceack.github.io\/20160302-django%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE\/","datePublished":"2016-03-02T12:00:00+00:00","dateModified":"2016-03-02T12:00:00+00:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"Spaceack","logo":"https:\/\/spaceack.github.io\/images\/avatar.jpeg"},"author":{"@type":"Person","name":"小云吞"},"description":""}</script></head>
+<body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':'auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark')&&document.body.setAttribute('theme','dark')</script>
+<div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
+<div class=header-wrapper>
+<div class=header-title>
+<a href=/ title="Spaceack's Blog"><span class=header-title-pre><i class="far fa-kiss-wink-heart fa-fw"></i></span>Spaceack's Blog</a>
+</div>
+<div class=menu>
+<div class=menu-inner><a class=menu-item href=/posts/> 所有文章 </a><a class=menu-item href=/tags/> 标签 </a><a class=menu-item href=/categories/> 分类 </a><a class=menu-item href=/categories/documentation/> 文档 </a><a class=menu-item href=/about/> 关于 </a><a class=menu-item href=https://github.com/spaceack title=GitHub rel="noopener noreffer" target=_blank><i class="fab fa-github fa-fw"></i> </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索>
+<i class="fas fa-search fa-fw"></i>
+</a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空>
+<i class="fas fa-times-circle fa-fw"></i>
+</a>
+<span class="search-button search-loading" id=search-loading-desktop>
+<i class="fas fa-spinner fa-fw fa-spin"></i>
+</span>
+</span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw"></i>
+</a>
+</div>
+</div>
+</div>
+</header><header class=mobile id=header-mobile>
+<div class=header-container>
+<div class=header-wrapper>
+<div class=header-title>
+<a href=/ title="Spaceack's Blog"><span class=header-title-pre><i class="far fa-kiss-wink-heart fa-fw"></i></span>Spaceack's Blog</a>
+</div>
+<div class=menu-toggle id=menu-toggle-mobile>
+<span></span><span></span><span></span>
+</div>
+</div>
+<div class=menu id=menu-mobile><div class=search-wrapper>
+<div class="search mobile" id=search-mobile>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索>
+<i class="fas fa-search fa-fw"></i>
+</a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空>
+<i class="fas fa-times-circle fa-fw"></i>
+</a>
+<span class="search-button search-loading" id=search-loading-mobile>
+<i class="fas fa-spinner fa-fw fa-spin"></i>
+</span>
+</div>
+<a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>
+取消
+</a>
+</div><a class=menu-item href=/posts/ title>所有文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a class=menu-item href=/categories/documentation/ title>文档</a><a class=menu-item href=/about/ title>关于</a><a class=menu-item href=https://github.com/spaceack title=GitHub rel="noopener noreffer" target=_blank><i class="fab fa-github fa-fw"></i></a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw"></i>
+</a></div>
+</div>
+</header>
+<div class="search-dropdown desktop">
+<div id=search-dropdown-desktop></div>
+</div>
+<div class="search-dropdown mobile">
+<div id=search-dropdown-mobile></div>
+</div>
+<main class=main>
+<div class=container><div class=toc id=toc-auto>
+<h2 class=toc-title>目录</h2>
+<div class=toc-content id=toc-content-auto></div>
+</div><article class="page single"><h1 class="single-title animated flipInX">Django常用配置-setting.py 模板</h1><div class=post-meta>
+<div class=post-meta-line><span class=post-author><a href=spaceack.com title=Author rel=" author" class=author><i class="fas fa-user-circle fa-fw"></i>小云吞</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/python/><i class="far fa-folder fa-fw"></i>Python</a></span></div>
+<div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2016-03-02>2016-03-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 923 字&nbsp;
+<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;<span id=/20160302-django%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE/ class=leancloud_visitors data-flag-title="Django常用配置-setting.py 模板">
+<i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+</span>&nbsp;</div>
+</div><div class="details toc" id=toc-static kept>
+<div class="details-summary toc-title">
+<span>目录</span>
+<span><i class="details-icon fas fa-angle-right"></i></span>
+</div>
+<div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents>
+<ul>
+<li><a href=#databases-模板>DATABASES 模板</a></li>
+<li><a href=#internationalization-模板>Internationalization 模板</a></li>
+<li><a href=#static-files-配置模板>Static files 配置模板</a></li>
+<li><a href=#logging-模板>LOGGING 模板</a></li>
+<li><a href=#ckeditor_5-模板>CKEDITOR_5 模板</a></li>
+</ul>
+</nav></div>
+</div><div class=content id=content><h2 id=databases-模板>DATABASES 模板</h2>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=c1>## DATABASES</span>
+
+<span class=c1>### sqlite3</span>
+<span class=n>DATABASES</span> <span class=o>=</span> <span class=p>{</span>
+    <span class=s1>&#39;default&#39;</span><span class=p>:</span> <span class=p>{</span>
+        <span class=s1>&#39;ENGINE&#39;</span><span class=p>:</span> <span class=s1>&#39;django.db.backends.sqlite3&#39;</span><span class=p>,</span>
+        <span class=s1>&#39;NAME&#39;</span><span class=p>:</span> <span class=n>os</span><span class=o>.</span><span class=n>path</span><span class=o>.</span><span class=n>join</span><span class=p>(</span><span class=n>BASE_DIR</span><span class=p>,</span> <span class=s1>&#39;db.sqlite3&#39;</span><span class=p>),</span>
+    <span class=p>}</span>
+<span class=p>}</span>
+
+<span class=c1>### mysql</span>
+<span class=n>DATABASES</span> <span class=o>=</span> <span class=p>{</span> 
+    <span class=s1>&#39;default&#39;</span><span class=p>:</span> <span class=p>{</span> 
+        <span class=s1>&#39;ENGINE&#39;</span><span class=p>:</span> <span class=s1>&#39;django.db.backends.mysql&#39;</span><span class=p>,</span> 
+        <span class=s1>&#39;NAME&#39;</span><span class=p>:</span> <span class=s1>&#39;mydb&#39;</span><span class=p>,</span> <span class=c1>#数据库名称(需要先创建) </span>
+        <span class=s1>&#39;USER&#39;</span><span class=p>:</span> <span class=s1>&#39;root&#39;</span><span class=p>,</span> <span class=c1># 数据库用户名 </span>
+        <span class=s1>&#39;PASSWORD&#39;</span><span class=p>:</span> <span class=s1>&#39;123456&#39;</span><span class=p>,</span> <span class=c1># 数据库密码 </span>
+        <span class=s1>&#39;HOST&#39;</span><span class=p>:</span> <span class=s1>&#39;&#39;</span><span class=p>,</span> <span class=c1># 数据库主机，留空默认为localhost </span>
+        <span class=s1>&#39;PORT&#39;</span><span class=p>:</span> <span class=s1>&#39;3306&#39;</span><span class=p>,</span> <span class=c1># 数据库端口 </span>
+        <span class=p>}</span> 
+    <span class=p>}</span>
+
+<span class=c1>### Postgresql</span>
+
+<span class=n>DATABASES</span> <span class=o>=</span> <span class=p>{</span> 
+    <span class=s1>&#39;default&#39;</span><span class=p>:</span> <span class=p>{</span> 
+        <span class=s1>&#39;ENGINE&#39;</span><span class=p>:</span> <span class=s1>&#39;django.db.backends.postgresql_psycopg2&#39;</span><span class=p>,</span> 
+        <span class=s1>&#39;NAME&#39;</span><span class=p>:</span> <span class=s1>&#39;mydb&#39;</span><span class=p>,</span> <span class=c1># 数据库名字(需要先创建) </span>
+        <span class=s1>&#39;USER&#39;</span><span class=p>:</span> <span class=s1>&#39;postgres&#39;</span><span class=p>,</span> <span class=c1># 登录用户名 </span>
+        <span class=s1>&#39;PASSWORD&#39;</span><span class=p>:</span> <span class=s1>&#39;123456&#39;</span><span class=p>,</span> <span class=c1># 密码 </span>
+        <span class=s1>&#39;HOST&#39;</span><span class=p>:</span> <span class=s1>&#39;&#39;</span><span class=p>,</span> <span class=c1># 数据库IP地址,留空默认为localhost </span>
+        <span class=s1>&#39;PORT&#39;</span><span class=p>:</span> <span class=s1>&#39;5432&#39;</span><span class=p>,</span> <span class=c1># 端口 </span>
+        <span class=p>}</span> 
+    <span class=p>}</span>
+    
+</code></pre></td></tr></table>
+</div>
+</div><h2 id=internationalization-模板>Internationalization 模板</h2>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=n>LANGUAGE_CODE</span> <span class=o>=</span> <span class=s1>&#39;zh-Hans&#39;</span>
+<span class=n>TIME_ZONE</span> <span class=o>=</span> <span class=s1>&#39;Asia/Shanghai&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id=static-files-配置模板>Static files 配置模板</h2>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=n>STATIC_URL</span> <span class=o>=</span> <span class=s1>&#39;/static/&#39;</span>
+<span class=n>MEDIA_URL</span> <span class=o>=</span>  <span class=s1>&#39;/media/&#39;</span>
+<span class=n>MEDIA_ROOT</span> <span class=o>=</span> <span class=n>os</span><span class=o>.</span><span class=n>path</span><span class=o>.</span><span class=n>join</span><span class=p>(</span><span class=n>BASE_DIR</span><span class=p>,</span> <span class=s2>&#34;media&#34;</span><span class=p>)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id=logging-模板>LOGGING 模板</h2>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span><span class=lnt>59
+</span><span class=lnt>60
+</span><span class=lnt>61
+</span><span class=lnt>62
+</span><span class=lnt>63
+</span><span class=lnt>64
+</span><span class=lnt>65
+</span><span class=lnt>66
+</span><span class=lnt>67
+</span><span class=lnt>68
+</span><span class=lnt>69
+</span><span class=lnt>70
+</span><span class=lnt>71
+</span><span class=lnt>72
+</span><span class=lnt>73
+</span><span class=lnt>74
+</span><span class=lnt>75
+</span><span class=lnt>76
+</span><span class=lnt>77
+</span><span class=lnt>78
+</span><span class=lnt>79
+</span><span class=lnt>80
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=n>BASE_LOG_DIR</span> <span class=o>=</span> <span class=n>os</span><span class=o>.</span><span class=n>path</span><span class=o>.</span><span class=n>join</span><span class=p>(</span><span class=n>BASE_DIR</span><span class=p>,</span> <span class=s2>&#34;log&#34;</span><span class=p>)</span>
+<span class=n>LOGGING</span> <span class=o>=</span> <span class=p>{</span>
+    <span class=s1>&#39;version&#39;</span><span class=p>:</span> <span class=mi>1</span><span class=p>,</span>  <span class=c1># 保留字</span>
+    <span class=s1>&#39;disable_existing_loggers&#39;</span><span class=p>:</span> <span class=kc>False</span><span class=p>,</span>  <span class=c1># 禁用已经存在的logger实例</span>
+    <span class=c1># 日志文件的格式</span>
+    <span class=s1>&#39;formatters&#39;</span><span class=p>:</span> <span class=p>{</span>
+        <span class=c1># 详细的日志格式</span>
+        <span class=s1>&#39;standard&#39;</span><span class=p>:</span> <span class=p>{</span>
+            <span class=s1>&#39;format&#39;</span><span class=p>:</span> <span class=s1>&#39;[</span><span class=si>%(asctime)s</span><span class=s1>][</span><span class=si>%(threadName)s</span><span class=s1>:</span><span class=si>%(thread)d</span><span class=s1>][task_id:</span><span class=si>%(name)s</span><span class=s1>][</span><span class=si>%(filename)s</span><span class=s1>:</span><span class=si>%(lineno)d</span><span class=s1>]&#39;</span>
+                      <span class=s1>&#39;[</span><span class=si>%(levelname)s</span><span class=s1>][</span><span class=si>%(message)s</span><span class=s1>]&#39;</span>
+        <span class=p>},</span>
+        <span class=c1># 简单的日志格式</span>
+        <span class=s1>&#39;simple&#39;</span><span class=p>:</span> <span class=p>{</span>
+            <span class=s1>&#39;format&#39;</span><span class=p>:</span> <span class=s1>&#39;[</span><span class=si>%(levelname)s</span><span class=s1>][</span><span class=si>%(asctime)s</span><span class=s1>][</span><span class=si>%(filename)s</span><span class=s1>:</span><span class=si>%(lineno)d</span><span class=s1>]</span><span class=si>%(message)s</span><span class=s1>&#39;</span>
+        <span class=p>},</span>
+        <span class=c1># 定义一个特殊的日志格式</span>
+        <span class=s1>&#39;collect&#39;</span><span class=p>:</span> <span class=p>{</span>
+            <span class=s1>&#39;format&#39;</span><span class=p>:</span> <span class=s1>&#39;</span><span class=si>%(message)s</span><span class=s1>&#39;</span>
+        <span class=p>}</span>
+    <span class=p>},</span>
+    <span class=c1># 过滤器</span>
+    <span class=s1>&#39;filters&#39;</span><span class=p>:</span> <span class=p>{</span>
+        <span class=s1>&#39;require_debug_true&#39;</span><span class=p>:</span> <span class=p>{</span>
+            <span class=s1>&#39;()&#39;</span><span class=p>:</span> <span class=s1>&#39;django.utils.log.RequireDebugTrue&#39;</span><span class=p>,</span>
+        <span class=p>},</span>
+    <span class=p>},</span>
+    <span class=c1># 处理器</span>
+    <span class=s1>&#39;handlers&#39;</span><span class=p>:</span> <span class=p>{</span>
+        <span class=c1># 在终端打印</span>
+        <span class=s1>&#39;console&#39;</span><span class=p>:</span> <span class=p>{</span>
+            <span class=s1>&#39;level&#39;</span><span class=p>:</span> <span class=s1>&#39;DEBUG&#39;</span><span class=p>,</span>
+            <span class=s1>&#39;filters&#39;</span><span class=p>:</span> <span class=p>[</span><span class=s1>&#39;require_debug_true&#39;</span><span class=p>],</span>  <span class=c1># 只有在Django debug为True时才在屏幕打印日志</span>
+            <span class=s1>&#39;class&#39;</span><span class=p>:</span> <span class=s1>&#39;logging.StreamHandler&#39;</span><span class=p>,</span>  <span class=c1>#</span>
+            <span class=s1>&#39;formatter&#39;</span><span class=p>:</span> <span class=s1>&#39;simple&#39;</span>
+        <span class=p>},</span>
+        <span class=c1># 默认的</span>
+        <span class=s1>&#39;default&#39;</span><span class=p>:</span> <span class=p>{</span>
+            <span class=s1>&#39;level&#39;</span><span class=p>:</span> <span class=s1>&#39;INFO&#39;</span><span class=p>,</span>
+            <span class=s1>&#39;class&#39;</span><span class=p>:</span> <span class=s1>&#39;logging.handlers.RotatingFileHandler&#39;</span><span class=p>,</span>  <span class=c1># 保存到文件，自动切</span>
+            <span class=s1>&#39;filename&#39;</span><span class=p>:</span> <span class=n>os</span><span class=o>.</span><span class=n>path</span><span class=o>.</span><span class=n>join</span><span class=p>(</span><span class=n>BASE_LOG_DIR</span><span class=p>,</span> <span class=s2>&#34;xxx_info.log&#34;</span><span class=p>),</span>  <span class=c1># 日志文件</span>
+            <span class=s1>&#39;maxBytes&#39;</span><span class=p>:</span> <span class=mi>1024</span> <span class=o>*</span> <span class=mi>1024</span> <span class=o>*</span> <span class=mi>50</span><span class=p>,</span>  <span class=c1># 日志大小 50M</span>
+            <span class=s1>&#39;backupCount&#39;</span><span class=p>:</span> <span class=mi>3</span><span class=p>,</span>  <span class=c1># 最多备份几个</span>
+            <span class=s1>&#39;formatter&#39;</span><span class=p>:</span> <span class=s1>&#39;standard&#39;</span><span class=p>,</span>
+            <span class=s1>&#39;encoding&#39;</span><span class=p>:</span> <span class=s1>&#39;utf-8&#39;</span><span class=p>,</span>
+        <span class=p>},</span>
+        <span class=c1># 专门用来记错误日志</span>
+        <span class=s1>&#39;error&#39;</span><span class=p>:</span> <span class=p>{</span>
+            <span class=s1>&#39;level&#39;</span><span class=p>:</span> <span class=s1>&#39;ERROR&#39;</span><span class=p>,</span>
+            <span class=s1>&#39;class&#39;</span><span class=p>:</span> <span class=s1>&#39;logging.handlers.RotatingFileHandler&#39;</span><span class=p>,</span>  <span class=c1># 保存到文件，自动切</span>
+            <span class=s1>&#39;filename&#39;</span><span class=p>:</span> <span class=n>os</span><span class=o>.</span><span class=n>path</span><span class=o>.</span><span class=n>join</span><span class=p>(</span><span class=n>BASE_LOG_DIR</span><span class=p>,</span> <span class=s2>&#34;xxx_err.log&#34;</span><span class=p>),</span>  <span class=c1># 日志文件</span>
+            <span class=s1>&#39;maxBytes&#39;</span><span class=p>:</span> <span class=mi>1024</span> <span class=o>*</span> <span class=mi>1024</span> <span class=o>*</span> <span class=mi>50</span><span class=p>,</span>  <span class=c1># 日志大小 50M</span>
+            <span class=s1>&#39;backupCount&#39;</span><span class=p>:</span> <span class=mi>5</span><span class=p>,</span>
+            <span class=s1>&#39;formatter&#39;</span><span class=p>:</span> <span class=s1>&#39;standard&#39;</span><span class=p>,</span>
+            <span class=s1>&#39;encoding&#39;</span><span class=p>:</span> <span class=s1>&#39;utf-8&#39;</span><span class=p>,</span>
+        <span class=p>},</span>
+        <span class=c1># 专门定义一个收集特定信息的日志</span>
+        <span class=s1>&#39;collect&#39;</span><span class=p>:</span> <span class=p>{</span>
+            <span class=s1>&#39;level&#39;</span><span class=p>:</span> <span class=s1>&#39;INFO&#39;</span><span class=p>,</span>
+            <span class=s1>&#39;class&#39;</span><span class=p>:</span> <span class=s1>&#39;logging.handlers.RotatingFileHandler&#39;</span><span class=p>,</span>  <span class=c1># 保存到文件，自动切</span>
+            <span class=s1>&#39;filename&#39;</span><span class=p>:</span> <span class=n>os</span><span class=o>.</span><span class=n>path</span><span class=o>.</span><span class=n>join</span><span class=p>(</span><span class=n>BASE_LOG_DIR</span><span class=p>,</span> <span class=s2>&#34;xxx_collect.log&#34;</span><span class=p>),</span>
+            <span class=s1>&#39;maxBytes&#39;</span><span class=p>:</span> <span class=mi>1024</span> <span class=o>*</span> <span class=mi>1024</span> <span class=o>*</span> <span class=mi>50</span><span class=p>,</span>  <span class=c1># 日志大小 50M</span>
+            <span class=s1>&#39;backupCount&#39;</span><span class=p>:</span> <span class=mi>5</span><span class=p>,</span>
+            <span class=s1>&#39;formatter&#39;</span><span class=p>:</span> <span class=s1>&#39;collect&#39;</span><span class=p>,</span>
+            <span class=s1>&#39;encoding&#39;</span><span class=p>:</span> <span class=s2>&#34;utf-8&#34;</span>
+        <span class=p>}</span>
+    <span class=p>},</span>
+    <span class=s1>&#39;loggers&#39;</span><span class=p>:</span> <span class=p>{</span>
+       <span class=c1># 默认的logger应用如下配置</span>
+        <span class=s1>&#39;&#39;</span><span class=p>:</span> <span class=p>{</span>
+            <span class=s1>&#39;handlers&#39;</span><span class=p>:</span> <span class=p>[</span><span class=s1>&#39;default&#39;</span><span class=p>,</span> <span class=s1>&#39;console&#39;</span><span class=p>,</span> <span class=s1>&#39;error&#39;</span><span class=p>],</span>  <span class=c1># 上线之后可以把&#39;console&#39;移除</span>
+            <span class=s1>&#39;level&#39;</span><span class=p>:</span> <span class=s1>&#39;DEBUG&#39;</span><span class=p>,</span>
+            <span class=s1>&#39;propagate&#39;</span><span class=p>:</span> <span class=kc>True</span><span class=p>,</span>  <span class=c1># 向不向更高级别的logger传递</span>
+        <span class=p>},</span>
+        <span class=c1># 名为 &#39;collect&#39;的logger还单独处理</span>
+        <span class=s1>&#39;collect&#39;</span><span class=p>:</span> <span class=p>{</span>
+            <span class=s1>&#39;handlers&#39;</span><span class=p>:</span> <span class=p>[</span><span class=s1>&#39;console&#39;</span><span class=p>,</span> <span class=s1>&#39;collect&#39;</span><span class=p>],</span>
+            <span class=s1>&#39;level&#39;</span><span class=p>:</span> <span class=s1>&#39;INFO&#39;</span><span class=p>,</span>
+        <span class=p>}</span>
+    <span class=p>},</span>
+<span class=p>}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id=ckeditor_5-模板>CKEDITOR_5 模板</h2>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=n>CKEDITOR_5_CUSTOM_CSS</span> <span class=o>=</span> <span class=s1>&#39;path_to.css&#39;</span>  <span class=c1># optional</span>
+<span class=n>CKEDITOR_5_CONFIGS</span> <span class=o>=</span> <span class=p>{</span>
+    <span class=s1>&#39;default&#39;</span><span class=p>:</span> <span class=p>{</span>
+        <span class=s1>&#39;toolbar&#39;</span><span class=p>:</span> <span class=p>[</span><span class=s1>&#39;heading&#39;</span><span class=p>,</span> <span class=s1>&#39;|&#39;</span><span class=p>,</span> <span class=s1>&#39;bold&#39;</span><span class=p>,</span> <span class=s1>&#39;italic&#39;</span><span class=p>,</span> <span class=s1>&#39;link&#39;</span><span class=p>,</span>
+                    <span class=s1>&#39;bulletedList&#39;</span><span class=p>,</span> <span class=s1>&#39;numberedList&#39;</span><span class=p>,</span> <span class=s1>&#39;blockQuote&#39;</span><span class=p>,</span> <span class=s1>&#39;imageUpload&#39;</span><span class=p>,</span> <span class=p>],</span>
+
+    <span class=p>},</span>
+    <span class=s1>&#39;extends&#39;</span><span class=p>:</span> <span class=p>{</span>
+        <span class=s1>&#39;blockToolbar&#39;</span><span class=p>:</span> <span class=p>[</span>
+            <span class=s1>&#39;paragraph&#39;</span><span class=p>,</span> <span class=s1>&#39;heading1&#39;</span><span class=p>,</span> <span class=s1>&#39;heading2&#39;</span><span class=p>,</span> <span class=s1>&#39;heading3&#39;</span><span class=p>,</span>
+            <span class=s1>&#39;|&#39;</span><span class=p>,</span>
+            <span class=s1>&#39;bulletedList&#39;</span><span class=p>,</span> <span class=s1>&#39;numberedList&#39;</span><span class=p>,</span>
+            <span class=s1>&#39;|&#39;</span><span class=p>,</span>
+            <span class=s1>&#39;blockQuote&#39;</span><span class=p>,</span> <span class=s1>&#39;imageUpload&#39;</span>
+        <span class=p>],</span>
+        <span class=s1>&#39;toolbar&#39;</span><span class=p>:</span> <span class=p>[</span><span class=s1>&#39;heading&#39;</span><span class=p>,</span> <span class=s1>&#39;|&#39;</span><span class=p>,</span> <span class=s1>&#39;outdent&#39;</span><span class=p>,</span> <span class=s1>&#39;indent&#39;</span><span class=p>,</span> <span class=s1>&#39;|&#39;</span><span class=p>,</span> <span class=s1>&#39;bold&#39;</span><span class=p>,</span> <span class=s1>&#39;italic&#39;</span><span class=p>,</span> <span class=s1>&#39;link&#39;</span><span class=p>,</span> <span class=s1>&#39;underline&#39;</span><span class=p>,</span> <span class=s1>&#39;strikethrough&#39;</span><span class=p>,</span>
+                    <span class=s1>&#39;code&#39;</span><span class=p>,</span> <span class=s1>&#39;subscript&#39;</span><span class=p>,</span> <span class=s1>&#39;superscript&#39;</span><span class=p>,</span> <span class=s1>&#39;highlight&#39;</span><span class=p>,</span> <span class=s1>&#39;|&#39;</span><span class=p>,</span>
+                    <span class=s1>&#39;bulletedList&#39;</span><span class=p>,</span> <span class=s1>&#39;numberedList&#39;</span><span class=p>,</span> <span class=s1>&#39;todoList&#39;</span><span class=p>,</span> <span class=s1>&#39;|&#39;</span><span class=p>,</span> <span class=s1>&#39;blockQuote&#39;</span><span class=p>,</span> <span class=s1>&#39;imageUpload&#39;</span><span class=p>,</span> <span class=s1>&#39;|&#39;</span><span class=p>,</span>
+                    <span class=s1>&#39;fontSize&#39;</span><span class=p>,</span> <span class=s1>&#39;fontFamily&#39;</span><span class=p>,</span> <span class=s1>&#39;fontColor&#39;</span><span class=p>,</span> <span class=s1>&#39;fontBackgroundColor&#39;</span><span class=p>,</span> <span class=s1>&#39;mediaEmbed&#39;</span><span class=p>,</span> <span class=s1>&#39;removeFormat&#39;</span><span class=p>,</span>
+                    <span class=s1>&#39;insertTable&#39;</span><span class=p>,</span> <span class=p>],</span>
+        <span class=s1>&#39;image&#39;</span><span class=p>:</span> <span class=p>{</span>
+            <span class=s1>&#39;toolbar&#39;</span><span class=p>:</span> <span class=p>[</span><span class=s1>&#39;imageTextAlternative&#39;</span><span class=p>,</span> <span class=s1>&#39;imageTitle&#39;</span><span class=p>,</span> <span class=s1>&#39;|&#39;</span><span class=p>,</span> <span class=s1>&#39;imageStyle:alignLeft&#39;</span><span class=p>,</span> <span class=s1>&#39;imageStyle:full&#39;</span><span class=p>,</span>
+                        <span class=s1>&#39;imageStyle:alignRight&#39;</span><span class=p>,</span> <span class=s1>&#39;imageStyle:alignCenter&#39;</span><span class=p>,</span> <span class=s1>&#39;imageStyle:side&#39;</span><span class=p>,</span> <span class=s1>&#39;|&#39;</span><span class=p>],</span>
+            <span class=s1>&#39;styles&#39;</span><span class=p>:</span> <span class=p>[</span>
+                <span class=s1>&#39;full&#39;</span><span class=p>,</span>
+                <span class=s1>&#39;side&#39;</span><span class=p>,</span>
+                <span class=s1>&#39;alignLeft&#39;</span><span class=p>,</span>
+                <span class=s1>&#39;alignRight&#39;</span><span class=p>,</span>
+                <span class=s1>&#39;alignCenter&#39;</span><span class=p>,</span>
+            <span class=p>]</span>
+
+        <span class=p>},</span>
+        <span class=s1>&#39;table&#39;</span><span class=p>:</span> <span class=p>{</span>
+            <span class=s1>&#39;contentToolbar&#39;</span><span class=p>:</span> <span class=p>[</span><span class=s1>&#39;tableColumn&#39;</span><span class=p>,</span> <span class=s1>&#39;tableRow&#39;</span><span class=p>,</span> <span class=s1>&#39;mergeTableCells&#39;</span><span class=p>]</span>
+        <span class=p>},</span>
+        <span class=s1>&#39;heading&#39;</span><span class=p>:</span> <span class=p>{</span>
+            <span class=s1>&#39;options&#39;</span><span class=p>:</span> <span class=p>[</span>
+                <span class=p>{</span><span class=s1>&#39;model&#39;</span><span class=p>:</span> <span class=s1>&#39;paragraph&#39;</span><span class=p>,</span> <span class=s1>&#39;title&#39;</span><span class=p>:</span> <span class=s1>&#39;Paragraph&#39;</span><span class=p>,</span> <span class=s1>&#39;class&#39;</span><span class=p>:</span> <span class=s1>&#39;ck-heading_paragraph&#39;</span><span class=p>},</span>
+                <span class=p>{</span><span class=s1>&#39;model&#39;</span><span class=p>:</span> <span class=s1>&#39;heading1&#39;</span><span class=p>,</span> <span class=s1>&#39;view&#39;</span><span class=p>:</span> <span class=s1>&#39;h1&#39;</span><span class=p>,</span> <span class=s1>&#39;title&#39;</span><span class=p>:</span> <span class=s1>&#39;Heading 1&#39;</span><span class=p>,</span> <span class=s1>&#39;class&#39;</span><span class=p>:</span> <span class=s1>&#39;ck-heading_heading1&#39;</span><span class=p>},</span>
+                <span class=p>{</span><span class=s1>&#39;model&#39;</span><span class=p>:</span> <span class=s1>&#39;heading2&#39;</span><span class=p>,</span> <span class=s1>&#39;view&#39;</span><span class=p>:</span> <span class=s1>&#39;h2&#39;</span><span class=p>,</span> <span class=s1>&#39;title&#39;</span><span class=p>:</span> <span class=s1>&#39;Heading 2&#39;</span><span class=p>,</span> <span class=s1>&#39;class&#39;</span><span class=p>:</span> <span class=s1>&#39;ck-heading_heading2&#39;</span><span class=p>},</span>
+                <span class=p>{</span><span class=s1>&#39;model&#39;</span><span class=p>:</span> <span class=s1>&#39;heading3&#39;</span><span class=p>,</span> <span class=s1>&#39;view&#39;</span><span class=p>:</span> <span class=s1>&#39;h3&#39;</span><span class=p>,</span> <span class=s1>&#39;title&#39;</span><span class=p>:</span> <span class=s1>&#39;Heading 3&#39;</span><span class=p>,</span> <span class=s1>&#39;class&#39;</span><span class=p>:</span> <span class=s1>&#39;ck-heading_heading3&#39;</span><span class=p>}</span>
+            <span class=p>]</span>
+        <span class=p>}</span>
+    <span class=p>}</span>
+<span class=p>}</span>
+</code></pre></td></tr></table>
+</div>
+</div></div><div class=post-footer id=post-footer>
+<div class=post-info>
+<div class=post-info-line>
+<div class=post-info-mod>
+<span>更新于 2016-03-02</span>
+</div>
+<div class=post-info-license></div>
+</div>
+<div class=post-info-line>
+<div class=post-info-md><span>
+<a class=link-to-markdown href=/20160302-django%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE/index.md target=_blank>阅读原始文档</a>
+</span></div>
+<div class=post-info-share>
+<span><a href=javascript:void(0); title="分享到 Twitter" data-sharer=twitter data-url=https://spaceack.github.io/20160302-django%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE/ data-title="Django常用配置-setting.py 模板" data-hashtags=Django><i class="fab fa-twitter fa-fw"></i></a><a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=https://spaceack.github.io/20160302-django%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE/ data-hashtag=Django><i class="fab fa-facebook-square fa-fw"></i></a><a href=javascript:void(0); title="分享到 Hacker News" data-sharer=hackernews data-url=https://spaceack.github.io/20160302-django%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE/ data-title="Django常用配置-setting.py 模板"><i class="fab fa-hacker-news fa-fw"></i></a><a href=javascript:void(0); title="分享到 Line" data-sharer=line data-url=https://spaceack.github.io/20160302-django%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE/ data-title="Django常用配置-setting.py 模板"><i data-svg-src=https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg></i></a><a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=https://spaceack.github.io/20160302-django%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE/ data-title="Django常用配置-setting.py 模板"><i class="fab fa-weibo fa-fw"></i></a></span>
+</div>
+</div>
+</div>
+<div class=post-info-more>
+<section class=post-tags><i class="fas fa-tags fa-fw"></i>&nbsp;<a href=/tags/django/>Django</a></section>
+<section>
+<span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span>
+</section>
+</div>
+<div class=post-nav><a href=/20141012-ubuntu%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/ class=prev rel=prev title="Linux 错误修复笔记"><i class="fas fa-angle-left fa-fw"></i>Linux 错误修复笔记</a>
+<a href=/20160305-djangoadmin%E6%89%A9%E5%B1%95/ class=next rel=next title=Django-通过示例定制admin后台管理>Django-通过示例定制admin后台管理<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id=comments><div id=valine class=comment></div><noscript>
+Please enable JavaScript to view the comments powered by <a href=https://valine.js.org/>Valine</a>.
+</noscript></div></article></div>
+</main><footer class=footer>
+<div class=footer-container><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.87.0">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/dillonzq/LoveIt target=_blank rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+</div><div class=footer-line><i class="far fa-copyright fa-fw"></i><span itemprop=copyrightYear>2014 - 2021</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=spaceack.com target=_blank>Spaceack</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div>
+</div>
+</footer></div>
+<div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部>
+<i class="fas fa-arrow-up fa-fw"></i>
+</a><a href=# id=view-comments class=fixed-button title=查看评论>
+<i class="fas fa-comment fa-fw"></i>
+</a>
+</div><link rel=stylesheet href=/lib/valine/valine.min.css><script type=text/javascript src=https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:10},comment:{valine:{appId:"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI",appKey:"WBmoGyJtbqUswvfLh6L8iEBr",avatar:"mp",el:"#valine",emojiCDN:"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/",emojiMaps:{100:"1f4af.png",alien:"1f47d.png",anger:"1f4a2.png",angry:"1f620.png",anguished:"1f627.png",astonished:"1f632.png",black_heart:"1f5a4.png",blue_heart:"1f499.png",blush:"1f60a.png",bomb:"1f4a3.png",boom:"1f4a5.png",broken_heart:"1f494.png",brown_heart:"1f90e.png",clown_face:"1f921.png",cold_face:"1f976.png",cold_sweat:"1f630.png",confounded:"1f616.png",confused:"1f615.png",cry:"1f622.png",crying_cat_face:"1f63f.png",cupid:"1f498.png",dash:"1f4a8.png",disappointed:"1f61e.png",disappointed_relieved:"1f625.png",dizzy:"1f4ab.png",dizzy_face:"1f635.png",drooling_face:"1f924.png",exploding_head:"1f92f.png",expressionless:"1f611.png",face_vomiting:"1f92e.png",face_with_cowboy_hat:"1f920.png",face_with_hand_over_mouth:"1f92d.png",face_with_head_bandage:"1f915.png",face_with_monocle:"1f9d0.png",face_with_raised_eyebrow:"1f928.png",face_with_rolling_eyes:"1f644.png",face_with_symbols_on_mouth:"1f92c.png",face_with_thermometer:"1f912.png",fearful:"1f628.png",flushed:"1f633.png",frowning:"1f626.png",ghost:"1f47b.png",gift_heart:"1f49d.png",green_heart:"1f49a.png",grimacing:"1f62c.png",grin:"1f601.png",grinning:"1f600.png",hankey:"1f4a9.png",hear_no_evil:"1f649.png",heart:"2764-fe0f.png",heart_decoration:"1f49f.png",heart_eyes:"1f60d.png",heart_eyes_cat:"1f63b.png",heartbeat:"1f493.png",heartpulse:"1f497.png",heavy_heart_exclamation_mark_ornament:"2763-fe0f.png",hole:"1f573-fe0f.png",hot_face:"1f975.png",hugging_face:"1f917.png",hushed:"1f62f.png",imp:"1f47f.png",innocent:"1f607.png",japanese_goblin:"1f47a.png",japanese_ogre:"1f479.png",joy:"1f602.png",joy_cat:"1f639.png",kiss:"1f48b.png",kissing:"1f617.png",kissing_cat:"1f63d.png",kissing_closed_eyes:"1f61a.png",kissing_heart:"1f618.png",kissing_smiling_eyes:"1f619.png",laughing:"1f606.png",left_speech_bubble:"1f5e8-fe0f.png",love_letter:"1f48c.png",lying_face:"1f925.png",mask:"1f637.png",money_mouth_face:"1f911.png",nauseated_face:"1f922.png",nerd_face:"1f913.png",neutral_face:"1f610.png",no_mouth:"1f636.png",open_mouth:"1f62e.png",orange_heart:"1f9e1.png",partying_face:"1f973.png",pensive:"1f614.png",persevere:"1f623.png",pleading_face:"1f97a.png",pouting_cat:"1f63e.png",purple_heart:"1f49c.png",rage:"1f621.png",relaxed:"263a-fe0f.png",relieved:"1f60c.png",revolving_hearts:"1f49e.png",right_anger_bubble:"1f5ef-fe0f.png",robot_face:"1f916.png",rolling_on_the_floor_laughing:"1f923.png",scream:"1f631.png",scream_cat:"1f640.png",see_no_evil:"1f648.png",shushing_face:"1f92b.png",skull:"1f480.png",skull_and_crossbones:"2620-fe0f.png",sleeping:"1f634.png",sleepy:"1f62a.png",slightly_frowning_face:"1f641.png",slightly_smiling_face:"1f642.png",smile:"1f604.png",smile_cat:"1f638.png",smiley:"1f603.png",smiley_cat:"1f63a.png",smiling_face_with_3_hearts:"1f970.png",smiling_imp:"1f608.png",smirk:"1f60f.png",smirk_cat:"1f63c.png",sneezing_face:"1f927.png",sob:"1f62d.png",space_invader:"1f47e.png",sparkling_heart:"1f496.png",speak_no_evil:"1f64a.png",speech_balloon:"1f4ac.png","star-struck":"1f929.png",stuck_out_tongue:"1f61b.png",stuck_out_tongue_closed_eyes:"1f61d.png",stuck_out_tongue_winking_eye:"1f61c.png",sunglasses:"1f60e.png",sweat:"1f613.png",sweat_drops:"1f4a6.png",sweat_smile:"1f605.png",thinking_face:"1f914.png",thought_balloon:"1f4ad.png",tired_face:"1f62b.png",triumph:"1f624.png",two_hearts:"1f495.png",unamused:"1f612.png",upside_down_face:"1f643.png",weary:"1f629.png",white_frowning_face:"2639-fe0f.png",white_heart:"1f90d.png",wink:"1f609.png",woozy_face:"1f974.png",worried:"1f61f.png",yawning_face:"1f971.png",yellow_heart:"1f49b.png",yum:"1f60b.png",zany_face:"1f92a.png",zipper_mouth_face:"1f910.png",zzz:"1f4a4.png"},enableQQ:!1,highlight:!0,lang:"zh-cn",pageSize:10,placeholder:"你的评论 ...",recordIP:!0,serverURLs:"https://leancloud.hugoloveit.com",visitor:!0}},search:{algoliaAppID:"PASDMWALPK",algoliaIndex:"index.zh-cn",algoliaSearchKey:"b42948e51daaa93df92381c8e2ac0f93",highlightTag:"em",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50,type:"algolia"}}</script><script type=text/javascript src=/js/theme.min.js></script></body>
+</html>
