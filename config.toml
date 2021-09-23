@@ -687,7 +687,7 @@ enableEmoji = true
 [author]
   name = "Spaceack"
   email = "spaceack@qq.com"
-  link = "spaceack.com"
+  link = "/about"
 
 # Sitemap config
 # 网站地图配置
