@@ -67,10 +67,10 @@ enableEmoji = true
         title = ""
         weight = 3
       [[languages.zh-cn.menu.main]]
-        identifier = "documentation"
+        identifier = "links"
         pre = ""
-        name = "文档"
-        url = "/categories/documentation/"
+        name = "友链"
+        url = "/links/"
         title = ""
         weight = 4
       [[languages.zh-cn.menu.main]]
@@ -82,13 +82,21 @@ enableEmoji = true
         title = ""
         weight = 5
       [[languages.zh-cn.menu.main]]
+        identifier = "challenge"
+        pre = ""
+        post = ""
+        name = "战利品"
+        url = "/challenge/"
+        title = ""
+        weight = 6
+      [[languages.zh-cn.menu.main]]
         identifier = "github"
         pre = "<i class='fab fa-github fa-fw'></i>"
         post = ""
         name = ""
         url = "https://github.com/spaceack"
         title = "GitHub"
-        weight = 6
+        weight = 7
     [languages.zh-cn.params]
       # 网站描述
       description = "Spaceck的个人Blog 编程之舞"
