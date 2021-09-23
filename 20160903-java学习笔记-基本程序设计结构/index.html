@@ -1,0 +1,971 @@
+<!doctype html><html lang=zh-cn>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=robots content="noodp">
+<meta http-equiv=x-ua-compatible content="IE=edge, chrome=1">
+<title>Java学习笔记-基本程序设计结构 - Spaceack's Blog</title><meta name=Description content="Spaceck的个人Blog 编程之舞"><meta property="og:title" content="Java学习笔记-基本程序设计结构">
+<meta property="og:description" content="Java 文档下载 使用集成开发环境 Eclipse 新建项目 File-New-Project 对话框中选择Java Project 点击Finish Virtual Studio Code 安装扩展包Java Extension Pack Ctrl-Shift-D 根据提示生成launch.json">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://spaceack.github.io/20160903-java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/"><meta property="og:image" content="https://spaceack.github.io/logo.png"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2016-09-03T12:00:00+00:00">
+<meta property="article:modified_time" content="2016-09-03T12:00:00+00:00">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://spaceack.github.io/logo.png">
+<meta name=twitter:title content="Java学习笔记-基本程序设计结构">
+<meta name=twitter:description content="Java 文档下载 使用集成开发环境 Eclipse 新建项目 File-New-Project 对话框中选择Java Project 点击Finish Virtual Studio Code 安装扩展包Java Extension Pack Ctrl-Shift-D 根据提示生成launch.json">
+<meta name=application-name content="Spaceack's Blog">
+<meta name=apple-mobile-web-app-title content="Spaceack's Blog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://spaceack.github.io/20160903-java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/><link rel=prev href=https://spaceack.github.io/20160305-djangoadmin%E6%89%A9%E5%B1%95/><link rel=next href=https://spaceack.github.io/20170619-python%E4%BD%BF%E7%94%A8lxml%E6%8F%90%E5%8F%96xml%E6%95%B0%E6%8D%AE/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Java学习笔记-基本程序设计结构","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/spaceack.github.io\/20160903-java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84\/"},"image":["https:\/\/spaceack.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"Java","wordcount":3924,"url":"https:\/\/spaceack.github.io\/20160903-java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84\/","datePublished":"2016-09-03T12:00:00+00:00","dateModified":"2016-09-03T12:00:00+00:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"Spaceack","logo":"https:\/\/spaceack.github.io\/images\/avatar.jpeg"},"author":{"@type":"Person","name":"Spaceack"},"description":""}</script></head>
+<body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':'auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark')&&document.body.setAttribute('theme','dark')</script>
+<div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
+<div class=header-wrapper>
+<div class=header-title>
+<a href=/ title="Spaceack's Blog"><span class=header-title-pre><i class="far fa-kiss-wink-heart fa-fw"></i></span>Spaceack's Blog</a>
+</div>
+<div class=menu>
+<div class=menu-inner><a class=menu-item href=/posts/> 所有文章 </a><a class=menu-item href=/tags/> 标签 </a><a class=menu-item href=/categories/> 分类 </a><a class=menu-item href=/links/> 友链 </a><a class=menu-item href=/about/> 关于 </a><a class=menu-item href=/challenge/> 战利品 </a><a class=menu-item href=https://github.com/spaceack title=GitHub rel="noopener noreffer" target=_blank><i class="fab fa-github fa-fw"></i> </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索>
+<i class="fas fa-search fa-fw"></i>
+</a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空>
+<i class="fas fa-times-circle fa-fw"></i>
+</a>
+<span class="search-button search-loading" id=search-loading-desktop>
+<i class="fas fa-spinner fa-fw fa-spin"></i>
+</span>
+</span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw"></i>
+</a>
+</div>
+</div>
+</div>
+</header><header class=mobile id=header-mobile>
+<div class=header-container>
+<div class=header-wrapper>
+<div class=header-title>
+<a href=/ title="Spaceack's Blog"><span class=header-title-pre><i class="far fa-kiss-wink-heart fa-fw"></i></span>Spaceack's Blog</a>
+</div>
+<div class=menu-toggle id=menu-toggle-mobile>
+<span></span><span></span><span></span>
+</div>
+</div>
+<div class=menu id=menu-mobile><div class=search-wrapper>
+<div class="search mobile" id=search-mobile>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索>
+<i class="fas fa-search fa-fw"></i>
+</a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空>
+<i class="fas fa-times-circle fa-fw"></i>
+</a>
+<span class="search-button search-loading" id=search-loading-mobile>
+<i class="fas fa-spinner fa-fw fa-spin"></i>
+</span>
+</div>
+<a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>
+取消
+</a>
+</div><a class=menu-item href=/posts/ title>所有文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a class=menu-item href=/links/ title>友链</a><a class=menu-item href=/about/ title>关于</a><a class=menu-item href=/challenge/ title>战利品</a><a class=menu-item href=https://github.com/spaceack title=GitHub rel="noopener noreffer" target=_blank><i class="fab fa-github fa-fw"></i></a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw"></i>
+</a></div>
+</div>
+</header>
+<div class="search-dropdown desktop">
+<div id=search-dropdown-desktop></div>
+</div>
+<div class="search-dropdown mobile">
+<div id=search-dropdown-mobile></div>
+</div>
+<main class=main>
+<div class=container><div class=toc id=toc-auto>
+<h2 class=toc-title>目录</h2>
+<div class=toc-content id=toc-content-auto></div>
+</div><article class="page single"><h1 class="single-title animated flipInX">Java学习笔记-基本程序设计结构</h1><div class=post-meta>
+<div class=post-meta-line><span class=post-author><a href=/about title=Author rel=" author" class=author><i class="fas fa-user-circle fa-fw"></i>Spaceack</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/java/><i class="far fa-folder fa-fw"></i>Java</a></span></div>
+<div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2016-09-03>2016-09-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3924 字&nbsp;
+<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 8 分钟&nbsp;<span id=/20160903-java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/ class=leancloud_visitors data-flag-title=Java学习笔记-基本程序设计结构>
+<i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+</span>&nbsp;</div>
+</div><div class="details toc" id=toc-static kept>
+<div class="details-summary toc-title">
+<span>目录</span>
+<span><i class="details-icon fas fa-angle-right"></i></span>
+</div>
+<div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents>
+<ul>
+<li><a href=#使用集成开发环境>使用集成开发环境</a>
+<ul>
+<li><a href=#eclipse>Eclipse</a>
+<ul>
+<li><a href=#新建项目>新建项目</a></li>
+</ul>
+</li>
+<li><a href=#virtual-studio-code>Virtual Studio Code</a></li>
+</ul>
+</li>
+<li><a href=#第一段java程序>第一段Java程序</a>
+<ul>
+<li>
+<ul>
+<li><a href=#程序解读>程序解读</a></li>
+</ul>
+</li>
+<li><a href=#易错点>易错点</a></li>
+</ul>
+</li>
+<li><a href=#注释>注释</a></li>
+<li><a href=#数据类型>数据类型</a>
+<ul>
+<li><a href=#java整型>Java整型</a></li>
+<li><a href=#浮点类型>浮点类型</a></li>
+<li><a href=#char类型>char类型</a>
+<ul>
+<li><a href=#unicode>Unicode</a></li>
+</ul>
+</li>
+<li><a href=#boolean类型>boolean类型</a></li>
+</ul>
+</li>
+<li><a href=#变量>变量</a>
+<ul>
+<li><a href=#变量初始化>变量初始化</a></li>
+<li><a href=#常量>常量</a></li>
+</ul>
+</li>
+<li><a href=#运算符>运算符</a>
+<ul>
+<li><a href=#算术运算符>算术运算符</a></li>
+<li><a href=#数学函数>数学函数</a></li>
+<li><a href=#类型转换>类型转换</a></li>
+<li><a href=#强制类型转换>强制类型转换</a></li>
+<li><a href=#自增运算符>自增运算符</a></li>
+<li><a href=#关系和布尔运算符>关系和布尔运算符</a></li>
+<li><a href=#位运算符>位运算符</a></li>
+<li><a href=#括号与运算符级别>括号与运算符级别</a></li>
+<li><a href=#枚举类型>枚举类型</a></li>
+</ul>
+</li>
+<li><a href=#字符串>字符串</a>
+<ul>
+<li><a href=#子串>子串</a></li>
+<li><a href=#拼接>拼接</a></li>
+<li><a href=#不可变字符串>不可变字符串</a></li>
+<li><a href=#检测字符串相等>检测字符串相等</a></li>
+<li><a href=#空串与null串>空串与Null串</a></li>
+<li><a href=#码点与代码单元>码点与代码单元</a></li>
+</ul>
+</li>
+<li><a href=#输入输出>输入输出</a></li>
+<li><a href=#控制流程>控制流程</a></li>
+<li><a href=#大数值>大数值</a></li>
+<li><a href=#数组>数组</a></li>
+<li><a href=#术语>术语</a></li>
+</ul>
+</nav></div>
+</div><div class=content id=content><p><a href=http://www.oracle.com/technetwork/java/javase/downloads target=_blank rel="noopener noreffer">Java 文档下载</a></p>
+<h2 id=使用集成开发环境>使用集成开发环境</h2>
+<h3 id=eclipse>Eclipse</h3>
+<h4 id=新建项目>新建项目</h4>
+<ol>
+<li>File-New-Project</li>
+<li>对话框中选择<code>Java Project</code></li>
+</ol>
+<p><img class=lazyload src=/svg/loading.min.svg data-src=%e9%85%8d%e7%bd%aeeclipse%e5%b7%a5%e7%a8%8b.png data-srcset="%e9%85%8d%e7%bd%aeeclipse%e5%b7%a5%e7%a8%8b.png, %e9%85%8d%e7%bd%aeeclipse%e5%b7%a5%e7%a8%8b.png 1.5x, %e9%85%8d%e7%bd%aeeclipse%e5%b7%a5%e7%a8%8b.png 2x" data-sizes=auto alt=配置eclipse工程.png title=配置eclipse工程></p>
+<ol start=3>
+<li>点击<code>Finish</code></li>
+</ol>
+<h3 id=virtual-studio-code>Virtual Studio Code</h3>
+<ol>
+<li>安装扩展包<code>Java Extension Pack</code></li>
+<li><code>Ctrl-Shift-D</code> 根据提示生成<code>launch.json</code>配置文件</li>
+<li><code>F5</code>运行程序</li>
+</ol>
+<h2 id=第一段java程序>第一段Java程序</h2>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-Java data-lang=Java><span class=c1>// Welcome/Welcome.java
+</span><span class=c1></span><span class=kd>public</span> <span class=kd>class</span> <span class=nc>Welcome</span><span class=o>{</span>
+    <span class=kd>public</span> <span class=kd>static</span> <span class=kt>void</span> <span class=nf>main</span><span class=o>(</span><span class=n>String</span> <span class=o>[]</span> <span class=n>args</span><span class=o>){</span>
+        <span class=n>String</span> <span class=n>greeting</span> <span class=o>=</span> <span class=s>&#34;Welcome to Spaceack&#39;s blog&#34;</span><span class=o>;</span>
+        <span class=n>System</span><span class=o>.</span><span class=na>out</span><span class=o>.</span><span class=na>println</span><span class=o>(</span><span class=n>greeting</span><span class=o>);</span>
+        <span class=k>for</span><span class=o>(</span><span class=kt>int</span> <span class=n>i</span><span class=o>=</span><span class=n>0</span><span class=o>;</span> <span class=n>i</span><span class=o>&lt;</span><span class=n>greeting</span><span class=o>.</span><span class=na>length</span><span class=o>();</span> <span class=n>i</span><span class=o>++)</span>
+            <span class=n>System</span><span class=o>.</span><span class=na>out</span><span class=o>.</span><span class=na>print</span><span class=o>(</span><span class=s>&#34;=&#34;</span><span class=o>);</span>
+        <span class=n>System</span><span class=o>.</span><span class=na>out</span><span class=o>.</span><span class=na>println</span><span class=o>();</span>
+    <span class=o>}</span> 
+<span class=o>}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id=程序解读>程序解读</h4>
+<ol>
+<li>
+<p>关键字<code>public</code>称为<code>访问修饰符（access modifier）</code>用于控制程序其它部分对这段代码的访问级别。</p>
+</li>
+<li>
+<p>关键字<code>class</code>表明Java程序中的全部内容都包含在类中。</p>
+</li>
+<li>
+<p><code>class</code>后面是类名，命名规范类名首字母大写，建议使用骆驼命名法。</p>
+</li>
+<li>
+<p>源代码的文件名需与<strong>公共类名</strong>相同，并用<code>.java</code>作为扩展名。</p>
+</li>
+<li>
+<p><code>main</code>方法必须声明为<code>public</code></p>
+</li>
+<li>
+<p>Java中所有的函数都属于某个类的方法，因此<code>main</code>方法必须有一个外壳类。每个Java应用程序都必须有一个<code>main</code>方法, 声明格式：</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=kd>public</span> <span class=kd>class</span> <span class=nc>ClassName</span><span class=o>{</span>
+    <span class=kd>public</span> <span class=kd>static</span> <span class=kt>void</span> <span class=nf>main</span><span class=o>(</span><span class=n>String</span><span class=o>[]</span> <span class=n>args</span><span class=o>){</span>
+        <span class=n>program</span> <span class=n>statements</span>
+    <span class=o>}</span>
+<span class=o>}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><code>void</code>表示这个方法没有返回值。如果<code>main</code>方法正常退出，Java应用程序退出代码为0。若想终止程序时返回其他代码，需要调用<code>System.exit</code>方法。</p>
+</li>
+<li>
+<p>每个程序块使用<code>{}</code>括号包裹，每条语句使用<code>;</code>分号结束。</p>
+</li>
+<li>
+<p>输出语句使用了<code>System.out</code>对象，并调用了<code>println</code>方法。</p>
+</li>
+<li>
+<p><code>.</code>点号用于调用方法，通用语法为<code>object.method(parameters)</code></p>
+</li>
+</ol>
+<p><img class=lazyload src=/svg/loading.min.svg data-src=%e7%bc%96%e8%af%91%e8%bf%90%e8%a1%8cWelcome.png data-srcset="%e7%bc%96%e8%af%91%e8%bf%90%e8%a1%8cWelcome.png, %e7%bc%96%e8%af%91%e8%bf%90%e8%a1%8cWelcome.png 1.5x, %e7%bc%96%e8%af%91%e8%bf%90%e8%a1%8cWelcome.png 2x" data-sizes=auto alt=编译运行Welcome.png title=编译运行Welcome></p>
+<h3 id=易错点>易错点</h3>
+<ol>
+<li>需要注意大小写， 类名首字母大写 <code>Welcome</code></li>
+<li>编译时只需指定类名<code>javac Welcome</code>,不要带扩展名<code>.java</code>或<code>.javac</code></li>
+</ol>
+<h2 id=注释>注释</h2>
+<ol>
+<li>单行注释<code>//</code></li>
+<li>多行注释<code>/* */</code></li>
+<li>文档注释<code>/** */</code> 可以生成文档
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=o>/**</span>
+ <span class=o>*</span> <span class=n>This</span> <span class=n>is</span> <span class=n>the</span> <span class=n>first</span> <span class=n>sample</span> <span class=n>program</span>
+ <span class=o>*</span> <span class=nd>@version</span> <span class=n>1</span><span class=o>.</span><span class=na>0</span> <span class=n>2016</span><span class=o>-</span><span class=n>09</span><span class=o>-</span><span class=n>03</span>
+ <span class=o>*</span> <span class=nd>@author</span> <span class=n>Spaceack</span>
+ <span class=o>*</span> <span class=o>/</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h2 id=数据类型>数据类型</h2>
+<p>Java中规定8种基本类型（primitive type）4种整型，2种浮点型，1种表示Unicode编码的字符型，和一种表示真值的boolean类型。</p>
+<h3 id=java整型>Java整型</h3>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>存储</th>
+<th>取值</th>
+<th>科学</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>byte</td>
+<td>1字节</td>
+<td>-128~127</td>
+<td>2^7</td>
+</tr>
+<tr>
+<td>short</td>
+<td>2字节</td>
+<td>-32768~32767</td>
+<td>2^15</td>
+</tr>
+<tr>
+<td>int</td>
+<td>4字节</td>
+<td>-2147483648～2147483647（错过20亿）</td>
+<td>2^31</td>
+</tr>
+<tr>
+<td>long</td>
+<td>8字节</td>
+<td>-9223372036854775808~9223372036854775807</td>
+<td>2^63</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>长整型数值有一个后缀<code>L</code>或<code>l</code>(4000000000L)</li>
+<li>十六进制数值有一个前缀<code>0x</code>或<code>0X</code>(0xCAFE)</li>
+<li>八进制有个前缀<code>0</code>（010 表示对应八进制中的8）</li>
+<li>二进制数值前缀<code>0b</code>或<code>0B</code>（0b1001就是9）</li>
+<li>数字字面量加入下划线使之更易读：1_000_000（0b1111_0100_0010_0100_0000）表示一百万。</li>
+</ol>
+<h3 id=浮点类型>浮点类型</h3>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>存储</th>
+<th>取值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>float</td>
+<td>4字节</td>
+<td>约 ±3.40282347E+38F(有效位数6～7位)</td>
+</tr>
+<tr>
+<td>double</td>
+<td>8字节</td>
+<td>约 ±1.79769313486231570E+308(有效位数15位)</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li><code>float</code>类型的数值有一个后缀<code>f</code>或<code>F</code>。没有后缀的浮点数默认为<code>double</code>类型</li>
+<li>表示溢出和出错情况的三个特殊的浮点数值</li>
+</ol>
+<ul>
+<li>
+<p>正无穷大，对应常量<code>Double.POSITIVE_INFINITY</code></p>
+</li>
+<li>
+<p>负无穷大,<code>Double.NEGATIVE_INFINITY</code></p>
+</li>
+<li>
+<p>NaN, <code>Double.NaN</code></p>
+<p>eg: 一个正整数除0的结果为正无穷大。计算0/0或者负数平方根的结果为NaN。</p>
+</li>
+</ul>
+<ol start=3>
+<li>使用<code>Double.isNaN()</code>方法判断是否等于<code>Double.NaN</code>。</li>
+<li>浮点数值表示使用二进制系统表示，会有误差。金融计算应使用<code>BigDecimal</code>类。</li>
+</ol>
+<h3 id=char类型>char类型</h3>
+<ol>
+<li>
+<p>使用单引号<code>''</code>包裹,例如<code>'A'</code>是编码值为65所对应的字符常量。与被双引号包裹的<code>"A"</code>不同，它是包含一个字符<code>A</code>的字符串。</p>
+</li>
+<li>
+<p>char类型可以表示十六进制值，范围从<code>\u0000</code>到<code>\Uffff</code>。例如<code>\u2122</code>表示注册符号<code>™</code>,<code>\u03C0</code>表示希腊字母<code>π</code>。</p>
+</li>
+<li>
+<p>转义序列<code>\u</code>可以出现在加引号的字符常量或字符串之外（其他转义序列不可以）例如 <code>\u005B\u005D</code>是<code>[]</code>的编码。</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=kd>public</span> <span class=kd>static</span> <span class=kt>void</span> <span class=nf>main</span><span class=o>(</span><span class=n>String</span> <span class=err>\</span><span class=n>u005B</span><span class=err>\</span><span class=n>u005D</span> <span class=n>args</span><span class=o>)</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>其它特殊字符转义序列</p>
+<table>
+<thead>
+<tr>
+<th>转义序列</th>
+<th>名称</th>
+<th>Unicode值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\b</td>
+<td>退格</td>
+<td>\u0008</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>制表</td>
+<td>\u0009</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>换行</td>
+<td>\u000a</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>回车</td>
+<td>\u000d</td>
+</tr>
+<tr>
+<td>\"</td>
+<td>双引号</td>
+<td>\u0022</td>
+</tr>
+<tr>
+<td>\'</td>
+<td>单引号</td>
+<td>\u0027</td>
+</tr>
+<tr>
+<td>//</td>
+<td>反斜杠</td>
+<td>\u005c</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><code>System.out.println("\u0022+\u0022");</code>的输出会是<code>""</code>吗？不是的， 会输出一个空字符串<code> </code>。</p>
+</li>
+<li>
+<p>需要小心注释中的<code>\u</code>, <code>// Look inside c:\users</code> 会产生语法错误，因为\u后面并未跟着4个十六进制数。</p>
+</li>
+</ol>
+<h4 id=unicode>Unicode</h4>
+<p>码点（code point）: 指与一个编码表中的某个字符对应的代码值。</p>
+<p>在Unicode标准中，码点采用16进制书写，并加上前缀<code>U+</code>,eg<code>U+0041</code>是<code>A</code>的码点。</p>
+<p>Unicode码点可以分成17个代码级别（code plane）。第一个代码级别称为<strong>基本的多语言级别(basic multilingual plane)</strong>， 码点从<code>U+0000</code>到<code>U+FFFF</code>,包括经典的Unicode代码。其余的16个级别码点从<code>U+10000</code>到<code>U+10FFFF</code>，包括一些<strong>辅助字符（supplementary character）</strong></p>
+<p><code>UTF-16</code>编码采用不同长度的编码表示所有的<code>Unicode</code>码点。在<strong>基本的多语言级别</strong>中每个字符用16位表示，通常被称为<strong>代码单元（code unit）</strong>。<strong>辅助</strong>字符采用一对连续的<strong>代码单元</strong>进行编码。这样构成的编码值落入<strong>基本的多语言级别</strong>中空闲的2048字节内，通常被称为<strong>替代区域（surrogate area）</strong>。</p>
+<p>在Java中，char类型描述了UTF-16编码中的一个代码单元。</p>
+<p>强烈建议不要在程序中使用char类型。建议使用字符串作为抽象数据类型处理。</p>
+<h3 id=boolean类型>boolean类型</h3>
+<ol>
+<li>boolean类型有两个值：<code>false</code>和<code>true</code>,用来判定逻辑条件。</li>
+<li>整型和布尔值之间不能相互转换。</li>
+</ol>
+<h2 id=变量>变量</h2>
+<ol>
+<li>Java中每个变量都有1个类型（type）,在声明变量时，变量的类型位于变量之前。以分号结束。</li>
+<li>可以使用任何有意义的Unicode字符组成变量名。若想知道该Unicode字符是否可以用作变量名，可以使用<code>Character</code>类的<code>isJavaIdentifierStart</code>和<code>isJavaIdentifierPart</code>方法来检查。</li>
+<li>不要使用<code>$</code>字符，它只用在Java编译器或其它工具生成的名字中。</li>
+<li>建议逐一声明（各一行）可以提高程序的可读性。</li>
+<li>变量名建议小写字母，多个单词组成的变量名从第二个单词开始首字母大写。</li>
+</ol>
+<h3 id=变量初始化>变量初始化</h3>
+<ol>
+<li>声明变量后，必须使用赋值语句对变量显式初始化。</li>
+<li>变量的声明尽可能地靠近变量第一次使用的地方。</li>
+</ol>
+<h3 id=常量>常量</h3>
+<ol>
+<li>利用关键字<code>final</code>指示常量。eg:
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=kd>final</span> <span class=kt>int</span> <span class=n>MAX_SIZE</span> <span class=o>=</span> <span class=n>25</span><span class=o>;</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>关键字<code>static final</code>可以设置一个类常量，允许一个类中的多个方法使用,常量还被声明为public， 其它的类也可以使用这个类常量：
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=kd>public</span> <span class=kd>static</span> <span class=kd>final</span> <span class=kt>int</span> <span class=n>MAX_SIZE</span> <span class=o>=</span> <span class=n>25</span><span class=o>;</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>被赋值后不能再更改。</li>
+<li>建议常量名使用全大写。</li>
+</ol>
+<h2 id=运算符>运算符</h2>
+<h3 id=算术运算符>算术运算符</h3>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>含义</th>
+<th>使用</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+</td>
+<td>加</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>-</td>
+<td>减</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>*</td>
+<td>乘</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>/</td>
+<td>除</td>
+<td>操作数都是整数时，表示整数除法，否则表示浮点数除法</td>
+<td>50/2=7, 15.0/2=7.5</td>
+</tr>
+<tr>
+<td>%</td>
+<td>求余(取模)</td>
+<td></td>
+<td>15%2=1</td>
+</tr>
+</tbody>
+</table>
+<h3 id=数学函数>数学函数</h3>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=kt>double</span> <span class=n>x</span> <span class=o>=</span> <span class=n>4</span><span class=o>;</span>
+<span class=c1>// sqrt方法 求平方根 
+</span><span class=c1></span><span class=kt>double</span> <span class=n>y</span> <span class=o>=</span> <span class=n>Math</span><span class=o>.</span><span class=na>sqrt</span><span class=o>(</span><span class=n>x</span><span class=o>);</span> <span class=c1>// 2.0
+</span><span class=c1>// pow方法 指数运算 y的x次方
+</span><span class=c1></span><span class=kt>double</span> <span class=n>p</span> <span class=o>=</span> <span class=n>Math</span><span class=o>.</span><span class=na>pow</span><span class=o>(</span><span class=n>y</span><span class=o>,</span> <span class=n>x</span><span class=o>)</span> <span class=c1>//16.0
+</span><span class=c1>// foorMod方法 取模运算
+</span><span class=c1></span><span class=kt>double</span> <span class=n>m</span> <span class=o>=</span> <span class=n>Math</span><span class=o>.</span><span class=na>floorMod</span><span class=o>(</span><span class=n>4</span><span class=o>,</span> <span class=n>3</span><span class=o>)</span> <span class=c1>//1.0
+</span></code></pre></td></tr></table>
+</div>
+</div><div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=c1>// 使用静态导入，调用时省略Math
+</span><span class=c1></span><span class=kn>import static</span> <span class=nn>java.lang.Math</span><span class=o>;</span>
+<span class=n>System</span><span class=o>.</span><span class=na>out</span><span class=o>.</span><span class=na>println</span><span class=o>(</span><span class=n>PI</span><span class=o>);</span>
+<span class=kt>double</span> <span class=n>s</span> <span class=o>=</span> <span class=n>sin</span><span class=o>(</span><span class=n>toRadians</span><span class=o>(</span><span class=n>30</span><span class=o>));</span>
+<span class=n>System</span><span class=o>.</span><span class=na>out</span><span class=o>.</span><span class=na>println</span><span class=o>(</span><span class=n>PI</span><span class=o>);</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id=类型转换>类型转换</h3>
+<p><img class=lazyload src=/svg/loading.min.svg data-src=yuque_diagram_type.png data-srcset="yuque_diagram_type.png, yuque_diagram_type.png 1.5x, yuque_diagram_type.png 2x" data-sizes=auto alt=yuque_diagram_type.png title=类型间合法转换></p>
+<ul>
+<li>虚箭头转换可能会有精度损失</li>
+<li>两个操作数，需要转换为同一类型才能运算。</li>
+</ul>
+<h3 id=强制类型转换>强制类型转换</h3>
+<ul>
+<li>使用圆括号<code>()</code>包裹要转换的目标类型，后面紧跟需要变换的变量名。</li>
+</ul>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=kt>double</span> <span class=n>x</span> <span class=o>=</span> <span class=n>6</span><span class=o>.</span><span class=na>66</span><span class=o>;</span> 
+<span class=kt>int</span> <span class=n>nv</span> <span class=o>=</span> <span class=o>(</span><span class=kt>int</span><span class=o>)</span> <span class=n>x</span><span class=o>;</span> <span class=c1>// 6 截断小数部分变为整型。
+</span><span class=c1></span><span class=kt>int</span> <span class=n>rv</span> <span class=o>=</span> <span class=o>(</span><span class=kt>int</span><span class=o>)</span> <span class=n>Math</span><span class=o>.</span><span class=na>round</span><span class=o>(</span><span class=n>x</span><span class=o>);</span> <span class=c1>// 7 使用round 进行舍入运算，round返回类型为long
+</span></code></pre></td></tr></table>
+</div>
+</div><div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=kt>int</span> <span class=n>x</span> <span class=o>=</span> <span class=n>0</span><span class=o>;</span>
+<span class=n>x</span> <span class=o>+=</span> <span class=n>3</span><span class=o>.</span><span class=na>5</span><span class=o>;</span>  <span class=c1>// 3 
+</span><span class=c1>// 会执行强制转换，实际为(int)（x + 3.5）
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id=自增运算符>自增运算符</h3>
+<ul>
+<li>“后缀”形式</li>
+</ul>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=kt>int</span> <span class=n>n</span> <span class=o>=</span> <span class=n>2</span><span class=o>;</span>
+<span class=kt>int</span> <span class=n>b</span> <span class=o>=</span> <span class=n>2</span> <span class=o>*</span> <span class=n>m</span><span class=o>++;</span> <span class=c1>// n is 3, b is 4; 
+</span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>“前缀”形式, 先加1。</li>
+</ul>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=kt>int</span> <span class=n>m</span> <span class=o>=</span> <span class=n>2</span><span class=o>;</span>
+<span class=kt>int</span> <span class=n>a</span> <span class=o>=</span> <span class=n>2</span> <span class=o>*</span> <span class=o>++</span><span class=n>m</span><span class=o>;</span> <span class=c1>// m is 3, a is 6
+</span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>建议不在表达式中使用<code>++</code>，会让人迷惑。</li>
+</ul>
+<h3 id=关系和布尔运算符>关系和布尔运算符</h3>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>含义</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>==</code></td>
+<td>相等</td>
+<td></td>
+</tr>
+<tr>
+<td><code>!=</code></td>
+<td>不相等</td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;</code></td>
+<td>小于</td>
+<td></td>
+</tr>
+<tr>
+<td><code>></code></td>
+<td>大于</td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;=</code></td>
+<td>小于等于</td>
+<td></td>
+</tr>
+<tr>
+<td><code>>=</code></td>
+<td>大于等于</td>
+<td></td>
+</tr>
+<tr>
+<td><code>&&</code></td>
+<td>逻辑与</td>
+<td></td>
+</tr>
+<tr>
+<td>`</td>
+<td></td>
+<td>`</td>
+</tr>
+<tr>
+<td><code>? :</code></td>
+<td>三元操作符</td>
+<td>condition ? expression1 : expression2</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>&&</code>与<code>||</code> 按照<code>短路</code>方式来求值</li>
+</ul>
+<h3 id=位运算符>位运算符</h3>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>含义</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&</code></td>
+<td>and</td>
+<td></td>
+</tr>
+<tr>
+<td>`</td>
+<td>`</td>
+<td>or</td>
+</tr>
+<tr>
+<td><code>^</code></td>
+<td>xor</td>
+<td></td>
+</tr>
+<tr>
+<td><code>~</code></td>
+<td>not</td>
+<td></td>
+</tr>
+<tr>
+<td><code>>></code></td>
+<td>左移</td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;&lt;</code></td>
+<td>右移</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p><code>&</code>与<code>|</code> <strong>不</strong>按照<code>短路</code>方式来求值</p>
+</li>
+<li>
+<p>使用掩码技术可以得到整数中的各个位。</p>
+</li>
+</ul>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-java data-lang=java>	<span class=kt>int</span> <span class=n>n</span> <span class=o>=</span> <span class=n>0b10000</span><span class=o>;</span>
+	<span class=kt>int</span> <span class=n>fourthBitFromRight</span> <span class=o>=</span> <span class=o>(</span><span class=n>n</span> <span class=o>&amp;</span> <span class=n>0b1000</span><span class=o>)</span> <span class=o>/</span> <span class=n>0b1000</span><span class=o>;</span>  <span class=c1>// 0
+</span><span class=c1></span>
+    <span class=kt>int</span> <span class=n>n</span> <span class=o>=</span> <span class=n>0b11000</span><span class=o>;</span>
+	<span class=kt>int</span> <span class=n>fourthBitFromRight</span> <span class=o>=</span> <span class=o>(</span><span class=n>n</span> <span class=o>&amp;</span> <span class=n>0b1000</span><span class=o>)</span> <span class=o>/</span> <span class=n>0b1000</span><span class=o>;</span>  <span class=c1>// 1
+</span><span class=c1></span>
+    <span class=kt>int</span> <span class=n>n</span> <span class=o>=</span> <span class=n>0b10000</span><span class=o>;</span>
+	<span class=kt>int</span> <span class=n>fourthBitFromRight</span> <span class=o>=</span> <span class=o>(</span><span class=n>n</span> <span class=o>&amp;</span> <span class=o>(</span><span class=n>1</span><span class=o>&lt;&lt;</span><span class=n>3</span><span class=o>))</span> <span class=o>&gt;&gt;</span><span class=n>3</span><span class=o>;</span>  <span class=c1>// 0
+</span><span class=c1></span>
+    <span class=kt>int</span> <span class=n>n</span> <span class=o>=</span> <span class=n>0b11000</span><span class=o>;</span>
+	<span class=kt>int</span> <span class=n>fourthBitFromRight</span> <span class=o>=</span> <span class=o>(</span><span class=n>n</span> <span class=o>&amp;</span> <span class=o>(</span><span class=n>1</span><span class=o>&lt;&lt;</span><span class=n>3</span><span class=o>))</span> <span class=o>&gt;&gt;</span><span class=n>3</span><span class=o>;</span>  <span class=c1>// 1
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id=括号与运算符级别>括号与运算符级别</h3>
+<p><img class=lazyload src=/svg/loading.min.svg data-src=%e8%a1%a86-7.jpg data-srcset="%e8%a1%a86-7.jpg, %e8%a1%a86-7.jpg 1.5x, %e8%a1%a86-7.jpg 2x" data-sizes=auto alt=表6-7.jpg title=括号与运算符级别></p>
+<h3 id=枚举类型>枚举类型</h3>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=kd>enum</span> <span class=n>Size</span> <span class=o>{</span><span class=n>SMALL</span><span class=o>,</span> <span class=n>MEDIUM</span><span class=o>,</span> <span class=n>LARGE</span><span class=o>,</span> <span class=n>EXTRA_LARGE</span><span class=o>};</span>
+<span class=n>Size</span> <span class=n>s</span> <span class=o>=</span> <span class=n>Size</span><span class=o>.</span><span class=na>MEIUM</span><span class=o>;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id=字符串>字符串</h2>
+<ul>
+<li>Java字符串就是Unicode字符序列。</li>
+<li>JAVA没有内置的字符串类型，而是使用标准库中的一个预定义类。</li>
+<li>每个由双引号括起来的字符串都是String类的一个序列。</li>
+</ul>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=n>String</span> <span class=n>name</span> <span class=o>=</span> <span class=s>&#34;Spaceack&#34;</span><span class=o>;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id=子串>子串</h3>
+<ul>
+<li>使用<code>substring</code>方法提取子串</li>
+</ul>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=n>String</span> <span class=n>name</span> <span class=o>=</span> <span class=s>&#34;Spaceack&#34;</span><span class=o>;</span>
+<span class=n>String</span> <span class=n>subs</span> <span class=o>=</span> <span class=n>name</span><span class=o>.</span><span class=na>substring</span><span class=o>(</span><span class=n>0</span><span class=o>,</span><span class=n>5</span><span class=o>);</span>  <span class=c1>//&#34;Space&#34;
+</span><span class=c1></span>
+<span class=o>-</span> <span class=n>子串长度</span> <span class=n>即</span> <span class=n>5</span><span class=o>-</span><span class=n>0</span> <span class=o>=</span> <span class=n>5</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h3 id=拼接>拼接</h3>
+<ul>
+<li>使用<code>+</code>号 拼接两个字符串</li>
+<li>多个字符串使用某个定界符连接，可以使用<code>join</code>静态方法</li>
+</ul>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=n>String</span> <span class=n>all</span> <span class=o>=</span> <span class=n>String</span><span class=o>.</span><span class=na>join</span><span class=o>(</span><span class=s>&#34;-&#34;</span><span class=o>,</span> <span class=s>&#34;2016&#34;</span><span class=o>,</span> <span class=s>&#34;10&#34;</span><span class=o>,</span> <span class=s>&#34;01&#34;</span><span class=o>);</span> <span class=c1>//2016-10-01
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id=不可变字符串>不可变字符串</h3>
+<h3 id=检测字符串相等>检测字符串相等</h3>
+<p>不要使用<code>==</code> 检测字符串相等。</p>
+<p>使用<code>equals</code>方法<code>s.equals(t)</code>, 相等返回<code>true</code>, 否则返回<code>false</code></p>
+<p><code>equalsIgnoreCase</code>方法，不区分大小写。</p>
+<h3 id=空串与null串>空串与Null串</h3>
+<p>空串是长度为0的字符串。
+使用 <code>if (str.length() == 0)</code> 或 <code>str.equals("")</code>检测。</p>
+<p>使用<code>if (str == null)</code>检测Null串</p>
+<p>使用<code>if (str != null && str.length() != 0 )</code> 检测字符串既不是null, 也不为空串。</p>
+<h3 id=码点与代码单元>码点与代码单元</h3>
+<ul>
+<li><code>length</code>方法返回采用UTF-16编码表示的给定字符串所需要的代码单元数量
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=n>String</span> <span class=n>name</span> <span class=o>=</span> <span class=s>&#34;Spaceack👽&#34;</span><span class=o>;</span>
+<span class=kt>int</span> <span class=n>n</span> <span class=o>=</span> <span class=n>name</span><span class=o>.</span><span class=na>length</span><span class=o>();</span><span class=c1>// 10
+</span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>获取实际长度，即码点数量，可调用：
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=kt>int</span> <span class=n>cpCount</span> <span class=o>=</span> <span class=n>name</span><span class=o>.</span><span class=na>codePointCount</span><span class=o>(</span><span class=n>0</span><span class=o>,</span> <span class=n>name</span><span class=o>.</span><span class=na>length</span><span class=o>());</span> <span class=c1>// 9
+</span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li><code>s.charAt(n)</code> 返回位置n的代码单元，n介于0~<code>s.length() - 1</code> 之间
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=kt>char</span> <span class=n>first</span> <span class=o>=</span> <span class=n>name</span><span class=o>.</span><span class=na>charAt</span><span class=o>(</span><span class=n>0</span><span class=o>);</span> <span class=c1>// S
+</span><span class=c1></span><span class=kt>char</span> <span class=n>last</span> <span class=o>=</span> <span class=n>name</span><span class=o>.</span><span class=na>charAt</span><span class=o>(</span><span class=n>9</span><span class=o>);</span> <span class=c1>// ?
+</span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>得到第i个码点，可调用：
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=n>8</span><span class=o>;</span>
+<span class=kt>int</span> <span class=n>index</span> <span class=o>=</span> <span class=n>name</span><span class=o>.</span><span class=na>offsetByCodePoints</span><span class=o>(</span><span class=n>0</span><span class=o>,</span> <span class=n>i</span><span class=o>);</span>
+<span class=kt>int</span> <span class=n>cp</span> <span class=o>=</span> <span class=n>name</span><span class=o>.</span><span class=na>codePointAt</span><span class=o>(</span><span class=n>index</span><span class=o>);</span> <span class=c1>// 8128125
+</span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h2 id=输入输出>输入输出</h2>
+<h2 id=控制流程>控制流程</h2>
+<h2 id=大数值>大数值</h2>
+<h2 id=数组>数组</h2>
+<h2 id=术语>术语</h2>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>码点（code point）: 指与一个编码表中的某个字符对应的代码值。
+
+面向对象程序设计（Object-Oriented Programming, OOP）
+lambda表达式（lambda expression）
+异常处理（excepion handling）
+抽象窗口工具包（abstract window toolkit, AWT）
+
+</code></pre></td></tr></table>
+</div>
+</div></div><div class=post-footer id=post-footer>
+<div class=post-info>
+<div class=post-info-line>
+<div class=post-info-mod>
+<span>更新于 2016-09-03</span>
+</div>
+<div class=post-info-license></div>
+</div>
+<div class=post-info-line>
+<div class=post-info-md><span>
+<a class=link-to-markdown href=/20160903-java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/index.md target=_blank>阅读原始文档</a>
+</span></div>
+<div class=post-info-share>
+<span><a href=javascript:void(0); title="分享到 Twitter" data-sharer=twitter data-url=https://spaceack.github.io/20160903-java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/ data-title=Java学习笔记-基本程序设计结构 data-hashtags=Java><i class="fab fa-twitter fa-fw"></i></a><a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=https://spaceack.github.io/20160903-java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/ data-hashtag=Java><i class="fab fa-facebook-square fa-fw"></i></a><a href=javascript:void(0); title="分享到 Hacker News" data-sharer=hackernews data-url=https://spaceack.github.io/20160903-java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/ data-title=Java学习笔记-基本程序设计结构><i class="fab fa-hacker-news fa-fw"></i></a><a href=javascript:void(0); title="分享到 Line" data-sharer=line data-url=https://spaceack.github.io/20160903-java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/ data-title=Java学习笔记-基本程序设计结构><i data-svg-src=https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg></i></a><a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=https://spaceack.github.io/20160903-java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/ data-title=Java学习笔记-基本程序设计结构><i class="fab fa-weibo fa-fw"></i></a></span>
+</div>
+</div>
+</div>
+<div class=post-info-more>
+<section class=post-tags><i class="fas fa-tags fa-fw"></i>&nbsp;<a href=/tags/java/>Java</a></section>
+<section>
+<span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span>
+</section>
+</div>
+<div class=post-nav><a href=/20160305-djangoadmin%E6%89%A9%E5%B1%95/ class=prev rel=prev title=Django-通过示例定制admin后台管理><i class="fas fa-angle-left fa-fw"></i>Django-通过示例定制admin后台管理</a>
+<a href=/20170619-python%E4%BD%BF%E7%94%A8lxml%E6%8F%90%E5%8F%96xml%E6%95%B0%E6%8D%AE/ class=next rel=next title="使用lxml提取HTML/XML 数据">使用lxml提取HTML/XML 数据<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id=comments><div id=valine class=comment></div><noscript>
+Please enable JavaScript to view the comments powered by <a href=https://valine.js.org/>Valine</a>.
+</noscript></div></article></div>
+</main><footer class=footer>
+<div class=footer-container><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.87.0">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/dillonzq/LoveIt target=_blank rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+</div><div class=footer-line><i class="far fa-copyright fa-fw"></i><span itemprop=copyrightYear>2014 - 2021</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=/about target=_blank>Spaceack</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div>
+</div>
+</footer></div>
+<div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部>
+<i class="fas fa-arrow-up fa-fw"></i>
+</a><a href=# id=view-comments class=fixed-button title=查看评论>
+<i class="fas fa-comment fa-fw"></i>
+</a>
+</div><link rel=stylesheet href=/lib/valine/valine.min.css><script type=text/javascript src=https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:10},comment:{valine:{appId:"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI",appKey:"WBmoGyJtbqUswvfLh6L8iEBr",avatar:"mp",el:"#valine",emojiCDN:"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/",emojiMaps:{100:"1f4af.png",alien:"1f47d.png",anger:"1f4a2.png",angry:"1f620.png",anguished:"1f627.png",astonished:"1f632.png",black_heart:"1f5a4.png",blue_heart:"1f499.png",blush:"1f60a.png",bomb:"1f4a3.png",boom:"1f4a5.png",broken_heart:"1f494.png",brown_heart:"1f90e.png",clown_face:"1f921.png",cold_face:"1f976.png",cold_sweat:"1f630.png",confounded:"1f616.png",confused:"1f615.png",cry:"1f622.png",crying_cat_face:"1f63f.png",cupid:"1f498.png",dash:"1f4a8.png",disappointed:"1f61e.png",disappointed_relieved:"1f625.png",dizzy:"1f4ab.png",dizzy_face:"1f635.png",drooling_face:"1f924.png",exploding_head:"1f92f.png",expressionless:"1f611.png",face_vomiting:"1f92e.png",face_with_cowboy_hat:"1f920.png",face_with_hand_over_mouth:"1f92d.png",face_with_head_bandage:"1f915.png",face_with_monocle:"1f9d0.png",face_with_raised_eyebrow:"1f928.png",face_with_rolling_eyes:"1f644.png",face_with_symbols_on_mouth:"1f92c.png",face_with_thermometer:"1f912.png",fearful:"1f628.png",flushed:"1f633.png",frowning:"1f626.png",ghost:"1f47b.png",gift_heart:"1f49d.png",green_heart:"1f49a.png",grimacing:"1f62c.png",grin:"1f601.png",grinning:"1f600.png",hankey:"1f4a9.png",hear_no_evil:"1f649.png",heart:"2764-fe0f.png",heart_decoration:"1f49f.png",heart_eyes:"1f60d.png",heart_eyes_cat:"1f63b.png",heartbeat:"1f493.png",heartpulse:"1f497.png",heavy_heart_exclamation_mark_ornament:"2763-fe0f.png",hole:"1f573-fe0f.png",hot_face:"1f975.png",hugging_face:"1f917.png",hushed:"1f62f.png",imp:"1f47f.png",innocent:"1f607.png",japanese_goblin:"1f47a.png",japanese_ogre:"1f479.png",joy:"1f602.png",joy_cat:"1f639.png",kiss:"1f48b.png",kissing:"1f617.png",kissing_cat:"1f63d.png",kissing_closed_eyes:"1f61a.png",kissing_heart:"1f618.png",kissing_smiling_eyes:"1f619.png",laughing:"1f606.png",left_speech_bubble:"1f5e8-fe0f.png",love_letter:"1f48c.png",lying_face:"1f925.png",mask:"1f637.png",money_mouth_face:"1f911.png",nauseated_face:"1f922.png",nerd_face:"1f913.png",neutral_face:"1f610.png",no_mouth:"1f636.png",open_mouth:"1f62e.png",orange_heart:"1f9e1.png",partying_face:"1f973.png",pensive:"1f614.png",persevere:"1f623.png",pleading_face:"1f97a.png",pouting_cat:"1f63e.png",purple_heart:"1f49c.png",rage:"1f621.png",relaxed:"263a-fe0f.png",relieved:"1f60c.png",revolving_hearts:"1f49e.png",right_anger_bubble:"1f5ef-fe0f.png",robot_face:"1f916.png",rolling_on_the_floor_laughing:"1f923.png",scream:"1f631.png",scream_cat:"1f640.png",see_no_evil:"1f648.png",shushing_face:"1f92b.png",skull:"1f480.png",skull_and_crossbones:"2620-fe0f.png",sleeping:"1f634.png",sleepy:"1f62a.png",slightly_frowning_face:"1f641.png",slightly_smiling_face:"1f642.png",smile:"1f604.png",smile_cat:"1f638.png",smiley:"1f603.png",smiley_cat:"1f63a.png",smiling_face_with_3_hearts:"1f970.png",smiling_imp:"1f608.png",smirk:"1f60f.png",smirk_cat:"1f63c.png",sneezing_face:"1f927.png",sob:"1f62d.png",space_invader:"1f47e.png",sparkling_heart:"1f496.png",speak_no_evil:"1f64a.png",speech_balloon:"1f4ac.png","star-struck":"1f929.png",stuck_out_tongue:"1f61b.png",stuck_out_tongue_closed_eyes:"1f61d.png",stuck_out_tongue_winking_eye:"1f61c.png",sunglasses:"1f60e.png",sweat:"1f613.png",sweat_drops:"1f4a6.png",sweat_smile:"1f605.png",thinking_face:"1f914.png",thought_balloon:"1f4ad.png",tired_face:"1f62b.png",triumph:"1f624.png",two_hearts:"1f495.png",unamused:"1f612.png",upside_down_face:"1f643.png",weary:"1f629.png",white_frowning_face:"2639-fe0f.png",white_heart:"1f90d.png",wink:"1f609.png",woozy_face:"1f974.png",worried:"1f61f.png",yawning_face:"1f971.png",yellow_heart:"1f49b.png",yum:"1f60b.png",zany_face:"1f92a.png",zipper_mouth_face:"1f910.png",zzz:"1f4a4.png"},enableQQ:!1,highlight:!0,lang:"zh-cn",pageSize:10,placeholder:"你的评论 ...",recordIP:!0,serverURLs:"https://leancloud.hugoloveit.com",visitor:!0}},search:{algoliaAppID:"PASDMWALPK",algoliaIndex:"index.zh-cn",algoliaSearchKey:"b42948e51daaa93df92381c8e2ac0f93",highlightTag:"em",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50,type:"algolia"}}</script><script type=text/javascript src=/js/theme.min.js></script></body>
+</html>

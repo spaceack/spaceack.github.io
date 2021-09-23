@@ -20,7 +20,8 @@
 |[imcaviare](https://www.imcaviare.com/)|前端||
 |[浅时光](https://www.dqzboy.com/)|前端||
 |[Shuzang's Blog](https://shuzang.github.io/)|golang|随心所向，素履以往 |
-
+|[Jeremy's blog](https://www.isyin.cn/)|Python| |
+|[建造者说](http://guoze.me/)|Python| |
 ## 网址导航
 
 ### 常用网站导航

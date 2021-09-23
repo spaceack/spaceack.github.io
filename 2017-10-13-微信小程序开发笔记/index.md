@@ -1,0 +1,54 @@
+# 微信小程序开发笔记
+
+
+```
+├── app.js                  应用程序逻辑
+├── app.json                页面路径(默认显示第一个)，全局应用程序配置
+├── app.wxss                应用程序公共样式
+├── pages					页面目录
+│   ├── index				index 页面
+│   │   ├── index.js         页面入口，index页面逻辑
+│   │   ├── index.wxml	   index页面结构
+│   │   └── index.wxss	   index页面样式
+│   └── logs			logs页面
+│       ├── logs.js     逻辑页面
+│       ├── logs.json   
+│       ├── logs.wxml   结构页面
+│       └── logs.wxss   样式页面
+└── utils               公共脚本目录
+    └── util.js         公共脚本
+
+```
+
+|tool|desc|
+|-|-|
+|[微信小程序控制台](https://mp.weixin.qq.com)|开发管理，数据分析，设置，获取AppID|
+|[开发文档API](https://mp.weixin.qq.com/debug/wxadoc/dev/api/)||
+|[开发者工具](https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/devtools.html)|wx小程序IDE|
+|[Linux开发者工具](https://github.com/cytle/wechat_web_devtools)||
+|[计算器Demo参考sCalc](https://github.com/dunizb/wxapp-sCalc)||
+|[WeUI](https://github.com/Tencent/weui-wxss/)||
+|[leancloud控制台](https://leancloud.cn/dashboard/login.html#/signin)|可作为免费的微信小程序后台数据测试服务器|
+
+- 小程序数据助手
+
+![小程序数据助手-二维码](https://mp.weixin.qq.com/debug/wxadoc/analysis/image/weanalytics/a0.png?t=2017526){:height="200px" width="400px"}
+
+#### 表单
+- input 属性：
+  - maxlength: 最大字符数限制
+  - focus
+    - true: 启用光标焦点
+  - type
+    - text: 全键盘
+    - number: 数字键盘(0~9)
+    - idcard：数字键盘(0~9, X) 
+    - digit:数字键盘(0~9, .)    
+  - placeholder: 输入框中默认的提示文字
+- [表单重置](http://blog.csdn.net/maximus_ckp/article/details/71172530)
+#### 层级规范
+- Popout: 弹出层，内容层和导航层的补充。
+  - 承载弹窗通知，操作菜单，菜单，成功或加载中状态的Toast
+- Mask: 蒙层，配合Popout层使用，用于锁定内容层和导航层
+- Navigation: 导航层 位于内容层之上，用户滑动内容层时可保持位置不动。
+- Content: 内容层
