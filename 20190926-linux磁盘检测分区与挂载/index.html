@@ -1,0 +1,370 @@
+<!doctype html><html lang=zh-cn>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=robots content="noodp">
+<meta http-equiv=x-ua-compatible content="IE=edge, chrome=1">
+<title>Linux磁盘检测，分区与挂载 - Spaceack's Blog</title><meta name=Description content="Spaceck的个人Blog 编程之舞"><meta property="og:title" content="Linux磁盘检测，分区与挂载">
+<meta property="og:description" content="新增1T磁盘一块 使用df -h查看当前硬盘信息（并未出现要挂在的磁盘） 1 2 3 4 5 6 7 文件系统 容量 已用 可用 已用% 挂载点 /dev/vda1 50G 5.0G 42G 11% / devtmpfs 1.9G 0 1.9G 0% /dev tmpfs">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://spaceack.github.io/20190926-linux%E7%A3%81%E7%9B%98%E6%A3%80%E6%B5%8B%E5%88%86%E5%8C%BA%E4%B8%8E%E6%8C%82%E8%BD%BD/"><meta property="og:image" content="https://spaceack.github.io/logo.png"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2019-09-23T21:00:00+00:00">
+<meta property="article:modified_time" content="2019-09-23T21:00:00+00:00">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://spaceack.github.io/logo.png">
+<meta name=twitter:title content="Linux磁盘检测，分区与挂载">
+<meta name=twitter:description content="新增1T磁盘一块 使用df -h查看当前硬盘信息（并未出现要挂在的磁盘） 1 2 3 4 5 6 7 文件系统 容量 已用 可用 已用% 挂载点 /dev/vda1 50G 5.0G 42G 11% / devtmpfs 1.9G 0 1.9G 0% /dev tmpfs">
+<meta name=application-name content="Spaceack's Blog">
+<meta name=apple-mobile-web-app-title content="Spaceack's Blog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://spaceack.github.io/20190926-linux%E7%A3%81%E7%9B%98%E6%A3%80%E6%B5%8B%E5%88%86%E5%8C%BA%E4%B8%8E%E6%8C%82%E8%BD%BD/><link rel=prev href=https://spaceack.github.io/20190923-nginx%E4%B8%BA%E5%A4%9A%E4%B8%AA%E4%B8%8D%E5%90%8C%E7%9A%84%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E9%85%8D%E7%BD%AE%E4%B8%8D%E5%90%8C%E7%9A%84%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D/><link rel=next href=https://spaceack.github.io/20191005-docker%E7%AC%94%E8%AE%B0-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Linux磁盘检测，分区与挂载","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/spaceack.github.io\/20190926-linux%E7%A3%81%E7%9B%98%E6%A3%80%E6%B5%8B%E5%88%86%E5%8C%BA%E4%B8%8E%E6%8C%82%E8%BD%BD\/"},"image":["https:\/\/spaceack.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"fdisk, lsblk, mount","wordcount":1128,"url":"https:\/\/spaceack.github.io\/20190926-linux%E7%A3%81%E7%9B%98%E6%A3%80%E6%B5%8B%E5%88%86%E5%8C%BA%E4%B8%8E%E6%8C%82%E8%BD%BD\/","datePublished":"2019-09-23T21:00:00+00:00","dateModified":"2019-09-23T21:00:00+00:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"Spaceack","logo":"https:\/\/spaceack.github.io\/images\/avatar.jpeg"},"author":{"@type":"Person","name":"Spaceack"},"description":""}</script></head>
+<body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':'auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark')&&document.body.setAttribute('theme','dark')</script>
+<div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
+<div class=header-wrapper>
+<div class=header-title>
+<a href=/ title="Spaceack's Blog"><span class=header-title-pre><i class="far fa-kiss-wink-heart fa-fw"></i></span>Spaceack's Blog</a>
+</div>
+<div class=menu>
+<div class=menu-inner><a class=menu-item href=/posts/> 所有文章 </a><a class=menu-item href=/tags/> 标签 </a><a class=menu-item href=/categories/> 分类 </a><a class=menu-item href=/links/> 友链 </a><a class=menu-item href=/about/> 关于 </a><a class=menu-item href=/challenge/> 战利品 </a><a class=menu-item href=https://github.com/spaceack title=GitHub rel="noopener noreffer" target=_blank><i class="fab fa-github fa-fw"></i> </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索>
+<i class="fas fa-search fa-fw"></i>
+</a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空>
+<i class="fas fa-times-circle fa-fw"></i>
+</a>
+<span class="search-button search-loading" id=search-loading-desktop>
+<i class="fas fa-spinner fa-fw fa-spin"></i>
+</span>
+</span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw"></i>
+</a>
+</div>
+</div>
+</div>
+</header><header class=mobile id=header-mobile>
+<div class=header-container>
+<div class=header-wrapper>
+<div class=header-title>
+<a href=/ title="Spaceack's Blog"><span class=header-title-pre><i class="far fa-kiss-wink-heart fa-fw"></i></span>Spaceack's Blog</a>
+</div>
+<div class=menu-toggle id=menu-toggle-mobile>
+<span></span><span></span><span></span>
+</div>
+</div>
+<div class=menu id=menu-mobile><div class=search-wrapper>
+<div class="search mobile" id=search-mobile>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索>
+<i class="fas fa-search fa-fw"></i>
+</a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空>
+<i class="fas fa-times-circle fa-fw"></i>
+</a>
+<span class="search-button search-loading" id=search-loading-mobile>
+<i class="fas fa-spinner fa-fw fa-spin"></i>
+</span>
+</div>
+<a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>
+取消
+</a>
+</div><a class=menu-item href=/posts/ title>所有文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a class=menu-item href=/links/ title>友链</a><a class=menu-item href=/about/ title>关于</a><a class=menu-item href=/challenge/ title>战利品</a><a class=menu-item href=https://github.com/spaceack title=GitHub rel="noopener noreffer" target=_blank><i class="fab fa-github fa-fw"></i></a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw"></i>
+</a></div>
+</div>
+</header>
+<div class="search-dropdown desktop">
+<div id=search-dropdown-desktop></div>
+</div>
+<div class="search-dropdown mobile">
+<div id=search-dropdown-mobile></div>
+</div>
+<main class=main>
+<div class=container><div class=toc id=toc-auto>
+<h2 class=toc-title>目录</h2>
+<div class=toc-content id=toc-content-auto></div>
+</div><article class="page single"><h1 class="single-title animated flipInX">Linux磁盘检测，分区与挂载</h1><div class=post-meta>
+<div class=post-meta-line><span class=post-author><a href=/about title=Author rel=" author" class=author><i class="fas fa-user-circle fa-fw"></i>Spaceack</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/linux/><i class="far fa-folder fa-fw"></i>Linux</a></span></div>
+<div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2019-09-23>2019-09-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1128 字&nbsp;
+<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+</div><div class="details toc" id=toc-static kept>
+<div class="details-summary toc-title">
+<span>目录</span>
+<span><i class="details-icon fas fa-angle-right"></i></span>
+</div>
+<div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents></nav></div>
+</div><div class=content id=content><ul>
+<li>新增1T磁盘一块</li>
+</ul>
+<ol start=0>
+<li>使用<code>df -h</code>查看当前硬盘信息（并未出现要挂在的磁盘）</li>
+</ol>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>文件系统        容量  已用  可用 已用% 挂载点
+/dev/vda1        50G  5.0G   42G   11% /
+devtmpfs        1.9G     0  1.9G    0% /dev
+tmpfs           1.9G     0  1.9G    0% /dev/shm
+tmpfs           1.9G  208M  1.7G   11% /run
+tmpfs           1.9G     0  1.9G    0% /sys/fs/cgroup
+tmpfs           383M     0  383M    0% /run/user/0
+</code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>使用命令<code>fdisk -l</code>查看所有磁盘信息（包括未挂载磁盘）</li>
+</ol>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>磁盘 /dev/vda：53.7 GB, <span class=m>53687091200</span> 字节，104857600 个扇区
+<span class=nv>Units</span> <span class=o>=</span> 扇区 of <span class=m>1</span> * <span class=nv>512</span> <span class=o>=</span> <span class=m>512</span> bytes
+扇区大小<span class=o>(</span>逻辑/物理<span class=o>)</span>：512 字节 / <span class=m>512</span> 字节
+I/O 大小<span class=o>(</span>最小/最佳<span class=o>)</span>：512 字节 / <span class=m>512</span> 字节
+磁盘标签类型：dos
+磁盘标识符：0x000c4895
+   设备 Boot      Start         End      Blocks   Id  System
+/dev/vda1   *        <span class=m>2048</span>   <span class=m>104857599</span>    <span class=m>52427776</span>   <span class=m>83</span>  Linux
+
+磁盘 /dev/vdb：1099.5 GB, <span class=m>1099511627776</span> 字节，2147483648 个扇区
+<span class=nv>Units</span> <span class=o>=</span> 扇区 of <span class=m>1</span> * <span class=nv>512</span> <span class=o>=</span> <span class=m>512</span> bytes
+扇区大小<span class=o>(</span>逻辑/物理<span class=o>)</span>：512 字节 / <span class=m>512</span> 字节
+I/O 大小<span class=o>(</span>最小/最佳<span class=o>)</span>：512 字节 / <span class=m>512</span> 字节
+</code></pre></td></tr></table>
+</div>
+</div><p>磁盘 <strong>/dev/vdb</strong> 为需要挂载的磁盘。
+2. 通过<code>lsblk</code>查看</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>NAME   MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
+vda    253:0    0  50G  0 disk 
+└─vda1 253:1    0  50G  0 part /
+vdb    253:16   0   1T  0 disk 
+</code></pre></td></tr></table>
+</div>
+</div><ol start=3>
+<li>使用<code>fdisk</code>工具分区（当硬盘小于等于2T时，用fdisk，大于2T时，用parted）
+键入：<code>fdisk /dev/vdb</code>出现欢迎信息
+然后键入<code>n</code>新建分区</li>
+</ol>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>欢迎使用 fdisk (util-linux 2.23.2)。
+
+更改将停留在内存中，直到您决定将更改写入磁盘。
+使用写入命令前请三思。
+
+Device does not contain a recognized partition table
+使用磁盘标识符 0x3561697b 创建新的 DOS 磁盘标签。
+
+命令(输入 m 获取帮助)：n
+Partition type:
+   p   primary (0 primary, 0 extended, 4 free)
+   e   extended
+</code></pre></td></tr></table>
+</div>
+</div><p><code>p</code>建立主分区， <code>e</code>建立扩展分区
+我们建立主分区，分区号，起始及结束扇区选择默认值：</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>Select (default p): p
+分区号 (1-4，默认 1)：1
+起始 扇区 (2048-2147483647，默认为 2048)：
+将使用默认值 2048
+Last 扇区, +扇区 or +size{K,M,G} (2048-2147483647，默认为 2147483647)：
+将使用默认值 2147483647
+分区 1 已设置为 Linux 类型，大小设为 1024 GiB
+</code></pre></td></tr></table>
+</div>
+</div><p>键入<code>w</code>写入分区并退出</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>命令(输入 m 获取帮助)：w
+The partition table has been altered!
+
+Calling ioctl() to re-read partition table.
+正在同步磁盘。
+</code></pre></td></tr></table>
+</div>
+</div><ol start=4>
+<li>再次使用<code>lsblk</code>查看</li>
+</ol>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>[root@main ~]# partprobe /dev/vdb
+[root@main ~]# lsblk
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+vda    253:0    0   50G  0 disk 
+└─vda1 253:1    0   50G  0 part /
+vdb    253:16   0    1T  0 disk 
+└─vdb1 253:17   0 1024G  0 part 
+</code></pre></td></tr></table>
+</div>
+</div><ol start=5>
+<li>格式化为ext4文件系统
+<code>mkfs.ext4 /dev/vdb1</code></li>
+</ol>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>mke2fs 1.42.9 (28-Dec-2013)
+文件系统标签=
+OS type: Linux
+块大小=4096 (log=2)
+分块大小=4096 (log=2)
+Stride=0 blocks, Stripe width=0 blocks
+67108864 inodes, 268435200 blocks
+13421760 blocks (5.00%) reserved for the super user
+第一个数据块=0
+Maximum filesystem blocks=2415919104
+8192 block groups
+32768 blocks per group, 32768 fragments per group
+8192 inodes per group
+Superblock backups stored on blocks: 
+	32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208, 
+	4096000, 7962624, 11239424, 20480000, 23887872, 71663616, 78675968, 
+	102400000, 214990848
+
+Allocating group tables: 完成
+正在写入inode表: 完成
+Creating journal (32768 blocks): 完成
+Writing superblocks and filesystem accounting information: 完成
+</code></pre></td></tr></table>
+</div>
+</div><ol start=6>
+<li>使用<code>mount</code>临时挂载磁盘至**/mnt**目录
+<code>mount /dev/vdb1 /mnt</code></li>
+<li><code>vim /etc/fstab</code>更改配置文件永久挂载
+追加
+<code>/dev/vdb1 /data ext4 defaults 0 0</code></li>
+<li>使用 <code>mount -a</code> 判断加载是否正确</li>
+</ol>
+<p>参考教程 <a href=https://blog.csdn.net/woailyoo0000/article/details/86485666 target=_blank rel="noopener noreffer">
+Linux检查未挂载磁盘和为磁盘分区、挂载</a></p>
+</div><div class=post-footer id=post-footer>
+<div class=post-info>
+<div class=post-info-line>
+<div class=post-info-mod>
+<span>更新于 2019-09-23</span>
+</div>
+<div class=post-info-license></div>
+</div>
+<div class=post-info-line>
+<div class=post-info-md><span>
+<a class=link-to-markdown href=/20190926-linux%E7%A3%81%E7%9B%98%E6%A3%80%E6%B5%8B%E5%88%86%E5%8C%BA%E4%B8%8E%E6%8C%82%E8%BD%BD/index.md target=_blank>阅读原始文档</a>
+</span></div>
+<div class=post-info-share>
+<span><a href=javascript:void(0); title="分享到 Twitter" data-sharer=twitter data-url=https://spaceack.github.io/20190926-linux%E7%A3%81%E7%9B%98%E6%A3%80%E6%B5%8B%E5%88%86%E5%8C%BA%E4%B8%8E%E6%8C%82%E8%BD%BD/ data-title=Linux磁盘检测，分区与挂载 data-hashtags=fdisk,lsblk,mount><i class="fab fa-twitter fa-fw"></i></a><a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=https://spaceack.github.io/20190926-linux%E7%A3%81%E7%9B%98%E6%A3%80%E6%B5%8B%E5%88%86%E5%8C%BA%E4%B8%8E%E6%8C%82%E8%BD%BD/ data-hashtag=fdisk><i class="fab fa-facebook-square fa-fw"></i></a><a href=javascript:void(0); title="分享到 Hacker News" data-sharer=hackernews data-url=https://spaceack.github.io/20190926-linux%E7%A3%81%E7%9B%98%E6%A3%80%E6%B5%8B%E5%88%86%E5%8C%BA%E4%B8%8E%E6%8C%82%E8%BD%BD/ data-title=Linux磁盘检测，分区与挂载><i class="fab fa-hacker-news fa-fw"></i></a><a href=javascript:void(0); title="分享到 Line" data-sharer=line data-url=https://spaceack.github.io/20190926-linux%E7%A3%81%E7%9B%98%E6%A3%80%E6%B5%8B%E5%88%86%E5%8C%BA%E4%B8%8E%E6%8C%82%E8%BD%BD/ data-title=Linux磁盘检测，分区与挂载><i data-svg-src=https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg></i></a><a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=https://spaceack.github.io/20190926-linux%E7%A3%81%E7%9B%98%E6%A3%80%E6%B5%8B%E5%88%86%E5%8C%BA%E4%B8%8E%E6%8C%82%E8%BD%BD/ data-title=Linux磁盘检测，分区与挂载><i class="fab fa-weibo fa-fw"></i></a></span>
+</div>
+</div>
+</div>
+<div class=post-info-more>
+<section class=post-tags><i class="fas fa-tags fa-fw"></i>&nbsp;<a href=/tags/fdisk/>fdisk</a>,&nbsp;<a href=/tags/lsblk/>lsblk</a>,&nbsp;<a href=/tags/mount/>mount</a></section>
+<section>
+<span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span>
+</section>
+</div>
+<div class=post-nav><a href=/20190923-nginx%E4%B8%BA%E5%A4%9A%E4%B8%AA%E4%B8%8D%E5%90%8C%E7%9A%84%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E9%85%8D%E7%BD%AE%E4%B8%8D%E5%90%8C%E7%9A%84%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D/ class=prev rel=prev title=Nginx为多个不同的静态资源配置不同的二级域名><i class="fas fa-angle-left fa-fw"></i>Nginx为多个不同的静态资源配置不同的二级域名</a>
+<a href=/20191005-docker%E7%AC%94%E8%AE%B0-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/ class=next rel=next title=Docker笔记-安装配置>Docker笔记-安装配置<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+</main><footer class=footer>
+<div class=footer-container><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.87.0">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/dillonzq/LoveIt target=_blank rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+</div><div class=footer-line><i class="far fa-copyright fa-fw"></i><span itemprop=copyrightYear>2014 - 2021</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=/about target=_blank>Spaceack</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div>
+</div>
+</footer></div>
+<div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部>
+<i class="fas fa-arrow-up fa-fw"></i>
+</a><a href=# id=view-comments class=fixed-button title=查看评论>
+<i class="fas fa-comment fa-fw"></i>
+</a>
+</div><script type=text/javascript src=https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:50},comment:{},search:{algoliaAppID:"PASDMWALPK",algoliaIndex:"index.zh-cn",algoliaSearchKey:"b42948e51daaa93df92381c8e2ac0f93",highlightTag:"em",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50,type:"algolia"}}</script><script type=text/javascript src=/js/theme.min.js></script></body>
+</html>

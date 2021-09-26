@@ -1,0 +1,39 @@
+# leetcode-557-反转字符串中的单词 III
+
+
+## 题目描述
+给定一个字符串，你需要反转字符串中每个单词的字符顺序，同时仍保留空格和单词的初始顺序。
+
+注意：在字符串中，每个单词由单个空格分隔，并且字符串中不会有任何额外的空格。
+
+
+## 示例
+- 示例 :
+    ```
+    输入："Let's take LeetCode contest"
+    输出："s'teL ekat edoCteeL tsetnoc"
+
+    ```
+
+    来源：力扣（LeetCode）
+    链接：https://leetcode-cn.com/problems/robot-return-to-origin
+    
+
+---
+打卡水题, 很简单的字符串操作题.
+- 题解:
+
+    执行用时：60 ms, 在所有 Python3 提交中击败了27.70%的用户
+    
+    内存消耗：14.1 MB, 在所有 Python3 提交中击败了64.75%的用户
+
+    ```python
+    class Solution:
+    def reverseWords(self, s: str) -> str:
+        s_list = s.split(' ')
+        result = []
+        for s_key in s_list:
+            result.append(s_key[::-1])
+        return " ".join(result)
+    ```
+

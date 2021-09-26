@@ -1,0 +1,84 @@
+# Python时间处理
+
+## datetime 库
+```python
+from datetime import datetime, timedelta
+# 字符串 转 datetime类型
+another_day_str = '2020-07-18 21:00:00'
+another_day_datetime = datetime.strptime(another_day_str, '%Y-%m-%d %H:%M:%S')
+
+# 时间加减运算， 增加1小时30分30秒
+after_datetime = another_day_datetime + timedelta(hours=1, minutes=30, seconds=30)
+
+# datetime类型 转 字符串 2020-07-18 22:30:30
+after_str = after_datetime.strftime('%Y-%m-%d %H:%M:%S')
+
+# 获取当前时间的字符串 格式化输出 20200719223030
+now_datetime = datetime.now()
+now_str = now_datetime.strftime('%Y%m%d%H%M%S')
+
+# 转换为时间戳
+timestamp = time.mktime(now_datetime.timetuple())
+
+# 时间戳转换为datetime
+datetime.datetime.fromtimestamp(timestamp)
+
+# 获取间隔天数
+day = (now_datetime - another_day_datetime).days
+
+# 获取间隔秒数（不包含天数差）
+second = (now_datetime - another_day_datetime).seconds
+```
+
+# time库
+```python
+import time
+# 返回当前时间的时间戳（1970纪元后经过的浮点秒数）
+timestamp = time.time()
+
+# 时间戳转换为 struct_time类型(结构体时间)
+struct_time = time.localtime(timestamp)
+
+# 字符串转结构体时间 struct_time
+now_str = '2020-07-19 21:00:00'
+struct_time = time.strptime(now_str, "%Y-%m-%d %H:%M:%S")
+# time.struct_time(tm_year=2020, tm_mon=7, tm_mday=19, tm_hour=21, tm_min=0, tm_sec=0, tm_wday=6, tm_yday=201, tm_isdst=-1) <class 'time.struct_time'>
+
+# struct_time 转 格式化字符串 20200719210000
+str_time =  time.strftime('%Y%m%d%H%M%S', struct_time)
+
+```
+
+Commonly used format codes:
+    
+    %Y  Year with century as a decimal number.
+    %m  Month as a decimal number [01,12].
+    %d  Day of the month as a decimal number [01,31].
+    %H  Hour (24-hour clock) as a decimal number [00,23].
+    %M  Minute as a decimal number [00,59].
+    %S  Second as a decimal number [00,61].
+    %z  Time zone offset from UTC.
+    %a  Locale's abbreviated weekday name.
+    %A  Locale's full weekday name.
+    %b  Locale's abbreviated month name.
+    %B  Locale's full month name.
+    %c  Locale's appropriate date and time representation.
+    %I  Hour (12-hour clock) as a decimal number [01,12].
+    %p  Locale's equivalent of either AM or PM.
+
+
+struct_time parameter
+
+```python
+tm_gmtoff """offset from UTC in seconds"""
+tm_hour   """hours, range [0, 23]"""
+tm_isdst  """1 if summer time is in effect, 0 if not, and -1 if unknown"""
+tm_mday  """day of month, range [1, 31]"""
+tm_min   """minutes, range [0, 59]"""
+tm_mon   """month of year, range [1, 12]"""
+tm_sec   """seconds, range [0, 61])"""
+tm_wday  """day of week, range [0, 6], Monday is 0"""
+tm_yday  """day of year, range [1, 366]"""
+tm_year  """year, for example, 1993"""
+tm_zone  """abbreviation of timezone name"""
+```

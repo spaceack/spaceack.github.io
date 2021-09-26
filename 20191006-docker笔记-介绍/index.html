@@ -1,0 +1,217 @@
+<!doctype html><html lang=zh-cn>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=robots content="noodp">
+<meta http-equiv=x-ua-compatible content="IE=edge, chrome=1">
+<title>Docker笔记-介绍 - Spaceack's Blog</title><meta name=Description content="Spaceck的个人Blog 编程之舞"><meta property="og:title" content="Docker笔记-介绍">
+<meta property="og:description" content="Docker 能做什么，与虚拟机区别： 与虚拟机区别， 每个虚拟机是一个操作系统。docker 是操作系统上的应用。 环境打包成镜像，自动化运行容器，打包部署自">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://spaceack.github.io/20191006-docker%E7%AC%94%E8%AE%B0-%E4%BB%8B%E7%BB%8D/"><meta property="og:image" content="https://spaceack.github.io/logo.png"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2019-10-06T21:00:00+00:00">
+<meta property="article:modified_time" content="2019-10-06T21:00:00+00:00">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://spaceack.github.io/logo.png">
+<meta name=twitter:title content="Docker笔记-介绍">
+<meta name=twitter:description content="Docker 能做什么，与虚拟机区别： 与虚拟机区别， 每个虚拟机是一个操作系统。docker 是操作系统上的应用。 环境打包成镜像，自动化运行容器，打包部署自">
+<meta name=application-name content="Spaceack's Blog">
+<meta name=apple-mobile-web-app-title content="Spaceack's Blog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://spaceack.github.io/20191006-docker%E7%AC%94%E8%AE%B0-%E4%BB%8B%E7%BB%8D/><link rel=prev href=https://spaceack.github.io/20191005-docker%E7%AC%94%E8%AE%B0-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/><link rel=next href=https://spaceack.github.io/20191007-docker%E7%AC%94%E8%AE%B0-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Docker笔记-介绍","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/spaceack.github.io\/20191006-docker%E7%AC%94%E8%AE%B0-%E4%BB%8B%E7%BB%8D\/"},"image":["https:\/\/spaceack.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"Docker","wordcount":541,"url":"https:\/\/spaceack.github.io\/20191006-docker%E7%AC%94%E8%AE%B0-%E4%BB%8B%E7%BB%8D\/","datePublished":"2019-10-06T21:00:00+00:00","dateModified":"2019-10-06T21:00:00+00:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"Spaceack","logo":"https:\/\/spaceack.github.io\/images\/avatar.jpeg"},"author":{"@type":"Person","name":"Spaceack"},"description":""}</script></head>
+<body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':'auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark')&&document.body.setAttribute('theme','dark')</script>
+<div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
+<div class=header-wrapper>
+<div class=header-title>
+<a href=/ title="Spaceack's Blog"><span class=header-title-pre><i class="far fa-kiss-wink-heart fa-fw"></i></span>Spaceack's Blog</a>
+</div>
+<div class=menu>
+<div class=menu-inner><a class=menu-item href=/posts/> 所有文章 </a><a class=menu-item href=/tags/> 标签 </a><a class=menu-item href=/categories/> 分类 </a><a class=menu-item href=/links/> 友链 </a><a class=menu-item href=/about/> 关于 </a><a class=menu-item href=/challenge/> 战利品 </a><a class=menu-item href=https://github.com/spaceack title=GitHub rel="noopener noreffer" target=_blank><i class="fab fa-github fa-fw"></i> </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索>
+<i class="fas fa-search fa-fw"></i>
+</a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空>
+<i class="fas fa-times-circle fa-fw"></i>
+</a>
+<span class="search-button search-loading" id=search-loading-desktop>
+<i class="fas fa-spinner fa-fw fa-spin"></i>
+</span>
+</span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw"></i>
+</a>
+</div>
+</div>
+</div>
+</header><header class=mobile id=header-mobile>
+<div class=header-container>
+<div class=header-wrapper>
+<div class=header-title>
+<a href=/ title="Spaceack's Blog"><span class=header-title-pre><i class="far fa-kiss-wink-heart fa-fw"></i></span>Spaceack's Blog</a>
+</div>
+<div class=menu-toggle id=menu-toggle-mobile>
+<span></span><span></span><span></span>
+</div>
+</div>
+<div class=menu id=menu-mobile><div class=search-wrapper>
+<div class="search mobile" id=search-mobile>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索>
+<i class="fas fa-search fa-fw"></i>
+</a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空>
+<i class="fas fa-times-circle fa-fw"></i>
+</a>
+<span class="search-button search-loading" id=search-loading-mobile>
+<i class="fas fa-spinner fa-fw fa-spin"></i>
+</span>
+</div>
+<a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>
+取消
+</a>
+</div><a class=menu-item href=/posts/ title>所有文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a class=menu-item href=/links/ title>友链</a><a class=menu-item href=/about/ title>关于</a><a class=menu-item href=/challenge/ title>战利品</a><a class=menu-item href=https://github.com/spaceack title=GitHub rel="noopener noreffer" target=_blank><i class="fab fa-github fa-fw"></i></a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw"></i>
+</a></div>
+</div>
+</header>
+<div class="search-dropdown desktop">
+<div id=search-dropdown-desktop></div>
+</div>
+<div class="search-dropdown mobile">
+<div id=search-dropdown-mobile></div>
+</div>
+<main class=main>
+<div class=container><div class=toc id=toc-auto>
+<h2 class=toc-title>目录</h2>
+<div class=toc-content id=toc-content-auto></div>
+</div><article class="page single"><h1 class="single-title animated flipInX">Docker笔记-介绍</h1><div class=post-meta>
+<div class=post-meta-line><span class=post-author><a href=/about title=Author rel=" author" class=author><i class="fas fa-user-circle fa-fw"></i>Spaceack</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD/><i class="far fa-folder fa-fw"></i>基础设施</a></span></div>
+<div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2019-10-06>2019-10-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 541 字&nbsp;
+<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
+</div><div class="details toc" id=toc-static kept>
+<div class="details-summary toc-title">
+<span>目录</span>
+<span><i class="details-icon fas fa-angle-right"></i></span>
+</div>
+<div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents>
+<ul>
+<li><a href=#docker-能做什么与虚拟机区别>Docker 能做什么，与虚拟机区别：</a></li>
+<li><a href=#docker组成>Docker组成：</a></li>
+<li><a href=#基础概念>基础概念</a></li>
+</ul>
+</nav></div>
+</div><div class=content id=content><h2 id=docker-能做什么与虚拟机区别>Docker 能做什么，与虚拟机区别：</h2>
+<p>与虚拟机区别， 每个虚拟机是一个操作系统。docker 是操作系统上的应用。</p>
+<ol>
+<li>环境打包成镜像，自动化运行容器，打包部署自动化。</li>
+<li>创建轻量，私密的PAAS环境。</li>
+<li>实现自动化测试和持续的集成/部署。</li>
+<li>部署与扩展webapp,数据库和后台服务。</li>
+<li>完全沙箱机制。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>传统虚拟机</th>
+<th>Docker虚拟机</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>占用空间</td>
+<td>大</td>
+<td>小</td>
+</tr>
+<tr>
+<td>启动速度</td>
+<td>慢</td>
+<td>快</td>
+</tr>
+<tr>
+<td>资源利用率</td>
+<td>低</td>
+<td>高</td>
+</tr>
+<tr>
+<td>运行基础</td>
+<td>Hypervisor CPU虚拟化技术</td>
+<td>Linux内核虚拟化</td>
+</tr>
+<tr>
+<td>部署</td>
+<td>复杂</td>
+<td>方便</td>
+</tr>
+<tr>
+<td>隔离</td>
+<td>操作系统级别</td>
+<td>容器级别 基于namespace隔离</td>
+</tr>
+<tr>
+<td>相互通信</td>
+<td>简单造作系统间通信</td>
+<td>复杂 容器间通信</td>
+</tr>
+</tbody>
+</table>
+<h2 id=docker组成>Docker组成：</h2>
+<ol>
+<li>Docker Client 客户端：通过API访问Docker Daemon 管理Docker镜像。</li>
+<li>Docker Daemon 守护进程：负责Docker镜像的创建，删除，启动，停止等服务。</li>
+<li>Docker Image镜像：“只读”系统。</li>
+<li>Docker Container 容器 Docker images的仓库 Docker Hub dockerhub.com</li>
+</ol>
+<h2 id=基础概念>基础概念</h2>
+<ol>
+<li>
+<p>镜像（Image）:
+特殊文件系统，除了提供容器运行时所需的程序，库，资源，配置文件外，还包含配置参数（匿名卷，环境变量，用户等）。不包含然和动态数据。构建之后也不会改变。
+镜像构建时，会一层层构建，前一层是后一层基础。</p>
+</li>
+<li>
+<p>容器（Container）:
+镜像运行的实体，可以被创建，停止，访问，删除等。</p>
+</li>
+<li>
+<p>仓库（Repository）：
+每个仓库可包含多个标签（Tag）:每个标签对应一个镜像。</p>
+</li>
+</ol>
+<p><img class=lazyload src=/svg/loading.min.svg data-src=docker.png data-srcset="docker.png, docker.png 1.5x, docker.png 2x" data-sizes=auto alt=docker.png title=docker.png></p>
+</div><div class=post-footer id=post-footer>
+<div class=post-info>
+<div class=post-info-line>
+<div class=post-info-mod>
+<span>更新于 2019-10-06</span>
+</div>
+<div class=post-info-license></div>
+</div>
+<div class=post-info-line>
+<div class=post-info-md><span>
+<a class=link-to-markdown href=/20191006-docker%E7%AC%94%E8%AE%B0-%E4%BB%8B%E7%BB%8D/index.md target=_blank>阅读原始文档</a>
+</span></div>
+<div class=post-info-share>
+<span><a href=javascript:void(0); title="分享到 Twitter" data-sharer=twitter data-url=https://spaceack.github.io/20191006-docker%E7%AC%94%E8%AE%B0-%E4%BB%8B%E7%BB%8D/ data-title=Docker笔记-介绍 data-hashtags=Docker><i class="fab fa-twitter fa-fw"></i></a><a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=https://spaceack.github.io/20191006-docker%E7%AC%94%E8%AE%B0-%E4%BB%8B%E7%BB%8D/ data-hashtag=Docker><i class="fab fa-facebook-square fa-fw"></i></a><a href=javascript:void(0); title="分享到 Hacker News" data-sharer=hackernews data-url=https://spaceack.github.io/20191006-docker%E7%AC%94%E8%AE%B0-%E4%BB%8B%E7%BB%8D/ data-title=Docker笔记-介绍><i class="fab fa-hacker-news fa-fw"></i></a><a href=javascript:void(0); title="分享到 Line" data-sharer=line data-url=https://spaceack.github.io/20191006-docker%E7%AC%94%E8%AE%B0-%E4%BB%8B%E7%BB%8D/ data-title=Docker笔记-介绍><i data-svg-src=https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg></i></a><a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=https://spaceack.github.io/20191006-docker%E7%AC%94%E8%AE%B0-%E4%BB%8B%E7%BB%8D/ data-title=Docker笔记-介绍><i class="fab fa-weibo fa-fw"></i></a></span>
+</div>
+</div>
+</div>
+<div class=post-info-more>
+<section class=post-tags><i class="fas fa-tags fa-fw"></i>&nbsp;<a href=/tags/docker/>Docker</a></section>
+<section>
+<span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span>
+</section>
+</div>
+<div class=post-nav><a href=/20191005-docker%E7%AC%94%E8%AE%B0-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/ class=prev rel=prev title=Docker笔记-安装配置><i class="fas fa-angle-left fa-fw"></i>Docker笔记-安装配置</a>
+<a href=/20191007-docker%E7%AC%94%E8%AE%B0-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/ class=next rel=next title=Docker笔记-基础操作>Docker笔记-基础操作<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+</main><footer class=footer>
+<div class=footer-container><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.87.0">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/dillonzq/LoveIt target=_blank rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+</div><div class=footer-line><i class="far fa-copyright fa-fw"></i><span itemprop=copyrightYear>2014 - 2021</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=/about target=_blank>Spaceack</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div>
+</div>
+</footer></div>
+<div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部>
+<i class="fas fa-arrow-up fa-fw"></i>
+</a><a href=# id=view-comments class=fixed-button title=查看评论>
+<i class="fas fa-comment fa-fw"></i>
+</a>
+</div><script type=text/javascript src=https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:50},comment:{},search:{algoliaAppID:"PASDMWALPK",algoliaIndex:"index.zh-cn",algoliaSearchKey:"b42948e51daaa93df92381c8e2ac0f93",highlightTag:"em",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50,type:"algolia"}}</script><script type=text/javascript src=/js/theme.min.js></script></body>
+</html>

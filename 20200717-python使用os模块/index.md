@@ -1,0 +1,69 @@
+# Python使用os模块
+
+```python
+import os
+old_path = 'data/20200222'
+new_path = 'new_path'
+
+old_file = 'oldfile'
+new_file = 'newfile'
+
+# 判断使用的系统平台windows 返回 nt, Linux 返回posix
+os_name = os.name
+print(os_name)
+if os_name == 'nt':
+    print('Windows操作系统！')
+if os_name == 'posix':
+    print('Linux操作系统！')
+
+# 获取当前用户主目录路径
+print(os.environ['HOME'])
+print(os.path.expandvars('$HOME'))
+print(os.path.expanduser('~'))
+
+# 获取当前工作目录
+print(os.getcwd())
+
+# 创建目录
+os.mkdir(new_path)
+
+# 递归创建目录
+os.makedirs(old_path)
+
+# 获得文件的大小，如果为目录，返回0
+os.path.getsize(new_path)
+
+
+print(os.listdir(new_path))
+
+# 删除文件
+
+if os.path.exists(new_file):
+    os.remove(new_file)
+else:
+    print("文件不存在， 删除失败")
+
+# 改文件名
+
+if os.path.exists(old_file):
+    # 查看文件/目录是否存在
+    if os.path.exists(new_file):
+        print("新文件（名）已存在")
+    else:
+        os.rename(old_file, new_file)
+else:
+    print("旧文件（名）不存在")
+# 文件目录遍历
+for dirpath, dirnames, filenames in os.walk(new_path):
+    print(dirpath)       # 当其目录绝对路径, 类似linux命令pwd的输出，str类型
+    print(dirnames)      # 当前目录下的子目录，list类型
+    print(filenames)     # 当前目录下的所有文件，list类型
+    
+
+# 删除目录
+os.rmdir(new_path)
+os.rmdir(old_path)
+
+```
+
+

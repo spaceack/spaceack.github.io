@@ -1,0 +1,138 @@
+# 蓝桥楼赛第9期-修复未正确实现的实验类 题解
+
+
+## 题目描述
+
+- 程序存放的位置 /home/shiyanlou/lab.py ；
+- 实验类名应该为 Lab ；
+- 实验对象中不能插入重复标签；
+
+- Python 中对象引用问题，尤其如复合对象 list, dict, tuple 的引用问题；
+- 代码中 FIXME 所在上下文存在 Bug；
+
+## 要求
+
+题目需使用 Python 3.6 完成，不能使用标准库 和 第三方库。
+
+函数传入 text 为字符串类型，可能为空。
+
+函数返回列表，且应按 text 字符串中的出现的正确用户名次数降序排列，次数相等无先后顺序，且不重复。
+
+## 示例
+
+然后修复 lab.py 中已经实现的 class Lab，使其能正常工作，lab.py 部分代码如下：
+
+```python
+class Lab(object):
+""" 实验
+"""
+
+    def __init__(self, name, tags=[]):
+        self.name = name
+        # FIXME
+        self._tags = tags
+
+    def insert_tag(self, tag):
+        """ 插入标签，需要检查标签是否存在
+        """
+        # FIXME
+        self._tags.append(tag)
+
+    @property
+    def tags(self):
+        return self._tags[:]
+
+    def can_be_started(self, user):
+        """判断用户能否启动实验，只有登录的会员用户才能启动实验
+        """
+        # 传入的 user 为用户对象，is_authenticated 为 True 表示已登录
+        # FIXME
+        if not user.is_authenticated:
+            # 如果用户没有登陆
+            can = False
+        elif user.is_member:
+            # 如果用户是会员
+            can = True
+        return can
+
+```
+
+    来源：蓝桥（实验楼）
+    链接：https://www.lanqiao.cn/challenges/2997/
+    
+
+---
+
+- 解题思路
+    
+    - 初始化函数：
+
+        传值：被调函数局部变量改变不会影响主调函数局部变量
+
+        传址：被调函数局部变量改变会影响主调函数局部变量
+
+        传值就是传入一个参数的值，传址就是传入一个参数的地址，也就是内存的地址（相当于指针）
+        
+        Python参数传递方式：传递对象引用（传值和传址的混合方式），如果是数字，字符串，元组则传值；如果是列表，字典则传址；
+
+        copy使用场景：列表或字典，且内部元素为数字，字符串或元组
+
+        deepcopy使用场景：列表或字典，且内部元素包含列表或字典
+        
+- 题解1:
+
+    ```python
+    import copy
+    class Lab(object):
+        """ 实验
+        """
+
+        def __init__(self, name, tags=[]):
+            self.name = name
+            # FIXED
+            tags = copy.deepcopy(tags)
+            self._tags = tags
+
+        def insert_tag(self, tag):
+            """ 插入标签，需要检查标签是否存在
+            """
+            # FIXED
+            if tag:
+                if tag not in self._tags:
+                    self._tags.append(tag)
+
+        @property
+        def tags(self):
+            return self._tags[:]
+
+        def can_be_started(self, user):
+            """判断用户能否启动实验，只有登录的会员用户才能启动实验
+            """
+            # 传入的 user 为用户对象，is_authenticated 为 True 表示已登录
+            # FIXED
+            can = False
+            if user.is_authenticated:
+                if user.is_member:
+                    can = True
+            return can
+    ```
+
+    - 测试
+
+    ```python
+    class User(object):
+        def __init__(self, is_authenticated, is_member):
+            self.is_authenticated = is_authenticated
+            self.is_member = is_member
+        user = User(True, True)
+
+    lab = Lab('LLL', ['python', 'C'])
+    print(lab.tags)  # ['python', 'C']
+    lab.insert_tag('C++')
+    print(lab.tags) # ['python', 'C', 'C++']
+    lab.insert_tag('C')
+    print(lab.tags) # ['python', 'C', 'C++']
+    c = lab.can_be_started(user)
+    print(c) True
+    
+    ```

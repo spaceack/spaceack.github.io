@@ -1,0 +1,366 @@
+<!doctype html><html lang=zh-cn>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=robots content="noodp">
+<meta http-equiv=x-ua-compatible content="IE=edge, chrome=1">
+<title>蓝桥楼赛第9期-修复未正确实现的实验类 题解 - Spaceack's Blog</title><meta name=Description content="Spaceck的个人Blog 编程之舞"><meta property="og:title" content="蓝桥楼赛第9期-修复未正确实现的实验类 题解">
+<meta property="og:description" content="题目描述 程序存放的位置 /home/shiyanlou/lab.py ； 实验类名应该为 Lab ； 实验对象中不能插入重复标签； Python 中对象引用问题，尤其如复合对象 list, dict, tuple 的引用问题； 代码中 FIXME 所在上下文">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://spaceack.github.io/20200916-%E8%93%9D%E6%A1%A5%E6%A5%BC%E8%B5%9B%E7%AC%AC9%E6%9C%9F-%E4%BF%AE%E5%A4%8D%E6%9C%AA%E6%AD%A3%E7%A1%AE%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%AE%9E%E9%AA%8C%E7%B1%BB/"><meta property="og:image" content="https://spaceack.github.io/logo.png"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2020-09-16T21:00:00+00:00">
+<meta property="article:modified_time" content="2020-09-16T21:00:00+00:00">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://spaceack.github.io/logo.png">
+<meta name=twitter:title content="蓝桥楼赛第9期-修复未正确实现的实验类 题解">
+<meta name=twitter:description content="题目描述 程序存放的位置 /home/shiyanlou/lab.py ； 实验类名应该为 Lab ； 实验对象中不能插入重复标签； Python 中对象引用问题，尤其如复合对象 list, dict, tuple 的引用问题； 代码中 FIXME 所在上下文">
+<meta name=application-name content="Spaceack's Blog">
+<meta name=apple-mobile-web-app-title content="Spaceack's Blog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://spaceack.github.io/20200916-%E8%93%9D%E6%A1%A5%E6%A5%BC%E8%B5%9B%E7%AC%AC9%E6%9C%9F-%E4%BF%AE%E5%A4%8D%E6%9C%AA%E6%AD%A3%E7%A1%AE%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%AE%9E%E9%AA%8C%E7%B1%BB/><link rel=prev href=https://spaceack.github.io/20200915-%E8%93%9D%E6%A1%A5%E6%A5%BC%E8%B5%9B%E7%AC%AC23%E6%9C%9F-%E8%A7%A3%E6%9E%90%E7%94%A8%E6%88%B7%E5%90%8D%E5%AD%97%E7%AC%A6%E4%B8%B2/><link rel=next href=https://spaceack.github.io/20200917-%E8%93%9D%E6%A1%A5%E6%A5%BC%E8%B5%9B%E7%AC%AC23%E6%9C%9F-%E5%B7%A5%E4%BD%9C%E6%96%87%E4%BB%B6%E6%95%B4%E7%90%86%E5%BD%92%E7%B1%BB/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"蓝桥楼赛第9期-修复未正确实现的实验类 题解","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/spaceack.github.io\/20200916-%E8%93%9D%E6%A1%A5%E6%A5%BC%E8%B5%9B%E7%AC%AC9%E6%9C%9F-%E4%BF%AE%E5%A4%8D%E6%9C%AA%E6%AD%A3%E7%A1%AE%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%AE%9E%E9%AA%8C%E7%B1%BB\/"},"image":["https:\/\/spaceack.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"python, 简单, 题解","wordcount":913,"url":"https:\/\/spaceack.github.io\/20200916-%E8%93%9D%E6%A1%A5%E6%A5%BC%E8%B5%9B%E7%AC%AC9%E6%9C%9F-%E4%BF%AE%E5%A4%8D%E6%9C%AA%E6%AD%A3%E7%A1%AE%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%AE%9E%E9%AA%8C%E7%B1%BB\/","datePublished":"2020-09-16T21:00:00+00:00","dateModified":"2020-09-16T21:00:00+00:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"Spaceack","logo":"https:\/\/spaceack.github.io\/images\/avatar.jpeg"},"author":{"@type":"Person","name":"Spaceack"},"description":""}</script></head>
+<body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':'auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark')&&document.body.setAttribute('theme','dark')</script>
+<div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
+<div class=header-wrapper>
+<div class=header-title>
+<a href=/ title="Spaceack's Blog"><span class=header-title-pre><i class="far fa-kiss-wink-heart fa-fw"></i></span>Spaceack's Blog</a>
+</div>
+<div class=menu>
+<div class=menu-inner><a class=menu-item href=/posts/> 所有文章 </a><a class=menu-item href=/tags/> 标签 </a><a class=menu-item href=/categories/> 分类 </a><a class=menu-item href=/links/> 友链 </a><a class=menu-item href=/about/> 关于 </a><a class=menu-item href=/challenge/> 战利品 </a><a class=menu-item href=https://github.com/spaceack title=GitHub rel="noopener noreffer" target=_blank><i class="fab fa-github fa-fw"></i> </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索>
+<i class="fas fa-search fa-fw"></i>
+</a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空>
+<i class="fas fa-times-circle fa-fw"></i>
+</a>
+<span class="search-button search-loading" id=search-loading-desktop>
+<i class="fas fa-spinner fa-fw fa-spin"></i>
+</span>
+</span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw"></i>
+</a>
+</div>
+</div>
+</div>
+</header><header class=mobile id=header-mobile>
+<div class=header-container>
+<div class=header-wrapper>
+<div class=header-title>
+<a href=/ title="Spaceack's Blog"><span class=header-title-pre><i class="far fa-kiss-wink-heart fa-fw"></i></span>Spaceack's Blog</a>
+</div>
+<div class=menu-toggle id=menu-toggle-mobile>
+<span></span><span></span><span></span>
+</div>
+</div>
+<div class=menu id=menu-mobile><div class=search-wrapper>
+<div class="search mobile" id=search-mobile>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索>
+<i class="fas fa-search fa-fw"></i>
+</a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空>
+<i class="fas fa-times-circle fa-fw"></i>
+</a>
+<span class="search-button search-loading" id=search-loading-mobile>
+<i class="fas fa-spinner fa-fw fa-spin"></i>
+</span>
+</div>
+<a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>
+取消
+</a>
+</div><a class=menu-item href=/posts/ title>所有文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a class=menu-item href=/links/ title>友链</a><a class=menu-item href=/about/ title>关于</a><a class=menu-item href=/challenge/ title>战利品</a><a class=menu-item href=https://github.com/spaceack title=GitHub rel="noopener noreffer" target=_blank><i class="fab fa-github fa-fw"></i></a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw"></i>
+</a></div>
+</div>
+</header>
+<div class="search-dropdown desktop">
+<div id=search-dropdown-desktop></div>
+</div>
+<div class="search-dropdown mobile">
+<div id=search-dropdown-mobile></div>
+</div>
+<main class=main>
+<div class=container><div class=toc id=toc-auto>
+<h2 class=toc-title>目录</h2>
+<div class=toc-content id=toc-content-auto></div>
+</div><article class="page single"><h1 class="single-title animated flipInX">蓝桥楼赛第9期-修复未正确实现的实验类 题解</h1><div class=post-meta>
+<div class=post-meta-line><span class=post-author><a href=/about title=Author rel=" author" class=author><i class="fas fa-user-circle fa-fw"></i>Spaceack</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/python/><i class="far fa-folder fa-fw"></i>Python</a></span></div>
+<div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2020-09-16>2020-09-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 913 字&nbsp;
+<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
+</div><div class="details toc" id=toc-static kept>
+<div class="details-summary toc-title">
+<span>目录</span>
+<span><i class="details-icon fas fa-angle-right"></i></span>
+</div>
+<div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents>
+<ul>
+<li><a href=#题目描述>题目描述</a></li>
+<li><a href=#要求>要求</a></li>
+<li><a href=#示例>示例</a></li>
+</ul>
+</nav></div>
+</div><div class=content id=content><h2 id=题目描述>题目描述</h2>
+<ul>
+<li>
+<p>程序存放的位置 /home/shiyanlou/lab.py ；</p>
+</li>
+<li>
+<p>实验类名应该为 Lab ；</p>
+</li>
+<li>
+<p>实验对象中不能插入重复标签；</p>
+</li>
+<li>
+<p>Python 中对象引用问题，尤其如复合对象 list, dict, tuple 的引用问题；</p>
+</li>
+<li>
+<p>代码中 FIXME 所在上下文存在 Bug；</p>
+</li>
+</ul>
+<h2 id=要求>要求</h2>
+<p>题目需使用 Python 3.6 完成，不能使用标准库 和 第三方库。</p>
+<p>函数传入 text 为字符串类型，可能为空。</p>
+<p>函数返回列表，且应按 text 字符串中的出现的正确用户名次数降序排列，次数相等无先后顺序，且不重复。</p>
+<h2 id=示例>示例</h2>
+<p>然后修复 lab.py 中已经实现的 class Lab，使其能正常工作，lab.py 部分代码如下：</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=k>class</span> <span class=nc>Lab</span><span class=p>(</span><span class=nb>object</span><span class=p>):</span>
+<span class=s2>&#34;&#34;&#34; 实验
+</span><span class=s2>&#34;&#34;&#34;</span>
+
+    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>name</span><span class=p>,</span> <span class=n>tags</span><span class=o>=</span><span class=p>[]):</span>
+        <span class=bp>self</span><span class=o>.</span><span class=n>name</span> <span class=o>=</span> <span class=n>name</span>
+        <span class=c1># FIXME</span>
+        <span class=bp>self</span><span class=o>.</span><span class=n>_tags</span> <span class=o>=</span> <span class=n>tags</span>
+
+    <span class=k>def</span> <span class=nf>insert_tag</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>tag</span><span class=p>):</span>
+        <span class=s2>&#34;&#34;&#34; 插入标签，需要检查标签是否存在
+</span><span class=s2>        &#34;&#34;&#34;</span>
+        <span class=c1># FIXME</span>
+        <span class=bp>self</span><span class=o>.</span><span class=n>_tags</span><span class=o>.</span><span class=n>append</span><span class=p>(</span><span class=n>tag</span><span class=p>)</span>
+
+    <span class=nd>@property</span>
+    <span class=k>def</span> <span class=nf>tags</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+        <span class=k>return</span> <span class=bp>self</span><span class=o>.</span><span class=n>_tags</span><span class=p>[:]</span>
+
+    <span class=k>def</span> <span class=nf>can_be_started</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>user</span><span class=p>):</span>
+        <span class=s2>&#34;&#34;&#34;判断用户能否启动实验，只有登录的会员用户才能启动实验
+</span><span class=s2>        &#34;&#34;&#34;</span>
+        <span class=c1># 传入的 user 为用户对象，is_authenticated 为 True 表示已登录</span>
+        <span class=c1># FIXME</span>
+        <span class=k>if</span> <span class=ow>not</span> <span class=n>user</span><span class=o>.</span><span class=n>is_authenticated</span><span class=p>:</span>
+            <span class=c1># 如果用户没有登陆</span>
+            <span class=n>can</span> <span class=o>=</span> <span class=kc>False</span>
+        <span class=k>elif</span> <span class=n>user</span><span class=o>.</span><span class=n>is_member</span><span class=p>:</span>
+            <span class=c1># 如果用户是会员</span>
+            <span class=n>can</span> <span class=o>=</span> <span class=kc>True</span>
+        <span class=k>return</span> <span class=n>can</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><pre><code>来源：蓝桥（实验楼）
+链接：https://www.lanqiao.cn/challenges/2997/
+</code></pre>
+<hr>
+<ul>
+<li>
+<p>解题思路</p>
+<ul>
+<li>
+<p>初始化函数：</p>
+<p>传值：被调函数局部变量改变不会影响主调函数局部变量</p>
+<p>传址：被调函数局部变量改变会影响主调函数局部变量</p>
+<p>传值就是传入一个参数的值，传址就是传入一个参数的地址，也就是内存的地址（相当于指针）</p>
+<p>Python参数传递方式：传递对象引用（传值和传址的混合方式），如果是数字，字符串，元组则传值；如果是列表，字典则传址；</p>
+<p>copy使用场景：列表或字典，且内部元素为数字，字符串或元组</p>
+<p>deepcopy使用场景：列表或字典，且内部元素包含列表或字典</p>
+</li>
+</ul>
+</li>
+<li>
+<p>题解1:</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=kn>import</span> <span class=nn>copy</span>
+<span class=k>class</span> <span class=nc>Lab</span><span class=p>(</span><span class=nb>object</span><span class=p>):</span>
+    <span class=s2>&#34;&#34;&#34; 实验
+</span><span class=s2>    &#34;&#34;&#34;</span>
+
+    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>name</span><span class=p>,</span> <span class=n>tags</span><span class=o>=</span><span class=p>[]):</span>
+        <span class=bp>self</span><span class=o>.</span><span class=n>name</span> <span class=o>=</span> <span class=n>name</span>
+        <span class=c1># FIXED</span>
+        <span class=n>tags</span> <span class=o>=</span> <span class=n>copy</span><span class=o>.</span><span class=n>deepcopy</span><span class=p>(</span><span class=n>tags</span><span class=p>)</span>
+        <span class=bp>self</span><span class=o>.</span><span class=n>_tags</span> <span class=o>=</span> <span class=n>tags</span>
+
+    <span class=k>def</span> <span class=nf>insert_tag</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>tag</span><span class=p>):</span>
+        <span class=s2>&#34;&#34;&#34; 插入标签，需要检查标签是否存在
+</span><span class=s2>        &#34;&#34;&#34;</span>
+        <span class=c1># FIXED</span>
+        <span class=k>if</span> <span class=n>tag</span><span class=p>:</span>
+            <span class=k>if</span> <span class=n>tag</span> <span class=ow>not</span> <span class=ow>in</span> <span class=bp>self</span><span class=o>.</span><span class=n>_tags</span><span class=p>:</span>
+                <span class=bp>self</span><span class=o>.</span><span class=n>_tags</span><span class=o>.</span><span class=n>append</span><span class=p>(</span><span class=n>tag</span><span class=p>)</span>
+
+    <span class=nd>@property</span>
+    <span class=k>def</span> <span class=nf>tags</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+        <span class=k>return</span> <span class=bp>self</span><span class=o>.</span><span class=n>_tags</span><span class=p>[:]</span>
+
+    <span class=k>def</span> <span class=nf>can_be_started</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>user</span><span class=p>):</span>
+        <span class=s2>&#34;&#34;&#34;判断用户能否启动实验，只有登录的会员用户才能启动实验
+</span><span class=s2>        &#34;&#34;&#34;</span>
+        <span class=c1># 传入的 user 为用户对象，is_authenticated 为 True 表示已登录</span>
+        <span class=c1># FIXED</span>
+        <span class=n>can</span> <span class=o>=</span> <span class=kc>False</span>
+        <span class=k>if</span> <span class=n>user</span><span class=o>.</span><span class=n>is_authenticated</span><span class=p>:</span>
+            <span class=k>if</span> <span class=n>user</span><span class=o>.</span><span class=n>is_member</span><span class=p>:</span>
+                <span class=n>can</span> <span class=o>=</span> <span class=kc>True</span>
+        <span class=k>return</span> <span class=n>can</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>测试</li>
+</ul>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=k>class</span> <span class=nc>User</span><span class=p>(</span><span class=nb>object</span><span class=p>):</span>
+    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>is_authenticated</span><span class=p>,</span> <span class=n>is_member</span><span class=p>):</span>
+        <span class=bp>self</span><span class=o>.</span><span class=n>is_authenticated</span> <span class=o>=</span> <span class=n>is_authenticated</span>
+        <span class=bp>self</span><span class=o>.</span><span class=n>is_member</span> <span class=o>=</span> <span class=n>is_member</span>
+    <span class=n>user</span> <span class=o>=</span> <span class=n>User</span><span class=p>(</span><span class=kc>True</span><span class=p>,</span> <span class=kc>True</span><span class=p>)</span>
+
+<span class=n>lab</span> <span class=o>=</span> <span class=n>Lab</span><span class=p>(</span><span class=s1>&#39;LLL&#39;</span><span class=p>,</span> <span class=p>[</span><span class=s1>&#39;python&#39;</span><span class=p>,</span> <span class=s1>&#39;C&#39;</span><span class=p>])</span>
+<span class=nb>print</span><span class=p>(</span><span class=n>lab</span><span class=o>.</span><span class=n>tags</span><span class=p>)</span>  <span class=c1># [&#39;python&#39;, &#39;C&#39;]</span>
+<span class=n>lab</span><span class=o>.</span><span class=n>insert_tag</span><span class=p>(</span><span class=s1>&#39;C++&#39;</span><span class=p>)</span>
+<span class=nb>print</span><span class=p>(</span><span class=n>lab</span><span class=o>.</span><span class=n>tags</span><span class=p>)</span> <span class=c1># [&#39;python&#39;, &#39;C&#39;, &#39;C++&#39;]</span>
+<span class=n>lab</span><span class=o>.</span><span class=n>insert_tag</span><span class=p>(</span><span class=s1>&#39;C&#39;</span><span class=p>)</span>
+<span class=nb>print</span><span class=p>(</span><span class=n>lab</span><span class=o>.</span><span class=n>tags</span><span class=p>)</span> <span class=c1># [&#39;python&#39;, &#39;C&#39;, &#39;C++&#39;]</span>
+<span class=n>c</span> <span class=o>=</span> <span class=n>lab</span><span class=o>.</span><span class=n>can_be_started</span><span class=p>(</span><span class=n>user</span><span class=p>)</span>
+<span class=nb>print</span><span class=p>(</span><span class=n>c</span><span class=p>)</span> <span class=kc>True</span>
+
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</div><div class=post-footer id=post-footer>
+<div class=post-info>
+<div class=post-info-line>
+<div class=post-info-mod>
+<span>更新于 2020-09-16</span>
+</div>
+<div class=post-info-license></div>
+</div>
+<div class=post-info-line>
+<div class=post-info-md><span>
+<a class=link-to-markdown href=/20200916-%E8%93%9D%E6%A1%A5%E6%A5%BC%E8%B5%9B%E7%AC%AC9%E6%9C%9F-%E4%BF%AE%E5%A4%8D%E6%9C%AA%E6%AD%A3%E7%A1%AE%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%AE%9E%E9%AA%8C%E7%B1%BB/index.md target=_blank>阅读原始文档</a>
+</span></div>
+<div class=post-info-share>
+<span><a href=javascript:void(0); title="分享到 Twitter" data-sharer=twitter data-url=https://spaceack.github.io/20200916-%E8%93%9D%E6%A1%A5%E6%A5%BC%E8%B5%9B%E7%AC%AC9%E6%9C%9F-%E4%BF%AE%E5%A4%8D%E6%9C%AA%E6%AD%A3%E7%A1%AE%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%AE%9E%E9%AA%8C%E7%B1%BB/ data-title="蓝桥楼赛第9期-修复未正确实现的实验类 题解" data-hashtags=python,简单,题解><i class="fab fa-twitter fa-fw"></i></a><a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=https://spaceack.github.io/20200916-%E8%93%9D%E6%A1%A5%E6%A5%BC%E8%B5%9B%E7%AC%AC9%E6%9C%9F-%E4%BF%AE%E5%A4%8D%E6%9C%AA%E6%AD%A3%E7%A1%AE%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%AE%9E%E9%AA%8C%E7%B1%BB/ data-hashtag=python><i class="fab fa-facebook-square fa-fw"></i></a><a href=javascript:void(0); title="分享到 Hacker News" data-sharer=hackernews data-url=https://spaceack.github.io/20200916-%E8%93%9D%E6%A1%A5%E6%A5%BC%E8%B5%9B%E7%AC%AC9%E6%9C%9F-%E4%BF%AE%E5%A4%8D%E6%9C%AA%E6%AD%A3%E7%A1%AE%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%AE%9E%E9%AA%8C%E7%B1%BB/ data-title="蓝桥楼赛第9期-修复未正确实现的实验类 题解"><i class="fab fa-hacker-news fa-fw"></i></a><a href=javascript:void(0); title="分享到 Line" data-sharer=line data-url=https://spaceack.github.io/20200916-%E8%93%9D%E6%A1%A5%E6%A5%BC%E8%B5%9B%E7%AC%AC9%E6%9C%9F-%E4%BF%AE%E5%A4%8D%E6%9C%AA%E6%AD%A3%E7%A1%AE%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%AE%9E%E9%AA%8C%E7%B1%BB/ data-title="蓝桥楼赛第9期-修复未正确实现的实验类 题解"><i data-svg-src=https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg></i></a><a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=https://spaceack.github.io/20200916-%E8%93%9D%E6%A1%A5%E6%A5%BC%E8%B5%9B%E7%AC%AC9%E6%9C%9F-%E4%BF%AE%E5%A4%8D%E6%9C%AA%E6%AD%A3%E7%A1%AE%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%AE%9E%E9%AA%8C%E7%B1%BB/ data-title="蓝桥楼赛第9期-修复未正确实现的实验类 题解"><i class="fab fa-weibo fa-fw"></i></a></span>
+</div>
+</div>
+</div>
+<div class=post-info-more>
+<section class=post-tags><i class="fas fa-tags fa-fw"></i>&nbsp;<a href=/tags/python/>python</a>,&nbsp;<a href=/tags/%E7%AE%80%E5%8D%95/>简单</a>,&nbsp;<a href=/tags/%E9%A2%98%E8%A7%A3/>题解</a></section>
+<section>
+<span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span>
+</section>
+</div>
+<div class=post-nav><a href=/20200915-%E8%93%9D%E6%A1%A5%E6%A5%BC%E8%B5%9B%E7%AC%AC23%E6%9C%9F-%E8%A7%A3%E6%9E%90%E7%94%A8%E6%88%B7%E5%90%8D%E5%AD%97%E7%AC%A6%E4%B8%B2/ class=prev rel=prev title="蓝桥楼赛第23期-解析用户名字符串 题解"><i class="fas fa-angle-left fa-fw"></i>蓝桥楼赛第23期-解析用户名字符串 题解</a>
+<a href=/20200917-%E8%93%9D%E6%A1%A5%E6%A5%BC%E8%B5%9B%E7%AC%AC23%E6%9C%9F-%E5%B7%A5%E4%BD%9C%E6%96%87%E4%BB%B6%E6%95%B4%E7%90%86%E5%BD%92%E7%B1%BB/ class=next rel=next title="蓝桥楼赛第23期-工作文件整理归类 题解">蓝桥楼赛第23期-工作文件整理归类 题解<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+</main><footer class=footer>
+<div class=footer-container><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.87.0">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/dillonzq/LoveIt target=_blank rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+</div><div class=footer-line><i class="far fa-copyright fa-fw"></i><span itemprop=copyrightYear>2014 - 2021</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=/about target=_blank>Spaceack</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div>
+</div>
+</footer></div>
+<div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部>
+<i class="fas fa-arrow-up fa-fw"></i>
+</a><a href=# id=view-comments class=fixed-button title=查看评论>
+<i class="fas fa-comment fa-fw"></i>
+</a>
+</div><script type=text/javascript src=https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:50},comment:{},search:{algoliaAppID:"PASDMWALPK",algoliaIndex:"index.zh-cn",algoliaSearchKey:"b42948e51daaa93df92381c8e2ac0f93",highlightTag:"em",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50,type:"algolia"}}</script><script type=text/javascript src=/js/theme.min.js></script></body>
+</html>

@@ -1,0 +1,540 @@
+<!doctype html><html lang=zh-cn>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=robots content="noodp">
+<meta http-equiv=x-ua-compatible content="IE=edge, chrome=1">
+<title>算法标签 - Spaceack's Blog</title><meta name=Description content="Spaceck的个人Blog 编程之舞"><meta property="og:title" content="算法标签">
+<meta property="og:description" content="数据结构 数组 Array 栈 Stack 队列 Queue 优先队列（Priority Queue, heap） 链表 LinkedList(single/double) Tree/ Binary Tree Binary Search Tree HashTable Disjoint Set Trie BloomFliter LRU Cache 算法分类 线性结构 莫队 (Mo&rsquo;s Algorithm) 前缀和 基本数组 向量 链接">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://spaceack.github.io/20190619-%E7%AE%97%E6%B3%95%E6%A0%87%E7%AD%BE/"><meta property="og:image" content="https://spaceack.github.io/logo.png"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2019-06-19T21:00:00+00:00">
+<meta property="article:modified_time" content="2019-06-19T21:00:00+00:00">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://spaceack.github.io/logo.png">
+<meta name=twitter:title content="算法标签">
+<meta name=twitter:description content="数据结构 数组 Array 栈 Stack 队列 Queue 优先队列（Priority Queue, heap） 链表 LinkedList(single/double) Tree/ Binary Tree Binary Search Tree HashTable Disjoint Set Trie BloomFliter LRU Cache 算法分类 线性结构 莫队 (Mo&rsquo;s Algorithm) 前缀和 基本数组 向量 链接">
+<meta name=application-name content="Spaceack's Blog">
+<meta name=apple-mobile-web-app-title content="Spaceack's Blog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://spaceack.github.io/20190619-%E7%AE%97%E6%B3%95%E6%A0%87%E7%AD%BE/><link rel=prev href=https://spaceack.github.io/20190614-%E5%A6%82%E6%9E%9C%E6%B2%A1%E6%9C%89%E4%BD%A0/><link rel=next href=https://spaceack.github.io/20190625-%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E7%9F%A5%E8%AF%86/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"算法标签","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/spaceack.github.io\/20190619-%E7%AE%97%E6%B3%95%E6%A0%87%E7%AD%BE\/"},"image":["https:\/\/spaceack.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"算法","wordcount":1194,"url":"https:\/\/spaceack.github.io\/20190619-%E7%AE%97%E6%B3%95%E6%A0%87%E7%AD%BE\/","datePublished":"2019-06-19T21:00:00+00:00","dateModified":"2019-06-19T21:00:00+00:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"Spaceack","logo":"https:\/\/spaceack.github.io\/images\/avatar.jpeg"},"author":{"@type":"Person","name":"Spaceack"},"description":""}</script></head>
+<body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':'auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark')&&document.body.setAttribute('theme','dark')</script>
+<div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
+<div class=header-wrapper>
+<div class=header-title>
+<a href=/ title="Spaceack's Blog"><span class=header-title-pre><i class="far fa-kiss-wink-heart fa-fw"></i></span>Spaceack's Blog</a>
+</div>
+<div class=menu>
+<div class=menu-inner><a class=menu-item href=/posts/> 所有文章 </a><a class=menu-item href=/tags/> 标签 </a><a class=menu-item href=/categories/> 分类 </a><a class=menu-item href=/links/> 友链 </a><a class=menu-item href=/about/> 关于 </a><a class=menu-item href=/challenge/> 战利品 </a><a class=menu-item href=https://github.com/spaceack title=GitHub rel="noopener noreffer" target=_blank><i class="fab fa-github fa-fw"></i> </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索>
+<i class="fas fa-search fa-fw"></i>
+</a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空>
+<i class="fas fa-times-circle fa-fw"></i>
+</a>
+<span class="search-button search-loading" id=search-loading-desktop>
+<i class="fas fa-spinner fa-fw fa-spin"></i>
+</span>
+</span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw"></i>
+</a>
+</div>
+</div>
+</div>
+</header><header class=mobile id=header-mobile>
+<div class=header-container>
+<div class=header-wrapper>
+<div class=header-title>
+<a href=/ title="Spaceack's Blog"><span class=header-title-pre><i class="far fa-kiss-wink-heart fa-fw"></i></span>Spaceack's Blog</a>
+</div>
+<div class=menu-toggle id=menu-toggle-mobile>
+<span></span><span></span><span></span>
+</div>
+</div>
+<div class=menu id=menu-mobile><div class=search-wrapper>
+<div class="search mobile" id=search-mobile>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索>
+<i class="fas fa-search fa-fw"></i>
+</a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空>
+<i class="fas fa-times-circle fa-fw"></i>
+</a>
+<span class="search-button search-loading" id=search-loading-mobile>
+<i class="fas fa-spinner fa-fw fa-spin"></i>
+</span>
+</div>
+<a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>
+取消
+</a>
+</div><a class=menu-item href=/posts/ title>所有文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a class=menu-item href=/links/ title>友链</a><a class=menu-item href=/about/ title>关于</a><a class=menu-item href=/challenge/ title>战利品</a><a class=menu-item href=https://github.com/spaceack title=GitHub rel="noopener noreffer" target=_blank><i class="fab fa-github fa-fw"></i></a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw"></i>
+</a></div>
+</div>
+</header>
+<div class="search-dropdown desktop">
+<div id=search-dropdown-desktop></div>
+</div>
+<div class="search-dropdown mobile">
+<div id=search-dropdown-mobile></div>
+</div>
+<main class=main>
+<div class=container><div class=toc id=toc-auto>
+<h2 class=toc-title>目录</h2>
+<div class=toc-content id=toc-content-auto></div>
+</div><article class="page single"><h1 class="single-title animated flipInX">算法标签</h1><div class=post-meta>
+<div class=post-meta-line><span class=post-author><a href=/about title=Author rel=" author" class=author><i class="fas fa-user-circle fa-fw"></i>Spaceack</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/%E7%AE%97%E6%B3%95/><i class="far fa-folder fa-fw"></i>算法</a></span></div>
+<div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2019-06-19>2019-06-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1194 字&nbsp;
+<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+</div><div class="details toc" id=toc-static kept>
+<div class="details-summary toc-title">
+<span>目录</span>
+<span><i class="details-icon fas fa-angle-right"></i></span>
+</div>
+<div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents></nav></div>
+</div><div class=content id=content><ul>
+<li>
+<p>数据结构</p>
+<ul>
+<li>数组 Array</li>
+<li>栈 Stack</li>
+<li>队列 Queue</li>
+<li>优先队列（Priority Queue, heap）</li>
+<li>链表 LinkedList(single/double)</li>
+<li>Tree/ Binary Tree</li>
+<li>Binary Search Tree</li>
+<li>HashTable</li>
+<li>Disjoint Set</li>
+<li>Trie</li>
+<li>BloomFliter</li>
+<li>LRU Cache</li>
+</ul>
+</li>
+<li>
+<p>算法分类</p>
+<ul>
+<li>
+<p>线性结构</p>
+<ul>
+<li>莫队 (Mo&rsquo;s Algorithm)</li>
+<li>前缀和</li>
+<li>基本数组</li>
+<li>向量</li>
+<li>链接表（linked list）</li>
+<li>栈(stack)</li>
+<li>队列</li>
+<li>块状链表,块状数组,分块</li>
+<li>st表, 稀疏表</li>
+<li>差分</li>
+</ul>
+</li>
+<li>
+<p>树形结构</p>
+<ul>
+<li>线段树
+<ul>
+<li>二维线段树</li>
+<li>矩形树</li>
+<li>zkw线段树</li>
+<li>主席树</li>
+</ul>
+</li>
+<li>点分治</li>
+<li>平衡树
+<ul>
+<li>AVL</li>
+<li>Treap</li>
+<li>SBT</li>
+<li>Splay</li>
+<li>静态排序树</li>
+<li>替罪羊树</li>
+</ul>
+</li>
+<li>二叉堆（binary heap）
+<ul>
+<li>左偏树</li>
+<li>斜堆</li>
+<li>二项堆</li>
+</ul>
+</li>
+<li>树状数组</li>
+<li>cdp分治</li>
+<li>树上距离
+<ul>
+<li>节点到根的距离</li>
+<li>最近公共祖先,LCA</li>
+<li>节点间距离</li>
+<li>树的直径</li>
+</ul>
+</li>
+<li>动态树
+<ul>
+<li>树链部分,树剖</li>
+<li>Link-Cut Tree,LCT</li>
+</ul>
+</li>
+<li>树的应用
+<ul>
+<li>并查集 (Disjoint set)</li>
+<li>树的遍历</li>
+<li>哈夫曼树</li>
+<li>RMQ</li>
+<li>树套树</li>
+<li>可持久化</li>
+<li>虚树</li>
+</ul>
+</li>
+<li>整体二分</li>
+<li>环套树</li>
+<li>K-D Tree</li>
+</ul>
+</li>
+<li>
+<p>字符串</p>
+<ul>
+<li>后缀自动机,SAM</li>
+<li>字典树, Trie树</li>
+<li>AC自动机</li>
+<li>KMP</li>
+<li>后缀数组,SA</li>
+<li>后缀树</li>
+<li>有限状态自动机</li>
+<li>哈夫曼, Huffman</li>
+<li>简单密码学</li>
+<li>回文自动机PAM</li>
+<li>Manacher算法</li>
+</ul>
+</li>
+<li>
+<p>排序</p>
+<ul>
+<li>冒泡排序</li>
+<li>选择排序</li>
+<li>桶排</li>
+<li>插入排序</li>
+<li>归并</li>
+<li>快速排序,快排</li>
+<li>堆排序</li>
+<li>希尔排序</li>
+<li>外部排序</li>
+</ul>
+</li>
+<li>
+<p>查找</p>
+<ul>
+<li>二分答案</li>
+<li>顺序查找</li>
+<li>二分查找</li>
+</ul>
+</li>
+<li>
+<p>二分图</p>
+<ul>
+<li>最大匹配
+<ul>
+<li>匈牙利算法</li>
+<li>一般图的最大匹配</li>
+<li>Konig定理</li>
+</ul>
+</li>
+<li>带权二分图匹配</li>
+<li>稳定婚姻系统</li>
+</ul>
+</li>
+<li>
+<p>搜索</p>
+<ul>
+<li>广度优先搜索, BFS</li>
+<li>深度优先搜索, DFS</li>
+<li>剪枝</li>
+<li>记忆化搜索</li>
+<li>启发式搜索
+<ul>
+<li>启发式迭代加深, IDA*</li>
+<li>Dancing Links</li>
+<li>爬山法</li>
+<li>模拟退火</li>
+<li>遗传</li>
+<li>A*算法</li>
+</ul>
+</li>
+<li>迭代加深</li>
+<li>随机调整</li>
+</ul>
+</li>
+<li>
+<p>网络流</p>
+<ul>
+<li>最大流
+<ul>
+<li>Dinic</li>
+<li>Sap</li>
+<li>有上下界的最大流</li>
+</ul>
+</li>
+<li>最小割
+<ul>
+<li>闭合图</li>
+<li>最小点权覆盖集</li>
+<li>最大点权覆盖集</li>
+<li>分数规划</li>
+<li>最大密度子图</li>
+</ul>
+</li>
+<li>费用流
+<ul>
+<li>最短路增广费用流</li>
+<li>zkw费用流</li>
+<li>最小费用可行流</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>基础算法</p>
+<ul>
+<li>模拟</li>
+<li>贪心(Greedy)</li>
+<li>递推</li>
+<li>递归（backtrace）</li>
+<li>枚举, 暴力</li>
+<li>分治（Divide and conquer）</li>
+</ul>
+</li>
+<li>
+<p>动态规划(Dynamic Programming)</p>
+<ul>
+<li>动态规划初步</li>
+<li>背包</li>
+<li>环形动规,环形dp</li>
+<li>数位动规,数位dp</li>
+<li>多维状态</li>
+<li>区间动归,区间dp</li>
+<li>字母树</li>
+<li>动态规划优化
+<ul>
+<li>单调队列</li>
+<li>降低维度,降维</li>
+<li>优先队列(Priority Queue)</li>
+<li>矩阵加速,矩阵优化</li>
+<li>斜率优化</li>
+<li>状态压缩,状压</li>
+<li>凸完全单调性,凸单调</li>
+<li>四边形不等式</li>
+</ul>
+</li>
+<li>树形动归</li>
+<li>插头dp</li>
+</ul>
+</li>
+<li>
+<p>其它技巧</p>
+<ul>
+<li>暴力数据结构</li>
+<li>高精</li>
+<li>博弈论
+<ul>
+<li>Nim游戏</li>
+<li>博弈树</li>
+<li>Shannon开关游戏</li>
+</ul>
+</li>
+<li>倍增</li>
+<li>离散化</li>
+<li>哈希,Hash
+<ul>
+<li>ELFhash</li>
+<li>SDBM</li>
+<li>BKDR</li>
+</ul>
+</li>
+<li>随机贪心, 随机化</li>
+<li>快速傅立叶变换,DFT,FFT</li>
+<li>位运算,按位</li>
+<li>骗分</li>
+<li>NP问题</li>
+<li>构造</li>
+<li>快速数论变换NTT</li>
+<li>快速沃尔什变换FWT</li>
+</ul>
+</li>
+<li>
+<p>数论,数学</p>
+<ul>
+<li>整数研究
+<ul>
+<li>素数判断, 质数, 筛法</li>
+<li>最大公约数, gcd</li>
+<li>扩展欧几里得, 扩欧</li>
+<li>不定方程</li>
+<li>进制</li>
+<li>同余,中国剩余定理</li>
+<li>莫比乌斯反演</li>
+<li>逆元</li>
+</ul>
+</li>
+<li>集合论</li>
+<li>群论
+<ul>
+<li>置换</li>
+<li>Polya原理</li>
+</ul>
+</li>
+<li>组合数学
+<ul>
+<li>排列组合</li>
+<li>二项式定理</li>
+<li>康托展开</li>
+<li>袋与球问题</li>
+<li>鸽笼</li>
+<li>熔斥</li>
+<li>斐波那契,Fibonacci</li>
+<li>卡特兰,Catalan</li>
+<li>Stirling</li>
+<li>生成函数</li>
+<li>卢卡斯,Lucas</li>
+</ul>
+</li>
+<li>线性规划</li>
+<li>概率论,统计
+<ul>
+<li>众数</li>
+<li>简单概率</li>
+<li>条件概率</li>
+<li>Bayes</li>
+<li>期望</li>
+</ul>
+</li>
+<li>线性代数
+<ul>
+<li>矩阵运算</li>
+<li>矩阵乘法</li>
+<li>线性递推,递推式</li>
+<li>高斯消元</li>
+<li>异或方程组</li>
+<li>线基性</li>
+</ul>
+</li>
+<li>微积分初步
+<ul>
+<li>极限</li>
+<li>导数</li>
+<li>积分</li>
+<li>定积分</li>
+<li>立体解析几何</li>
+<li>级数</li>
+</ul>
+</li>
+<li>图论
+<ul>
+<li>
+<p>图遍历</p>
+</li>
+<li>
+<p>拓扑排序</p>
+<ul>
+<li>AOV</li>
+<li>AOE</li>
+</ul>
+</li>
+<li>
+<p>最短路</p>
+<ul>
+<li>Floyd</li>
+<li>Dijkstra</li>
+<li>Bellman-Ford</li>
+<li>SPFA</li>
+<li>差分约束</li>
+<li>K短路</li>
+</ul>
+</li>
+<li>
+<p>生成树</p>
+<ul>
+<li>Prim</li>
+<li>Kruskal</li>
+<li>生成树的另类算法</li>
+<li>次小生成树</li>
+<li>特殊生成树</li>
+</ul>
+</li>
+<li>
+<p>圈和块</p>
+<ul>
+<li>最小环</li>
+<li>负权环</li>
+<li>连通块</li>
+<li>2-SAT</li>
+<li>欧拉公式</li>
+<li>四色定理</li>
+<li>欧拉环路</li>
+</ul>
+</li>
+<li>
+<p>强连通分量,缩点</p>
+<ul>
+<li>Tarjan</li>
+<li>割点</li>
+</ul>
+</li>
+<li>
+<p>仙人掌</p>
+</li>
+</ul>
+</li>
+<li>计算几何
+<ul>
+<li>凸包</li>
+<li>叉积</li>
+<li>线段相交</li>
+<li>点积</li>
+<li>半平面相交,半平面交</li>
+<li>最近点对</li>
+<li>凸多边形的交</li>
+<li>离散化扫描</li>
+<li>旋转卡壳</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div><div class=post-footer id=post-footer>
+<div class=post-info>
+<div class=post-info-line>
+<div class=post-info-mod>
+<span>更新于 2019-06-19</span>
+</div>
+<div class=post-info-license></div>
+</div>
+<div class=post-info-line>
+<div class=post-info-md><span>
+<a class=link-to-markdown href=/20190619-%E7%AE%97%E6%B3%95%E6%A0%87%E7%AD%BE/index.md target=_blank>阅读原始文档</a>
+</span></div>
+<div class=post-info-share>
+<span><a href=javascript:void(0); title="分享到 Twitter" data-sharer=twitter data-url=https://spaceack.github.io/20190619-%E7%AE%97%E6%B3%95%E6%A0%87%E7%AD%BE/ data-title=算法标签 data-hashtags=算法><i class="fab fa-twitter fa-fw"></i></a><a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=https://spaceack.github.io/20190619-%E7%AE%97%E6%B3%95%E6%A0%87%E7%AD%BE/ data-hashtag=算法><i class="fab fa-facebook-square fa-fw"></i></a><a href=javascript:void(0); title="分享到 Hacker News" data-sharer=hackernews data-url=https://spaceack.github.io/20190619-%E7%AE%97%E6%B3%95%E6%A0%87%E7%AD%BE/ data-title=算法标签><i class="fab fa-hacker-news fa-fw"></i></a><a href=javascript:void(0); title="分享到 Line" data-sharer=line data-url=https://spaceack.github.io/20190619-%E7%AE%97%E6%B3%95%E6%A0%87%E7%AD%BE/ data-title=算法标签><i data-svg-src=https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg></i></a><a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=https://spaceack.github.io/20190619-%E7%AE%97%E6%B3%95%E6%A0%87%E7%AD%BE/ data-title=算法标签><i class="fab fa-weibo fa-fw"></i></a></span>
+</div>
+</div>
+</div>
+<div class=post-info-more>
+<section class=post-tags><i class="fas fa-tags fa-fw"></i>&nbsp;<a href=/tags/%E7%AE%97%E6%B3%95/>算法</a></section>
+<section>
+<span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span>
+</section>
+</div>
+<div class=post-nav><a href=/20190614-%E5%A6%82%E6%9E%9C%E6%B2%A1%E6%9C%89%E4%BD%A0/ class=prev rel=prev title=如果没有你><i class="fas fa-angle-left fa-fw"></i>如果没有你</a>
+<a href=/20190625-%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E7%9F%A5%E8%AF%86/ class=next rel=next title=域名解析知识>域名解析知识<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+</main><footer class=footer>
+<div class=footer-container><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.87.0">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/dillonzq/LoveIt target=_blank rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+</div><div class=footer-line><i class="far fa-copyright fa-fw"></i><span itemprop=copyrightYear>2014 - 2021</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=/about target=_blank>Spaceack</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div>
+</div>
+</footer></div>
+<div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部>
+<i class="fas fa-arrow-up fa-fw"></i>
+</a><a href=# id=view-comments class=fixed-button title=查看评论>
+<i class="fas fa-comment fa-fw"></i>
+</a>
+</div><script type=text/javascript src=https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:50},comment:{},search:{algoliaAppID:"PASDMWALPK",algoliaIndex:"index.zh-cn",algoliaSearchKey:"b42948e51daaa93df92381c8e2ac0f93",highlightTag:"em",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50,type:"algolia"}}</script><script type=text/javascript src=/js/theme.min.js></script></body>
+</html>

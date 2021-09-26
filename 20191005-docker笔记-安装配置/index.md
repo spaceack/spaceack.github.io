@@ -1,0 +1,96 @@
+# Docker笔记-安装配置
+
+
+## dcoker Install
+
+### ubuntu
+
+[安装文档](https://docs.docker.com/get-docker/)
+
+#### Uninstall old versions
+`sudo apt-get remove docker docker-engine docker.io containerd runc`
+#### Install using the repository
+```
+sudo apt-get update
+
+sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+sudo apt-key fingerprint 0EBFCD88
+
+sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+```
+
+#### INSTALL DOCKER ENGINE
+```
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+```
+#### Verify
+`sudo docker run hello-world`
+#### 将登陆用户添加到docker用户组
+```
+sudo gpasswd -a $USER docker
+newgrp docker
+docker ps
+```
+### CentOS
+
+#### Uninstall old versions
+```
+sudo yum remove docker \
+                  docker-client \
+                  docker-client-latest \
+                  docker-common \
+                  docker-latest \
+                  docker-latest-logrotate \
+                  docker-logrotate \
+                  docker-engine
+```
+#### INSTALL DOCKER ENGINE
+```
+sudo yum install -y yum-utils
+sudo yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+sudo yum install docker-ce docker-ce-cli containerd.io
+```
+#### 将非root登陆用户添加到docker用户组
+```
+sudo gpasswd -a $USER docker
+newgrp docker
+docker ps
+```
+
+## 配置
+### docker镜像加速
+
+*/etc/docker/daemon.json（Linux）*
+```
+{
+  "registry-mirrors": ["https://registry.docker-cn.com", "https://docker.mirrors.ustc.edu.cn"]
+}
+```
+`sudo systemctl restart docker` 重启生效
+### 增加到随机启动项
+`systemctl enbale docker `
+
+### 启动docker
+`service docker start`
+
+### docker GUI
+1. kitematic
+2. portainer 轻量级的Docker管理面板
+
+### 安装docker-compose
+`pip3 install docker-compose`
+

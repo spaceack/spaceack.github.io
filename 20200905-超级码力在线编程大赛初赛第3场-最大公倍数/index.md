@@ -1,0 +1,74 @@
+# 超级码力初赛第三场 最大公倍数
+
+
+## 题目描述
+
+小栖有一个区间[a,b]，他准备从中取三个数，他想知道如何取才能使得它们的最小公倍数最大 请直接告诉小栖最小公倍数是多少。
+
+1<=a<b<=5000
+b-a >= 2
+
+## 示例
+- 示例 1:
+    ```
+    输入:  a = 3, b = 6
+    输出: 60
+    样例解释: 4，5，6的最小公倍数是60
+
+    ```
+
+    来源：九章算法
+    
+
+---
+- 解题思路
+    
+    每三个数为一组， 算出三个数的最小公倍数，加入到数组排序， 选出最大即可。
+    
+    暴力枚举要避免超时。
+
+- 题解1:
+
+    执行用时：56
+
+    ```python
+    class Solution:
+    """
+    @param a: Left margin
+    @param b: Right margin
+    @return: return the greatest common multiple
+    """
+    def greatestcommonmultiple(self, a, b):
+        # write your code here
+        def get_max_yinshu(x, y):
+            while (True):
+                if (x < y):
+                    x, y = y, x
+                if (x % y == 0):
+                    return int(y)
+                else:
+                    temp = x % y
+                    x = y
+                    y = temp
+        tmp = []
+        aim = list(range(a, b + 1))
+        # 避免超时
+        if len(aim) > 6:
+            aim = aim[-1:-6:-1]
+        for x in range(len(aim)):
+            for y in range(len(aim)):
+                for z in range(len(aim)):
+                    a = aim[x]
+                    b = aim[y]
+                    c = aim[z]
+                    if a != b != c:
+                        if a<b<c:
+                            a_b = get_max_yinshu(a, b)
+                            a_b = int((a * b) / a_b)
+                            result = get_max_yinshu(a_b, c)
+                            result = int((a_b * c) / result)
+                            tmp.append(result)
+        tmp.sort()
+        return tmp[-1]
+    ```
+

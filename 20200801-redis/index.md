@@ -1,0 +1,98 @@
+# Redis实战读书笔记
+
+### 配置开机启动
+[转载： redis设置开机自启](https://www.cnblogs.com/116970u/p/10411370.html)
+```
+sudo vim /etc/systemd/system/redis.service
+sudo chmod 777 redis.service
+
+[Unit]
+Description=redis-server
+After=network.target
+ 
+[Service]
+Type=forking
+ExecStart=/opt/redis-6.0.5/src/redis-server /opt/redis-6.0.5/redis.conf
+PrivateTmp=true
+ 
+[Install]
+WantedBy=multi-user.target
+
+1. 先关闭redis-server
+systemctl stop redis.service
+2. 开启redis-server
+systemctl start redis.service
+3. 开启成功，将服务加入开机自启
+systemctl enable redis.service
+4. 重启 
+shutdown -r now
+5. 查看服务运行状态
+systemctl status redis.service
+
+4、配置描述：
+
+　　Description:描述服务
+　　After:描述服务类别
+　　[Service]服务运行参数的设置
+　　Type=forking是后台运行的形式
+　　ExecStart为服务的具体运行命令
+　　ExecReload为重启命令
+　　ExecStop为停止命令
+　　PrivateTmp=True表示给服务分配独立的临时空间
+　　注意：[Service]的启动、重启、停止命令全部要求使用绝对路径
+　　[Install]运行级别下服务安装的相关设置，可设置为多用户，即系统运行级别为3
+　　
+
+
+# 查看redis 是否启动成功
+netstat -lntp | grep 6379
+```
+## 命令速查
+
+1. 查看数据库数量
+`CONFIG GET databases`
+
+2. 选择数据库
+`SELECT 1`
+
+3. 
+
+## 数据结构
+value 的五种结构 
+ - 字符串 STRING
+ - 列表 LIST
+ - 集合 SET
+ - 散列 HASH
+ - 有序集合 ZSET 
+
+
+## 概念术语表
+
+```
+tracker 追踪器
+schema  模式
+schema-less 无模式
+prototype 原型
+persistence 持久化
+client-side sharding 客户端分片
+non-relational database 非关系数据库
+key 键
+value 值
+mapping 映射
+primary database 主数据库
+auxiliary database 辅助数据库
+primary storage 主存储
+secondary storage 二级存储
+bulk operation 批量操作
+master/slave replication
+stored procedure 存储过程
+spatial index 空间索引
+point-in-time dump 按时间点转储
+failover 故障转移
+aggregates 聚合
+atomic 原子的
+parser 分析器
+optimizer 优化器
+task queue 任务队列
+distribute 分发
+```

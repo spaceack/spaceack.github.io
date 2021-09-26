@@ -1,0 +1,95 @@
+# leetcode-1-两数之和
+
+
+## 题目描述
+给定一个整数数组 **nums** 和一个目标值 **target**，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。
+你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。
+
+## 示例
+```
+给定 nums = [2, 7, 11, 15], target = 9
+
+因为 nums[0] + nums[1] = 2 + 7 = 9
+所以返回 [0, 1]
+```
+来源：力扣（LeetCode）
+    链接：https://leetcode-cn.com/problems/robot-return-to-origin
+    
+---
+看着题目看似还是很简单， 暴力模拟用二次循环就能做出来。 时间复杂度：O(n^2), 空间复杂度：O(1)
+
+唯一要注意下标边界越界问题，还有考虑清楚变量什么时候要加一，啥时候要减一。
+
+但还是小看了这题。当**nums**很长时就会超时。一个长度为12599的测试用例耗时8秒多，这是不能忍受的。
+
+- 题解1：
+    ```python
+    class Solution:
+        def twoSum(self, nums, target: int):
+            nums_len = len(nums)
+            # 第一次循环
+            for index, item in enumerate(nums):
+                i = 0
+                # 第二次循环
+                for _ in range(nums_len-1):
+                    subscript = index + i + 1
+                    # 下标越界检查
+                    if subscript < nums_len:
+                        if (item+nums[subscript]) == target:
+                            return [ index, subscript]
+                        else:
+                            i = i + 1
+    ```
+
+    忍不住偷瞄了下官方的题解，立即领悟了其中的奥妙：
+    在一次遍历的时候， target 作为被减数， 减去遍历的每一项。当判断两者的差**flag**存在列表nums时， 就是解出答案的时刻。
+
+- 题解2-0：
+    ```python
+    class Solution:
+        def twoSum(self, nums, target: int):
+            for index, item in enumerate(nums):
+                flag = target - item
+                if flag in nums:
+                    return [index, nums.index(flag)]
+    ```
+
+    但是没考虑到减数和差为相同值的情况。在这个 `nums = [3,2,4] target = 6` 用例上栽倒了。即：要注意目标元素`target - item` 的值不能是`nums[index]`本身。在检测时打个屏蔽补丁就好了，见`题解2-1`。
+
+- 题解2-1:
+
+    执行用时：1140 ms, 在所有 Python3 提交中击败了31.23%的用户
+
+    内存消耗：14.6 MB, 在所有 Python3 提交中击败了86.51%的用户
+
+    全程都在一个列表中完成，节省内存， 但是 python 的 `in list`操作时间复杂度是`O（n）`,有什么更快的方法呢？
+    ```python
+    class Solution:
+        def twoSum(self, nums, target: int):
+            for index, item in enumerate(nums):
+                flag = target - item
+                nums[index] = '_'  # 屏蔽当前值
+                if flag in nums:
+                    return [index, nums.index(flag)]
+                else:
+                    nums[index] = item
+    ```
+
+- 题解3:
+
+    再偷瞄一眼官方题解,遍历一遍哈希表求的题解.一边检查目标元素一边将元素插入字典真秒不可言,效率刚刚地~仅用时56ms! python 的 `in dict`操作时间复杂度是`O（1）`
+
+    执行用时：56 ms, 在所有 Python3 提交中击败了97.24%的用户
+
+    内存消耗：15 MB, 在所有 Python3 提交中击败了46.71%的用户
+
+    ```python
+    class Solution:
+    def twoSum(self, nums, target: int):
+        target_dic = {}
+        for index, item in enumerate(nums):
+            flag = target - item
+            if flag in target_dic   :
+                return [target_dic[flag], index]
+            target_dic[item] = index  # 写在后面可以避免 题解2-0 发生的问题
+    ```

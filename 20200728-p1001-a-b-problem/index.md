@@ -1,0 +1,62 @@
+# P1001 A+B Problem
+
+
+### 题目描述
+>输入两个整数 a,b输出它们的和。
+
+### 输入格式
+两个整数以空格分开。
+
+### 输出格式
+一个整数。
+
+### 输入输出样例
+
+#### 输入 #1
+> 20 30
+
+#### 输出 #1
+> 50
+
+```python
+# 80ms /  3.16MB /  45B Python 3
+print(sum([int(x) for x in input().split()]))
+```
+
+
+```go
+/*
+22ms /  6.92MB /  128B Go
+*/
+package main
+
+import (
+	"fmt"
+)
+
+var (
+	a int64
+    b int64
+)
+
+func main() {
+	fmt.Scanf("%d%d", &a, &b)
+	fmt.Printf("%d", a+b)
+}
+```
+
+```java
+/*
+ 514ms /  11.43MB /  232B Java 8
+*/
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner cin=new Scanner(System.in);
+        int a = cin.nextInt();
+        int b = cin.nextInt();
+        System.out.println(a+b);
+    }
+}
+```
