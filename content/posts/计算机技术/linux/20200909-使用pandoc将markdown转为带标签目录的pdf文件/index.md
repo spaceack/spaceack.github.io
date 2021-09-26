@@ -1,9 +1,9 @@
 ---
 title: 使用pandoc将markdown转为带标签目录的pdf文件
-author: 小云吞
+author: Spaceack
 date: 2020-09-09 21:00:00
 update: 2020-09-09 21:00:00
-categories: tools
+categories: ["数据处理"]
 tags: 
   - tools
   - pandoc
@@ -22,6 +22,6 @@ pandoc --pdf-engine=wkhtmltopdf --metadata pagetitle="Spaceack的算法笔记"  
 ```
 ## 示例：
 
-    ![pdf效果](notebookpdf.png)
+  ![pdf效果](notebookpdf.png)
 
 
