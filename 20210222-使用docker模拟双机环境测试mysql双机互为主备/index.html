@@ -1,0 +1,506 @@
+<!doctype html><html lang=zh-cn>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=robots content="noodp">
+<meta http-equiv=x-ua-compatible content="IE=edge, chrome=1">
+<title>使用docker模拟双机环境测试mysql双机互为主备 - Spaceack's Blog</title><meta name=Description content="Spaceck的个人Blog 编程之舞"><meta property="og:title" content="使用docker模拟双机环境测试mysql双机互为主备">
+<meta property="og:description" content="MariaDB双主模式测试 1. 环境准备 创建目录 mkdir conf conf2 data data2 log log2 创建 MariaDB 配置文件 touch conf/my.cnf conf2/my.cnf conf/my.cnf文件 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://spaceack.github.io/20210222-%E4%BD%BF%E7%94%A8docker%E6%A8%A1%E6%8B%9F%E5%8F%8C%E6%9C%BA%E7%8E%AF%E5%A2%83%E6%B5%8B%E8%AF%95mysql%E5%8F%8C%E6%9C%BA%E4%BA%92%E4%B8%BA%E4%B8%BB%E5%A4%87/"><meta property="og:image" content="https://spaceack.github.io/logo.png"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2021-02-22T22:30:35+00:00">
+<meta property="article:modified_time" content="2021-02-22T22:30:35+00:00">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://spaceack.github.io/logo.png">
+<meta name=twitter:title content="使用docker模拟双机环境测试mysql双机互为主备">
+<meta name=twitter:description content="MariaDB双主模式测试 1. 环境准备 创建目录 mkdir conf conf2 data data2 log log2 创建 MariaDB 配置文件 touch conf/my.cnf conf2/my.cnf conf/my.cnf文件 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18">
+<meta name=application-name content="Spaceack's Blog">
+<meta name=apple-mobile-web-app-title content="Spaceack's Blog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://spaceack.github.io/20210222-%E4%BD%BF%E7%94%A8docker%E6%A8%A1%E6%8B%9F%E5%8F%8C%E6%9C%BA%E7%8E%AF%E5%A2%83%E6%B5%8B%E8%AF%95mysql%E5%8F%8C%E6%9C%BA%E4%BA%92%E4%B8%BA%E4%B8%BB%E5%A4%87/><link rel=prev href=https://spaceack.github.io/20210130-leetcode-1046-%E6%9C%80%E5%90%8E%E4%B8%80%E5%9D%97%E7%9F%B3%E5%A4%B4%E7%9A%84%E9%87%8D%E9%87%8F/><link rel=next href=https://spaceack.github.io/20210527-%E6%90%AD%E5%BB%BAetcd%E5%88%86%E5%B8%83%E5%BC%8Fkv%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9B%86%E7%BE%A4%E5%B9%B6%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9C/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"使用docker模拟双机环境测试mysql双机互为主备","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/spaceack.github.io\/20210222-%E4%BD%BF%E7%94%A8docker%E6%A8%A1%E6%8B%9F%E5%8F%8C%E6%9C%BA%E7%8E%AF%E5%A2%83%E6%B5%8B%E8%AF%95mysql%E5%8F%8C%E6%9C%BA%E4%BA%92%E4%B8%BA%E4%B8%BB%E5%A4%87\/"},"image":["https:\/\/spaceack.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"MariaDB, mysql, Docker, docker-compose","wordcount":821,"url":"https:\/\/spaceack.github.io\/20210222-%E4%BD%BF%E7%94%A8docker%E6%A8%A1%E6%8B%9F%E5%8F%8C%E6%9C%BA%E7%8E%AF%E5%A2%83%E6%B5%8B%E8%AF%95mysql%E5%8F%8C%E6%9C%BA%E4%BA%92%E4%B8%BA%E4%B8%BB%E5%A4%87\/","datePublished":"2021-02-22T22:30:35+00:00","dateModified":"2021-02-22T22:30:35+00:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"Spaceack","logo":"https:\/\/spaceack.github.io\/images\/avatar.jpeg"},"author":{"@type":"Person","name":"Spaceack"},"description":""}</script></head>
+<body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':'auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark')&&document.body.setAttribute('theme','dark')</script>
+<div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
+<div class=header-wrapper>
+<div class=header-title>
+<a href=/ title="Spaceack's Blog"><span class=header-title-pre><i class="far fa-kiss-wink-heart fa-fw"></i></span>Spaceack's Blog</a>
+</div>
+<div class=menu>
+<div class=menu-inner><a class=menu-item href=/posts/> 所有文章 </a><a class=menu-item href=/tags/> 标签 </a><a class=menu-item href=/categories/> 分类 </a><a class=menu-item href=/links/> 友链 </a><a class=menu-item href=/about/> 关于 </a><a class=menu-item href=/challenge/> 战利品 </a><a class=menu-item href=https://github.com/spaceack title=GitHub rel="noopener noreffer" target=_blank><i class="fab fa-github fa-fw"></i> </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索>
+<i class="fas fa-search fa-fw"></i>
+</a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空>
+<i class="fas fa-times-circle fa-fw"></i>
+</a>
+<span class="search-button search-loading" id=search-loading-desktop>
+<i class="fas fa-spinner fa-fw fa-spin"></i>
+</span>
+</span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw"></i>
+</a>
+</div>
+</div>
+</div>
+</header><header class=mobile id=header-mobile>
+<div class=header-container>
+<div class=header-wrapper>
+<div class=header-title>
+<a href=/ title="Spaceack's Blog"><span class=header-title-pre><i class="far fa-kiss-wink-heart fa-fw"></i></span>Spaceack's Blog</a>
+</div>
+<div class=menu-toggle id=menu-toggle-mobile>
+<span></span><span></span><span></span>
+</div>
+</div>
+<div class=menu id=menu-mobile><div class=search-wrapper>
+<div class="search mobile" id=search-mobile>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索>
+<i class="fas fa-search fa-fw"></i>
+</a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空>
+<i class="fas fa-times-circle fa-fw"></i>
+</a>
+<span class="search-button search-loading" id=search-loading-mobile>
+<i class="fas fa-spinner fa-fw fa-spin"></i>
+</span>
+</div>
+<a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>
+取消
+</a>
+</div><a class=menu-item href=/posts/ title>所有文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a class=menu-item href=/links/ title>友链</a><a class=menu-item href=/about/ title>关于</a><a class=menu-item href=/challenge/ title>战利品</a><a class=menu-item href=https://github.com/spaceack title=GitHub rel="noopener noreffer" target=_blank><i class="fab fa-github fa-fw"></i></a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw"></i>
+</a></div>
+</div>
+</header>
+<div class="search-dropdown desktop">
+<div id=search-dropdown-desktop></div>
+</div>
+<div class="search-dropdown mobile">
+<div id=search-dropdown-mobile></div>
+</div>
+<main class=main>
+<div class=container><div class=toc id=toc-auto>
+<h2 class=toc-title>目录</h2>
+<div class=toc-content id=toc-content-auto></div>
+</div><article class="page single"><h1 class="single-title animated flipInX">使用docker模拟双机环境测试mysql双机互为主备</h1><div class=post-meta>
+<div class=post-meta-line><span class=post-author><a href=/about title=Author rel=" author" class=author><i class="fas fa-user-circle fa-fw"></i>Spaceack</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/><i class="far fa-folder fa-fw"></i>数据库</a></span></div>
+<div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2021-02-22>2021-02-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 821 字&nbsp;
+<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
+</div><div class="details toc" id=toc-static kept>
+<div class="details-summary toc-title">
+<span>目录</span>
+<span><i class="details-icon fas fa-angle-right"></i></span>
+</div>
+<div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents>
+<ul>
+<li><a href=#mariadb双主模式测试>MariaDB双主模式测试</a>
+<ul>
+<li><a href=#1-环境准备>1. 环境准备</a></li>
+</ul>
+</li>
+<li><a href=#2-操作步骤>2. 操作步骤</a></li>
+</ul>
+</nav></div>
+</div><div class=content id=content><h2 id=mariadb双主模式测试>MariaDB双主模式测试</h2>
+<h3 id=1-环境准备>1. 环境准备</h3>
+<p>创建目录 <code>mkdir conf conf2 data data2 log log2 </code>
+创建 <strong>MariaDB</strong> 配置文件 <code>touch conf/my.cnf conf2/my.cnf </code>
+<strong>conf/my.cnf文件</strong></p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=c1># The MariaDB configuration file</span>
+<span class=c1>#</span>
+<span class=c1># The MariaDB/MySQL tools read configuration files in the following order:</span>
+<span class=c1># 0. &#34;/etc/mysql/my.cnf&#34; symlinks to this file, reason why all the rest is read.</span>
+<span class=c1># 1. &#34;/etc/mysql/mariadb.cnf&#34; (this file) to set global defaults,</span>
+<span class=c1># 2. &#34;/etc/mysql/conf.d/*.cnf&#34; to set global options.</span>
+<span class=c1># 3. &#34;/etc/mysql/mariadb.conf.d/*.cnf&#34; to set MariaDB-only options.</span>
+<span class=c1># 4. &#34;~/.my.cnf&#34; to set user-specific options.</span>
+<span class=c1>#</span>
+<span class=c1># If the same option is defined multiple times, the last one will apply.</span>
+<span class=c1>#</span>
+<span class=c1># One can use all long options that the program supports.</span>
+<span class=c1># Run program with --help to get a list of available options and with</span>
+<span class=c1># --print-defaults to see which it would actually understand and use.</span>
+<span class=c1>#</span>
+<span class=c1># If you are new to MariaDB, check out https://mariadb.com/kb/en/basic-mariadb-articles/</span>
+
+<span class=c1>#</span>
+<span class=c1># This group is read both by the client and the server</span>
+<span class=c1># use it for options that affect everything</span>
+<span class=c1>#</span>
+<span class=o>[</span>client-server<span class=o>]</span>
+<span class=c1># Port or socket location where to connect</span>
+<span class=c1># port = 3306</span>
+<span class=nv>socket</span> <span class=o>=</span> /run/mysqld/mysqld.sock
+
+<span class=c1># Import all .cnf files from configuration directory</span>
+!includedir /etc/mysql/conf.d/
+!includedir /etc/mysql/mariadb.conf.d/
+<span class=o>[</span>mysqld<span class=o>]</span>
+server-id<span class=o>=</span><span class=m>1</span>
+log-bin<span class=o>=</span>mysql-bin
+<span class=nv>binlog_format</span> <span class=o>=</span> mixed
+binlog-do-db<span class=o>=</span>event_analysis 
+binlog-ignore-db <span class=o>=</span>mysql
+binlog-ignore-db <span class=o>=</span>information_schema
+binlog-ignore-db <span class=o>=</span>performance_schema
+
+replicate-do-db<span class=o>=</span>event_analysis
+replicate-ignore-db<span class=o>=</span>mysql
+replicate-ignore-db<span class=o>=</span>information_schema
+replicate-ignore-db<span class=o>=</span>performance_schema
+read-only<span class=o>=</span><span class=m>0</span>
+
+<span class=nv>relay_log</span><span class=o>=</span>mysqld-relay-bin
+log-slave-updates<span class=o>=</span>ON
+auto-increment-increment <span class=o>=</span> <span class=m>2</span>
+auto-increment-offset <span class=o>=</span> <span class=m>1</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>conf/my.cnf文件</strong></p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=c1># The MariaDB configuration file</span>
+<span class=c1>#</span>
+<span class=c1># The MariaDB/MySQL tools read configuration files in the following order:</span>
+<span class=c1># 0. &#34;/etc/mysql/my.cnf&#34; symlinks to this file, reason why all the rest is read.</span>
+<span class=c1># 1. &#34;/etc/mysql/mariadb.cnf&#34; (this file) to set global defaults,</span>
+<span class=c1># 2. &#34;/etc/mysql/conf.d/*.cnf&#34; to set global options.</span>
+<span class=c1># 3. &#34;/etc/mysql/mariadb.conf.d/*.cnf&#34; to set MariaDB-only options.</span>
+<span class=c1># 4. &#34;~/.my.cnf&#34; to set user-specific options.</span>
+<span class=c1>#</span>
+<span class=c1># If the same option is defined multiple times, the last one will apply.</span>
+<span class=c1>#</span>
+<span class=c1># One can use all long options that the program supports.</span>
+<span class=c1># Run program with --help to get a list of available options and with</span>
+<span class=c1># --print-defaults to see which it would actually understand and use.</span>
+<span class=c1>#</span>
+<span class=c1># If you are new to MariaDB, check out https://mariadb.com/kb/en/basic-mariadb-articles/</span>
+
+<span class=c1>#</span>
+<span class=c1># This group is read both by the client and the server</span>
+<span class=c1># use it for options that affect everything</span>
+<span class=c1>#</span>
+<span class=o>[</span>client-server<span class=o>]</span>
+<span class=c1># Port or socket location where to connect</span>
+<span class=c1># port = 3306</span>
+<span class=nv>socket</span> <span class=o>=</span> /run/mysqld/mysqld.sock
+
+<span class=c1># Import all .cnf files from configuration directory</span>
+!includedir /etc/mysql/conf.d/
+!includedir /etc/mysql/mariadb.conf.d/
+<span class=o>[</span>mysqld<span class=o>]</span>
+server-id<span class=o>=</span><span class=m>2</span>
+log-bin<span class=o>=</span>mysql-bin
+<span class=nv>binlog_format</span> <span class=o>=</span> mixed
+binlog-do-db<span class=o>=</span>event_analysis 
+binlog-ignore-db <span class=o>=</span>mysql
+binlog-ignore-db <span class=o>=</span>information_schema
+binlog-ignore-db <span class=o>=</span>performance_schema
+
+replicate-do-db<span class=o>=</span>event_analysis
+replicate-ignore-db<span class=o>=</span>mysql
+replicate-ignore-db<span class=o>=</span>information_schema
+replicate-ignore-db<span class=o>=</span>performance_schema
+read-only<span class=o>=</span><span class=m>0</span>
+
+<span class=nv>relay_log</span><span class=o>=</span>mysqld-relay-bin
+log-slave-updates<span class=o>=</span>ON
+auto-increment-increment <span class=o>=</span> <span class=m>2</span>
+auto-increment-offset <span class=o>=</span> <span class=m>1</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>使用 <strong>docker</strong> 启动两个 <strong>MariaDB</strong> 容器 <strong>bak1</strong> 和 <strong>bak2</strong> 。使用 docker-compose up 启动容器。</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=nt>version</span><span class=p>:</span><span class=w> </span><span class=s1>&#39;2&#39;</span><span class=w>
+</span><span class=w></span><span class=nt>services</span><span class=p>:</span><span class=w>
+</span><span class=w>  </span><span class=s2>&#34;mariadb&#34;</span><span class=p>:</span><span class=w>
+</span><span class=w>    </span><span class=nt>image</span><span class=p>:</span><span class=w> </span><span class=l>mariadb:10.5.5</span><span class=w>
+</span><span class=w>    </span><span class=nt>container_name</span><span class=p>:</span><span class=w> </span><span class=s2>&#34;bak1&#34;</span><span class=w>
+</span><span class=w>    </span><span class=nt>restart</span><span class=p>:</span><span class=w> </span><span class=l>always</span><span class=w>
+</span><span class=w>    </span><span class=nt>environment</span><span class=p>:</span><span class=w>
+</span><span class=w>      </span><span class=nt>MYSQL_USER</span><span class=p>:</span><span class=w> </span><span class=s2>&#34;root&#34;</span><span class=w>
+</span><span class=w>      </span><span class=nt>MYSQL_PASSWORD</span><span class=p>:</span><span class=w> </span><span class=s2>&#34;123456&#34;</span><span class=w>
+</span><span class=w>      </span><span class=nt>MYSQL_ROOT_PASSWORD</span><span class=p>:</span><span class=w> </span><span class=s2>&#34;123456&#34;</span><span class=w>
+</span><span class=w>      </span><span class=nt>TZ</span><span class=p>:</span><span class=w> </span><span class=s2>&#34;Asia/Shanghai&#34;</span><span class=w>
+</span><span class=w>    </span><span class=nt>ports</span><span class=p>:</span><span class=w>
+</span><span class=w>      </span>- <span class=s2>&#34;3307:3306&#34;</span><span class=w>
+</span><span class=w>    </span><span class=nt>volumes</span><span class=p>:</span><span class=w>
+</span><span class=w>      </span>- <span class=l>./data:/var/lib/mysql</span><span class=w>
+</span><span class=w>      </span>- <span class=l>./log:/var/log/mysql</span><span class=w>
+</span><span class=w>      </span>- <span class=l>./conf/my.cnf:/etc/mysql/my.cnf</span><span class=w>
+</span><span class=w>    </span><span class=nt>networks</span><span class=p>:</span><span class=w>
+</span><span class=w>      </span><span class=nt>mysql_bak_net</span><span class=p>:</span><span class=w>
+</span><span class=w>  </span><span class=s2>&#34;mariadb2&#34;</span><span class=p>:</span><span class=w>
+</span><span class=w>    </span><span class=nt>image</span><span class=p>:</span><span class=w> </span><span class=l>mariadb:10.5.5</span><span class=w>
+</span><span class=w>    </span><span class=nt>container_name</span><span class=p>:</span><span class=w> </span><span class=s2>&#34;bak2&#34;</span><span class=w>
+</span><span class=w>    </span><span class=nt>restart</span><span class=p>:</span><span class=w> </span><span class=l>always</span><span class=w>
+</span><span class=w>    </span><span class=nt>environment</span><span class=p>:</span><span class=w>
+</span><span class=w>      </span><span class=nt>MYSQL_USER</span><span class=p>:</span><span class=w> </span><span class=s2>&#34;root&#34;</span><span class=w>
+</span><span class=w>      </span><span class=nt>MYSQL_PASSWORD</span><span class=p>:</span><span class=w> </span><span class=s2>&#34;123456&#34;</span><span class=w>
+</span><span class=w>      </span><span class=nt>MYSQL_ROOT_PASSWORD</span><span class=p>:</span><span class=w> </span><span class=s2>&#34;123456&#34;</span><span class=w>
+</span><span class=w>      </span><span class=nt>TZ</span><span class=p>:</span><span class=w> </span><span class=s2>&#34;Asia/Shanghai&#34;</span><span class=w>
+</span><span class=w>    </span><span class=nt>ports</span><span class=p>:</span><span class=w>
+</span><span class=w>      </span>- <span class=s2>&#34;3308:3306&#34;</span><span class=w>
+</span><span class=w>    </span><span class=nt>volumes</span><span class=p>:</span><span class=w>
+</span><span class=w>      </span>- <span class=l>./data2:/var/lib/mysql</span><span class=w>
+</span><span class=w>      </span>- <span class=l>./log2:/var/log/mysql</span><span class=w>
+</span><span class=w>      </span>- <span class=l>./conf2/my.cnf:/etc/mysql/my.cnf</span><span class=w>
+</span><span class=w>    </span><span class=nt>networks</span><span class=p>:</span><span class=w>
+</span><span class=w>      </span><span class=nt>mysql_bak_net</span><span class=p>:</span><span class=w>
+</span><span class=w></span><span class=nt>networks</span><span class=p>:</span><span class=w>
+</span><span class=w>  </span><span class=nt>mysql_bak_net</span><span class=p>:</span><span class=w>
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id=2-操作步骤>2. 操作步骤</h2>
+<table>
+<thead>
+<tr>
+<th>容器名</th>
+<th>bak1</th>
+<th>bak2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ip</td>
+<td>172.24.0.3</td>
+<td>172.24.0.2</td>
+</tr>
+<tr>
+<td>user</td>
+<td>root</td>
+<td>root</td>
+</tr>
+<tr>
+<td>password</td>
+<td>123456</td>
+<td>123456</td>
+</tr>
+<tr>
+<td>server-id</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>进入容器</td>
+<td><code>docker exec -it bak1 bash</code></td>
+<td><code>docker exec -it bak2 bash</code></td>
+</tr>
+<tr>
+<td>进入sql</td>
+<td><code>mysql -u root -p</code></td>
+<td><code>mysql -u root -p</code></td>
+</tr>
+<tr>
+<td>查看master状态</td>
+<td><code>show master status\G;</code> <br> File: mysql-bin.000003<br> Position: 328<br>Binlog_Do_DB: event_analysis<br>Binlog_Ignore_DB: mysql,information_schema,performance_schema<br><img class=lazyload src=/svg/loading.min.svg data-src=step1-1.png data-srcset="/20210222-%E4%BD%BF%E7%94%A8docker%E6%A8%A1%E6%8B%9F%E5%8F%8C%E6%9C%BA%E7%8E%AF%E5%A2%83%E6%B5%8B%E8%AF%95mysql%E5%8F%8C%E6%9C%BA%E4%BA%92%E4%B8%BA%E4%B8%BB%E5%A4%87/step1-1.png, step1-1.png 1.5x, /20210222-%E4%BD%BF%E7%94%A8docker%E6%A8%A1%E6%8B%9F%E5%8F%8C%E6%9C%BA%E7%8E%AF%E5%A2%83%E6%B5%8B%E8%AF%95mysql%E5%8F%8C%E6%9C%BA%E4%BA%92%E4%B8%BA%E4%B8%BB%E5%A4%87/step1-1.png 2x" data-sizes=auto alt=/20210222-%E4%BD%BF%E7%94%A8docker%E6%A8%A1%E6%8B%9F%E5%8F%8C%E6%9C%BA%E7%8E%AF%E5%A2%83%E6%B5%8B%E8%AF%95mysql%E5%8F%8C%E6%9C%BA%E4%BA%92%E4%B8%BA%E4%B8%BB%E5%A4%87/step1-1.png title="查看master状态 bak1"></td>
+<td><code>show master status\G;</code> <br> File: mysql-bin.000003<br>Position: 328<br> Binlog_Do_DB: event_analysis<br> Binlog_Ignore_DB: mysql,information_schema,performance_schema<br><img class=lazyload src=/svg/loading.min.svg data-src=step1-2.png data-srcset="/20210222-%E4%BD%BF%E7%94%A8docker%E6%A8%A1%E6%8B%9F%E5%8F%8C%E6%9C%BA%E7%8E%AF%E5%A2%83%E6%B5%8B%E8%AF%95mysql%E5%8F%8C%E6%9C%BA%E4%BA%92%E4%B8%BA%E4%B8%BB%E5%A4%87/step1-2.png, step1-2.png 1.5x, /20210222-%E4%BD%BF%E7%94%A8docker%E6%A8%A1%E6%8B%9F%E5%8F%8C%E6%9C%BA%E7%8E%AF%E5%A2%83%E6%B5%8B%E8%AF%95mysql%E5%8F%8C%E6%9C%BA%E4%BA%92%E4%B8%BA%E4%B8%BB%E5%A4%87/step1-2.png 2x" data-sizes=auto alt=/20210222-%E4%BD%BF%E7%94%A8docker%E6%A8%A1%E6%8B%9F%E5%8F%8C%E6%9C%BA%E7%8E%AF%E5%A2%83%E6%B5%8B%E8%AF%95mysql%E5%8F%8C%E6%9C%BA%E4%BA%92%E4%B8%BA%E4%B8%BB%E5%A4%87/step1-2.png title="查看master状态 bak2"></td>
+</tr>
+<tr>
+<td>主从复制</td>
+<td>CHANGE MASTER TO<br>MASTER_HOST=&lsquo;172.24.0.2&rsquo;, <br>MASTER_USER=&lsquo;root&rsquo;, <br>MASTER_PASSWORD=&lsquo;123456&rsquo;, <br>MASTER_LOG_FILE=&lsquo;mysql-bin.000003&rsquo;, <br>MASTER_LOG_POS=328;<img class=lazyload src=/svg/loading.min.svg data-src=step2-1.png data-srcset="/20210222-%E4%BD%BF%E7%94%A8docker%E6%A8%A1%E6%8B%9F%E5%8F%8C%E6%9C%BA%E7%8E%AF%E5%A2%83%E6%B5%8B%E8%AF%95mysql%E5%8F%8C%E6%9C%BA%E4%BA%92%E4%B8%BA%E4%B8%BB%E5%A4%87/step2-1.png, step2-1.png 1.5x, /20210222-%E4%BD%BF%E7%94%A8docker%E6%A8%A1%E6%8B%9F%E5%8F%8C%E6%9C%BA%E7%8E%AF%E5%A2%83%E6%B5%8B%E8%AF%95mysql%E5%8F%8C%E6%9C%BA%E4%BA%92%E4%B8%BA%E4%B8%BB%E5%A4%87/step2-1.png 2x" data-sizes=auto alt=/20210222-%E4%BD%BF%E7%94%A8docker%E6%A8%A1%E6%8B%9F%E5%8F%8C%E6%9C%BA%E7%8E%AF%E5%A2%83%E6%B5%8B%E8%AF%95mysql%E5%8F%8C%E6%9C%BA%E4%BA%92%E4%B8%BA%E4%B8%BB%E5%A4%87/step2-1.png title="主从复制	"></td>
+<td>CHANGE MASTER TO<br>MASTER_HOST=&lsquo;172.24.0.3&rsquo;, <br>MASTER_USER=&lsquo;root&rsquo;, <br>MASTER_PASSWORD=&lsquo;123456&rsquo;, <br>MASTER_LOG_FILE=&lsquo;mysql-bin.000003&rsquo;, <br>MASTER_LOG_POS=328;</td>
+</tr>
+<tr>
+<td>查看slave状态</td>
+<td><code>show slave status\G;</code><br><img class=lazyload src=/svg/loading.min.svg data-src=step3-1.png data-srcset="/20210222-%E4%BD%BF%E7%94%A8docker%E6%A8%A1%E6%8B%9F%E5%8F%8C%E6%9C%BA%E7%8E%AF%E5%A2%83%E6%B5%8B%E8%AF%95mysql%E5%8F%8C%E6%9C%BA%E4%BA%92%E4%B8%BA%E4%B8%BB%E5%A4%87/step3-1.png, step3-1.png 1.5x, /20210222-%E4%BD%BF%E7%94%A8docker%E6%A8%A1%E6%8B%9F%E5%8F%8C%E6%9C%BA%E7%8E%AF%E5%A2%83%E6%B5%8B%E8%AF%95mysql%E5%8F%8C%E6%9C%BA%E4%BA%92%E4%B8%BA%E4%B8%BB%E5%A4%87/step3-1.png 2x" data-sizes=auto alt=/20210222-%E4%BD%BF%E7%94%A8docker%E6%A8%A1%E6%8B%9F%E5%8F%8C%E6%9C%BA%E7%8E%AF%E5%A2%83%E6%B5%8B%E8%AF%95mysql%E5%8F%8C%E6%9C%BA%E4%BA%92%E4%B8%BA%E4%B8%BB%E5%A4%87/step3-1.png title="查看slave状态 bak1"></td>
+<td><code>show slave status\G;</code><br><img class=lazyload src=/svg/loading.min.svg data-src=step3-2.png data-srcset="/20210222-%E4%BD%BF%E7%94%A8docker%E6%A8%A1%E6%8B%9F%E5%8F%8C%E6%9C%BA%E7%8E%AF%E5%A2%83%E6%B5%8B%E8%AF%95mysql%E5%8F%8C%E6%9C%BA%E4%BA%92%E4%B8%BA%E4%B8%BB%E5%A4%87/step3-2.png, step3-2.png 1.5x, /20210222-%E4%BD%BF%E7%94%A8docker%E6%A8%A1%E6%8B%9F%E5%8F%8C%E6%9C%BA%E7%8E%AF%E5%A2%83%E6%B5%8B%E8%AF%95mysql%E5%8F%8C%E6%9C%BA%E4%BA%92%E4%B8%BA%E4%B8%BB%E5%A4%87/step3-2.png 2x" data-sizes=auto alt=/20210222-%E4%BD%BF%E7%94%A8docker%E6%A8%A1%E6%8B%9F%E5%8F%8C%E6%9C%BA%E7%8E%AF%E5%A2%83%E6%B5%8B%E8%AF%95mysql%E5%8F%8C%E6%9C%BA%E4%BA%92%E4%B8%BA%E4%B8%BB%E5%A4%87/step3-2.png title="查看slave状态 bak2"></td>
+</tr>
+<tr>
+<td>重启<strong>MariaDB</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>查看slave状态</td>
+<td><code>show slave status\G;</code><br><img class=lazyload src=/svg/loading.min.svg data-src=step4-1.png data-srcset="/20210222-%E4%BD%BF%E7%94%A8docker%E6%A8%A1%E6%8B%9F%E5%8F%8C%E6%9C%BA%E7%8E%AF%E5%A2%83%E6%B5%8B%E8%AF%95mysql%E5%8F%8C%E6%9C%BA%E4%BA%92%E4%B8%BA%E4%B8%BB%E5%A4%87/step4-1.png, step4-1.png 1.5x, /20210222-%E4%BD%BF%E7%94%A8docker%E6%A8%A1%E6%8B%9F%E5%8F%8C%E6%9C%BA%E7%8E%AF%E5%A2%83%E6%B5%8B%E8%AF%95mysql%E5%8F%8C%E6%9C%BA%E4%BA%92%E4%B8%BA%E4%B8%BB%E5%A4%87/step4-1.png 2x" data-sizes=auto alt=/20210222-%E4%BD%BF%E7%94%A8docker%E6%A8%A1%E6%8B%9F%E5%8F%8C%E6%9C%BA%E7%8E%AF%E5%A2%83%E6%B5%8B%E8%AF%95mysql%E5%8F%8C%E6%9C%BA%E4%BA%92%E4%B8%BA%E4%B8%BB%E5%A4%87/step4-1.png title="查看slave状态 bak1"></td>
+<td><code>show slave status\G;</code><br> <img class=lazyload src=/svg/loading.min.svg data-src=step4-2.png data-srcset="/20210222-%E4%BD%BF%E7%94%A8docker%E6%A8%A1%E6%8B%9F%E5%8F%8C%E6%9C%BA%E7%8E%AF%E5%A2%83%E6%B5%8B%E8%AF%95mysql%E5%8F%8C%E6%9C%BA%E4%BA%92%E4%B8%BA%E4%B8%BB%E5%A4%87/step4-2.png, step4-2.png 1.5x, /20210222-%E4%BD%BF%E7%94%A8docker%E6%A8%A1%E6%8B%9F%E5%8F%8C%E6%9C%BA%E7%8E%AF%E5%A2%83%E6%B5%8B%E8%AF%95mysql%E5%8F%8C%E6%9C%BA%E4%BA%92%E4%B8%BA%E4%B8%BB%E5%A4%87/step4-2.png 2x" data-sizes=auto alt=/20210222-%E4%BD%BF%E7%94%A8docker%E6%A8%A1%E6%8B%9F%E5%8F%8C%E6%9C%BA%E7%8E%AF%E5%A2%83%E6%B5%8B%E8%AF%95mysql%E5%8F%8C%E6%9C%BA%E4%BA%92%E4%B8%BA%E4%B8%BB%E5%A4%87/step4-2.png title="查看slave状态 bak2"></td>
+</tr>
+<tr>
+<td>验证</td>
+<td>在bak1中创建表，更新数据，bak2也会更新。</td>
+<td>在bak2中创建表，更新数据，bak1也会更新。</td>
+</tr>
+</tbody>
+</table>
+</div><div class=post-footer id=post-footer>
+<div class=post-info>
+<div class=post-info-line>
+<div class=post-info-mod>
+<span>更新于 2021-02-22</span>
+</div>
+<div class=post-info-license></div>
+</div>
+<div class=post-info-line>
+<div class=post-info-md><span>
+<a class=link-to-markdown href=/20210222-%E4%BD%BF%E7%94%A8docker%E6%A8%A1%E6%8B%9F%E5%8F%8C%E6%9C%BA%E7%8E%AF%E5%A2%83%E6%B5%8B%E8%AF%95mysql%E5%8F%8C%E6%9C%BA%E4%BA%92%E4%B8%BA%E4%B8%BB%E5%A4%87/index.md target=_blank>阅读原始文档</a>
+</span></div>
+<div class=post-info-share>
+<span><a href=javascript:void(0); title="分享到 Twitter" data-sharer=twitter data-url=https://spaceack.github.io/20210222-%E4%BD%BF%E7%94%A8docker%E6%A8%A1%E6%8B%9F%E5%8F%8C%E6%9C%BA%E7%8E%AF%E5%A2%83%E6%B5%8B%E8%AF%95mysql%E5%8F%8C%E6%9C%BA%E4%BA%92%E4%B8%BA%E4%B8%BB%E5%A4%87/ data-title=使用docker模拟双机环境测试mysql双机互为主备 data-hashtags=MariaDB,mysql,Docker,docker-compose><i class="fab fa-twitter fa-fw"></i></a><a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=https://spaceack.github.io/20210222-%E4%BD%BF%E7%94%A8docker%E6%A8%A1%E6%8B%9F%E5%8F%8C%E6%9C%BA%E7%8E%AF%E5%A2%83%E6%B5%8B%E8%AF%95mysql%E5%8F%8C%E6%9C%BA%E4%BA%92%E4%B8%BA%E4%B8%BB%E5%A4%87/ data-hashtag=MariaDB><i class="fab fa-facebook-square fa-fw"></i></a><a href=javascript:void(0); title="分享到 Hacker News" data-sharer=hackernews data-url=https://spaceack.github.io/20210222-%E4%BD%BF%E7%94%A8docker%E6%A8%A1%E6%8B%9F%E5%8F%8C%E6%9C%BA%E7%8E%AF%E5%A2%83%E6%B5%8B%E8%AF%95mysql%E5%8F%8C%E6%9C%BA%E4%BA%92%E4%B8%BA%E4%B8%BB%E5%A4%87/ data-title=使用docker模拟双机环境测试mysql双机互为主备><i class="fab fa-hacker-news fa-fw"></i></a><a href=javascript:void(0); title="分享到 Line" data-sharer=line data-url=https://spaceack.github.io/20210222-%E4%BD%BF%E7%94%A8docker%E6%A8%A1%E6%8B%9F%E5%8F%8C%E6%9C%BA%E7%8E%AF%E5%A2%83%E6%B5%8B%E8%AF%95mysql%E5%8F%8C%E6%9C%BA%E4%BA%92%E4%B8%BA%E4%B8%BB%E5%A4%87/ data-title=使用docker模拟双机环境测试mysql双机互为主备><i data-svg-src=https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg></i></a><a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=https://spaceack.github.io/20210222-%E4%BD%BF%E7%94%A8docker%E6%A8%A1%E6%8B%9F%E5%8F%8C%E6%9C%BA%E7%8E%AF%E5%A2%83%E6%B5%8B%E8%AF%95mysql%E5%8F%8C%E6%9C%BA%E4%BA%92%E4%B8%BA%E4%B8%BB%E5%A4%87/ data-title=使用docker模拟双机环境测试mysql双机互为主备><i class="fab fa-weibo fa-fw"></i></a></span>
+</div>
+</div>
+</div>
+<div class=post-info-more>
+<section class=post-tags><i class="fas fa-tags fa-fw"></i>&nbsp;<a href=/tags/mariadb/>MariaDB</a>,&nbsp;<a href=/tags/mysql/>mysql</a>,&nbsp;<a href=/tags/docker/>Docker</a>,&nbsp;<a href=/tags/docker-compose/>docker-compose</a></section>
+<section>
+<span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span>
+</section>
+</div>
+<div class=post-nav><a href=/20210130-leetcode-1046-%E6%9C%80%E5%90%8E%E4%B8%80%E5%9D%97%E7%9F%B3%E5%A4%B4%E7%9A%84%E9%87%8D%E9%87%8F/ class=prev rel=prev title="leetcode-1046-最后一块石头的重量 题解"><i class="fas fa-angle-left fa-fw"></i>leetcode-1046-最后一块石头的重量 题解</a>
+<a href=/20210527-%E6%90%AD%E5%BB%BAetcd%E5%88%86%E5%B8%83%E5%BC%8Fkv%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9B%86%E7%BE%A4%E5%B9%B6%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9C/ class=next rel=next title=搭建etcd分布式kv数据库集群并使用python操作>搭建etcd分布式kv数据库集群并使用python操作<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+</main><footer class=footer>
+<div class=footer-container><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.87.0">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/dillonzq/LoveIt target=_blank rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+</div><div class=footer-line><i class="far fa-copyright fa-fw"></i><span itemprop=copyrightYear>2014 - 2021</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=/about target=_blank>Spaceack</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div>
+</div>
+</footer></div>
+<div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部>
+<i class="fas fa-arrow-up fa-fw"></i>
+</a><a href=# id=view-comments class=fixed-button title=查看评论>
+<i class="fas fa-comment fa-fw"></i>
+</a>
+</div><script type=text/javascript src=https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:50},comment:{},search:{algoliaAppID:"PASDMWALPK",algoliaIndex:"index.zh-cn",algoliaSearchKey:"b42948e51daaa93df92381c8e2ac0f93",highlightTag:"em",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50,type:"algolia"}}</script><script type=text/javascript src=/js/theme.min.js></script></body>
+</html>
