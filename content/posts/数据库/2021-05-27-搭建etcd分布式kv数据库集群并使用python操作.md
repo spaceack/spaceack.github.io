@@ -1,8 +1,8 @@
 ---
 title: 搭建etcd分布式kv数据库集群并使用python操作
 author: Spaceack
-date: 2020-08-01 21:00:00
-update:  2020-08-01 21:00:00
+date: 2021-05-27 00:22:09
+update:  2021-05-27 00:22:09
 categories: ["数据库", "分布式"]
 tags: 
   - etcd
