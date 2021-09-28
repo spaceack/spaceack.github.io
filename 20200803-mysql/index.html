@@ -15,7 +15,7 @@
 <meta name=twitter:title content="Mysql">
 <meta name=twitter:description content="安装 1 2 3 4 5 6 7 8 9 10 11 12 13 14 # 启动mysql sudo systemctl start mysql # 查看mysql 状态 sudo systemctl status mysql # 查看mysql 配置 vim /etc/mysql/mariadb.conf.d/50-server.cnf # 查看系统中的mysql进程 ps -aux">
 <meta name=application-name content="Spaceack's Blog">
-<meta name=apple-mobile-web-app-title content="Spaceack's Blog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://spaceack.github.io/20200803-mysql/><link rel=prev href=https://spaceack.github.io/20200801-redis/><link rel=next href=https://spaceack.github.io/20200810-python%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Mysql","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/spaceack.github.io\/20200803-mysql\/"},"image":["https:\/\/spaceack.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"redis","wordcount":4829,"url":"https:\/\/spaceack.github.io\/20200803-mysql\/","datePublished":"2020-08-01T21:00:00+00:00","dateModified":"2020-08-01T21:00:00+00:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"Spaceack","logo":"https:\/\/spaceack.github.io\/images\/avatar.jpeg"},"author":{"@type":"Person","name":"Spaceack"},"description":""}</script></head>
+<meta name=apple-mobile-web-app-title content="Spaceack's Blog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://spaceack.github.io/20200803-mysql/><link rel=prev href=https://spaceack.github.io/20200801-redis/><link rel=next href=https://spaceack.github.io/20200810-python%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Mysql","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/spaceack.github.io\/20200803-mysql\/"},"image":["https:\/\/spaceack.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"mysql","wordcount":4905,"url":"https:\/\/spaceack.github.io\/20200803-mysql\/","datePublished":"2020-08-01T21:00:00+00:00","dateModified":"2020-08-01T21:00:00+00:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"Spaceack","logo":"https:\/\/spaceack.github.io\/images\/avatar.jpeg"},"author":{"@type":"Person","name":"Spaceack"},"description":""}</script></head>
 <body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':'auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark')&&document.body.setAttribute('theme','dark')</script>
 <div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
 <div class=header-wrapper>
@@ -83,7 +83,7 @@
 <div class=toc-content id=toc-content-auto></div>
 </div><article class="page single"><h1 class="single-title animated flipInX">Mysql</h1><div class=post-meta>
 <div class=post-meta-line><span class=post-author><a href=/about title=Author rel=" author" class=author><i class="fas fa-user-circle fa-fw"></i>Spaceack</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/><i class="far fa-folder fa-fw"></i>数据库</a></span></div>
-<div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2020-08-01>2020-08-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4829 字&nbsp;
+<div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2020-08-01>2020-08-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4905 字&nbsp;
 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 10 分钟&nbsp;</div>
 </div><div class="details toc" id=toc-static kept>
 <div class="details-summary toc-title">
@@ -109,6 +109,14 @@
 </ul>
 </li>
 <li><a href=#工具>工具：</a></li>
+<li><a href=#示例>示例</a>
+<ul>
+<li><a href=#备份数据库>备份数据库</a></li>
+<li><a href=#恢复备份>恢复备份</a></li>
+<li><a href=#备份包含-blob-类型字段的表>备份包含 blob 类型字段的表</a></li>
+<li><a href=#备份恢复>备份恢复</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href=#概念术语表>概念术语表</a></li>
@@ -1438,7 +1446,45 @@ SHOW STATUS;</p>
 名,此系统文件必须不存在,否则会出错。数据可以用 RESTORE
 TABLE 来复原。</li>
 </ol>
-<h2 id=概念术语表>概念术语表</h2>
+<h3 id=示例>示例</h3>
+<h4 id=备份数据库>备份数据库</h4>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>/usr/bin/mysqldump --routines -h127.0.0.1 -uroot -ppassword --add-drop-table --disable-keys --extended-insert --single-transaction database_name &gt; database_name_date.sql
+</code></pre></td></tr></table>
+</div>
+</div><h4 id=恢复备份>恢复备份</h4>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>mysql -uroot -ppassword -Ddatabase_name &lt; database_name_date.sql
+</code></pre></td></tr></table>
+</div>
+</div><h4 id=备份包含-blob-类型字段的表>备份包含 blob 类型字段的表</h4>
+<p>需要添加 &ndash;hex-blob 参数</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>mysqldump --no-defaults --hex-blob -h127.0.0.1 -R -uroot -p --databases test_db --table test_table &gt; test_table_backup.sql
+</code></pre></td></tr></table>
+</div>
+</div><h4 id=备份恢复>备份恢复</h4>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>sudo mysql -u root -p --database<span class=o>=</span>test_db &lt; test_table_backup.sql
+</code></pre></td></tr></table>
+</div>
+</div><h2 id=概念术语表>概念术语表</h2>
 <div class=highlight><div class=chroma>
 <table class=lntable><tr><td class=lntd>
 <pre tabindex=0 class=chroma><code><span class=lnt>1
@@ -1485,12 +1531,12 @@ primary key 主键：一列(或一组列),其值能够唯一区分表中每个�
 <a class=link-to-markdown href=/20200803-mysql/index.md target=_blank>阅读原始文档</a>
 </span></div>
 <div class=post-info-share>
-<span><a href=javascript:void(0); title="分享到 Twitter" data-sharer=twitter data-url=https://spaceack.github.io/20200803-mysql/ data-title=Mysql data-hashtags=redis><i class="fab fa-twitter fa-fw"></i></a><a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=https://spaceack.github.io/20200803-mysql/ data-hashtag=redis><i class="fab fa-facebook-square fa-fw"></i></a><a href=javascript:void(0); title="分享到 Hacker News" data-sharer=hackernews data-url=https://spaceack.github.io/20200803-mysql/ data-title=Mysql><i class="fab fa-hacker-news fa-fw"></i></a><a href=javascript:void(0); title="分享到 Line" data-sharer=line data-url=https://spaceack.github.io/20200803-mysql/ data-title=Mysql><i data-svg-src=https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg></i></a><a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=https://spaceack.github.io/20200803-mysql/ data-title=Mysql><i class="fab fa-weibo fa-fw"></i></a></span>
+<span><a href=javascript:void(0); title="分享到 Twitter" data-sharer=twitter data-url=https://spaceack.github.io/20200803-mysql/ data-title=Mysql data-hashtags=mysql><i class="fab fa-twitter fa-fw"></i></a><a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=https://spaceack.github.io/20200803-mysql/ data-hashtag=mysql><i class="fab fa-facebook-square fa-fw"></i></a><a href=javascript:void(0); title="分享到 Hacker News" data-sharer=hackernews data-url=https://spaceack.github.io/20200803-mysql/ data-title=Mysql><i class="fab fa-hacker-news fa-fw"></i></a><a href=javascript:void(0); title="分享到 Line" data-sharer=line data-url=https://spaceack.github.io/20200803-mysql/ data-title=Mysql><i data-svg-src=https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg></i></a><a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=https://spaceack.github.io/20200803-mysql/ data-title=Mysql><i class="fab fa-weibo fa-fw"></i></a></span>
 </div>
 </div>
 </div>
 <div class=post-info-more>
-<section class=post-tags><i class="fas fa-tags fa-fw"></i>&nbsp;<a href=/tags/redis/>redis</a></section>
+<section class=post-tags><i class="fas fa-tags fa-fw"></i>&nbsp;<a href=/tags/mysql/>mysql</a></section>
 <section>
 <span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span>
 </section>

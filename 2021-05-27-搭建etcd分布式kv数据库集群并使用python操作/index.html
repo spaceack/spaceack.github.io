@@ -1,0 +1,408 @@
+<!doctype html><html lang=zh-cn>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=robots content="noodp">
+<meta http-equiv=x-ua-compatible content="IE=edge, chrome=1">
+<title>搭建etcd分布式kv数据库集群并使用python操作 - Spaceack's Blog</title><meta name=Description content="Spaceck的个人Blog 编程之舞"><meta property="og:title" content="搭建etcd分布式kv数据库集群并使用python操作">
+<meta property="og:description" content="介绍 etcd 是一个分布式、可靠的键值存储数据库，用于收集分布式系统中最关键的数据。是k8s的组件之一，使用Raft一致性算法，为分布式系统而生。常">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://spaceack.github.io/2021-05-27-%E6%90%AD%E5%BB%BAetcd%E5%88%86%E5%B8%83%E5%BC%8Fkv%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9B%86%E7%BE%A4%E5%B9%B6%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9C/"><meta property="og:image" content="https://spaceack.github.io/logo.png"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2020-08-01T21:00:00+00:00">
+<meta property="article:modified_time" content="2020-08-01T21:00:00+00:00">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://spaceack.github.io/logo.png">
+<meta name=twitter:title content="搭建etcd分布式kv数据库集群并使用python操作">
+<meta name=twitter:description content="介绍 etcd 是一个分布式、可靠的键值存储数据库，用于收集分布式系统中最关键的数据。是k8s的组件之一，使用Raft一致性算法，为分布式系统而生。常">
+<meta name=application-name content="Spaceack's Blog">
+<meta name=apple-mobile-web-app-title content="Spaceack's Blog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://spaceack.github.io/2021-05-27-%E6%90%AD%E5%BB%BAetcd%E5%88%86%E5%B8%83%E5%BC%8Fkv%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9B%86%E7%BE%A4%E5%B9%B6%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9C/><link rel=prev href=https://spaceack.github.io/20200728-p1001-a-b-problem/><link rel=next href=https://spaceack.github.io/20200801-redis/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"搭建etcd分布式kv数据库集群并使用python操作","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/spaceack.github.io\/2021-05-27-%E6%90%AD%E5%BB%BAetcd%E5%88%86%E5%B8%83%E5%BC%8Fkv%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9B%86%E7%BE%A4%E5%B9%B6%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9C\/"},"image":["https:\/\/spaceack.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"etcd, Docker, docker-compose, python","wordcount":946,"url":"https:\/\/spaceack.github.io\/2021-05-27-%E6%90%AD%E5%BB%BAetcd%E5%88%86%E5%B8%83%E5%BC%8Fkv%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9B%86%E7%BE%A4%E5%B9%B6%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9C\/","datePublished":"2020-08-01T21:00:00+00:00","dateModified":"2020-08-01T21:00:00+00:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"Spaceack","logo":"https:\/\/spaceack.github.io\/images\/avatar.jpeg"},"author":{"@type":"Person","name":"Spaceack"},"description":""}</script></head>
+<body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':'auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark')&&document.body.setAttribute('theme','dark')</script>
+<div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
+<div class=header-wrapper>
+<div class=header-title>
+<a href=/ title="Spaceack's Blog"><span class=header-title-pre><i class="far fa-kiss-wink-heart fa-fw"></i></span>Spaceack's Blog</a>
+</div>
+<div class=menu>
+<div class=menu-inner><a class=menu-item href=/posts/> 所有文章 </a><a class=menu-item href=/tags/> 标签 </a><a class=menu-item href=/categories/> 分类 </a><a class=menu-item href=/links/> 友链 </a><a class=menu-item href=/about/> 关于 </a><a class=menu-item href=/challenge/> 战利品 </a><a class=menu-item href=https://github.com/spaceack title=GitHub rel="noopener noreffer" target=_blank><i class="fab fa-github fa-fw"></i> </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索>
+<i class="fas fa-search fa-fw"></i>
+</a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空>
+<i class="fas fa-times-circle fa-fw"></i>
+</a>
+<span class="search-button search-loading" id=search-loading-desktop>
+<i class="fas fa-spinner fa-fw fa-spin"></i>
+</span>
+</span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw"></i>
+</a>
+</div>
+</div>
+</div>
+</header><header class=mobile id=header-mobile>
+<div class=header-container>
+<div class=header-wrapper>
+<div class=header-title>
+<a href=/ title="Spaceack's Blog"><span class=header-title-pre><i class="far fa-kiss-wink-heart fa-fw"></i></span>Spaceack's Blog</a>
+</div>
+<div class=menu-toggle id=menu-toggle-mobile>
+<span></span><span></span><span></span>
+</div>
+</div>
+<div class=menu id=menu-mobile><div class=search-wrapper>
+<div class="search mobile" id=search-mobile>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索>
+<i class="fas fa-search fa-fw"></i>
+</a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空>
+<i class="fas fa-times-circle fa-fw"></i>
+</a>
+<span class="search-button search-loading" id=search-loading-mobile>
+<i class="fas fa-spinner fa-fw fa-spin"></i>
+</span>
+</div>
+<a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>
+取消
+</a>
+</div><a class=menu-item href=/posts/ title>所有文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a class=menu-item href=/links/ title>友链</a><a class=menu-item href=/about/ title>关于</a><a class=menu-item href=/challenge/ title>战利品</a><a class=menu-item href=https://github.com/spaceack title=GitHub rel="noopener noreffer" target=_blank><i class="fab fa-github fa-fw"></i></a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw"></i>
+</a></div>
+</div>
+</header>
+<div class="search-dropdown desktop">
+<div id=search-dropdown-desktop></div>
+</div>
+<div class="search-dropdown mobile">
+<div id=search-dropdown-mobile></div>
+</div>
+<main class=main>
+<div class=container><div class=toc id=toc-auto>
+<h2 class=toc-title>目录</h2>
+<div class=toc-content id=toc-content-auto></div>
+</div><article class="page single"><h1 class="single-title animated flipInX">搭建etcd分布式kv数据库集群并使用python操作</h1><div class=post-meta>
+<div class=post-meta-line><span class=post-author><a href=/about title=Author rel=" author" class=author><i class="fas fa-user-circle fa-fw"></i>Spaceack</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/><i class="far fa-folder fa-fw"></i>数据库</a>&nbsp;<a href=/categories/%E5%88%86%E5%B8%83%E5%BC%8F/><i class="far fa-folder fa-fw"></i>分布式</a></span></div>
+<div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2020-08-01>2020-08-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 946 字&nbsp;
+<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
+</div><div class="details toc" id=toc-static kept>
+<div class="details-summary toc-title">
+<span>目录</span>
+<span><i class="details-icon fas fa-angle-right"></i></span>
+</div>
+<div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents>
+<ul>
+<li><a href=#介绍>介绍</a></li>
+<li><a href=#下载与安装>下载与安装</a>
+<ul>
+<li><a href=#简单测试>简单测试</a></li>
+<li><a href=#使用docker-compose组建4节点集群>使用docker-compose组建4节点集群。</a></li>
+<li><a href=#使用虚拟机组建4节点集群>使用虚拟机组建4节点集群。</a></li>
+</ul>
+</li>
+<li><a href=#python-etcd3-库测试>python <code>etcd3</code> 库测试</a></li>
+</ul>
+</nav></div>
+</div><div class=content id=content><h2 id=介绍>介绍</h2>
+<p><code>etcd</code> 是一个分布式、可靠的键值存储数据库，用于收集分布式系统中最关键的数据。是k8s的组件之一，使用Raft一致性算法，为分布式系统而生。常用做服务发现和配置共享等应用场景。</p>
+<p>可以使用protobuf定义的接口来进行开发，这里使用更易测试验证的第三方python库<code>etcd3</code>举例。</p>
+<p>这里需要注意的一点是：“ <code>raft</code>算法写入时需要半数以上的节点写入成功才返回，宕机节点不超过半数则数据不丢失。” 即： 3个节点的集群，1个节点宕机无妨。但两个节点宕机后，即使另一个节点存活也无法读取数据！。四个节点集群也是两个节点宕机后，无法工作。5个节点则允许两个节点宕机。满足公式<code>quorum=(n+1)/2</code>。所以建议奇数的集群节点。因为奇数和偶数的可靠性一样，单可以节省1个节点的资源。</p>
+<h2 id=下载与安装>下载与安装</h2>
+<p><a href=https://github.com/etcd-io/etcd/releases/ target=_blank rel="noopener noreffer">etcd 下载</a>
+<a href=https://etcd.io/docs/v3.4/dl-build// target=_blank rel="noopener noreffer">etcd v3.4 文档</a></p>
+<h3 id=简单测试>简单测试</h3>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=c1># 运行</span>
+./etcd
+<span class=c1># etcd put 命令用于设置给定 key 的值。如果 key 已经存储其他值， put 就覆写旧值.</span>
+./etcdctl put greeting <span class=s2>&#34;Hello, etcd&#34;</span>
+<span class=c1># 通过key获取value</span>
+./etcdctl get greeting
+<span class=c1># 删除 kv</span>
+./etcdctl del greeting
+</code></pre></td></tr></table>
+</div>
+</div><h3 id=使用docker-compose组建4节点集群>使用docker-compose组建4节点集群。</h3>
+<p><code>docker-compose.yaml</code></p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=nt>version</span><span class=p>:</span><span class=w> </span><span class=s1>&#39;2&#39;</span><span class=w>
+</span><span class=w></span><span class=nt>networks</span><span class=p>:</span><span class=w>
+</span><span class=w>  </span><span class=nt>byfn</span><span class=p>:</span><span class=w>
+</span><span class=w>
+</span><span class=w></span><span class=nt>services</span><span class=p>:</span><span class=w>
+</span><span class=w>  </span><span class=nt>etcd1</span><span class=p>:</span><span class=w>
+</span><span class=w>    </span><span class=nt>image</span><span class=p>:</span><span class=w> </span><span class=l>quay.io/coreos/etcd</span><span class=w>
+</span><span class=w>    </span><span class=nt>container_name</span><span class=p>:</span><span class=w> </span><span class=l>etcd1</span><span class=w>
+</span><span class=w>    </span><span class=nt>command</span><span class=p>:</span><span class=w> </span><span class=l>etcd -name etcd1 -advertise-client-urls http://0.0.0.0:2379 -listen-client-urls http://0.0.0.0:2379 -listen-peer-urls http://0.0.0.0:2380 -initial-cluster-token etcd-cluster -initial-cluster &#34;etcd1=http://etcd1:2380,etcd2=http://etcd2:2380,etcd3=http://etcd3:2380,etcd4=http://etcd4:2380&#34; -initial-cluster-state new</span><span class=w>
+</span><span class=w>    </span><span class=nt>ports</span><span class=p>:</span><span class=w>
+</span><span class=w>      </span>- <span class=m>2385</span><span class=p>:</span><span class=m>2379</span><span class=w>
+</span><span class=w>      </span>- <span class=m>2380</span><span class=w>
+</span><span class=w>    </span><span class=nt>networks</span><span class=p>:</span><span class=w>
+</span><span class=w>      </span>- <span class=l>byfn</span><span class=w>
+</span><span class=w> 
+</span><span class=w>  </span><span class=nt>etcd2</span><span class=p>:</span><span class=w>
+</span><span class=w>    </span><span class=nt>image</span><span class=p>:</span><span class=w> </span><span class=l>quay.io/coreos/etcd</span><span class=w>
+</span><span class=w>    </span><span class=nt>container_name</span><span class=p>:</span><span class=w> </span><span class=l>etcd2</span><span class=w>
+</span><span class=w>    </span><span class=nt>command</span><span class=p>:</span><span class=w> </span><span class=l>etcd -name etcd2 -advertise-client-urls http://0.0.0.0:2379 -listen-client-urls http://0.0.0.0:2379 -listen-peer-urls http://0.0.0.0:2380 -initial-cluster-token etcd-cluster -initial-cluster &#34;etcd1=http://etcd1:2380,etcd2=http://etcd2:2380,etcd3=http://etcd3:2380,etcd4=http://etcd4:2380&#34; -initial-cluster-state new</span><span class=w>
+</span><span class=w>    </span><span class=nt>ports</span><span class=p>:</span><span class=w>
+</span><span class=w>      </span>- <span class=m>2386</span><span class=p>:</span><span class=m>2379</span><span class=w>
+</span><span class=w>      </span>- <span class=m>2380</span><span class=w>
+</span><span class=w>    </span><span class=nt>networks</span><span class=p>:</span><span class=w>
+</span><span class=w>      </span>- <span class=l>byfn</span><span class=w>
+</span><span class=w>  
+</span><span class=w>  </span><span class=nt>etcd3</span><span class=p>:</span><span class=w>
+</span><span class=w>    </span><span class=nt>image</span><span class=p>:</span><span class=w> </span><span class=l>quay.io/coreos/etcd</span><span class=w>
+</span><span class=w>    </span><span class=nt>container_name</span><span class=p>:</span><span class=w> </span><span class=l>etcd3</span><span class=w>
+</span><span class=w>    </span><span class=nt>command</span><span class=p>:</span><span class=w> </span><span class=l>etcd -name etcd3 -advertise-client-urls http://0.0.0.0:2379 -listen-client-urls http://0.0.0.0:2379 -listen-peer-urls http://0.0.0.0:2380 -initial-cluster-token etcd-cluster -initial-cluster &#34;etcd1=http://etcd1:2380,etcd2=http://etcd2:2380,etcd3=http://etcd3:2380,etcd4=http://etcd4:2380&#34; -initial-cluster-state new</span><span class=w>
+</span><span class=w>    </span><span class=nt>ports</span><span class=p>:</span><span class=w>
+</span><span class=w>      </span>- <span class=m>2387</span><span class=p>:</span><span class=m>2379</span><span class=w>
+</span><span class=w>      </span>- <span class=m>2380</span><span class=w>
+</span><span class=w>    </span><span class=nt>networks</span><span class=p>:</span><span class=w>
+</span><span class=w>      </span>- <span class=l>byfn</span><span class=w>
+</span><span class=w>      
+</span><span class=w>  </span><span class=nt>etcd4</span><span class=p>:</span><span class=w>
+</span><span class=w>    </span><span class=nt>image</span><span class=p>:</span><span class=w> </span><span class=l>quay.io/coreos/etcd</span><span class=w>
+</span><span class=w>    </span><span class=nt>container_name</span><span class=p>:</span><span class=w> </span><span class=l>etcd4</span><span class=w>
+</span><span class=w>    </span><span class=nt>command</span><span class=p>:</span><span class=w> </span><span class=l>etcd -name etcd4 -advertise-client-urls http://0.0.0.0:2379 -listen-client-urls http://0.0.0.0:2379 -listen-peer-urls http://0.0.0.0:2380 -initial-cluster-token etcd-cluster -initial-cluster &#34;etcd1=http://etcd1:2380,etcd2=http://etcd2:2380,etcd3=http://etcd3:2380,etcd4=http://etcd4:2380&#34; -initial-cluster-state new</span><span class=w>
+</span><span class=w>    </span><span class=nt>ports</span><span class=p>:</span><span class=w>
+</span><span class=w>      </span>- <span class=m>2388</span><span class=p>:</span><span class=m>2379</span><span class=w>
+</span><span class=w>      </span>- <span class=m>2380</span><span class=w>
+</span><span class=w>    </span><span class=nt>networks</span><span class=p>:</span><span class=w>
+</span><span class=w>      </span>- <span class=l>byfn</span><span class=w>
+</span></code></pre></td></tr></table>
+</div>
+</div><p>运行 <code>docker-compose up</code> 即可</p>
+<h3 id=使用虚拟机组建4节点集群>使用虚拟机组建4节点集群。</h3>
+<p>4个虚拟机分别运行以下命令：</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=c1># 虚拟机1 192.168.0.156</span>
+./etcd --name infra0 --initial-advertise-peer-urls http://192.168.0.156:2380 <span class=se>\
+</span><span class=se></span>  --listen-peer-urls http://192.168.0.156:2380 <span class=se>\
+</span><span class=se></span>  --listen-client-urls http://192.168.0.156:2379,http://127.0.0.1:2379 <span class=se>\
+</span><span class=se></span>  --advertise-client-urls http://192.168.0.156:2379 <span class=se>\
+</span><span class=se></span>  --initial-cluster-token etcd-cluster-1 <span class=se>\
+</span><span class=se></span>  --initial-cluster <span class=nv>infra0</span><span class=o>=</span>http://192.168.0.156:2380,infra1<span class=o>=</span>http://192.168.0.157:2380,infra2<span class=o>=</span>http://192.168.0.158:2380,infra3<span class=o>=</span>http://192.168.0.159:2380 <span class=se>\
+</span><span class=se></span>  --initial-cluster-state new
+<span class=c1># 虚拟机2 192.168.0.157</span>
+  ./etcd --name infra1 --initial-advertise-peer-urls http://192.168.0.157:2380 <span class=se>\
+</span><span class=se></span>  --listen-peer-urls http://192.168.0.157:2380 <span class=se>\
+</span><span class=se></span>  --listen-client-urls http://192.168.0.157:2379,http://127.0.0.1:2379 <span class=se>\
+</span><span class=se></span>  --advertise-client-urls http://192.168.0.157:2379 <span class=se>\
+</span><span class=se></span>  --initial-cluster-token etcd-cluster-1 <span class=se>\
+</span><span class=se></span>  --initial-cluster <span class=nv>infra0</span><span class=o>=</span>http://192.168.0.156:2380,infra1<span class=o>=</span>http://192.168.0.157:2380,infra2<span class=o>=</span>http://192.168.0.158:2380,infra3<span class=o>=</span>http://192.168.0.159:2380 <span class=se>\
+</span><span class=se></span>  --initial-cluster-state new
+ <span class=c1># 虚拟机3 192.168.0.158</span>
+  etcd --name infra2 --initial-advertise-peer-urls http://192.168.0.158:2380 <span class=se>\
+</span><span class=se></span>  --listen-peer-urls http://192.168.0.158:2380 <span class=se>\
+</span><span class=se></span>  --listen-client-urls http://192.168.0.158:2379,http://127.0.0.1:2379 <span class=se>\
+</span><span class=se></span>  --advertise-client-urls http://192.168.0.158:2379 <span class=se>\
+</span><span class=se></span>  --initial-cluster-token etcd-cluster-1 <span class=se>\
+</span><span class=se></span>  --initial-cluster <span class=nv>infra0</span><span class=o>=</span>http://192.168.0.156:2380,infra1<span class=o>=</span>http://192.168.0.157:2380,infra2<span class=o>=</span>http://192.168.0.158:2380,infra3<span class=o>=</span>http://192.168.0.159:2380 <span class=se>\
+</span><span class=se></span>  --initial-cluster-state new
+ <span class=c1># 虚拟机4 192.168.0.159</span>
+   etcd --name infra3 --initial-advertise-peer-urls http://192.168.0.159:2380 <span class=se>\
+</span><span class=se></span>  --listen-peer-urls http://192.168.0.159:2380 <span class=se>\
+</span><span class=se></span>  --listen-client-urls http://192.168.0.159:2379,http://127.0.0.1:2379 <span class=se>\
+</span><span class=se></span>  --advertise-client-urls http://192.168.0.159:2379 <span class=se>\
+</span><span class=se></span>  --initial-cluster-token etcd-cluster-1 <span class=se>\
+</span><span class=se></span>  --initial-cluster <span class=nv>infra0</span><span class=o>=</span>http://192.168.0.156:2380,infra1<span class=o>=</span>http://192.168.0.157:2380,infra2<span class=o>=</span>http://192.168.0.158:2380,infra3<span class=o>=</span>http://192.168.0.159:2380 <span class=se>\
+</span><span class=se></span>  --initial-cluster-state new
+</code></pre></td></tr></table>
+</div>
+</div><h2 id=python-etcd3-库测试>python <code>etcd3</code> 库测试</h2>
+<p>安装 <code>pip3 install etcd3</code></p>
+<p><a href=https://python-etcd3.readthedocs.io/en/latest/ target=_blank rel="noopener noreffer">etcd3文档</a></p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=kn>import</span> <span class=nn>etcd3</span>
+<span class=c1># 建立连接</span>
+<span class=n>etcd</span> <span class=o>=</span> <span class=n>etcd3</span><span class=o>.</span><span class=n>client</span><span class=p>(</span><span class=n>host</span><span class=o>=</span><span class=s1>&#39;127.0.0.1&#39;</span><span class=p>,</span> <span class=n>port</span><span class=o>=</span><span class=mi>2379</span><span class=p>)</span>
+<span class=c1># 添加 kv</span>
+<span class=n>result</span> <span class=o>=</span> <span class=n>etcd</span><span class=o>.</span><span class=n>put</span><span class=p>(</span><span class=s1>&#39;greeting&#39;</span><span class=p>,</span> <span class=s1>&#39;hello, world!&#39;</span><span class=p>)</span>
+<span class=s2>&#34;&#34;&#34;
+</span><span class=s2>header {
+</span><span class=s2>  cluster_id: 14841639068965178418
+</span><span class=s2>  member_id: 10276657743932975437
+</span><span class=s2>  revision: 16
+</span><span class=s2>  raft_term: 5
+</span><span class=s2>}
+</span><span class=s2>&#34;&#34;&#34;</span>
+<span class=c1># 根据 key 获得 value</span>
+<span class=n>result</span> <span class=o>=</span> <span class=n>etcd</span><span class=o>.</span><span class=n>get</span><span class=p>(</span><span class=s1>&#39;greeting&#39;</span><span class=p>)</span>    <span class=c1># 不存在 (None, None); 存在(b&#39;hello, world!&#39;, &lt;etcd3.client.KVMetadata object at 0x7ffbf072de80&gt;)</span>
+<span class=n>rv</span> <span class=o>=</span> <span class=n>result</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span><span class=o>.</span><span class=n>decode</span><span class=p>()</span> <span class=k>if</span> <span class=n>result</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=k>else</span> <span class=n>result</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=c1># 取解析后的值</span>
+
+<span class=c1># 删除某个 key</span>
+<span class=n>result</span> <span class=o>=</span> <span class=n>etcd</span><span class=o>.</span><span class=n>delete</span><span class=p>(</span><span class=s1>&#39;greeting&#39;</span><span class=p>)</span> <span class=c1># 成功删除 True， 不存在，删除失败 False</span>
+
+<span class=c1># 返回满足前缀 key 的 value</span>
+<span class=n>objs</span> <span class=o>=</span> <span class=n>etcd</span><span class=o>.</span><span class=n>get_prefix</span><span class=p>(</span><span class=s2>&#34;server1&#34;</span><span class=p>)</span>
+<span class=n>result</span> <span class=o>=</span> <span class=p>[</span><span class=n>obj</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span><span class=o>.</span><span class=n>decode</span><span class=p>()</span> <span class=k>if</span> <span class=n>obj</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=k>else</span> <span class=n>obj</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=k>for</span> <span class=n>obj</span> <span class=ow>in</span> <span class=n>objs</span><span class=p>]</span>
+
+<span class=c1># 获取所有的 key的 value</span>
+<span class=n>objs</span> <span class=o>=</span> <span class=n>etcd</span><span class=o>.</span><span class=n>get_all</span><span class=p>()</span> 
+<span class=n>result</span> <span class=o>=</span> <span class=p>[</span><span class=n>obj</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span><span class=o>.</span><span class=n>decode</span><span class=p>()</span> <span class=k>if</span> <span class=n>obj</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=k>else</span> <span class=n>obj</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=k>for</span> <span class=n>obj</span> <span class=ow>in</span> <span class=n>objs</span><span class=p>]</span>
+
+</code></pre></td></tr></table>
+</div>
+</div></div><div class=post-footer id=post-footer>
+<div class=post-info>
+<div class=post-info-line>
+<div class=post-info-mod>
+<span>更新于 2020-08-01</span>
+</div>
+<div class=post-info-license></div>
+</div>
+<div class=post-info-line>
+<div class=post-info-md><span>
+<a class=link-to-markdown href=/2021-05-27-%E6%90%AD%E5%BB%BAetcd%E5%88%86%E5%B8%83%E5%BC%8Fkv%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9B%86%E7%BE%A4%E5%B9%B6%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9C/index.md target=_blank>阅读原始文档</a>
+</span></div>
+<div class=post-info-share>
+<span><a href=javascript:void(0); title="分享到 Twitter" data-sharer=twitter data-url=https://spaceack.github.io/2021-05-27-%E6%90%AD%E5%BB%BAetcd%E5%88%86%E5%B8%83%E5%BC%8Fkv%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9B%86%E7%BE%A4%E5%B9%B6%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9C/ data-title=搭建etcd分布式kv数据库集群并使用python操作 data-hashtags=etcd,Docker,docker-compose,python><i class="fab fa-twitter fa-fw"></i></a><a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=https://spaceack.github.io/2021-05-27-%E6%90%AD%E5%BB%BAetcd%E5%88%86%E5%B8%83%E5%BC%8Fkv%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9B%86%E7%BE%A4%E5%B9%B6%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9C/ data-hashtag=etcd><i class="fab fa-facebook-square fa-fw"></i></a><a href=javascript:void(0); title="分享到 Hacker News" data-sharer=hackernews data-url=https://spaceack.github.io/2021-05-27-%E6%90%AD%E5%BB%BAetcd%E5%88%86%E5%B8%83%E5%BC%8Fkv%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9B%86%E7%BE%A4%E5%B9%B6%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9C/ data-title=搭建etcd分布式kv数据库集群并使用python操作><i class="fab fa-hacker-news fa-fw"></i></a><a href=javascript:void(0); title="分享到 Line" data-sharer=line data-url=https://spaceack.github.io/2021-05-27-%E6%90%AD%E5%BB%BAetcd%E5%88%86%E5%B8%83%E5%BC%8Fkv%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9B%86%E7%BE%A4%E5%B9%B6%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9C/ data-title=搭建etcd分布式kv数据库集群并使用python操作><i data-svg-src=https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg></i></a><a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=https://spaceack.github.io/2021-05-27-%E6%90%AD%E5%BB%BAetcd%E5%88%86%E5%B8%83%E5%BC%8Fkv%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9B%86%E7%BE%A4%E5%B9%B6%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9C/ data-title=搭建etcd分布式kv数据库集群并使用python操作><i class="fab fa-weibo fa-fw"></i></a></span>
+</div>
+</div>
+</div>
+<div class=post-info-more>
+<section class=post-tags><i class="fas fa-tags fa-fw"></i>&nbsp;<a href=/tags/etcd/>etcd</a>,&nbsp;<a href=/tags/docker/>Docker</a>,&nbsp;<a href=/tags/docker-compose/>docker-compose</a>,&nbsp;<a href=/tags/python/>python</a></section>
+<section>
+<span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span>
+</section>
+</div>
+<div class=post-nav><a href=/20200728-p1001-a-b-problem/ class=prev rel=prev title="P1001 A+B Problem"><i class="fas fa-angle-left fa-fw"></i>P1001 A+B Problem</a>
+<a href=/20200801-redis/ class=next rel=next title=Redis实战读书笔记>Redis实战读书笔记<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+</main><footer class=footer>
+<div class=footer-container><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.87.0">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/dillonzq/LoveIt target=_blank rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+</div><div class=footer-line><i class="far fa-copyright fa-fw"></i><span itemprop=copyrightYear>2014 - 2021</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=/about target=_blank>Spaceack</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div>
+</div>
+</footer></div>
+<div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部>
+<i class="fas fa-arrow-up fa-fw"></i>
+</a><a href=# id=view-comments class=fixed-button title=查看评论>
+<i class="fas fa-comment fa-fw"></i>
+</a>
+</div><script type=text/javascript src=https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:50},comment:{},search:{algoliaAppID:"PASDMWALPK",algoliaIndex:"index.zh-cn",algoliaSearchKey:"b42948e51daaa93df92381c8e2ac0f93",highlightTag:"em",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50,type:"algolia"}}</script><script type=text/javascript src=/js/theme.min.js></script></body>
+</html>

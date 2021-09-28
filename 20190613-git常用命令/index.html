@@ -5,7 +5,7 @@
 <meta name=robots content="noodp">
 <meta http-equiv=x-ua-compatible content="IE=edge, chrome=1">
 <title>Git常用命令 - Spaceack's Blog</title><meta name=Description content="Spaceck的个人Blog 编程之舞"><meta property="og:title" content="Git常用命令">
-<meta property="og:description" content="create a new repository on the command line 1 2 3 4 5 git init git add README.md git commit -m &#34;first commit&#34; git remote add origin git@github.com:user/project_name.git git push -u origin master push an existing repository from the command line 1 2 git remote add origin git@github.com:user/project_name.git git push -u origin master">
+<meta property="og:description" content="create a new repository on the command line 1 2 3 4 5 git init git add README.md git commit -m &#34;first commit&#34; git remote add origin git@github.com:user/project_name.git git push -u origin master push an existing repository from the command line 1 2 git remote add origin git@github.com:user/project_name.git git push -u origin master tag 1 2 3 4 5 6 7 8 9 10 11 12 13 14 # 查">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://spaceack.github.io/20190613-git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"><meta property="og:image" content="https://spaceack.github.io/logo.png"><meta property="article:section" content="posts">
 <meta property="article:published_time" content="2019-06-13T21:00:00+00:00">
@@ -13,9 +13,9 @@
 <meta name=twitter:card content="summary_large_image">
 <meta name=twitter:image content="https://spaceack.github.io/logo.png">
 <meta name=twitter:title content="Git常用命令">
-<meta name=twitter:description content="create a new repository on the command line 1 2 3 4 5 git init git add README.md git commit -m &#34;first commit&#34; git remote add origin git@github.com:user/project_name.git git push -u origin master push an existing repository from the command line 1 2 git remote add origin git@github.com:user/project_name.git git push -u origin master">
+<meta name=twitter:description content="create a new repository on the command line 1 2 3 4 5 git init git add README.md git commit -m &#34;first commit&#34; git remote add origin git@github.com:user/project_name.git git push -u origin master push an existing repository from the command line 1 2 git remote add origin git@github.com:user/project_name.git git push -u origin master tag 1 2 3 4 5 6 7 8 9 10 11 12 13 14 # 查">
 <meta name=application-name content="Spaceack's Blog">
-<meta name=apple-mobile-web-app-title content="Spaceack's Blog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://spaceack.github.io/20190613-git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/><link rel=prev href=https://spaceack.github.io/20190609-%E5%A4%9A%E5%AA%92%E4%BD%93%E5%A4%84%E7%90%86%E4%B8%8E%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2/><link rel=next href=https://spaceack.github.io/20190614-%E5%A6%82%E6%9E%9C%E6%B2%A1%E6%9C%89%E4%BD%A0/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Git常用命令","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/spaceack.github.io\/20190613-git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4\/"},"image":["https:\/\/spaceack.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"git","wordcount":53,"url":"https:\/\/spaceack.github.io\/20190613-git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4\/","datePublished":"2019-06-13T21:00:00+00:00","dateModified":"2019-06-13T21:00:00+00:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"Spaceack","logo":"https:\/\/spaceack.github.io\/images\/avatar.jpeg"},"author":{"@type":"Person","name":"Spaceack"},"description":""}</script></head>
+<meta name=apple-mobile-web-app-title content="Spaceack's Blog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://spaceack.github.io/20190613-git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/><link rel=prev href=https://spaceack.github.io/20190609-%E5%A4%9A%E5%AA%92%E4%BD%93%E5%A4%84%E7%90%86%E4%B8%8E%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2/><link rel=next href=https://spaceack.github.io/20190614-%E5%A6%82%E6%9E%9C%E6%B2%A1%E6%9C%89%E4%BD%A0/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Git常用命令","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/spaceack.github.io\/20190613-git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4\/"},"image":["https:\/\/spaceack.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"git","wordcount":243,"url":"https:\/\/spaceack.github.io\/20190613-git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4\/","datePublished":"2019-06-13T21:00:00+00:00","dateModified":"2019-06-13T21:00:00+00:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"Spaceack","logo":"https:\/\/spaceack.github.io\/images\/avatar.jpeg"},"author":{"@type":"Person","name":"Spaceack"},"description":""}</script></head>
 <body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':'auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark')&&document.body.setAttribute('theme','dark')</script>
 <div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
 <div class=header-wrapper>
@@ -83,15 +83,37 @@
 <div class=toc-content id=toc-content-auto></div>
 </div><article class="page single"><h1 class="single-title animated flipInX">Git常用命令</h1><div class=post-meta>
 <div class=post-meta-line><span class=post-author><a href=/about title=Author rel=" author" class=author><i class="fas fa-user-circle fa-fw"></i>Spaceack</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/><i class="far fa-folder fa-fw"></i>软件工程</a></span></div>
-<div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2019-06-13>2019-06-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 53 字&nbsp;
+<div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2019-06-13>2019-06-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 243 字&nbsp;
 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 1 分钟&nbsp;</div>
 </div><div class="details toc" id=toc-static kept>
 <div class="details-summary toc-title">
 <span>目录</span>
 <span><i class="details-icon fas fa-angle-right"></i></span>
 </div>
-<div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents></nav></div>
-</div><div class=content id=content><h1 id=create-a-new-repository-on-the-command-line>create a new repository on the command line</h1>
+<div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li><a href=#create-a-new-repository-on-the-command-line>create a new repository on the command line</a></li>
+<li><a href=#push-an-existing-repository-from-the-command-line>push an existing repository from the command line</a></li>
+<li><a href=#tag>tag</a></li>
+<li><a href=#commit>commit</a></li>
+<li><a href=#proxy>proxy</a>
+<ul>
+<li><a href=#设置http代理>设置HTTP代理</a></li>
+<li><a href=#取消代理>取消代理</a></li>
+</ul>
+</li>
+<li><a href=#submodule>submodule</a>
+<ul>
+<li><a href=#项目不完整-submodule-目录为空>项目不完整， submodule 目录为空</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav></div>
+</div><div class=content id=content><h3 id=create-a-new-repository-on-the-command-line>create a new repository on the command line</h3>
 <div class=highlight><div class=chroma>
 <table class=lntable><tr><td class=lntd>
 <pre tabindex=0 class=chroma><code><span class=lnt>1
@@ -108,7 +130,7 @@ git remote add origin git@github.com:user/project_name.git
 git push -u origin master
 </code></pre></td></tr></table>
 </div>
-</div><h1 id=push-an-existing-repository-from-the-command-line>push an existing repository from the command line</h1>
+</div><h3 id=push-an-existing-repository-from-the-command-line>push an existing repository from the command line</h3>
 <div class=highlight><div class=chroma>
 <table class=lntable><tr><td class=lntd>
 <pre tabindex=0 class=chroma><code><span class=lnt>1
@@ -117,6 +139,91 @@ git push -u origin master
 <td class=lntd>
 <pre tabindex=0 class=chroma><code class=language-sh data-lang=sh>git remote add origin git@github.com:user/project_name.git
 git push -u origin master
+</code></pre></td></tr></table>
+</div>
+</div><h3 id=tag>tag</h3>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=c1># 查看</span>
+git tag
+<span class=c1># 在某个 commit 打 tag</span>
+git tag tag_name commit_id
+<span class=c1># 本地 tag 推到线上</span>
+git push origin tag_name
+<span class=c1># 删除本地 tag</span>
+git tag -d tag_name
+<span class=c1># 删除本地，然后删除线上tag</span>
+git push origin :refs/tags/tag_name
+<span class=c1># 添加tag 并推送到远程</span>
+git tag tag_name -m <span class=s2>&#34;tag_msg&#34;</span>
+git push origin tag_name
+
+</code></pre></td></tr></table>
+</div>
+</div><h3 id=commit>commit</h3>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=c1># 统计提交次数</span>
+git log <span class=p>|</span> grep <span class=s2>&#34;^Author: Spaceack&#34;</span><span class=p>|</span>wc -l
+<span class=c1># 统计合并次数</span>
+git log <span class=p>|</span> grep <span class=s2>&#34;^Merge&#34;</span> <span class=p>|</span> wc -l
+</code></pre></td></tr></table>
+</div>
+</div><h3 id=proxy>proxy</h3>
+<h4 id=设置http代理>设置HTTP代理</h4>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>git config --global http.proxy &#39;socks5://127.0.0.1:1080&#39;
+git config --global https.proxy &#39;socks5://127.0.0.1:1080&#39;
+</code></pre></td></tr></table>
+</div>
+</div><h4 id=取消代理>取消代理</h4>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>git config --global --unset http.proxy
+git config --global --unset https.proxy
+</code></pre></td></tr></table>
+</div>
+</div><h3 id=submodule>submodule</h3>
+<h4 id=项目不完整-submodule-目录为空>项目不完整， submodule 目录为空</h4>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback># 进入到 submodule 目录
+git submodule update --init --recursive
 </code></pre></td></tr></table>
 </div>
 </div></div><div class=post-footer id=post-footer>
