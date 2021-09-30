@@ -19,7 +19,7 @@
 # 实现
 
 ## mysql mq 表结构设计
-'''sql
+```sql
 CREATE TABLE `mq` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `msg` varchar(1024) DEFAULT NULL,
@@ -27,7 +27,7 @@ CREATE TABLE `mq` (
   `version` bigint(20) unsigned DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
-'''
+```
 
 ## 生产者
 
