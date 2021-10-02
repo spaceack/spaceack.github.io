@@ -1,5 +1,7 @@
 # VScode常用插件及配置
 
+### TabNine
+提供多种代码的自动补全
 
 ### 配置远程编辑
 1. 安装插件 `remote-browser`
@@ -22,5 +24,13 @@
   6. VScode右下角将提示已远程登录成功，`remote-browser:Connected`
   7. 文件浏览界面 `REMOTE BROWSER` 查看远程目录文件。
 
+###  代码对齐插件 Code alignment
+1. 安装插件 `Code alignment`
+2. 选中需要对齐的代码
+3. `F1` 选择需要对齐的功能：支持等号对齐(`Ctrl `+ `=`)， 注释对齐等。
+
 ### 浏览pdf
 1. 安装插件 `vscode-pdf`
+
+### 中文插件
+1. Chinese(Simplified)
