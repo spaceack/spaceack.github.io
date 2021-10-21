@@ -10,6 +10,7 @@ date: 2019-11-28 00:19:01
 |-|-|-|
 |[Spaceack's Blog](http://spaceack.com/)|生活, 技术, Python, Linux|做一个有追求的人|
 |[极客兔兔](https://geektutu.com)|全栈|致力于分享有趣的技术实践|
+|[MagicLen](https://magiclen.org)|全栈|多元化原创文章，内容包罗万象，有编程语言、网站应用、软件介绍、硬件介绍、操作系统、旅行游记、专题采访、益智问题、文学创作，以及作者们的知识分享和作品分享。|
 |[骏马金龙](https://www.cnblogs.com/f-ck-need-u/)|技术大牛|网名骏马金龙，钟情于IT世界里的各种原理和实现机制，强迫症重症患者。爱研究、爱翻译、爱分享。特借此一亩三分田记录自己成长点滴！！！|
 |[lu4nx@wiki](http://www.shellcodes.org/)|Security,Unix,Python,Lisp,|Emacs||
 |[manateelazycat](https://manateelazycat.github.io/)|linux开源软件|Lisp,Emacs||
