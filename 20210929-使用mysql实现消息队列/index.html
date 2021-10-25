@@ -5,7 +5,7 @@
 <meta name=robots content="noodp">
 <meta http-equiv=x-ua-compatible content="IE=edge, chrome=1">
 <title>使用Mysql实现消息队列 - Spaceack's Blog</title><meta name=Description content="Spaceck的个人Blog 编程之舞"><meta property="og:title" content="使用Mysql实现消息队列">
-<meta property="og:description" content="实现起来就是 消息 带 状态 和 版本号 字段。 更新时用 版本号 做乐观锁。操作逻辑就是个状态机。 UPDATE mq SET mq.status=new_status mq.version = mq.version + 1 WHERE mq.version = old_version 这样的一个好处就是消息都是可见的">
+<meta property="og:description" content="实现起来就是 消息 带 状态 和 版本号 字段。 更新时用 版本号 做乐观锁。操作逻辑就是个状态机。 UPDATE mq SET mq.status=new_status mq.version = mq.version + 1 WHERE mq.version = old_version 实现 mysql mq 表结构设计 1 2 3 4 5 6 7">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://spaceack.github.io/20210929-%E4%BD%BF%E7%94%A8mysql%E5%AE%9E%E7%8E%B0%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"><meta property="og:image" content="https://spaceack.github.io/logo.png"><meta property="article:section" content="posts">
 <meta property="article:published_time" content="2021-09-29T21:00:00+00:00">
@@ -13,9 +13,9 @@
 <meta name=twitter:card content="summary_large_image">
 <meta name=twitter:image content="https://spaceack.github.io/logo.png">
 <meta name=twitter:title content="使用Mysql实现消息队列">
-<meta name=twitter:description content="实现起来就是 消息 带 状态 和 版本号 字段。 更新时用 版本号 做乐观锁。操作逻辑就是个状态机。 UPDATE mq SET mq.status=new_status mq.version = mq.version + 1 WHERE mq.version = old_version 这样的一个好处就是消息都是可见的">
+<meta name=twitter:description content="实现起来就是 消息 带 状态 和 版本号 字段。 更新时用 版本号 做乐观锁。操作逻辑就是个状态机。 UPDATE mq SET mq.status=new_status mq.version = mq.version + 1 WHERE mq.version = old_version 实现 mysql mq 表结构设计 1 2 3 4 5 6 7">
 <meta name=application-name content="Spaceack's Blog">
-<meta name=apple-mobile-web-app-title content="Spaceack's Blog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://spaceack.github.io/20210929-%E4%BD%BF%E7%94%A8mysql%E5%AE%9E%E7%8E%B0%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/><link rel=prev href=https://spaceack.github.io/20210827-rabbitmq-pika%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"使用Mysql实现消息队列","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/spaceack.github.io\/20210929-%E4%BD%BF%E7%94%A8mysql%E5%AE%9E%E7%8E%B0%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97\/"},"image":["https:\/\/spaceack.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"MQ, mysql","wordcount":366,"url":"https:\/\/spaceack.github.io\/20210929-%E4%BD%BF%E7%94%A8mysql%E5%AE%9E%E7%8E%B0%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97\/","datePublished":"2021-09-29T21:00:00+00:00","dateModified":"2021-09-29T21:00:00+00:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"Spaceack","logo":"https:\/\/spaceack.github.io\/images\/avatar.jpeg"},"author":{"@type":"Person","name":"Spaceack"},"description":""}</script></head>
+<meta name=apple-mobile-web-app-title content="Spaceack's Blog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://spaceack.github.io/20210929-%E4%BD%BF%E7%94%A8mysql%E5%AE%9E%E7%8E%B0%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/><link rel=prev href=https://spaceack.github.io/20210827-rabbitmq-pika%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"使用Mysql实现消息队列","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/spaceack.github.io\/20210929-%E4%BD%BF%E7%94%A8mysql%E5%AE%9E%E7%8E%B0%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97\/"},"image":["https:\/\/spaceack.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"MQ, mysql","wordcount":526,"url":"https:\/\/spaceack.github.io\/20210929-%E4%BD%BF%E7%94%A8mysql%E5%AE%9E%E7%8E%B0%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97\/","datePublished":"2021-09-29T21:00:00+00:00","dateModified":"2021-09-29T21:00:00+00:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"Spaceack","logo":"https:\/\/spaceack.github.io\/images\/avatar.jpeg"},"author":{"@type":"Person","name":"Spaceack"},"description":""}</script></head>
 <body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':'auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark')&&document.body.setAttribute('theme','dark')</script>
 <div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
 <div class=header-wrapper>
@@ -83,8 +83,8 @@
 <div class=toc-content id=toc-content-auto></div>
 </div><article class="page single"><h1 class="single-title animated flipInX">使用Mysql实现消息队列</h1><div class=post-meta>
 <div class=post-meta-line><span class=post-author><a href=/about title=Author rel=" author" class=author><i class="fas fa-user-circle fa-fw"></i>Spaceack</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/><i class="far fa-folder fa-fw"></i>消息队列</a></span></div>
-<div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2021-09-29>2021-09-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 366 字&nbsp;
-<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 1 分钟&nbsp;</div>
+<div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2021-09-29>2021-09-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 526 字&nbsp;
+<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
 </div><div class="details toc" id=toc-static kept>
 <div class="details-summary toc-title">
 <span>目录</span>
@@ -92,20 +92,22 @@
 </div>
 <div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents>
 <ul>
+<li><a href=#实现>实现</a>
+<ul>
 <li><a href=#mysql-mq-表结构设计>mysql mq 表结构设计</a></li>
 <li><a href=#生产者>生产者</a></li>
 <li><a href=#消费者>消费者</a></li>
 </ul>
+</li>
+</ul>
 </nav></div>
-</div><div class=content id=content><p>实现起来就是 <strong>消息</strong> 带 <code>状态</code> 和 <code>版本号</code> 字段。</p>
+</div><div class=content id=content><p><img class=lazyload src=/svg/loading.min.svg data-src=1.gif data-srcset="/20210929-%E4%BD%BF%E7%94%A8mysql%E5%AE%9E%E7%8E%B0%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/1.gif, 1.gif 1.5x, /20210929-%E4%BD%BF%E7%94%A8mysql%E5%AE%9E%E7%8E%B0%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/1.gif 2x" data-sizes=auto alt=/20210929-%E4%BD%BF%E7%94%A8mysql%E5%AE%9E%E7%8E%B0%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/1.gif title=罗小黑羽毛球趣图></p>
+<p>实现起来就是 <strong>消息</strong> 带 <code>状态</code> 和 <code>版本号</code> 字段。</p>
+<p><img class=lazyload src=/svg/loading.min.svg data-src=2.png data-srcset="/20210929-%E4%BD%BF%E7%94%A8mysql%E5%AE%9E%E7%8E%B0%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/2.png, 2.png 1.5x, /20210929-%E4%BD%BF%E7%94%A8mysql%E5%AE%9E%E7%8E%B0%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/2.png 2x" data-sizes=auto alt=/20210929-%E4%BD%BF%E7%94%A8mysql%E5%AE%9E%E7%8E%B0%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/2.png title=mq表结构></p>
 <p>更新时用 <code>版本号</code> 做乐观锁。操作逻辑就是个状态机。</p>
 <p><code>UPDATE mq SET mq.status=new_status mq.version = mq.version + 1 WHERE mq.version = old_version</code></p>
-<p>这样的一个好处就是消息都是可见的。 可以直接查数据库。</p>
-<p>不用加悲观锁，因为update成功后就带锁。其它同版本的更新都会失败。</p>
-<p>还有个好处就是减少组件依赖。 简单的服务数据库就能搞定。 不用再起个rabbitmq服务啥的。 节约运维成本。</p>
-<p><strong>版本号</strong> 另一个小作用：InnoDB如果更新语句没有改变任何字段值时，影响行数会返回0.那么是没找到记录还是没改变值的0呢？前者是bug， 后者是正常情况但区分不了。加版本号后每次修改+1，影响行数一定不为0。</p>
-<h1 id=实现>实现</h1>
-<h2 id=mysql-mq-表结构设计>mysql mq 表结构设计</h2>
+<h2 id=实现>实现</h2>
+<h3 id=mysql-mq-表结构设计>mysql mq 表结构设计</h3>
 <div class=highlight><div class=chroma>
 <table class=lntable><tr><td class=lntd>
 <pre tabindex=0 class=chroma><code><span class=lnt>1
@@ -126,7 +128,56 @@
 </span><span class=w></span><span class=p>)</span><span class=w> </span><span class=n>ENGINE</span><span class=o>=</span><span class=n>InnoDB</span><span class=w> </span><span class=n>AUTO_INCREMENT</span><span class=o>=</span><span class=mi>10</span><span class=w> </span><span class=k>DEFAULT</span><span class=w> </span><span class=n>CHARSET</span><span class=o>=</span><span class=n>utf8mb4</span><span class=p>;</span><span class=w>
 </span></code></pre></td></tr></table>
 </div>
-</div><h2 id=生产者>生产者</h2>
+</div><h3 id=生产者>生产者</h3>
+<p>测试，向队列插入两条消息。</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-sql data-lang=sql><span class=k>insert</span><span class=w> </span><span class=k>into</span><span class=w> </span><span class=n>mq</span><span class=p>(</span><span class=n>msg</span><span class=p>)</span><span class=w> </span><span class=k>values</span><span class=p>(</span><span class=s1>&#39;第一条消息 hello world! 1024&#39;</span><span class=p>);</span><span class=w>
+</span><span class=w></span><span class=k>insert</span><span class=w> </span><span class=k>into</span><span class=w> </span><span class=n>mq</span><span class=p>(</span><span class=n>msg</span><span class=p>)</span><span class=w> </span><span class=k>values</span><span class=p>(</span><span class=s1>&#39;第二条消息 欢迎访问 https://spaceack.com&#39;</span><span class=p>);</span><span class=w>
+</span></code></pre></td></tr></table>
+</div>
+</div><p><img class=lazyload src=/svg/loading.min.svg data-src=3.png data-srcset="/20210929-%E4%BD%BF%E7%94%A8mysql%E5%AE%9E%E7%8E%B0%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/3.png, 3.png 1.5x, /20210929-%E4%BD%BF%E7%94%A8mysql%E5%AE%9E%E7%8E%B0%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/3.png 2x" data-sizes=auto alt=/20210929-%E4%BD%BF%E7%94%A8mysql%E5%AE%9E%E7%8E%B0%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/3.png title=初始数据></p>
+<h3 id=消费者>消费者</h3>
+<ul>
+<li>
+<p>获取队列中的消息， 此时不会改变队列（mq表）中的数据。</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-sql data-lang=sql><span class=k>select</span><span class=w> </span><span class=o>*</span><span class=w> </span><span class=k>from</span><span class=w> </span><span class=n>mq</span><span class=w> </span><span class=k>where</span><span class=w> </span><span class=n>status</span><span class=o>=</span><span class=s1>&#39;ready&#39;</span><span class=w> </span><span class=k>limit</span><span class=w> </span><span class=mi>1</span><span class=p>;</span><span class=w>
+</span></code></pre></td></tr></table>
+</div>
+</div><p><img class=lazyload src=/svg/loading.min.svg data-src=4.png data-srcset="/20210929-%E4%BD%BF%E7%94%A8mysql%E5%AE%9E%E7%8E%B0%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/4.png, 4.png 1.5x, /20210929-%E4%BD%BF%E7%94%A8mysql%E5%AE%9E%E7%8E%B0%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/4.png 2x" data-sizes=auto alt=/20210929-%E4%BD%BF%E7%94%A8mysql%E5%AE%9E%E7%8E%B0%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/4.png title=初始数据></p>
+</li>
+<li>
+<p>消息确认</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-sql data-lang=sql><span class=k>update</span><span class=w> </span><span class=n>mq</span><span class=w> </span><span class=k>set</span><span class=w> </span><span class=n>mq</span><span class=p>.</span><span class=n>status</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=s1>&#39;ack&#39;</span><span class=p>,</span><span class=w> </span><span class=n>mq</span><span class=p>.</span><span class=k>version</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>mq</span><span class=p>.</span><span class=k>version</span><span class=w> </span><span class=o>+</span><span class=w> </span><span class=mi>1</span><span class=w> </span><span class=k>WHERE</span><span class=w> </span><span class=n>mq</span><span class=p>.</span><span class=k>version</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=err>{</span><span class=n>query_version</span><span class=err>}</span><span class=w> </span><span class=k>and</span><span class=w> </span><span class=n>id</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=err>{</span><span class=n>query_id</span><span class=err>}</span><span class=w>
+</span></code></pre></td></tr></table>
+</div>
+</div><p>确认后的状态：</p>
+<p><img class=lazyload src=/svg/loading.min.svg data-src=5.png data-srcset="/20210929-%E4%BD%BF%E7%94%A8mysql%E5%AE%9E%E7%8E%B0%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/5.png, 5.png 1.5x, /20210929-%E4%BD%BF%E7%94%A8mysql%E5%AE%9E%E7%8E%B0%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/5.png 2x" data-sizes=auto alt=/20210929-%E4%BD%BF%E7%94%A8mysql%E5%AE%9E%E7%8E%B0%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/5.png title=初始数据></p>
+</li>
+</ul>
+<p>再次获取数据仅能获取第二条数据。</p>
+<p><img class=lazyload src=/svg/loading.min.svg data-src=6.png data-srcset="/20210929-%E4%BD%BF%E7%94%A8mysql%E5%AE%9E%E7%8E%B0%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/6.png, 6.png 1.5x, /20210929-%E4%BD%BF%E7%94%A8mysql%E5%AE%9E%E7%8E%B0%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/6.png 2x" data-sizes=auto alt=/20210929-%E4%BD%BF%E7%94%A8mysql%E5%AE%9E%E7%8E%B0%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/6.png title=初始数据></p>
+<hr>
+<p>这样的一个好处就是消息都是可见的。 可以直接查数据库。</p>
+<p>不用加悲观锁，因为update成功后就带锁。其它同版本的更新都会失败。</p>
+<p>还有个好处就是减少组件依赖。 简单的服务数据库就能搞定。 不用再起个rabbitmq服务啥的。 节约运维成本。</p>
+<p><strong>版本号</strong> 另一个小作用：InnoDB如果更新语句没有改变任何字段值时，影响行数会返回0.那么是没找到记录还是没改变值的0呢？前者是bug， 后者是正常情况但区分不了。加版本号后每次修改+1，影响行数一定不为0。</p>
+<hr>
+<p>隐藏福利：生产者自动批量测试脚本：</p>
 <div class=highlight><div class=chroma>
 <table class=lntable><tr><td class=lntd>
 <pre tabindex=0 class=chroma><code><span class=lnt> 1
@@ -166,29 +217,6 @@
     <span class=n>runcmd</span><span class=p>(</span><span class=n>cmd</span><span class=p>)</span>
 
 </code></pre></td></tr></table>
-</div>
-</div><h2 id=消费者>消费者</h2>
-<ul>
-<li>获取队列中的消息</li>
-</ul>
-<div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-sql data-lang=sql><span class=k>select</span><span class=w> </span><span class=o>*</span><span class=w> </span><span class=k>from</span><span class=w> </span><span class=n>mq</span><span class=w> </span><span class=k>where</span><span class=w> </span><span class=n>status</span><span class=o>=</span><span class=s1>&#39;ready&#39;</span><span class=w> </span><span class=k>limit</span><span class=w> </span><span class=mi>1</span><span class=p>;</span><span class=w>
-</span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>消息确认</li>
-</ul>
-<div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-sql data-lang=sql><span class=k>update</span><span class=w> </span><span class=n>mq</span><span class=w> </span><span class=k>set</span><span class=w> </span><span class=n>mq</span><span class=p>.</span><span class=n>status</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=s1>&#39;ack&#39;</span><span class=p>,</span><span class=w> </span><span class=n>mq</span><span class=p>.</span><span class=k>version</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>mq</span><span class=p>.</span><span class=k>version</span><span class=w> </span><span class=o>+</span><span class=w> </span><span class=mi>1</span><span class=w> </span><span class=k>WHERE</span><span class=w> </span><span class=n>mq</span><span class=p>.</span><span class=k>version</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=err>{</span><span class=n>query_version</span><span class=err>}</span><span class=w> </span><span class=k>and</span><span class=w> </span><span class=n>id</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=err>{</span><span class=n>query_id</span><span class=err>}</span><span class=w>
-</span></code></pre></td></tr></table>
 </div>
 </div></div><div class=post-footer id=post-footer>
 <div class=post-info>
