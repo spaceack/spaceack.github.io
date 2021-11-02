@@ -42,6 +42,12 @@ git log | grep "^Author: Spaceack"|wc -l
 git log | grep "^Merge" | wc -l
 ```
 
+###  git config
+```
+git config --global user.name "spaceack"
+git config --global user.email "spaceack@qq.com"
+```
+
 ### proxy
 
 #### 设置HTTP代理
