@@ -21,7 +21,8 @@ date: 2019-11-28 00:19:01
 |[谓之小一](https://weizhixiaoyi.com/)|机器学习，深度学习|永远相信-美好的事情即将发生|
 |[vmaig](http://vmaig.com/)|python django 反汇编 unix环境高级编程||
 |[imcaviare](https://www.imcaviare.com/)|前端||
-|[浅时光](https://www.dqzboy.com/)|前端||
+|[浅时光](https://www.dqzboy.com/)|前端，技术博客|精彩程序人生|
+|[三点水](https://lotabout.me/)|技术干货|不积小流，无以成江海|
 |[Shuzang's Blog](https://shuzang.github.io/)|golang|随心所向，素履以往 |
 |[Jeremy's blog](https://www.isyin.cn/)|Python| |
 |[Shall We Code?](https://www.waynerv.com/)|Python, Go, Linux, Kubernetes| |
