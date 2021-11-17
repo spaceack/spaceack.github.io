@@ -48,6 +48,24 @@ sudo dmidecode | grep -A16 "Memory Device"|grep 'Speed'
 free -m
 
 ```
+#### 交换分区
+查看类型为 swap 的 交换分区名称
+
+`sudo fdisk -l | grep swap`
+
+查看已存在的交换分区名称
+
+`swapon -s`
+
+临时关闭交换分区
+
+关闭交换分区时, 会把交换分区的数据转移到内存(需确保可用内存 大于 交换分区的已用空间.)
+
+`sudo swapoff /dev/sda5`
+开启交换分区
+
+`sudo swapon /dev/sda5`
+
 ### 硬件设备
 ```bash
 # 查看硬件设备
