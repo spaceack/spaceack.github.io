@@ -11,4 +11,5 @@
 |SwitchyOmega|代理设置工具|
 |Vimum|使用vim键位操作浏览器|
 |Video Download Professional|媒体下载工具|
+|highlight multiple |多关键词高亮|
 

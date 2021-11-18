@@ -289,3 +289,6 @@ sudo chmod u+s /usr/bin/fbterm
 **Godot**
 开源游戏引擎
 
+**命令行查询天气**
+ curl http://wttr.in/
+
