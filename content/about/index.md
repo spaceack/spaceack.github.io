@@ -10,6 +10,7 @@ update: 2020-09-23 23:59:59
 - 希望能做有意义的事，做一个有追求的人。
 - 即对爱的渴望，知识的渴求, 苦难的理解 —— by罗素《三种激情》
 
+
 ### 技术栈
 - 9年[GNU/Linux](https://www.gnu.org/gnu/linux-and-gnu.en.html)操作系统经验([Ubuntu](https://www.ubuntu.com/desktop))
 - 常用语言: Python，Golang
@@ -29,9 +30,9 @@ update: 2020-09-23 23:59:59
 ---
 
 ### 关于博客
-- **Now  迁移到 Github** Hexo
 - 博客用于生活，计算机技术的积累与分享。
 - 有所积累，有所遗忘，有所成长。
+- **Now  迁移到 Github** Hugo
 - <del>2020 Hexo<del>
 - <del>2018 Pelican</del> 
 - <del>2017 Tornado Blog, Mongodb, BootStrap, Mardown渲染， 代码高亮，MathJax Tex公式渲染</del>
