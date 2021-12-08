@@ -106,6 +106,8 @@ sudo apt install -y unrar;
 sudo apt install -y lrzsz;
 # 新立得软件包管理器
 sudo apt install -y synaptic;
+# 用于查找缺失的依赖库 apt-file search xxx.so
+sudo apt install apt-file;
 sudo apt install -y python3-distutils;
 sudo apt-get install -y libmysqlclient-dev;
 sudo apt install  -y python3-pip;
@@ -189,6 +191,9 @@ ibus engine rime
 
 **Visual Studio Code**
 
+**electerm**
+  [electerm]( https://electerm.github.io/electerm )是一个跨平台的Terminal/SSH/SFTP客户端工具，同时支持Linux、MacOS、Windows，基于electron/ssh2/node-pty/xterm/antd/subx等开源组件。
+
 **CherryTree**
   功能强大的树形笔记工具
 
@@ -198,6 +203,8 @@ ibus engine rime
 **DBeaver**
   通用数据库管理
 
+ **Another Redis Desktop Manager**
+[Another Redis Desktop Manager](https://github.com/qishibo/AnotherRedisDesktopManager)
 **RDM**
   开源 Redis ® 管理工具
   `sudo snap install redis-desktop-manager`
@@ -231,12 +238,16 @@ sudo apt-get install peek
 **yEd**
   绘制流程图[download](https://www.yworks.com/downloads#yEd)
 
-**KRDC**  
+**BlinkMind**
+    [BlinkMind](https://github.com/awehook/blink-mind-package)
+    简洁的思维导图工具
+
+**KRDC**
   好用的远程桌面客户端
 
-**GIMP**  
+**GIMP**
   功能强大的图像处理和绘画软件
-  
+
 **Syncthing**
   多台设备双向文件同步工具
 
@@ -271,14 +282,14 @@ MongoDB可视化工具
 
 ```bash
 sudo apt-get install fbterm -y
-sudo gpasswd -a $USER video 
-sudo chmod u+s /usr/bin/fbterm 
+sudo gpasswd -a $USER video
+sudo chmod u+s /usr/bin/fbterm
 ```
 
 
 ### 趣味软件
 
-**sonic-pi**  
+**sonic-pi**
   通过编码的音乐合成器
 
 **figlet**
