@@ -5,7 +5,7 @@
 <meta name=robots content="noodp">
 <meta http-equiv=x-ua-compatible content="IE=edge, chrome=1">
 <title>Golang 学习笔记 - Spaceack's Blog</title><meta name=Description content="Spaceck的个人Blog 编程之舞"><meta property="og:title" content="Golang 学习笔记">
-<meta property="og:description" content="学习资源 代理加速 Goproxy 中国 中国最可靠的 Go 模块代理。 1 2 $ go env -w GO111MODULE=on $ go env -w GOPROXY=https://goproxy.cn,direct 查看golang版本 go version 注释 1 2 3 4 5 /* 块 注释 */ // 行注释 每个 Go 程序都是">
+<meta property="og:description" content="学习资源 代理加速 Goproxy 中国 中国最可靠的 Go 模块代理。 可完美解决由于连接超时无法安装依赖库，工具库的问题。 1 2 $ go env -w GO111MODULE=on $ go env -w GOPROXY=https://goproxy.cn,direct 国外代理 1 2 go env -w">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://spaceack.github.io/2020-08-20-golang%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><meta property="og:image" content="https://spaceack.github.io/logo.png"><meta property="article:section" content="posts">
 <meta property="article:published_time" content="2020-08-20T21:00:00+00:00">
@@ -13,9 +13,9 @@
 <meta name=twitter:card content="summary_large_image">
 <meta name=twitter:image content="https://spaceack.github.io/logo.png">
 <meta name=twitter:title content="Golang 学习笔记">
-<meta name=twitter:description content="学习资源 代理加速 Goproxy 中国 中国最可靠的 Go 模块代理。 1 2 $ go env -w GO111MODULE=on $ go env -w GOPROXY=https://goproxy.cn,direct 查看golang版本 go version 注释 1 2 3 4 5 /* 块 注释 */ // 行注释 每个 Go 程序都是">
+<meta name=twitter:description content="学习资源 代理加速 Goproxy 中国 中国最可靠的 Go 模块代理。 可完美解决由于连接超时无法安装依赖库，工具库的问题。 1 2 $ go env -w GO111MODULE=on $ go env -w GOPROXY=https://goproxy.cn,direct 国外代理 1 2 go env -w">
 <meta name=application-name content="Spaceack's Blog">
-<meta name=apple-mobile-web-app-title content="Spaceack's Blog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://spaceack.github.io/2020-08-20-golang%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/><link rel=prev href=https://spaceack.github.io/20200810-python%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/><link rel=next href=https://spaceack.github.io/20200827-leetcode-1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Golang 学习笔记","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/spaceack.github.io\/2020-08-20-golang%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0\/"},"image":["https:\/\/spaceack.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"golang","wordcount":484,"url":"https:\/\/spaceack.github.io\/2020-08-20-golang%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0\/","datePublished":"2020-08-20T21:00:00+00:00","dateModified":"2020-08-20T21:00:00+00:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"Spaceack","logo":"https:\/\/spaceack.github.io\/images\/avatar.jpeg"},"author":{"@type":"Person","name":"Spaceack"},"description":""}</script></head>
+<meta name=apple-mobile-web-app-title content="Spaceack's Blog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://spaceack.github.io/2020-08-20-golang%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/><link rel=prev href=https://spaceack.github.io/20200810-python%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/><link rel=next href=https://spaceack.github.io/20200827-leetcode-1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Golang 学习笔记","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/spaceack.github.io\/2020-08-20-golang%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0\/"},"image":["https:\/\/spaceack.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"golang","wordcount":524,"url":"https:\/\/spaceack.github.io\/2020-08-20-golang%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0\/","datePublished":"2020-08-20T21:00:00+00:00","dateModified":"2020-08-20T21:00:00+00:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"Spaceack","logo":"https:\/\/spaceack.github.io\/images\/avatar.jpeg"},"author":{"@type":"Person","name":"Spaceack"},"description":""}</script></head>
 <body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':'auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark')&&document.body.setAttribute('theme','dark')</script>
 <div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
 <div class=header-wrapper>
@@ -83,8 +83,8 @@
 <div class=toc-content id=toc-content-auto></div>
 </div><article class="page single"><h1 class="single-title animated flipInX">Golang 学习笔记</h1><div class=post-meta>
 <div class=post-meta-line><span class=post-author><a href=/about title=Author rel=" author" class=author><i class="fas fa-user-circle fa-fw"></i>Spaceack</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/golang/><i class="far fa-folder fa-fw"></i>golang</a></span></div>
-<div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2020-08-20>2020-08-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 484 字&nbsp;
-<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 1 分钟&nbsp;</div>
+<div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2020-08-20>2020-08-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 524 字&nbsp;
+<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
 </div><div class="details toc" id=toc-static kept>
 <div class="details-summary toc-title">
 <span>目录</span>
@@ -104,7 +104,8 @@
 </nav></div>
 </div><div class=content id=content><h2 id=学习资源>学习资源</h2>
 <h3 id=代理加速>代理加速</h3>
-<p><a href=https://goproxy.cn/ target=_blank rel="noopener noreffer">Goproxy 中国</a> 中国最可靠的 Go 模块代理。</p>
+<p><a href=https://goproxy.cn/ target=_blank rel="noopener noreffer">Goproxy 中国</a> 中国最可靠的 Go 模块代理。
+可完美解决由于连接超时无法安装依赖库，工具库的问题。</p>
 <div class=highlight><div class=chroma>
 <table class=lntable><tr><td class=lntd>
 <pre tabindex=0 class=chroma><code><span class=lnt>1
@@ -113,6 +114,17 @@
 <td class=lntd>
 <pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>$ go env -w GO111MODULE=on
 $ go env -w GOPROXY=https://goproxy.cn,direct
+</code></pre></td></tr></table>
+</div>
+</div><p>国外代理</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>go env -w GO111MODULE=on
+go env -w GOPROXY=https://goproxy.io,direct
 </code></pre></td></tr></table>
 </div>
 </div><ul>
