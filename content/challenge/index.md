@@ -5,11 +5,11 @@ date: 2021-04-20 20:19:01
 ## 阿里云天池第二届云原生编程挑战赛
 
 2021-12-05 收到了 限量版体恤一件，开心/::D
-![](challenge/514456082817015.png =216x)
+![](challenge/514456082817015.png)
 
-![](challenge/428401392606107.png =216x)
+![](challenge/428401392606107.png)
 
-![](challenge/562082015931858.png =216x)
+![](challenge/562082015931858.png)
 ---
 ## [阿里天池 《用Pandas揭秘美国选民的总统喜好》数据分析比赛](https://tianchi.aliyun.com/competition/entrance/531837/introduction)
 2020-12-24 收到了包揽所有奖项的奖品，好开心。
