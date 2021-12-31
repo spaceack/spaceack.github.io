@@ -96,6 +96,14 @@ enableEmoji = true
         name = ""
         url = "https://github.com/spaceack"
         title = "GitHub"
+        weight = 8
+        [[languages.zh-cn.menu.main]]
+        identifier = "book"
+        pre = ""
+        post = ""
+        name = "读书"
+        url = "/book/"
+        title = ""
         weight = 7
     [languages.zh-cn.params]
       # 网站描述
