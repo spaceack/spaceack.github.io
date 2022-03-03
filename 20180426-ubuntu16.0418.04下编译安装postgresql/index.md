@@ -49,9 +49,13 @@ sudo chown postgres /usr/local/pgsql/data
 su - postgres
 # 初始化数据库
 /usr/local/pgsql/bin/initdb -D /usr/local/pgsql/data
+or
+initdb -D  /usr/local/pgsql/data
 
-
+# start the database server
 /usr/local/pgsql/bin/postgres -D /usr/local/pgsql/data >logfile 2>&1 &
+or
+pg_ctl -D /usr/local/pgsql/data -l logfile start
 # 测试成功
 /usr/local/pgsql/bin/createdb test
 /usr/local/pgsql/bin/psql test
