@@ -1,7 +1,7 @@
 # Linux 网络
 
 
-- centos系 网卡配置路径
+### centos系 网卡配置路径
     `/etc/sysconfig/network-scripts/`
 
 - 配置示列 ifcfg-enp0s3
@@ -31,3 +31,16 @@
     - `ONBOOT` 网卡随系统启动激活
     - `PREFIX` 新版本Linux 配置子网掩码的参数 等价于 `NETMASK` `NETMASK=255.255.255.0`
 重启网络服务 `systemctl restart network`
+
+### ubuntu系 网卡配置路径
+#### 17.10 后 废弃
+`/etc/network/interfaces`
+
+#### 桌面版 NetworkManager
+`/etc/NetworkManager/system-connections`
+
+
+#### Netplan configuration
+[netplan examples](https://netplan.io/examples/)
+`/etc/netplan/config.yaml`
+
