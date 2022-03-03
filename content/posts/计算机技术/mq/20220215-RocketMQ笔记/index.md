@@ -39,3 +39,15 @@ tags:
 `Broker` 存储消息
 
 ## GUI可视化管理控制台 rocketmq-console-ng
+
+`git clone https://github.com/apache/rocketmq-externals.git` 
+
+`git checkout origin/release-rocketmq-console-1.0.0`
+
+具体安装方式可见`README.md`
+
+![install.png](install.png)
+
+`docker pull styletang/rocketmq-console-ng`
+
+`sudo docker run -e "JAVA_OPTS=-Drocketmq.namesrv.addr=127.0.0.1:9876 -Dcom.rocketmq.sendMessageWithVIPChannel=false" -p 8080:8080 -t styletang/rocketmq-console-ng`
