@@ -1,0 +1,33 @@
+# Linux 网络
+
+
+- centos系 网卡配置路径
+    `/etc/sysconfig/network-scripts/`
+
+- 配置示列 ifcfg-enp0s3
+    ```
+    TYPE=Ethernet
+    PROXY_METHOD=none
+    BROWSER_ONLY=no
+    BOOTPROTO=static
+    DEFROUTE=yes
+    IPV4_FAILURE_FATAL=no
+    IPV6INIT=yes
+    IPV6_AUTOCONF=yes
+    IPV6_DEFROUTE=yes
+    IPV6_FAILURE_FATAL=no
+    IPV6_ADDR_GEN_MODE=stable-privacy
+    NAME=enp0s3
+    UUID=xxxxxx-xxxx-xxxx-xxxx-xxxxxxx
+    DEVICE=enp0s3
+    ONBOOT=yes
+    IPADDR=192.168.0.200
+    PREFIX=24
+    GATEWAY=192.168.0.1
+    DNS1=8.8.8.8
+    IPV6_PRIVACY=no
+    ```
+    - `BOOTPROTO` 静态IP(static) or 动态IP(dhcp)
+    - `ONBOOT` 网卡随系统启动激活
+    - `PREFIX` 新版本Linux 配置子网掩码的参数 等价于 `NETMASK` `NETMASK=255.255.255.0`
+重启网络服务 `systemctl restart network`
