@@ -31,6 +31,10 @@ tags:
 
 停止mqnamesrv `sh mqshutdown namesrv`
 
+## mqadmin 命令
+### 查看所有消费者组
+
+`./mqadmin consumerProgress -n 127.0.0.1:9876`
 
 ## 基础
 

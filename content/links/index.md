@@ -68,6 +68,8 @@ date: 2019-11-28 00:19:01
 |url|tags|
 |-|-|
 |[中文文案指北](https://github.com/mzlogin/chinese-copywriting-guidelines)|统一中文文案、排版的相关用法，降低团队成员之间的沟通成本，增强网站气质。|
+|[Message Headers](https://www.iana.org/assignments/message-headers/message-headers.xhtml)|HTTP 消息头说明 RFC|
+|[HTTP Methods](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods)|HTTP 请求方法|
 
 ### 工具
 
