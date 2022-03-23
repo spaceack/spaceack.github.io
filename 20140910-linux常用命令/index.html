@@ -15,7 +15,7 @@
 <meta name=twitter:title content="Linux 常用命令">
 <meta name=twitter:description content="系统篇 1 2 # 查看LBS 发行版本 cat /etc/lsb-release 1 2 3 4 5 DISTRIB_ID=Ubuntu DISTRIB_RELEASE=18.04 DISTRIB_CODENAME=bionic DISTRIB_DESCRIPTION=&#34;Ubuntu 18.04.5 LTS&#34; 1 2 3 4 5 6 7 8 9 # 查看系统有哪些shell cat /etc/shell # 创建用户spaceack; 生成ho">
 <meta name=application-name content="Spaceack's Blog">
-<meta name=apple-mobile-web-app-title content="Spaceack's Blog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://spaceack.github.io/20140910-linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/><link rel=prev href=https://spaceack.github.io/20100818-windows%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/><link rel=next href=https://spaceack.github.io/20141012-ubuntu%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Linux 常用命令","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/spaceack.github.io\/20140910-linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4\/"},"image":["https:\/\/spaceack.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"Linux","wordcount":767,"url":"https:\/\/spaceack.github.io\/20140910-linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4\/","datePublished":"2014-09-10T12:00:00+00:00","dateModified":"2014-09-10T12:00:00+00:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"Spaceack","logo":"https:\/\/spaceack.github.io\/images\/avatar.jpeg"},"author":{"@type":"Person","name":"Spaceack"},"description":""}</script></head>
+<meta name=apple-mobile-web-app-title content="Spaceack's Blog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://spaceack.github.io/20140910-linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/><link rel=prev href=https://spaceack.github.io/20100818-windows%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/><link rel=next href=https://spaceack.github.io/20141012-ubuntu%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Linux 常用命令","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/spaceack.github.io\/20140910-linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4\/"},"image":["https:\/\/spaceack.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"Linux","wordcount":809,"url":"https:\/\/spaceack.github.io\/20140910-linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4\/","datePublished":"2014-09-10T12:00:00+00:00","dateModified":"2014-09-10T12:00:00+00:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"Spaceack","logo":"https:\/\/spaceack.github.io\/images\/avatar.jpeg"},"author":{"@type":"Person","name":"Spaceack"},"description":""}</script></head>
 <body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':'auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark')&&document.body.setAttribute('theme','dark')</script>
 <div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
 <div class=header-wrapper>
@@ -83,7 +83,7 @@
 <div class=toc-content id=toc-content-auto></div>
 </div><article class="page single"><h1 class="single-title animated flipInX">Linux 常用命令</h1><div class=post-meta>
 <div class=post-meta-line><span class=post-author><a href=/about title=Author rel=" author" class=author><i class="fas fa-user-circle fa-fw"></i>Spaceack</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/linux/><i class="far fa-folder fa-fw"></i>Linux</a></span></div>
-<div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2014-09-10>2014-09-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 767 字&nbsp;
+<div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2014-09-10>2014-09-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 809 字&nbsp;
 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
 </div><div class="details toc" id=toc-static kept>
 <div class="details-summary toc-title">
@@ -108,6 +108,7 @@
 <ul>
 <li><a href=#scp>scp</a></li>
 <li><a href=#使用rsync断点续传备份包含大量数据的资源目录>使用rsync断点续传备份包含大量数据的资源目录!</a></li>
+<li><a href=#curl>curl</a></li>
 </ul>
 </li>
 <li><a href=#其它>其它</a>
@@ -306,7 +307,26 @@ scp   remote_username@remote_ip:/remote_path/*  .
 <p>&ndash;rsh=COMMAND 指定使用rsh、ssh方式进行数据同步, rsh为明文传输.</p>
 <p>-u, 只进行更新，防止本地新文件被重写(不覆盖更新的文件).</p>
 <p>&ndash;ignore-existing, 跳过接收端已存在的文件,目录增量备份会用到.</p>
-<h2 id=其它>其它</h2>
+<h3 id=curl>curl</h3>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=c1># 下载文件</span>
+curl -O http://spaceack.com/data.zip
+<span class=c1># 上传文件</span>
+curl -F <span class=s2>&#34;file=@/data/data.zip&#34;</span> http://spaceack.com/upload
+<span class=c1># https忽略证书验证 -k 参数</span>
+curl -k https://spaceack.com
+</code></pre></td></tr></table>
+</div>
+</div><h2 id=其它>其它</h2>
 <div class=highlight><div class=chroma>
 <table class=lntable><tr><td class=lntd>
 <pre tabindex=0 class=chroma><code><span class=lnt>1
