@@ -3,14 +3,14 @@
 
 # 关于我
 
-- 我热爱计算机，崇尚 [黑客文化](http://translations.readthedocs.io/en/latest/hacker_howto.html#id5), 渴望Geek生活, 希望成为一只[理想的程序猿](http://guoze.me/2015/03/02/excellent-programmer/), 终身学习者(perpetual learner).
+- 我热爱计算机，崇尚 [黑客文化](http://translations.readthedocs.io/en/latest/hacker_howto.html#id5), 渴望Geek生活, 希望成为一只[理想的程序猿](http://guoze.me/excellent-programmer.html), 终身学习者(perpetual learner).
 - 希望能做有意义的事，做一个有追求的人。
 - 即对爱的渴望，知识的渴求, 苦难的理解 —— by罗素《三种激情》
 
 
 ### 技术栈
 - 9年[GNU/Linux](https://www.gnu.org/gnu/linux-and-gnu.en.html)操作系统经验([Ubuntu](https://www.ubuntu.com/desktop))
-- 常用语言: Python，Golang
+- 常用语言: Python，Go Language
 - web框架: FastApi, Flask, Django, Tornado, 熟悉一定的web 前端开发
 - 数据库: [Postgresql](https://www.postgresql.org/), [Mysql](https://mariadb.org/), [Redis](https://redis.io/), [MongoDB](https://www.mongodb.com/)
 - 容器：Docker
