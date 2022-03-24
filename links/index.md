@@ -85,6 +85,12 @@
 |[diagrams](https://app.diagrams.net/)|在线画图（流程图，时序图...）|
 |[le5le](http://topology.le5le.com/workspace)|在线画图（流程图，时序图...）|
 
+### 趣味游戏站
+|url|tags|
+|-|-|
+|[Flash 保存计划](https://flash.zczc.cz/)|海量Flash游戏资源，得益于ruffle模拟器，浏览器无需flash插件也可流畅运行|
+|[在线DOS游戏](https://dos.zczc.cz/)|大量DOS游戏，可以直接在浏览器中开玩|
+|[poki](https://poki.cn/)|免费在线游戏|
 
 ## 添加本站为友链
 ```
