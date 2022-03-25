@@ -140,7 +140,7 @@ broker 列表
   - 生产消息TPS
   - 消费消息TPS
   - 昨日/今日 生产总数
-  - 昨日/今日 消费松鼠
+  - 昨日/今日 消费总数
 
 #### Topic
 - 新增/更新 Topic
@@ -176,7 +176,7 @@ broker 列表
 #### Producer
 
 #### Message
-这个最有用了，可以查看消息的详细信息。有没有消费，被谁消费了？
+这个最有用了，可以查看消息的详细信息。可根据 topic, 按照时间，MESSAGE_KEY或MESSAGE ID 查找小心。有没有消费？被谁消费了？很方便查询。
 - Message ID
 - Topic
 - Tag
