@@ -5,7 +5,7 @@
 <meta name=robots content="noodp">
 <meta http-equiv=x-ua-compatible content="IE=edge, chrome=1">
 <title>RocketMQ笔记 - Spaceack's Blog</title><meta name=Description content="Spaceck的个人Blog 编程之舞"><meta property="og:title" content="RocketMQ笔记">
-<meta property="og:description" content="rocketmq Apache RocketMQ开发者指南-官方 Apache RocketMQ开发者指南 rocketmq-externals 安装运行 cd /opt/rocketmq/bin 启动mqnamesrv nohup sh mqnamesrv & 查看名字服务日志 tail -f ~/logs/rocketmqlogs/namesrv.log 启动 broker 并允">
+<meta property="og:description" content="rocketmq Apache RocketMQ开发者指南-官方 Apache RocketMQ开发者指南 rocketmq-externals 安装运行 测试环境内存占用过大的问题 现象：内存负载高，甚至系统卡死，服务无法">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://spaceack.github.io/20220215-rocketmq%E7%AC%94%E8%AE%B0/"><meta property="og:image" content="https://spaceack.github.io/logo.png"><meta property="article:section" content="posts">
 <meta property="article:published_time" content="2022-02-15T22:41:45+00:00">
@@ -13,9 +13,9 @@
 <meta name=twitter:card content="summary_large_image">
 <meta name=twitter:image content="https://spaceack.github.io/logo.png">
 <meta name=twitter:title content="RocketMQ笔记">
-<meta name=twitter:description content="rocketmq Apache RocketMQ开发者指南-官方 Apache RocketMQ开发者指南 rocketmq-externals 安装运行 cd /opt/rocketmq/bin 启动mqnamesrv nohup sh mqnamesrv & 查看名字服务日志 tail -f ~/logs/rocketmqlogs/namesrv.log 启动 broker 并允">
+<meta name=twitter:description content="rocketmq Apache RocketMQ开发者指南-官方 Apache RocketMQ开发者指南 rocketmq-externals 安装运行 测试环境内存占用过大的问题 现象：内存负载高，甚至系统卡死，服务无法">
 <meta name=application-name content="Spaceack's Blog">
-<meta name=apple-mobile-web-app-title content="Spaceack's Blog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://spaceack.github.io/20220215-rocketmq%E7%AC%94%E8%AE%B0/><link rel=prev href=https://spaceack.github.io/20211207-wumpus/><link rel=next href=https://spaceack.github.io/macos%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"RocketMQ笔记","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/spaceack.github.io\/20220215-rocketmq%E7%AC%94%E8%AE%B0\/"},"image":["https:\/\/spaceack.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"MQ, RocketMQ","wordcount":203,"url":"https:\/\/spaceack.github.io\/20220215-rocketmq%E7%AC%94%E8%AE%B0\/","datePublished":"2022-02-15T22:41:45+00:00","dateModified":"2022-02-15T22:41:45+00:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"Spaceack","logo":"https:\/\/spaceack.github.io\/images\/avatar.jpeg"},"author":{"@type":"Person","name":"Spaceack"},"description":""}</script></head>
+<meta name=apple-mobile-web-app-title content="Spaceack's Blog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://spaceack.github.io/20220215-rocketmq%E7%AC%94%E8%AE%B0/><link rel=prev href=https://spaceack.github.io/20211207-wumpus/><link rel=next href=https://spaceack.github.io/macos%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"RocketMQ笔记","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/spaceack.github.io\/20220215-rocketmq%E7%AC%94%E8%AE%B0\/"},"image":["https:\/\/spaceack.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"MQ, RocketMQ","wordcount":346,"url":"https:\/\/spaceack.github.io\/20220215-rocketmq%E7%AC%94%E8%AE%B0\/","datePublished":"2022-02-15T22:41:45+00:00","dateModified":"2022-02-15T22:41:45+00:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"Spaceack","logo":"https:\/\/spaceack.github.io\/images\/avatar.jpeg"},"author":{"@type":"Person","name":"Spaceack"},"description":""}</script></head>
 <body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':'auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark')&&document.body.setAttribute('theme','dark')</script>
 <div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
 <div class=header-wrapper>
@@ -83,7 +83,7 @@
 <div class=toc-content id=toc-content-auto></div>
 </div><article class="page single"><h1 class="single-title animated flipInX">RocketMQ笔记</h1><div class=post-meta>
 <div class=post-meta-line><span class=post-author><a href=/about title=Author rel=" author" class=author><i class="fas fa-user-circle fa-fw"></i>Spaceack</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/><i class="far fa-folder fa-fw"></i>消息队列</a></span></div>
-<div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2022-02-15>2022-02-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 203 字&nbsp;
+<div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2022-02-15>2022-02-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 346 字&nbsp;
 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 1 分钟&nbsp;</div>
 </div><div class="details toc" id=toc-static kept>
 <div class="details-summary toc-title">
@@ -92,7 +92,13 @@
 </div>
 <div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents>
 <ul>
-<li><a href=#安装运行>安装运行</a></li>
+<li><a href=#安装运行>安装运行</a>
+<ul>
+<li><a href=#测试环境内存占用过大的问题>测试环境内存占用过大的问题</a></li>
+<li><a href=#启动服务>启动服务</a></li>
+<li><a href=#停止服务>停止服务</a></li>
+</ul>
+</li>
 <li><a href=#mqadmin-命令>mqadmin 命令</a>
 <ul>
 <li><a href=#查看所有消费者组>查看所有消费者组</a></li>
@@ -107,13 +113,38 @@
 <p><a href=https://www.itmuch.com/books/rocketmq/ target=_blank rel="noopener noreffer">Apache RocketMQ开发者指南</a></p>
 <p><a href=https://github.com/apache/rocketmq-externals.git target=_blank rel="noopener noreffer">rocketmq-externals</a></p>
 <h2 id=安装运行>安装运行</h2>
+<h3 id=测试环境内存占用过大的问题>测试环境内存占用过大的问题</h3>
+<p>现象：内存负载高，甚至系统卡死，服务无法启动。</p>
+<p>解决方法：</p>
+<pre><code>修改文件`/rocketmq/bin/runbroker.sh`, 将 `#JAVA_OPT=&quot;${JAVA_OPT} -server -Xms8g -Xmx8g&quot;` 改为 `JAVA_OPT=&quot;${JAVA_OPT} -server -Xms256m -Xmx256m`
+
+修改文件`/rocketmq/bin/runserver.sh`, 将 `JAVA_OPT=&quot;${JAVA_OPT} -server -Xms4g -Xmx4g -Xmn2g -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=320m&quot;` 改为 `JAVA_OPT=&quot;${JAVA_OPT} -server -Xms256m -Xmx256m -Xmn128m -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=256m`
+</code></pre>
+<h3 id=启动服务>启动服务</h3>
 <p><code>cd /opt/rocketmq/bin</code></p>
+<ol>
+<li>
 <p>启动mqnamesrv <code>nohup sh mqnamesrv &</code></p>
+</li>
+<li>
 <p>查看名字服务日志 <code>tail -f ~/logs/rocketmqlogs/namesrv.log</code></p>
+</li>
+<li>
 <p>启动 broker 并允许自动创建topic <code>nohup sh mqbroker -n localhost:9876 autoCreateTopicEnable=true &</code></p>
+</li>
+<li>
 <p>查看 broker 日志<code>tail -f ~/logs/rocketmqlogs/broker.log</code></p>
+</li>
+</ol>
+<h3 id=停止服务>停止服务</h3>
+<ol>
+<li>
 <p>停止broker <code>sh mqshutdown broker</code></p>
+</li>
+<li>
 <p>停止mqnamesrv <code>sh mqshutdown namesrv</code></p>
+</li>
+</ol>
 <h2 id=mqadmin-命令>mqadmin 命令</h2>
 <h3 id=查看所有消费者组>查看所有消费者组</h3>
 <p><code>./mqadmin consumerProgress -n 127.0.0.1:9876</code></p>
