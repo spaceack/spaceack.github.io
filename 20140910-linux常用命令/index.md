@@ -48,6 +48,29 @@ sudo dmidecode | grep -A16 "Memory Device"|grep 'Speed'
 free -m
 
 ```
+
+### 磁盘 df
+```bash
+# 查看目录的剩余空间, 本质是查看该目录挂载的磁盘的剩余空间。 默认是千字节。
+ubuntu@primary:~$ df /tmp
+Filesystem     1K-blocks    Used Available Use% Mounted on
+/dev/sda1        4911436 2261092   2633960  47% /
+# -T显示磁盘分区类型
+ubuntu@primary:~$ df -T /tmp
+Filesystem     Type 1K-blocks    Used Available Use% Mounted on
+/dev/sda1      ext4   4911436 2265444   2629608  47% /
+
+# 配合管道命令 sed awk。 提取 某个数值，如可用空间（Available）
+ubuntu@primary:~$ df /tmp| sed '1d' | awk '{print $4}'
+2629608
+
+# -i 查看 inode 的使用情况
+ubuntu@primary:~$ df -i /tmp
+Filesystem     Inodes  IUsed  IFree IUse% Mounted on
+/dev/sda1      648320 137952 510368   22% /
+
+```
+
 #### 交换分区
 查看类型为 swap 的 交换分区名称
 
