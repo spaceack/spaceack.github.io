@@ -1,0 +1,101 @@
+# Flask笔记
+
+《Flask Web开发实战 入门、进阶与原理解析》好书啊
+ISBN: 9787111606598
+
+## 基本概念
+### 路由
+按某路线发送，路由是一个简单的URL，它指向一个视图函数。
+
+### 注册路由 route
+设置URL规则，建立URL和函数间的映射关系。这个函数被称为视图函数（view function）
+代码层面是被装饰器 `app.route('/')` 装饰的函数。
+
+端点默认值为视图函数的名称。通过端点（endpoint），可以通过`url_for('index')`获取路由的相对URL。 获取绝对URL，可以使用`url_for('index', _external=True)`
+
+URL（Uniform Resource Lacator，统一资源定位符）
+
+#### 相对URL（内部URL）
+不包含域名的URL，如：/user/lucky
+可以绑定多个URL
+
+#### 动态URL
+
+#### 带有默认值的URL
+避免404
+
+### flask shell
+自动包含关于flask的上下文，可以直接在命令行中使用flask提供的功能
+app.name
+
+在视图函数加 `app.cli.command('xxx')`装饰器，可以将命令添加到命令行，方便调试。
+flask xxx 执行
+
+### MVC
+MVC（Model-View-Controller，模型-视图-控制器）
+程序被分为三个组件：
+
+  数据处理（Model）
+  用户界面（View）
+  交互逻辑（Controller）
+
+使用了app.route（）装饰器的函数仍被称为视图函数，同时会使用“<函数名>视图”（比如index视图）的形式来代指某个视图函数。
+
+  控制器 - 视图函数
+  视图  - 界面
+  模型 - SQLAlchemy
+
+### 项目配置
+避免硬编码（hard coded）
+[配置章节](flask.pocoo.org/docs/latest/config/)
+app.config['ADMIN_NAME'] = 'Peter'
+配置的名称必须是全大写形式，小写的变量将不会被读取。
+
+使用update（）方法则可以一次加载多个值：
+app.config.update(
+    TESTING=True,
+    SECRET_KEY='_5#yF4Q8z\n\xec]/'
+)
+
+读取值
+value = app.config['ADMIN_NAME']
+
+## 运行
+`flask run --host=0.0.0.0 --port=5050`
+
+## Flask 与 HTTP
+[RFC](https://www.ietf.org/rfc/) 互联网设计文档
+Request-Response-Cycle（请求-响应-周期）
+Request Message 报文
+Response Message 报文
+
+### URL组成
+http:// 协议字符串
+spaceack.com 域名
+/path   资源路径
+
+### 请求报文
+
+报文首部： 请求行（方法，URL，协议）
+
+GET /hello HTTP/1.1
+
+报文头 （头字段）： Host: spaceack.com
+
+  Connection: keep-alive
+  User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36
+  Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+
+报文主体
+
+### HTTP方法
+GET：获取资源
+POST：创建资源
+PUT：更新资源
+DELETE：删除资源
+HEAD：获取资源的属性，不返回资源内容
+OPTIONS：询问支持的方法，不返回资源内容
+
+请求方法详细说明：
+https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods
+[](https://www.iana.org/assignments/message-headers/message-headers.xhtml)
