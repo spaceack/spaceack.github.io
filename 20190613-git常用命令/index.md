@@ -40,6 +40,8 @@ git push origin tag_name
 git log | grep "^Author: Spaceack"|wc -l
 # 统计合并次数
 git log | grep "^Merge" | wc -l
+# 修改当前分支最新的一次提交。commit的 hash 不变. 避免有多个commit的情况。
+git commit --amend
 ```
 
 ### git log
