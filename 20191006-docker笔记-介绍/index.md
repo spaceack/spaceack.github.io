@@ -37,4 +37,10 @@
 3. 仓库（Repository）：
 每个仓库可包含多个标签（Tag）:每个标签对应一个镜像。
 
+4. Docker Registry：
+`Docker Registry` 中可以包含多个 `仓库（Repository）`, 如 [Docker Hub](https://hub.docker.com/)
+
 ![docker.png](docker.png)
+
+- 容器存储层需要保持无状态变化， 写入的数据应使用`数据卷（Volume）` 或 `绑定系统目录`。
+
