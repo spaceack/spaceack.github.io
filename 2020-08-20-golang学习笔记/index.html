@@ -15,7 +15,7 @@
 <meta name=twitter:title content="Golang 学习笔记">
 <meta name=twitter:description content="学习资源 代理加速 Goproxy 中国 中国最可靠的 Go 模块代理。 可完美解决由于连接超时无法安装依赖库，工具库的问题。 1 2 $ go env -w GO111MODULE=on $ go env -w GOPROXY=https://goproxy.cn,direct 国外代理 1 2 go env -w">
 <meta name=application-name content="Spaceack's Blog">
-<meta name=apple-mobile-web-app-title content="Spaceack's Blog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://spaceack.github.io/2020-08-20-golang%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/><link rel=prev href=https://spaceack.github.io/20200810-python%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/><link rel=next href=https://spaceack.github.io/20200827-leetcode-1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Golang 学习笔记","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/spaceack.github.io\/2020-08-20-golang%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0\/"},"image":["https:\/\/spaceack.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"golang","wordcount":524,"url":"https:\/\/spaceack.github.io\/2020-08-20-golang%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0\/","datePublished":"2020-08-20T21:00:00+00:00","dateModified":"2020-08-20T21:00:00+00:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"Spaceack","logo":"https:\/\/spaceack.github.io\/images\/avatar.jpeg"},"author":{"@type":"Person","name":"Spaceack"},"description":""}</script></head>
+<meta name=apple-mobile-web-app-title content="Spaceack's Blog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://spaceack.github.io/2020-08-20-golang%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/><link rel=prev href=https://spaceack.github.io/20200810-python%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/><link rel=next href=https://spaceack.github.io/20200827-leetcode-1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Golang 学习笔记","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/spaceack.github.io\/2020-08-20-golang%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0\/"},"image":["https:\/\/spaceack.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"golang","wordcount":975,"url":"https:\/\/spaceack.github.io\/2020-08-20-golang%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0\/","datePublished":"2020-08-20T21:00:00+00:00","dateModified":"2020-08-20T21:00:00+00:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"Spaceack","logo":"https:\/\/spaceack.github.io\/images\/avatar.jpeg"},"author":{"@type":"Person","name":"Spaceack"},"description":""}</script></head>
 <body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':'auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark')&&document.body.setAttribute('theme','dark')</script>
 <div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
 <div class=header-wrapper>
@@ -83,7 +83,7 @@
 <div class=toc-content id=toc-content-auto></div>
 </div><article class="page single"><h1 class="single-title animated flipInX">Golang 学习笔记</h1><div class=post-meta>
 <div class=post-meta-line><span class=post-author><a href=/about title=Author rel=" author" class=author><i class="fas fa-user-circle fa-fw"></i>Spaceack</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/golang/><i class="far fa-folder fa-fw"></i>golang</a></span></div>
-<div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2020-08-20>2020-08-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 524 字&nbsp;
+<div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2020-08-20>2020-08-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 975 字&nbsp;
 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
 </div><div class="details toc" id=toc-static kept>
 <div class="details-summary toc-title">
@@ -95,6 +95,8 @@
 <li><a href=#学习资源>学习资源</a>
 <ul>
 <li><a href=#代理加速>代理加速</a></li>
+<li><a href=#环境变量>环境变量</a></li>
+<li><a href=#11-hello-world>1.1 Hello World</a></li>
 <li><a href=#函数>函数</a></li>
 <li><a href=#基本类型>基本类型</a></li>
 </ul>
@@ -127,7 +129,59 @@ $ go env -w GOPROXY=https://goproxy.cn,direct
 go env -w GOPROXY=https://goproxy.io,direct
 </code></pre></td></tr></table>
 </div>
-</div><ul>
+</div><h3 id=环境变量>环境变量</h3>
+<p><code>export GOPATH=/Users/spaceack/Documents/go</code></p>
+<h3 id=11-hello-world>1.1 Hello World</h3>
+<p>gopl_hello.go</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=kn>package</span> <span class=nx>main</span>
+
+<span class=kn>import</span> <span class=p>(</span>
+	<span class=s>&#34;fmt&#34;</span>
+<span class=p>)</span>
+
+<span class=kd>func</span> <span class=nf>main</span><span class=p>()</span> <span class=p>{</span>
+	<span class=nx>fmt</span><span class=p>.</span><span class=nf>Println</span><span class=p>(</span><span class=s>&#34;Hello world!&#34;</span><span class=p>)</span>
+<span class=p>}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>运行： <code>go run gopl_hello.go</code>
+编译：<code>go build gopl_hello.go</code>
+代码格式化工具: <code>gofmt</code>
+自动添加或删除import 声明：<code>goimports</code></p>
+<ul>
+<li>
+<p>Go语言的代码通过包（package）组织，包类似于其它语言里的库（libraries）或者模块（modules）。一个包由位于单个目录下的一个或多个.go源代码文件组成, 目录定义包的作用。每个源文件都以一条是<code>package</code> 声明语句开始，这个例子里就是<code>package main</code> , 表示该文件属于哪个包，紧跟着一系列导入（import）的包，之后是存储在这个文件里的程序语句。</p>
+</li>
+<li>
+<p><code>main</code>函数也很特殊，它是整个程序执行时的入口。不包含参数，不返回任何内容，在执行程序时调用。</p>
+</li>
+<li>
+<p>必须告诉编译器源文件需要哪些包，这就是跟随在<code>package</code>声明后面的<code>import</code>声明扮演的角色。必须恰当导入需要的包，缺少了必要的包或者导入了不需要的包，程序都无法编译通过。</p>
+</li>
+<li>
+<p><code> import</code>声明必须跟在文件的<code>package</code>声明之后。</p>
+</li>
+<li>
+<p><code>func</code> 创建函数</p>
+</li>
+<li>
+<p><code>Println()</code>：此方法存在于 fmt 包中, 打印行。</p>
+</li>
 <li>
 <p>查看golang版本
 <code>go version</code></p>
