@@ -23,6 +23,14 @@ sudo usermod -aG sudo spaceack
 sudo useradd -d /home/spaceack -s /bash/zsh spaceack
 
 ```
+### linux 查询进程所在目录
+```
+# 找到进程id
+ps -aux | grep xxx
+ll /proc/进程pid
+
+lsof -p 进程pid
+```
 
 ### CPU
 ```bash
