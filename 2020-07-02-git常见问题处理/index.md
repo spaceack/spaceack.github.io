@@ -92,4 +92,9 @@
   git push
   git push --tags
   ```
+## Gerrit
 
+### git push 报错 remote rejected
+`vim .git/config`
+
+对应的分支`develop` `refs/heads/develop` 改为 `merge = refs/for/develop`

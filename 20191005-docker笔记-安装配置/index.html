@@ -15,7 +15,7 @@
 <meta name=twitter:title content="Docker笔记-安装配置">
 <meta name=twitter:description content="dcoker Install ubuntu 安装文档 Uninstall old versions sudo apt-get remove docker docker-engine docker.io containerd runc Install using the repository 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 sudo apt-get update sudo apt-get install \ apt-transport-https \ ca-certificates \ curl \ gnupg-agent \ software-properties-common curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - sudo apt-key fingerprint 0EBFCD88 sudo add-apt-repository \">
 <meta name=application-name content="Spaceack's Blog">
-<meta name=apple-mobile-web-app-title content="Spaceack's Blog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://spaceack.github.io/20191005-docker%E7%AC%94%E8%AE%B0-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/><link rel=prev href=https://spaceack.github.io/20190926-linux%E7%A3%81%E7%9B%98%E6%A3%80%E6%B5%8B%E5%88%86%E5%8C%BA%E4%B8%8E%E6%8C%82%E8%BD%BD/><link rel=next href=https://spaceack.github.io/20191006-docker%E7%AC%94%E8%AE%B0-%E4%BB%8B%E7%BB%8D/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Docker笔记-安装配置","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/spaceack.github.io\/20191005-docker%E7%AC%94%E8%AE%B0-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE\/"},"image":["https:\/\/spaceack.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"Docker","wordcount":332,"url":"https:\/\/spaceack.github.io\/20191005-docker%E7%AC%94%E8%AE%B0-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE\/","datePublished":"2019-10-05T21:00:00+00:00","dateModified":"2019-10-05T21:00:00+00:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"Spaceack","logo":"https:\/\/spaceack.github.io\/images\/avatar.jpeg"},"author":{"@type":"Person","name":"Spaceack"},"description":""}</script></head>
+<meta name=apple-mobile-web-app-title content="Spaceack's Blog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://spaceack.github.io/20191005-docker%E7%AC%94%E8%AE%B0-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/><link rel=prev href=https://spaceack.github.io/20190926-linux%E7%A3%81%E7%9B%98%E6%A3%80%E6%B5%8B%E5%88%86%E5%8C%BA%E4%B8%8E%E6%8C%82%E8%BD%BD/><link rel=next href=https://spaceack.github.io/20191006-docker%E7%AC%94%E8%AE%B0-%E4%BB%8B%E7%BB%8D/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Docker笔记-安装配置","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/spaceack.github.io\/20191005-docker%E7%AC%94%E8%AE%B0-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE\/"},"image":["https:\/\/spaceack.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"Docker","wordcount":360,"url":"https:\/\/spaceack.github.io\/20191005-docker%E7%AC%94%E8%AE%B0-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE\/","datePublished":"2019-10-05T21:00:00+00:00","dateModified":"2019-10-05T21:00:00+00:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"Spaceack","logo":"https:\/\/spaceack.github.io\/images\/avatar.jpeg"},"author":{"@type":"Person","name":"Spaceack"},"description":""}</script></head>
 <body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':'auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark')&&document.body.setAttribute('theme','dark')</script>
 <div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
 <div class=header-wrapper>
@@ -83,7 +83,7 @@
 <div class=toc-content id=toc-content-auto></div>
 </div><article class="page single"><h1 class="single-title animated flipInX">Docker笔记-安装配置</h1><div class=post-meta>
 <div class=post-meta-line><span class=post-author><a href=/about title=Author rel=" author" class=author><i class="fas fa-user-circle fa-fw"></i>Spaceack</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD/><i class="far fa-folder fa-fw"></i>基础设施</a></span></div>
-<div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2019-10-05>2019-10-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 332 字&nbsp;
+<div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2019-10-05>2019-10-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 360 字&nbsp;
 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 1 分钟&nbsp;</div>
 </div><div class="details toc" id=toc-static kept>
 <div class="details-summary toc-title">
@@ -274,7 +274,31 @@ docker ps
 <li>kitematic</li>
 <li>portainer 轻量级的Docker管理面板</li>
 </ol>
-<h3 id=安装docker-compose>安装docker-compose</h3>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>docker pull portainer/portainer
+</code></pre></td></tr></table>
+</div>
+</div><div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>docker run -p 9000:9000 -p 8000:8000 --name portainer \
+--restart=always \
+-v /var/run/docker.sock:/var/run/docker.sock \
+-v /mydata/portainer/data:/data \
+-d portainer/portainer
+</code></pre></td></tr></table>
+</div>
+</div><h3 id=安装docker-compose>安装docker-compose</h3>
 <p><code>pip3 install docker-compose</code></p>
 </div><div class=post-footer id=post-footer>
 <div class=post-info>
