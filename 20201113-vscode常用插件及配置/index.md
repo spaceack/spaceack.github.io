@@ -38,3 +38,8 @@
 
 ### 中文插件
 1. Chinese(Simplified)
+
+### Java开发
+`Extension Pack for Java`
+
+`Spring Boot Extension Pack`
