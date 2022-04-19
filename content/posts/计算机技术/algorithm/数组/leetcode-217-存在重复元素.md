@@ -33,8 +33,7 @@ tags:
 1 <= nums.length <= 10^5
 -10^9 <= nums[i] <= 10^9
 
-来源：力扣（LeetCode）
-    链接：https://leetcode-cn.com/problems/contains-duplicate/
+来源：力扣（LeetCode）链接：https://leetcode-cn.com/problems/contains-duplicate/
 ---
 
 - 题解1：
