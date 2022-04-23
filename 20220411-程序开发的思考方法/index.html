@@ -4,18 +4,18 @@
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=robots content="noodp">
 <meta http-equiv=x-ua-compatible content="IE=edge, chrome=1">
-<title>程序开发的思考方法 - Spaceack's Blog</title><meta name=Description content="Spaceck的个人Blog 编程之舞"><meta property="og:title" content="程序开发的思考方法">
-<meta property="og:description" content="概念完整性： 软件系统中重要的一点。若对项目问题了解的不够详细进行开发，会导致不断去改代码，期望通过改代码来达到解决问题的目的。 概念不完整，即">
+<title>程序开发的思考方法与好习惯 - Spaceack's Blog</title><meta name=Description content="Spaceck的个人Blog 编程之舞"><meta property="og:title" content="程序开发的思考方法与好习惯">
+<meta property="og:description" content="记录程序开发中的思考方法与好习惯。不仅仅适合程序开发，也适合其它需要逻辑思考的地方。 概念完整性： 软件系统中重要的一点。若对项目问题了解的不够">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://spaceack.github.io/20220411-%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E7%9A%84%E6%80%9D%E8%80%83%E6%96%B9%E6%B3%95/"><meta property="og:image" content="https://spaceack.github.io/logo.png"><meta property="article:section" content="posts">
 <meta property="article:published_time" content="2022-04-11T21:00:00+00:00">
 <meta property="article:modified_time" content="2022-04-11T21:00:00+00:00">
 <meta name=twitter:card content="summary_large_image">
 <meta name=twitter:image content="https://spaceack.github.io/logo.png">
-<meta name=twitter:title content="程序开发的思考方法">
-<meta name=twitter:description content="概念完整性： 软件系统中重要的一点。若对项目问题了解的不够详细进行开发，会导致不断去改代码，期望通过改代码来达到解决问题的目的。 概念不完整，即">
+<meta name=twitter:title content="程序开发的思考方法与好习惯">
+<meta name=twitter:description content="记录程序开发中的思考方法与好习惯。不仅仅适合程序开发，也适合其它需要逻辑思考的地方。 概念完整性： 软件系统中重要的一点。若对项目问题了解的不够">
 <meta name=application-name content="Spaceack's Blog">
-<meta name=apple-mobile-web-app-title content="Spaceack's Blog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://spaceack.github.io/20220411-%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E7%9A%84%E6%80%9D%E8%80%83%E6%96%B9%E6%B3%95/><link rel=prev href=https://spaceack.github.io/20220405-docker%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/><link rel=next href=https://spaceack.github.io/leetcode-217-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"程序开发的思考方法","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/spaceack.github.io\/20220411-%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E7%9A%84%E6%80%9D%E8%80%83%E6%96%B9%E6%B3%95\/"},"image":["https:\/\/spaceack.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"概念","wordcount":728,"url":"https:\/\/spaceack.github.io\/20220411-%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E7%9A%84%E6%80%9D%E8%80%83%E6%96%B9%E6%B3%95\/","datePublished":"2022-04-11T21:00:00+00:00","dateModified":"2022-04-11T21:00:00+00:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"Spaceack","logo":"https:\/\/spaceack.github.io\/images\/avatar.jpeg"},"author":{"@type":"Person","name":"Spaceack"},"description":""}</script></head>
+<meta name=apple-mobile-web-app-title content="Spaceack's Blog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://spaceack.github.io/20220411-%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E7%9A%84%E6%80%9D%E8%80%83%E6%96%B9%E6%B3%95/><link rel=prev href=https://spaceack.github.io/20220405-docker%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/><link rel=next href=https://spaceack.github.io/leetcode-217-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"程序开发的思考方法与好习惯","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/spaceack.github.io\/20220411-%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E7%9A%84%E6%80%9D%E8%80%83%E6%96%B9%E6%B3%95\/"},"image":["https:\/\/spaceack.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"概念","wordcount":1473,"url":"https:\/\/spaceack.github.io\/20220411-%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E7%9A%84%E6%80%9D%E8%80%83%E6%96%B9%E6%B3%95\/","datePublished":"2022-04-11T21:00:00+00:00","dateModified":"2022-04-11T21:00:00+00:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"Spaceack","logo":"https:\/\/spaceack.github.io\/images\/avatar.jpeg"},"author":{"@type":"Person","name":"Spaceack"},"description":""}</script></head>
 <body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':'auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark')&&document.body.setAttribute('theme','dark')</script>
 <div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
 <div class=header-wrapper>
@@ -81,10 +81,10 @@
 <div class=container><div class=toc id=toc-auto>
 <h2 class=toc-title>目录</h2>
 <div class=toc-content id=toc-content-auto></div>
-</div><article class="page single"><h1 class="single-title animated flipInX">程序开发的思考方法</h1><div class=post-meta>
+</div><article class="page single"><h1 class="single-title animated flipInX">程序开发的思考方法与好习惯</h1><div class=post-meta>
 <div class=post-meta-line><span class=post-author><a href=/about title=Author rel=" author" class=author><i class="fas fa-user-circle fa-fw"></i>Spaceack</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/%E6%96%B9%E6%B3%95%E8%AE%BA/><i class="far fa-folder fa-fw"></i>方法论</a></span></div>
-<div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2022-04-11>2022-04-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 728 字&nbsp;
-<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
+<div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2022-04-11>2022-04-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1473 字&nbsp;
+<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
 </div><div class="details toc" id=toc-static kept>
 <div class="details-summary toc-title">
 <span>目录</span>
@@ -98,11 +98,13 @@
 <li><a href=#结构化思维>结构化思维:</a></li>
 <li><a href=#解决问题的两类方式>解决问题的两类方式：</a></li>
 <li><a href=#学习技术的方法论>学习技术的方法论</a></li>
+<li><a href=#编程的好习惯>编程的好习惯</a></li>
 </ul>
 </li>
 </ul>
 </nav></div>
-</div><div class=content id=content><h3 id=概念完整性>概念完整性：</h3>
+</div><div class=content id=content><p>记录程序开发中的思考方法与好习惯。不仅仅适合程序开发，也适合其它需要逻辑思考的地方。</p>
+<h3 id=概念完整性>概念完整性：</h3>
 <p>软件系统中重要的一点。若对项目问题了解的不够详细进行开发，会导致不断去改代码，期望通过改代码来达到解决问题的目的。</p>
 <p>概念不完整，即没有搞明白问题中有哪些对象，对象之间的联系。没有真正搞清楚对象及对象之间的联系。从而没有办法了解问题。在没有真正了解问题的时候，只能被动地等待问题的出现，然后去改代码，以头痛医头，脚痛医脚的方式去解决问题。</p>
 <p>其结果就是，花费大量时间做着重复的事情，改着冗余复杂的代码。最终导致大多数项目失败或延期。</p>
@@ -124,7 +126,35 @@
 <li>更多的问题是在经验之外的，这时候需要知道哪里有解决问题的方法，活用搜索引擎。</li>
 </ol>
 <h3 id=学习技术的方法论>学习技术的方法论</h3>
-<p>学习技术的方法论主要是建立自己的思维框架，用这个思维框架去强吃原理，才能以生有涯应对知无涯。强吃通过已有知识通过迁移学习等方式快速掌握原理类似的新知识，前期需要积累。学技术切勿背说明书，代码机制弄明白了用着就熟了。 —— Aoik-馋师</p>
+<ul>
+<li>
+<p>学习技术的方法论主要是建立自己的思维框架，用这个思维框架去强吃原理，才能以生有涯应对知无涯。强吃通过已有知识通过迁移学习等方式快速掌握原理类似的新知识，前期需要积累。学技术切勿背说明书，代码机制弄明白了用着就熟了。 by: Aoik-馋师</p>
+</li>
+<li>
+<p>学通超过一种编程语言，了解尽可能多的编程语言及其优劣，知道解决某个问题的可能的最佳路径。注意学通和学会是两个概念。学会意味着你能够使用这门语言，会写程序，而学通则意味着更多。很多在简历中号称精通C的人不知道malloc背后都发生了什么，精通Python的人却无法用meta programming写出干净漂亮的代码。这样的精通其实也就是勉强学会。 by: 陈天</p>
+<pre><code>学会：
+了解语言被创建之出的动机，深刻理解语言背后的思想。
+掌握如何在线调试（online debugging）和事后分析（coredump analysis）。
+掌握语言外延/周边的技术。如JVM之于java，OS/CPU EABI之于C。
+掌握如何提升关键代码的效率，如何能够扩充语言的能力。如NIF之于Erlang。
+</code></pre>
+</li>
+<li>
+<p>不断地给自己增加挑战，让自己脱离舒适区域。具体方法是：用那些刚好超过自己能力的任务挑战自己，build（尝试） - measure（分析） - learn（学习总结）。然后不断重复。这是lean startup一书中建议的精益创业模式 by: 陈天</p>
+<p>（也是leetcode刷题的套路啊！）</p>
+</li>
+</ul>
+<h3 id=编程的好习惯>编程的好习惯</h3>
+<ul>
+<li>
+<p>代码不妥协，不屈服于release的压力或人情世故。code review时不仅逻辑正确，格式，算法效率也要合理。真心喜爱你所做的事情。 by: 陈天</p>
+<p>(能做到这点真的很难啊)</p>
+</li>
+<li>
+<p>不要做一只将头埋在沙子中的鸵鸟：计算机异常处理，把可能发生的问题都要考虑到。而不是视而不见。某些事情发生的几率太小了，小到不值得我们花心思去处理；或者，某些事情发生后的后果太严重了，严重到我们只能祈祷上帝它不会发生。by: 陈天</p>
+<p>（我身边有很多优秀的人，总会把有很小可能性发生的事也考虑到，值得学习这种精神！）</p>
+</li>
+</ul>
 </div><div class=post-footer id=post-footer>
 <div class=post-info>
 <div class=post-info-line>
@@ -138,7 +168,7 @@
 <a class=link-to-markdown href=/20220411-%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E7%9A%84%E6%80%9D%E8%80%83%E6%96%B9%E6%B3%95/index.md target=_blank>阅读原始文档</a>
 </span></div>
 <div class=post-info-share>
-<span><a href=javascript:void(0); title="分享到 Twitter" data-sharer=twitter data-url=https://spaceack.github.io/20220411-%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E7%9A%84%E6%80%9D%E8%80%83%E6%96%B9%E6%B3%95/ data-title=程序开发的思考方法 data-hashtags=概念><i class="fab fa-twitter fa-fw"></i></a><a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=https://spaceack.github.io/20220411-%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E7%9A%84%E6%80%9D%E8%80%83%E6%96%B9%E6%B3%95/ data-hashtag=概念><i class="fab fa-facebook-square fa-fw"></i></a><a href=javascript:void(0); title="分享到 Hacker News" data-sharer=hackernews data-url=https://spaceack.github.io/20220411-%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E7%9A%84%E6%80%9D%E8%80%83%E6%96%B9%E6%B3%95/ data-title=程序开发的思考方法><i class="fab fa-hacker-news fa-fw"></i></a><a href=javascript:void(0); title="分享到 Line" data-sharer=line data-url=https://spaceack.github.io/20220411-%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E7%9A%84%E6%80%9D%E8%80%83%E6%96%B9%E6%B3%95/ data-title=程序开发的思考方法><i data-svg-src=https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg></i></a><a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=https://spaceack.github.io/20220411-%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E7%9A%84%E6%80%9D%E8%80%83%E6%96%B9%E6%B3%95/ data-title=程序开发的思考方法><i class="fab fa-weibo fa-fw"></i></a></span>
+<span><a href=javascript:void(0); title="分享到 Twitter" data-sharer=twitter data-url=https://spaceack.github.io/20220411-%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E7%9A%84%E6%80%9D%E8%80%83%E6%96%B9%E6%B3%95/ data-title=程序开发的思考方法与好习惯 data-hashtags=概念><i class="fab fa-twitter fa-fw"></i></a><a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=https://spaceack.github.io/20220411-%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E7%9A%84%E6%80%9D%E8%80%83%E6%96%B9%E6%B3%95/ data-hashtag=概念><i class="fab fa-facebook-square fa-fw"></i></a><a href=javascript:void(0); title="分享到 Hacker News" data-sharer=hackernews data-url=https://spaceack.github.io/20220411-%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E7%9A%84%E6%80%9D%E8%80%83%E6%96%B9%E6%B3%95/ data-title=程序开发的思考方法与好习惯><i class="fab fa-hacker-news fa-fw"></i></a><a href=javascript:void(0); title="分享到 Line" data-sharer=line data-url=https://spaceack.github.io/20220411-%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E7%9A%84%E6%80%9D%E8%80%83%E6%96%B9%E6%B3%95/ data-title=程序开发的思考方法与好习惯><i data-svg-src=https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg></i></a><a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=https://spaceack.github.io/20220411-%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E7%9A%84%E6%80%9D%E8%80%83%E6%96%B9%E6%B3%95/ data-title=程序开发的思考方法与好习惯><i class="fab fa-weibo fa-fw"></i></a></span>
 </div>
 </div>
 </div>
