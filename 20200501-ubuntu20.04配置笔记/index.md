@@ -225,6 +225,8 @@ sudo add-apt-repository ppa:obsproject/obs-studio
 sudo apt update
 sudo apt install obs-studio
 ```
+**ventoy**
+多系统安装启动U盘制作工具  [Ventoy](https://github.com/ventoy/Ventoy)
 
 **Peek**
 超级好用的屏幕GIF动画录制器

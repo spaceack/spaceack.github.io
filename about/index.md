@@ -6,6 +6,7 @@
 - 我热爱计算机，崇尚 [黑客文化](http://translations.readthedocs.io/en/latest/hacker_howto.html#id5), 渴望Geek生活, 希望成为一只[理想的程序猿](http://guoze.me/excellent-programmer.html), 终身学习者(perpetual learner).
 - 希望能做有意义的事，做一个有追求的人。
 - 即对爱的渴望，知识的渴求, 苦难的理解 —— by罗素《三种激情》
+- 喜爱KISS原则， 复杂系统也令人着迷。
 
 
 ### 技术栈
