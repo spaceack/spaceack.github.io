@@ -53,3 +53,6 @@
 #### 再次验证
 
 #### rpm 的检验
+
+`fuser /var/lib/rpm/.rpm.lock`
+
