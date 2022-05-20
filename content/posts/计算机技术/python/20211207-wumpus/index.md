@@ -9,6 +9,7 @@ tags:
   - 算法
   - 游戏
 draft: false
+weight: 1
 ---
 ## “Hunt the Wumpus” 是什么？
 引用wiki百科：
