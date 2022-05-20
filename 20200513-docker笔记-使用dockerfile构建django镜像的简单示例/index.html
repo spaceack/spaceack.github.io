@@ -3,20 +3,21 @@
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=robots content="noodp">
-<meta http-equiv=x-ua-compatible content="IE=edge, chrome=1">
 <title>Docker笔记-使用Dockerfile构建Django镜像的简单示例 - Spaceack's Blog</title><meta name=Description content="Spaceck的个人Blog 编程之舞"><meta property="og:title" content="Docker笔记-使用Dockerfile构建Django镜像的简单示例">
 <meta property="og:description" content="Dockerfile 1 2 3 4 5 6 7 FROM python:3.8.2 ENV PYTHONUNBUFFERED 1 RUN mkdir /code WORKDIR /code COPY requirements.txt /code/ RUN pip install -r requirements.txt COPY . /code/ RUN docker build . docker-compose.yml 1 2 3 4 5 6 7 8 9 10 version:'3'services:web:build:.command:python manage.py runserver 0.0.0.0:8080volumes:- .:/codeports:- &#34;8080:8080&#34; RUN docker-compose up -d">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://spaceack.github.io/20200513-docker%E7%AC%94%E8%AE%B0-%E4%BD%BF%E7%94%A8dockerfile%E6%9E%84%E5%BB%BAdjango%E9%95%9C%E5%83%8F%E7%9A%84%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B/"><meta property="og:image" content="https://spaceack.github.io/logo.png"><meta property="article:section" content="posts">
 <meta property="article:published_time" content="2020-05-13T21:00:00+00:00">
-<meta property="article:modified_time" content="2020-05-13T21:00:00+00:00">
+<meta property="article:modified_time" content="2020-05-13T21:00:00+00:00"><meta property="og:site_name" content="My cool site">
 <meta name=twitter:card content="summary_large_image">
 <meta name=twitter:image content="https://spaceack.github.io/logo.png">
 <meta name=twitter:title content="Docker笔记-使用Dockerfile构建Django镜像的简单示例">
 <meta name=twitter:description content="Dockerfile 1 2 3 4 5 6 7 FROM python:3.8.2 ENV PYTHONUNBUFFERED 1 RUN mkdir /code WORKDIR /code COPY requirements.txt /code/ RUN pip install -r requirements.txt COPY . /code/ RUN docker build . docker-compose.yml 1 2 3 4 5 6 7 8 9 10 version:'3'services:web:build:.command:python manage.py runserver 0.0.0.0:8080volumes:- .:/codeports:- &#34;8080:8080&#34; RUN docker-compose up -d">
 <meta name=application-name content="Spaceack's Blog">
-<meta name=apple-mobile-web-app-title content="Spaceack's Blog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://spaceack.github.io/20200513-docker%E7%AC%94%E8%AE%B0-%E4%BD%BF%E7%94%A8dockerfile%E6%9E%84%E5%BB%BAdjango%E9%95%9C%E5%83%8F%E7%9A%84%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B/><link rel=prev href=https://spaceack.github.io/20200508-%E4%BB%8Eword%E6%96%87%E4%BB%B6%E6%8A%BD%E5%8F%96%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%85%A5%E5%88%B0excel%E6%96%87%E4%BB%B6/><link rel=next href=https://spaceack.github.io/20200524-%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85homeassistant%E5%85%B3%E8%81%94yeelight%E6%99%BA%E8%83%BD%E5%90%B8%E9%A1%B6%E7%81%AF/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Docker笔记-使用Dockerfile构建Django镜像的简单示例","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/spaceack.github.io\/20200513-docker%E7%AC%94%E8%AE%B0-%E4%BD%BF%E7%94%A8dockerfile%E6%9E%84%E5%BB%BAdjango%E9%95%9C%E5%83%8F%E7%9A%84%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B\/"},"image":["https:\/\/spaceack.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"Docker, Django, docker-compose","wordcount":54,"url":"https:\/\/spaceack.github.io\/20200513-docker%E7%AC%94%E8%AE%B0-%E4%BD%BF%E7%94%A8dockerfile%E6%9E%84%E5%BB%BAdjango%E9%95%9C%E5%83%8F%E7%9A%84%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B\/","datePublished":"2020-05-13T21:00:00+00:00","dateModified":"2020-05-13T21:00:00+00:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"Spaceack","logo":"https:\/\/spaceack.github.io\/images\/avatar.jpeg"},"author":{"@type":"Person","name":"Spaceack"},"description":""}</script></head>
-<body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':'auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark')&&document.body.setAttribute('theme','dark')</script>
+<meta name=apple-mobile-web-app-title content="Spaceack's Blog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://spaceack.github.io/20200513-docker%E7%AC%94%E8%AE%B0-%E4%BD%BF%E7%94%A8dockerfile%E6%9E%84%E5%BB%BAdjango%E9%95%9C%E5%83%8F%E7%9A%84%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B/><link rel=prev href=https://spaceack.github.io/20200508-%E4%BB%8Eword%E6%96%87%E4%BB%B6%E6%8A%BD%E5%8F%96%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%85%A5%E5%88%B0excel%E6%96%87%E4%BB%B6/><link rel=next href=https://spaceack.github.io/20200524-%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85homeassistant%E5%85%B3%E8%81%94yeelight%E6%99%BA%E8%83%BD%E5%90%B8%E9%A1%B6%E7%81%AF/><link rel=stylesheet href=/css/style.min.css><link rel=preload href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css as=style onload="this.onload=null,this.rel='stylesheet'">
+<noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css></noscript><link rel=preload href=https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css as=style onload="this.onload=null,this.rel='stylesheet'">
+<noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css></noscript><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Docker笔记-使用Dockerfile构建Django镜像的简单示例","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/spaceack.github.io\/20200513-docker%E7%AC%94%E8%AE%B0-%E4%BD%BF%E7%94%A8dockerfile%E6%9E%84%E5%BB%BAdjango%E9%95%9C%E5%83%8F%E7%9A%84%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B\/"},"image":["https:\/\/spaceack.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"Docker, Django, docker-compose","wordcount":54,"url":"https:\/\/spaceack.github.io\/20200513-docker%E7%AC%94%E8%AE%B0-%E4%BD%BF%E7%94%A8dockerfile%E6%9E%84%E5%BB%BAdjango%E9%95%9C%E5%83%8F%E7%9A%84%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B\/","datePublished":"2020-05-13T21:00:00+00:00","dateModified":"2020-05-13T21:00:00+00:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"Spaceack","logo":"https:\/\/spaceack.github.io\/images\/avatar.jpeg"},"author":{"@type":"Person","name":"Spaceack"},"description":""}</script></head>
+<body data-header-desktop=fixed data-header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':'auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark')&&document.body.setAttribute('theme','dark')</script>
 <div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
 <div class=header-wrapper>
 <div class=header-title>
@@ -26,16 +27,16 @@
 <div class=menu-inner><a class=menu-item href=/posts/> 所有文章 </a><a class=menu-item href=/tags/> 标签 </a><a class=menu-item href=/categories/> 分类 </a><a class=menu-item href=/links/> 友链 </a><a class=menu-item href=/about/> 关于 </a><a class=menu-item href=/challenge/> 战利品 </a><a class=menu-item href=/book/> 读书 </a><a class=menu-item href=https://github.com/spaceack title=GitHub rel="noopener noreffer" target=_blank><i class="fab fa-github fa-fw"></i> </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
 <input type=text placeholder=搜索文章标题或内容... id=search-input-desktop>
 <a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索>
-<i class="fas fa-search fa-fw"></i>
+<i class="fas fa-search fa-fw" aria-hidden=true></i>
 </a>
 <a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空>
-<i class="fas fa-times-circle fa-fw"></i>
+<i class="fas fa-times-circle fa-fw" aria-hidden=true></i>
 </a>
 <span class="search-button search-loading" id=search-loading-desktop>
-<i class="fas fa-spinner fa-fw fa-spin"></i>
+<i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i>
 </span>
 </span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
-<i class="fas fa-adjust fa-fw"></i>
+<i class="fas fa-adjust fa-fw" aria-hidden=true></i>
 </a>
 </div>
 </div>
@@ -54,41 +55,39 @@
 <div class="search mobile" id=search-mobile>
 <input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
 <a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索>
-<i class="fas fa-search fa-fw"></i>
+<i class="fas fa-search fa-fw" aria-hidden=true></i>
 </a>
 <a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空>
-<i class="fas fa-times-circle fa-fw"></i>
+<i class="fas fa-times-circle fa-fw" aria-hidden=true></i>
 </a>
 <span class="search-button search-loading" id=search-loading-mobile>
-<i class="fas fa-spinner fa-fw fa-spin"></i>
+<i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i>
 </span>
 </div>
 <a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>
 取消
 </a>
 </div><a class=menu-item href=/posts/ title>所有文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a class=menu-item href=/links/ title>友链</a><a class=menu-item href=/about/ title>关于</a><a class=menu-item href=/challenge/ title>战利品</a><a class=menu-item href=/book/ title>读书</a><a class=menu-item href=https://github.com/spaceack title=GitHub rel="noopener noreffer" target=_blank><i class="fab fa-github fa-fw"></i></a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
-<i class="fas fa-adjust fa-fw"></i>
+<i class="fas fa-adjust fa-fw" aria-hidden=true></i>
 </a></div>
 </div>
-</header>
-<div class="search-dropdown desktop">
+</header><div class="search-dropdown desktop">
 <div id=search-dropdown-desktop></div>
 </div>
 <div class="search-dropdown mobile">
 <div id=search-dropdown-mobile></div>
-</div>
-<main class=main>
+</div><main class=main>
 <div class=container><div class=toc id=toc-auto>
 <h2 class=toc-title>目录</h2>
 <div class=toc-content id=toc-content-auto></div>
-</div><article class="page single"><h1 class="single-title animated flipInX">Docker笔记-使用Dockerfile构建Django镜像的简单示例</h1><div class=post-meta>
-<div class=post-meta-line><span class=post-author><a href=/about title=Author rel=" author" class=author><i class="fas fa-user-circle fa-fw"></i>Spaceack</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD/><i class="far fa-folder fa-fw"></i>基础设施</a></span></div>
-<div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2020-05-13>2020-05-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 54 字&nbsp;
-<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 1 分钟&nbsp;</div>
-</div><div class="details toc" id=toc-static kept>
+</div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Docker笔记-使用Dockerfile构建Django镜像的简单示例</h1><div class=post-meta>
+<div class=post-meta-line><span class=post-author><a href=/about title=Author rel=" author" class=author><i class="fas fa-user-circle fa-fw" aria-hidden=true></i>Spaceack</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD/><i class="far fa-folder fa-fw" aria-hidden=true></i>基础设施</a></span></div>
+<div class=post-meta-line><i class="far fa-calendar-alt fa-fw" aria-hidden=true></i>&nbsp;<time datetime=2020-05-13>2020-05-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden=true></i>&nbsp;约 54 字&nbsp;
+<i class="far fa-clock fa-fw" aria-hidden=true></i>&nbsp;预计阅读 1 分钟&nbsp;</div>
+</div><div class="details toc" id=toc-static data-kept>
 <div class="details-summary toc-title">
 <span>目录</span>
-<span><i class="details-icon fas fa-angle-right"></i></span>
+<span><i class="details-icon fas fa-angle-right" aria-hidden=true></i></span>
 </div>
 <div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents>
 <ul>
@@ -155,37 +154,35 @@ COPY . /code/
 <div class=post-info-line>
 <div class=post-info-mod>
 <span>更新于 2020-05-13</span>
-</div>
-<div class=post-info-license></div>
-</div>
+</div></div>
 <div class=post-info-line>
 <div class=post-info-md><span>
 <a class=link-to-markdown href=/20200513-docker%E7%AC%94%E8%AE%B0-%E4%BD%BF%E7%94%A8dockerfile%E6%9E%84%E5%BB%BAdjango%E9%95%9C%E5%83%8F%E7%9A%84%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B/index.md target=_blank>阅读原始文档</a>
 </span></div>
 <div class=post-info-share>
-<span><a href=javascript:void(0); title="分享到 Twitter" data-sharer=twitter data-url=https://spaceack.github.io/20200513-docker%E7%AC%94%E8%AE%B0-%E4%BD%BF%E7%94%A8dockerfile%E6%9E%84%E5%BB%BAdjango%E9%95%9C%E5%83%8F%E7%9A%84%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B/ data-title=Docker笔记-使用Dockerfile构建Django镜像的简单示例 data-hashtags=Docker,Django,docker-compose><i class="fab fa-twitter fa-fw"></i></a><a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=https://spaceack.github.io/20200513-docker%E7%AC%94%E8%AE%B0-%E4%BD%BF%E7%94%A8dockerfile%E6%9E%84%E5%BB%BAdjango%E9%95%9C%E5%83%8F%E7%9A%84%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B/ data-hashtag=Docker><i class="fab fa-facebook-square fa-fw"></i></a><a href=javascript:void(0); title="分享到 Hacker News" data-sharer=hackernews data-url=https://spaceack.github.io/20200513-docker%E7%AC%94%E8%AE%B0-%E4%BD%BF%E7%94%A8dockerfile%E6%9E%84%E5%BB%BAdjango%E9%95%9C%E5%83%8F%E7%9A%84%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B/ data-title=Docker笔记-使用Dockerfile构建Django镜像的简单示例><i class="fab fa-hacker-news fa-fw"></i></a><a href=javascript:void(0); title="分享到 Line" data-sharer=line data-url=https://spaceack.github.io/20200513-docker%E7%AC%94%E8%AE%B0-%E4%BD%BF%E7%94%A8dockerfile%E6%9E%84%E5%BB%BAdjango%E9%95%9C%E5%83%8F%E7%9A%84%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B/ data-title=Docker笔记-使用Dockerfile构建Django镜像的简单示例><i data-svg-src=https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg></i></a><a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=https://spaceack.github.io/20200513-docker%E7%AC%94%E8%AE%B0-%E4%BD%BF%E7%94%A8dockerfile%E6%9E%84%E5%BB%BAdjango%E9%95%9C%E5%83%8F%E7%9A%84%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B/ data-title=Docker笔记-使用Dockerfile构建Django镜像的简单示例><i class="fab fa-weibo fa-fw"></i></a></span>
+<span><a href=javascript:void(0); title="分享到 Twitter" data-sharer=twitter data-url=https://spaceack.github.io/20200513-docker%E7%AC%94%E8%AE%B0-%E4%BD%BF%E7%94%A8dockerfile%E6%9E%84%E5%BB%BAdjango%E9%95%9C%E5%83%8F%E7%9A%84%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B/ data-title=Docker笔记-使用Dockerfile构建Django镜像的简单示例 data-hashtags=Docker,Django,docker-compose><i class="fab fa-twitter fa-fw" aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=https://spaceack.github.io/20200513-docker%E7%AC%94%E8%AE%B0-%E4%BD%BF%E7%94%A8dockerfile%E6%9E%84%E5%BB%BAdjango%E9%95%9C%E5%83%8F%E7%9A%84%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B/ data-hashtag=Docker><i class="fab fa-facebook-square fa-fw" aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 Hacker News" data-sharer=hackernews data-url=https://spaceack.github.io/20200513-docker%E7%AC%94%E8%AE%B0-%E4%BD%BF%E7%94%A8dockerfile%E6%9E%84%E5%BB%BAdjango%E9%95%9C%E5%83%8F%E7%9A%84%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B/ data-title=Docker笔记-使用Dockerfile构建Django镜像的简单示例><i class="fab fa-hacker-news fa-fw" aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 Line" data-sharer=line data-url=https://spaceack.github.io/20200513-docker%E7%AC%94%E8%AE%B0-%E4%BD%BF%E7%94%A8dockerfile%E6%9E%84%E5%BB%BAdjango%E9%95%9C%E5%83%8F%E7%9A%84%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B/ data-title=Docker笔记-使用Dockerfile构建Django镜像的简单示例><i data-svg-src=https://cdn.jsdelivr.net/npm/simple-icons@6.20.0/icons/line.svg aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=https://spaceack.github.io/20200513-docker%E7%AC%94%E8%AE%B0-%E4%BD%BF%E7%94%A8dockerfile%E6%9E%84%E5%BB%BAdjango%E9%95%9C%E5%83%8F%E7%9A%84%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B/ data-title=Docker笔记-使用Dockerfile构建Django镜像的简单示例><i class="fab fa-weibo fa-fw" aria-hidden=true></i></a></span>
 </div>
 </div>
 </div>
 <div class=post-info-more>
-<section class=post-tags><i class="fas fa-tags fa-fw"></i>&nbsp;<a href=/tags/docker/>Docker</a>,&nbsp;<a href=/tags/django/>Django</a>,&nbsp;<a href=/tags/docker-compose/>docker-compose</a></section>
+<section class=post-tags><i class="fas fa-tags fa-fw" aria-hidden=true></i>&nbsp;<a href=/tags/docker/>Docker</a>,&nbsp;<a href=/tags/django/>Django</a>,&nbsp;<a href=/tags/docker-compose/>docker-compose</a></section>
 <section>
 <span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span>
 </section>
 </div>
-<div class=post-nav><a href=/20200508-%E4%BB%8Eword%E6%96%87%E4%BB%B6%E6%8A%BD%E5%8F%96%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%85%A5%E5%88%B0excel%E6%96%87%E4%BB%B6/ class=prev rel=prev title=从Word文件抽取数据导入到Excel文件><i class="fas fa-angle-left fa-fw"></i>从Word文件抽取数据导入到Excel文件</a>
-<a href=/20200524-%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85homeassistant%E5%85%B3%E8%81%94yeelight%E6%99%BA%E8%83%BD%E5%90%B8%E9%A1%B6%E7%81%AF/ class=next rel=next title=智能家居HomeAssistant关联yeelight智能吸顶灯>智能家居HomeAssistant关联yeelight智能吸顶灯<i class="fas fa-angle-right fa-fw"></i></a></div>
+<div class=post-nav><a href=/20200508-%E4%BB%8Eword%E6%96%87%E4%BB%B6%E6%8A%BD%E5%8F%96%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%85%A5%E5%88%B0excel%E6%96%87%E4%BB%B6/ class=prev rel=prev title=从Word文件抽取数据导入到Excel文件><i class="fas fa-angle-left fa-fw" aria-hidden=true></i>从Word文件抽取数据导入到Excel文件</a>
+<a href=/20200524-%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85homeassistant%E5%85%B3%E8%81%94yeelight%E6%99%BA%E8%83%BD%E5%90%B8%E9%A1%B6%E7%81%AF/ class=next rel=next title=智能家居HomeAssistant关联yeelight智能吸顶灯>智能家居HomeAssistant关联yeelight智能吸顶灯<i class="fas fa-angle-right fa-fw" aria-hidden=true></i></a></div>
 </div>
 </article></div>
 </main><footer class=footer>
-<div class=footer-container><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.87.0">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/dillonzq/LoveIt target=_blank rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
-</div><div class=footer-line><i class="far fa-copyright fa-fw"></i><span itemprop=copyrightYear>2014 - 2022</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=/about target=_blank>Spaceack</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div>
+<div class=footer-container><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.87.0">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/dillonzq/LoveIt target=_blank rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden=true></i> LoveIt</a>
+</div><div class=footer-line itemscope itemtype=http://schema.org/CreativeWork><i class="far fa-copyright fa-fw" aria-hidden=true></i><span itemprop=copyrightYear>2014 - 2022</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=/about target=_blank>Spaceack</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div>
 </div>
 </footer></div>
 <div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部>
-<i class="fas fa-arrow-up fa-fw"></i>
+<i class="fas fa-arrow-up fa-fw" aria-hidden=true></i>
 </a><a href=# id=view-comments class=fixed-button title=查看评论>
-<i class="fas fa-comment fa-fw"></i>
+<i class="fas fa-comment fa-fw" aria-hidden=true></i>
 </a>
-</div><script type=text/javascript src=https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:50},comment:{},search:{algoliaAppID:"VXI4TRVSM5",algoliaIndex:"index.zh-cn",algoliaSearchKey:"4987343c645c7f8c574d58035d43fe96",highlightTag:"em",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50,type:"algolia"}}</script><script type=text/javascript src=/js/theme.min.js></script></body>
+</div><script type=text/javascript src=https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/algoliasearch@4.13.0/dist/algoliasearch-lite.umd.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:50},comment:{},search:{algoliaAppID:"VXI4TRVSM5",algoliaIndex:"index.zh-cn",algoliaSearchKey:"4987343c645c7f8c574d58035d43fe96",highlightTag:"em",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50,type:"algolia"}}</script><script type=text/javascript src=/js/theme.min.js></script></body>
 </html>

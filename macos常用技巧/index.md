@@ -10,6 +10,14 @@
 
 剪切 `Command + X`
 
+文件剪切粘贴
+  1. 选中文件
+  2. `Command + C`
+  3. 到目标目录
+  4. `Command + Option V`
+
+聚焦搜索框🔍 `Command + SPACE` 或 键盘功能键 `F4🔍`
+
 ## 软件清单
 GIf录制 [LICEcap](https://www.cockos.com/licecap/)
 
@@ -20,3 +28,9 @@ GIf录制 [LICEcap](https://www.cockos.com/licecap/)
 OpenVPN [Tunnelblick](https://tunnelblick.net/)
 
 Ubuntu虚拟机 [Multipass](https://multipass.run/)
+
+## How to
+
+### 如何查看 Mac wifi 密码
+1. 聚焦搜索框 🔍 搜索 
+2，**密钥串访问** 查看网络密码～
