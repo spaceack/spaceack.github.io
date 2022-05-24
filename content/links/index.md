@@ -15,6 +15,7 @@ date: 2019-11-28 00:19:01
 |[骏马金龙](https://www.cnblogs.com/f-ck-need-u/)|技术大牛|网名骏马金龙，钟情于IT世界里的各种原理和实现机制，强迫症重症患者。爱研究、爱翻译、爱分享。特借此一亩三分田记录自己成长点滴！！！|
 |[lu4nx@wiki](http://www.shellcodes.org/)|Security,Unix,Python,Lisp,|Emacs||
 |[manateelazycat](https://manateelazycat.github.io/)|linux开源软件|Lisp,Emacs||
+|[戈楷旎](https://geekinney.com/)|Happy hacking emacs!|Emacs|
 |[TRHX’S BLOG](https://www.itrhx.com/)|Python、爬虫、前端|求知若饥，虚心若愚！|
 |[迷思语](https://www.misiyu.cn/)|技术大牛|一个人，一介学生，一个儿子~ 愿你我都被世界温暖以待|
 |[アストルフォの幻想郷](https://asutorufa.github.io/)|编程||
