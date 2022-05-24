@@ -34,3 +34,9 @@ Ubuntu虚拟机 [Multipass](https://multipass.run/)
 ### 如何查看 Mac wifi 密码
 1. 聚焦搜索框 🔍 搜索 
 2，**密钥串访问** 查看网络密码～
+
+## brew
+```zsh
+# Common Lisp compiler
+brew install sbcl
+```
