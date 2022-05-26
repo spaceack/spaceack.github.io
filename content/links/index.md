@@ -8,8 +8,9 @@ date: 2019-11-28 00:19:01
 
 |url|tags|desc|
 |-|-|-|
-|[Spaceack's Blog](https://spaceack.com/)|生活, 技术, Python, Linux|做一个有追求的人|
+|[Spaceack's Blog](https://spaceack.com/)|生活, 技术, Python, Linux|做一个有追求的人 即对爱的渴望，知识的渴求, 苦难的理解|
 |[Lucien's Blog](https://blog.lucien.ink)|算法，pasteme|因为孤独是人之常态，所以陪伴才显得尤为珍贵。|
+|[Edwiv's Blog](https://edwiv.com/)|算法|永远年轻，永远热泪盈眶|
 |[极客兔兔](https://geektutu.com)|全栈|致力于分享有趣的技术实践|
 |[MagicLen](https://magiclen.org)|全栈|多元化原创文章，内容包罗万象，有编程语言、网站应用、软件介绍、硬件介绍、操作系统、旅行游记、专题采访、益智问题、文学创作，以及作者们的知识分享和作品分享。|
 |[骏马金龙](https://www.cnblogs.com/f-ck-need-u/)|技术大牛|网名骏马金龙，钟情于IT世界里的各种原理和实现机制，强迫症重症患者。爱研究、爱翻译、爱分享。特借此一亩三分田记录自己成长点滴！！！|
@@ -96,7 +97,9 @@ date: 2019-11-28 00:19:01
 |[在线DOS游戏](https://dos.zczc.cz/)|大量DOS游戏，可以直接在浏览器中开玩|
 |[poki](https://poki.cn/)|免费在线游戏|
 
+
 ## 添加本站为友链
+
 ```
 # 名称
 Spaceack's Blog
@@ -107,6 +110,8 @@ http://spaceack.github.io/
 # 标签
 Python, Linux
 # 简介
-做一个有追求的人
+做一个有追求的人 即对爱的渴望，知识的渴求, 苦难的理解
 
 ```
+
+互加友链请邮箱私信
