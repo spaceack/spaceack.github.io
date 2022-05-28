@@ -1,21 +1,30 @@
 # Ubuntu20.04配置笔记
 
 
-将中文目录改为英文：
+将中文名目录改为英文（因为英文名称在 `Terminal 终端` 中更容易操作。）：
 
     #debian/Ubuntu
     export LANG=en_US
     xdg-user-dirs-gtk-update
     export LANG=zh_CN
 
+1. 在弹出的窗口中勾选 升级新的名称
+2. 重启后 现在是英文名称，在弹出的窗口中勾选保留现有名称，并勾选下次不再询问，然后点击确定。
+
 ## 环境变量
+
+追加写入全局配置路径 `/etc/profile`
+写入当前用户配置路径 `~/.bashrc` or `~/.zshrc`
+
 
 ```bash
 
 # HISTORY history 日志添加时间戳；默认的2000条记录上限提高至99999条
 export HISTTIMEFORMAT="%Y-%m-%d %H:%M:%S "
 export HISTFILESIZE=99999
+```
 
+```bash
 # node env 个人习惯把程序环境都放在 /opt 目录下
 export PATH=$PATH:/opt/node/bin
 
@@ -107,7 +116,7 @@ sudo apt install -y lrzsz;
 # 新立得软件包管理器
 sudo apt install -y synaptic;
 # 用于查找缺失的依赖库 apt-file search xxx.so
-sudo apt install apt-file;
+sudo apt install -y apt-file;
 sudo apt install -y python3-distutils;
 sudo apt-get install -y libmysqlclient-dev;
 sudo apt install  -y python3-pip;
@@ -117,13 +126,13 @@ sudo apt install -y nginx;
 sudo apt install -y supervisor;
 sudo apt install -y nmap;
 # Common Lisp compiler
-sudo apt-get install sbcl
+sudo apt-get install -y sbcl
 # rime輸入法
-sudo apt-get install ibus-rime
+# sudo apt-get install ibus-rime
 # 功能强大的词典， 需要配置第三方词典资源
 sudo apt install -y goldendict;
 # 文档格式转换
-sudo apt install pandoc;
+sudo apt install -y pandoc;
 # 文本版本差异对比，合并工具 可视化的diff和merge 工具
 sudo apt install -y meld;
 # 远程桌面客户端
@@ -145,10 +154,10 @@ sudo apt install -y deepin-terminal;
 sudo apt install -y pv;
 sudo apt install -y neofetch;
 # 番茄时钟
-sudo apt install gnome-shell-pomodoro;
+sudo apt install -y gnome-shell-pomodoro;
 # tweaks 界面功能增强，时钟显示秒，设置。
 sudo apt-get install -y gnome-tweaks;
-sudo pip3 install jupyterlab;
+# sudo pip3 install jupyterlab;
 '
 ```
 ```bash
