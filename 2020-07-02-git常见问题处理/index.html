@@ -4,7 +4,7 @@
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=robots content="noodp">
 <title>git常见问题处理 - Spaceack's Blog</title><meta name=Description content="Spaceck的个人Blog 编程之舞"><meta property="og:title" content="git常见问题处理">
-<meta property="og:description" content="git status 中文显示异常 中文名等特殊符号被转义，不易读。 使用下面命令可正常显示中文。 git config --global core.quotepath false 查看项目中某个人的代码数 1 2 3 git log --author=&#34;Spaceack&#34; --pretty=tformat: --numstat | awk '{ add += $1; subs">
+<meta property="og:description" content="git status 中文显示异常 中文名等特殊符号被转义，不易读。 使用下面命令可正常显示中文。 git config --global core.quotepath false 查看项目中某个人的代码数 1 2 3 4 git log --author=&#34;Spaceack&#34; --pretty=tformat: --numstat | awk '{ add += $1;">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://spaceack.github.io/2020-07-02-git%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/"><meta property="og:image" content="https://spaceack.github.io/logo.png"><meta property="article:section" content="posts">
 <meta property="article:published_time" content="2020-07-02T21:00:00+00:00">
@@ -12,7 +12,7 @@
 <meta name=twitter:card content="summary_large_image">
 <meta name=twitter:image content="https://spaceack.github.io/logo.png">
 <meta name=twitter:title content="git常见问题处理">
-<meta name=twitter:description content="git status 中文显示异常 中文名等特殊符号被转义，不易读。 使用下面命令可正常显示中文。 git config --global core.quotepath false 查看项目中某个人的代码数 1 2 3 git log --author=&#34;Spaceack&#34; --pretty=tformat: --numstat | awk '{ add += $1; subs">
+<meta name=twitter:description content="git status 中文显示异常 中文名等特殊符号被转义，不易读。 使用下面命令可正常显示中文。 git config --global core.quotepath false 查看项目中某个人的代码数 1 2 3 4 git log --author=&#34;Spaceack&#34; --pretty=tformat: --numstat | awk '{ add += $1;">
 <meta name=application-name content="Spaceack's Blog">
 <meta name=apple-mobile-web-app-title content="Spaceack's Blog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://spaceack.github.io/2020-07-02-git%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/><link rel=prev href=https://spaceack.github.io/2020-07-01-sse%E5%8D%8F%E8%AE%AE/><link rel=next href=https://spaceack.github.io/20200717-python%E4%BD%BF%E7%94%A8os%E6%A8%A1%E5%9D%97/><link rel=stylesheet href=/css/style.min.css><link rel=preload href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css as=style onload="this.onload=null,this.rel='stylesheet'">
 <noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css></noscript><link rel=preload href=https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css as=style onload="this.onload=null,this.rel='stylesheet'">
@@ -100,7 +100,7 @@
 <li><a href=#您的分支和-originmaster-出现了偏离>您的分支和 &lsquo;origin/master&rsquo; 出现了偏离</a></li>
 <li><a href=#拒绝合并无关历史>拒绝合并无关历史</a></li>
 <li><a href=#git-pull-强制覆盖本地文件>git pull 强制覆盖本地文件</a></li>
-<li><a href=#pull时忽略变更的文件>pull时，忽略变更的文件：</a></li>
+<li><a href=#pull时忽略变更的文件>pull时，忽略变更的文件</a></li>
 </ul>
 </li>
 <li><a href=#github>GitHub</a>
@@ -110,7 +110,7 @@
 </li>
 <li><a href=#gerrit>Gerrit</a>
 <ul>
-<li><a href=#git-push-报错-remote-rejected>git push 报错 remote rejected</a></li>
+<li><a href=#git-push-报错-remote-rejected>git push 报错 remote rejected'</a></li>
 </ul>
 </li>
 </ul>
@@ -125,11 +125,13 @@
 <pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
+</span><span class=lnt>4
 </span></code></pre></td>
 <td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>git log --author=&#34;Spaceack&#34; --pretty=tformat: --numstat | awk &#39;{ add += $1; subs += $2; loc += $1 - $2 } END { printf &#34;added lines: %s, removed lines: %s, total lines: %s\n&#34;, add, subs, loc }&#39; 
+<pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>
+git log --author<span class=o>=</span><span class=s2>&#34;Spaceack&#34;</span> --pretty<span class=o>=</span>tformat: --numstat <span class=p>|</span> awk <span class=s1>&#39;{ add += $1; subs += $2; loc += $1 - $2 } END { printf &#34;added lines: %s, removed lines: %s, total lines: %s\n&#34;, add, subs, loc }&#39;</span> 
 
-added lines: 1280, removed lines: 198, total lines: 1082
+added lines: 1280, removed lines: 198, total lines: <span class=m>1082</span>
 </code></pre></td></tr></table>
 </div>
 </div><h3 id=合并多次commit>合并多次commit</h3>
@@ -146,7 +148,7 @@ added lines: 1280, removed lines: 198, total lines: 1082
 </span><span class=lnt>8
 </span></code></pre></td>
 <td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>git rebase -i HEAD~3
+<pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>git rebase -i HEAD~3
 
 选择pick操作，git会应用这个补丁，以同样的提交信息（commit message）保存提交
 选择reword操作，git会应用这个补丁，但需要重新编辑提交信息
@@ -167,11 +169,11 @@ added lines: 1280, removed lines: 198, total lines: 1082
 </span><span class=lnt>5
 </span></code></pre></td>
 <td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>x  -----删除忽略文件已经对git来说不识别的文件
+<pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>x  -----删除忽略文件已经对git来说不识别的文件
 d  -----删除未被添加到git的路径中的文件
 f  -----强制运行
 
-git clean  -d  -fx &#34;&#34;
+git clean  -d  -fx <span class=s2>&#34;&#34;</span>
 </code></pre></td></tr></table>
 </div>
 </div><h3 id=您的分支和-originmaster-出现了偏离>您的分支和 &lsquo;origin/master&rsquo; 出现了偏离</h3>
@@ -189,11 +191,11 @@ git clean  -d  -fx &#34;&#34;
 </span><span class=lnt>10
 </span></code></pre></td>
 <td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>git status
+<pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>git status
 位于分支 master
-您的分支和 &#39;origin/master&#39; 出现了偏离，
-并且分别有 1 和 1 处不同的提交。
-  （使用 &#34;git pull&#34; 来合并远程分支）
+您的分支和 <span class=s1>&#39;origin/master&#39;</span> 出现了偏离，
+并且分别有 <span class=m>1</span> 和 <span class=m>1</span> 处不同的提交。
+  （使用 <span class=s2>&#34;git pull&#34;</span> 来合并远程分支）
 
 想要丢弃你所有的本地改动与提交，可以到服务器上获取最新的版本并将你本地主分支指向到它：
 
@@ -209,7 +211,7 @@ git reset --hard origin/master
 </span><span class=lnt>3
 </span></code></pre></td>
 <td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>fatal: refusing to merge unrelated histories
+<pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>fatal: refusing to merge unrelated histories
 
 git pull origin hexo --allow-unrelated-histories
 </code></pre></td></tr></table>
@@ -222,12 +224,12 @@ git pull origin hexo --allow-unrelated-histories
 </span><span class=lnt>3
 </span></code></pre></td>
 <td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>git fetch --all
+<pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>git fetch --all
 git reset --hard origin/master
 
 </code></pre></td></tr></table>
 </div>
-</div><h3 id=pull时忽略变更的文件>pull时，忽略变更的文件：</h3>
+</div><h3 id=pull时忽略变更的文件>pull时，忽略变更的文件</h3>
 <div class=highlight><div class=chroma>
 <table class=lntable><tr><td class=lntd>
 <pre tabindex=0 class=chroma><code><span class=lnt>1
@@ -235,7 +237,7 @@ git reset --hard origin/master
 </span><span class=lnt>3
 </span></code></pre></td>
 <td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>git stash
+<pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>git stash
 git pull
 git stash pop
 </code></pre></td></tr></table>
@@ -259,11 +261,11 @@ git stash pop
 </span><span class=lnt>13
 </span></code></pre></td>
 <td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>- RP: spaceack/awesomeproject
+<pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>- RP: spaceack/awesomeproject
 - Fork: xxxx/awesomeproject
 
 git clone https://github.com/spaceack/awesomeproject.git
-cd awesomeproject
+<span class=nb>cd</span> awesomeproject
 git remote add upstream https://github.com/spaceack/myframework.git
 
 - Update:
@@ -275,7 +277,7 @@ git push --tags
 </code></pre></td></tr></table>
 </div>
 </div><h2 id=gerrit>Gerrit</h2>
-<h3 id=git-push-报错-remote-rejected>git push 报错 remote rejected</h3>
+<h3 id=git-push-报错-remote-rejected>git push 报错 remote rejected'</h3>
 <p><code>vim .git/config</code></p>
 <p>对应的分支<code>develop</code> <code>refs/heads/develop</code> 改为 <code>merge = refs/for/develop</code></p>
 </div><div class=post-footer id=post-footer>
