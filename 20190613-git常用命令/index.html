@@ -223,7 +223,7 @@ git commit --amend
 </span><span class=lnt>16
 </span></code></pre></td>
 <td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>选项   说明
+<pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>选项   说明
 %H    提交对象（commit）的完整哈希字串
 %h    提交对象的简短哈希字串
 %T    树对象（tree）的完整哈希字串
@@ -232,9 +232,9 @@ git commit --amend
 %p    父对象的简短哈希字串
 %an   作者（author）的名字
 %ae   作者的电子邮件地址
-%ad   作者修订日期（可以用 -date= 选项定制格式）
+%ad   作者修订日期（可以用 -date<span class=o>=</span> 选项定制格式）
 %ar   作者修订日期，按多久以前的方式显示
-%cn   提交者(committer)的名字
+%cn   提交者<span class=o>(</span>committer<span class=o>)</span>的名字
 %ce   提交者的电子邮件地址
 %cd   提交日期
 %cr   提交日期，按多久以前的方式显示
@@ -248,8 +248,8 @@ git commit --amend
 </span><span class=lnt>2
 </span></code></pre></td>
 <td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>git config --global user.name &#34;spaceack&#34;
-git config --global user.email &#34;spaceack@qq.com&#34;
+<pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>git config --global user.name <span class=s2>&#34;spaceack&#34;</span>
+git config --global user.email <span class=s2>&#34;spaceack@qq.com&#34;</span>
 </code></pre></td></tr></table>
 </div>
 </div><h4 id=忽略文件权限的变更>忽略文件权限的变更</h4>
@@ -259,8 +259,8 @@ git config --global user.email &#34;spaceack@qq.com&#34;
 </span><span class=lnt>2
 </span></code></pre></td>
 <td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>git config core.filemode false //当前版本库
-git config --global core.filemode false //全局
+<pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>git config core.filemode <span class=nb>false</span> //当前版本库
+git config --global core.filemode <span class=nb>false</span> //全局
 </code></pre></td></tr></table>
 </div>
 </div><h3 id=proxy>proxy</h3>
@@ -271,8 +271,8 @@ git config --global core.filemode false //全局
 </span><span class=lnt>2
 </span></code></pre></td>
 <td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>git config --global http.proxy &#39;socks5://127.0.0.1:1080&#39;
-git config --global https.proxy &#39;socks5://127.0.0.1:1080&#39;
+<pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>git config --global http.proxy <span class=s1>&#39;socks5://127.0.0.1:1080&#39;</span>
+git config --global https.proxy <span class=s1>&#39;socks5://127.0.0.1:1080&#39;</span>
 </code></pre></td></tr></table>
 </div>
 </div><h4 id=取消代理>取消代理</h4>
@@ -282,7 +282,7 @@ git config --global https.proxy &#39;socks5://127.0.0.1:1080&#39;
 </span><span class=lnt>2
 </span></code></pre></td>
 <td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>git config --global --unset http.proxy
+<pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>git config --global --unset http.proxy
 git config --global --unset https.proxy
 </code></pre></td></tr></table>
 </div>
@@ -294,7 +294,7 @@ git config --global --unset https.proxy
 </span><span class=lnt>2
 </span></code></pre></td>
 <td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback># 进入到 submodule 目录
+<pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=c1># 进入到 submodule 目录</span>
 git submodule update --init --recursive
 </code></pre></td></tr></table>
 </div>
