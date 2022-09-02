@@ -38,10 +38,10 @@ PATH=$JAVA_HOME/bin:$PATH
 export JAVA_HOME CLASSPATH PATH
 
 # env golang
-#export PATH=$PATH:/opt/go/bin
 export GOROOT=/opt/go
-export GOPATH=$HOME/goapp
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+export GOPATH=~/golib:~/goproject/
+export GOBIN=~/gobin
+export PATH=$PATH:$GOROOT/bin:$GOBIN
 
 # redis env
 export REDIS_HOME=/opt/redis
