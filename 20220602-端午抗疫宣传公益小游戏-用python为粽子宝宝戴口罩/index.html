@@ -1,0 +1,336 @@
+<!doctype html><html lang=zh-cn>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=robots content="noodp">
+<title>端午抗疫宣传公益小游戏-用Python为粽子宝宝戴口罩 - Spaceack's Blog</title><meta name=Description content="Spaceck的个人Blog 编程之舞"><meta property="og:title" content="端午抗疫宣传公益小游戏-用Python为粽子宝宝戴口罩">
+<meta property="og:description" content="缘起 由于新冠疫情影响，为避免户外威胁，我选择了居家以程序员的方式纪念这个端午。 虽然气温较高，疫情也得到了有效的控制，但为了他人和自身的身体健">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://spaceack.github.io/20220602-%E7%AB%AF%E5%8D%88%E6%8A%97%E7%96%AB%E5%AE%A3%E4%BC%A0%E5%85%AC%E7%9B%8A%E5%B0%8F%E6%B8%B8%E6%88%8F-%E7%94%A8python%E4%B8%BA%E7%B2%BD%E5%AD%90%E5%AE%9D%E5%AE%9D%E6%88%B4%E5%8F%A3%E7%BD%A9/"><meta property="og:image" content="https://spaceack.github.io/logo.png"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2022-06-02T23:51:23+00:00">
+<meta property="article:modified_time" content="2022-06-02T23:51:23+00:00"><meta property="og:site_name" content="My cool site">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://spaceack.github.io/logo.png">
+<meta name=twitter:title content="端午抗疫宣传公益小游戏-用Python为粽子宝宝戴口罩">
+<meta name=twitter:description content="缘起 由于新冠疫情影响，为避免户外威胁，我选择了居家以程序员的方式纪念这个端午。 虽然气温较高，疫情也得到了有效的控制，但为了他人和自身的身体健">
+<meta name=application-name content="Spaceack's Blog">
+<meta name=apple-mobile-web-app-title content="Spaceack's Blog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://spaceack.github.io/20220602-%E7%AB%AF%E5%8D%88%E6%8A%97%E7%96%AB%E5%AE%A3%E4%BC%A0%E5%85%AC%E7%9B%8A%E5%B0%8F%E6%B8%B8%E6%88%8F-%E7%94%A8python%E4%B8%BA%E7%B2%BD%E5%AD%90%E5%AE%9D%E5%AE%9D%E6%88%B4%E5%8F%A3%E7%BD%A9/><link rel=prev href=https://spaceack.github.io/20220518-linux%E5%AE%89%E8%A3%85%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/><link rel=next href=https://spaceack.github.io/20190614-%E5%A6%82%E6%9E%9C%E6%B2%A1%E6%9C%89%E4%BD%A0/><link rel=stylesheet href=/css/style.min.css><link rel=preload href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css as=style onload="this.onload=null,this.rel='stylesheet'">
+<noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css></noscript><link rel=preload href=https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css as=style onload="this.onload=null,this.rel='stylesheet'">
+<noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css></noscript><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"端午抗疫宣传公益小游戏-用Python为粽子宝宝戴口罩","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/spaceack.github.io\/20220602-%E7%AB%AF%E5%8D%88%E6%8A%97%E7%96%AB%E5%AE%A3%E4%BC%A0%E5%85%AC%E7%9B%8A%E5%B0%8F%E6%B8%B8%E6%88%8F-%E7%94%A8python%E4%B8%BA%E7%B2%BD%E5%AD%90%E5%AE%9D%E5%AE%9D%E6%88%B4%E5%8F%A3%E7%BD%A9\/"},"image":["https:\/\/spaceack.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"python, pygame, 算法, 游戏","wordcount":1142,"url":"https:\/\/spaceack.github.io\/20220602-%E7%AB%AF%E5%8D%88%E6%8A%97%E7%96%AB%E5%AE%A3%E4%BC%A0%E5%85%AC%E7%9B%8A%E5%B0%8F%E6%B8%B8%E6%88%8F-%E7%94%A8python%E4%B8%BA%E7%B2%BD%E5%AD%90%E5%AE%9D%E5%AE%9D%E6%88%B4%E5%8F%A3%E7%BD%A9\/","datePublished":"2022-06-02T23:51:23+00:00","dateModified":"2022-06-02T23:51:23+00:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"Spaceack","logo":"https:\/\/spaceack.github.io\/images\/avatar.jpeg"},"author":{"@type":"Person","name":"Spaceack"},"description":""}</script></head>
+<body data-header-desktop=fixed data-header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':'auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark')&&document.body.setAttribute('theme','dark')</script>
+<div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
+<div class=header-wrapper>
+<div class=header-title>
+<a href=/ title="Spaceack's Blog"><span class=header-title-pre><i class="far fa-kiss-wink-heart fa-fw"></i></span>Spaceack's Blog</a>
+</div>
+<div class=menu>
+<div class=menu-inner><a class=menu-item href=/posts/> 所有文章 </a><a class=menu-item href=/tags/> 标签 </a><a class=menu-item href=/categories/> 分类 </a><a class=menu-item href=/links/> 友链 </a><a class=menu-item href=/about/> 关于 </a><a class=menu-item href=/challenge/> 战利品 </a><a class=menu-item href=/book/> 读书 </a><a class=menu-item href=https://github.com/spaceack title=GitHub rel="noopener noreffer" target=_blank><i class="fab fa-github fa-fw"></i> </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索>
+<i class="fas fa-search fa-fw" aria-hidden=true></i>
+</a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空>
+<i class="fas fa-times-circle fa-fw" aria-hidden=true></i>
+</a>
+<span class="search-button search-loading" id=search-loading-desktop>
+<i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i>
+</span>
+</span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw" aria-hidden=true></i>
+</a>
+</div>
+</div>
+</div>
+</header><header class=mobile id=header-mobile>
+<div class=header-container>
+<div class=header-wrapper>
+<div class=header-title>
+<a href=/ title="Spaceack's Blog"><span class=header-title-pre><i class="far fa-kiss-wink-heart fa-fw"></i></span>Spaceack's Blog</a>
+</div>
+<div class=menu-toggle id=menu-toggle-mobile>
+<span></span><span></span><span></span>
+</div>
+</div>
+<div class=menu id=menu-mobile><div class=search-wrapper>
+<div class="search mobile" id=search-mobile>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索>
+<i class="fas fa-search fa-fw" aria-hidden=true></i>
+</a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空>
+<i class="fas fa-times-circle fa-fw" aria-hidden=true></i>
+</a>
+<span class="search-button search-loading" id=search-loading-mobile>
+<i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i>
+</span>
+</div>
+<a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>
+取消
+</a>
+</div><a class=menu-item href=/posts/ title>所有文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a class=menu-item href=/links/ title>友链</a><a class=menu-item href=/about/ title>关于</a><a class=menu-item href=/challenge/ title>战利品</a><a class=menu-item href=/book/ title>读书</a><a class=menu-item href=https://github.com/spaceack title=GitHub rel="noopener noreffer" target=_blank><i class="fab fa-github fa-fw"></i></a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw" aria-hidden=true></i>
+</a></div>
+</div>
+</header><div class="search-dropdown desktop">
+<div id=search-dropdown-desktop></div>
+</div>
+<div class="search-dropdown mobile">
+<div id=search-dropdown-mobile></div>
+</div><main class=main>
+<div class=container><div class=toc id=toc-auto>
+<h2 class=toc-title>目录</h2>
+<div class=toc-content id=toc-content-auto></div>
+</div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">端午抗疫宣传公益小游戏-用Python为粽子宝宝戴口罩</h1><div class=post-meta>
+<div class=post-meta-line><span class=post-author><a href=/about title=Author rel=" author" class=author><i class="fas fa-user-circle fa-fw" aria-hidden=true></i>Spaceack</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/python/><i class="far fa-folder fa-fw" aria-hidden=true></i>Python</a></span></div>
+<div class=post-meta-line><i class="far fa-calendar-alt fa-fw" aria-hidden=true></i>&nbsp;<time datetime=2022-06-02>2022-06-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden=true></i>&nbsp;约 1142 字&nbsp;
+<i class="far fa-clock fa-fw" aria-hidden=true></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+</div><div class="details toc" id=toc-static data-kept>
+<div class="details-summary toc-title">
+<span>目录</span>
+<span><i class="details-icon fas fa-angle-right" aria-hidden=true></i></span>
+</div>
+<div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents>
+<ul>
+<li><a href=#缘起>缘起</a></li>
+<li><a href=#目标>目标</a></li>
+<li><a href=#成品展示>成品展示</a></li>
+<li><a href=#关键技术>关键技术</a>
+<ul>
+<li><a href=#素材及目录结构>素材及目录结构</a></li>
+<li><a href=#游戏对象初始化>游戏对象初始化</a></li>
+<li><a href=#背景音乐>背景音乐</a></li>
+<li><a href=#渲染图片>渲染图片</a></li>
+<li><a href=#文字渲染>文字渲染</a></li>
+<li><a href=#键盘控制>键盘控制</a></li>
+</ul>
+</li>
+<li><a href=#思考>思考</a></li>
+</ul>
+</nav></div>
+</div><div class=content id=content><h2 id=缘起>缘起</h2>
+<p>由于新冠疫情影响，为避免户外威胁，我选择了居家以程序员的方式纪念这个端午。</p>
+<p>虽然气温较高，疫情也得到了有效的控制，但为了他人和自身的身体健康，仍然需要在人流密集的公共场所佩戴好口罩😷。</p>
+<p>由此，我以<strong>为粽子宝宝戴口罩</strong>😷为主题，花费4个小时（构思，素材收集，编码, 记录），制作了一个公益小游戏。科普防疫戴口罩。纪念这个端午！</p>
+<h2 id=目标>目标</h2>
+<ol>
+<li>此游戏使用Python语言，并使用Pygame游戏开发库进行制作。</li>
+<li>游戏开始会有一个未戴口罩的粽子宝宝的形象。</li>
+<li>粽子宝宝的口鼻处有个半透明的口罩，这个是提示我们应该戴口罩的位置。</li>
+<li>玩家控制键盘的方向键，移动口罩。</li>
+<li>当口罩移动到预定位置，游戏成功通关，画面出现成功通关提示！</li>
+</ol>
+<h2 id=成品展示>成品展示</h2>
+<p>麻雀虽小，但五脏俱全呵！首先看一下最终实现的效果，一图杀猫～</p>
+<p><img class=lazyload src=/svg/loading.min.svg data-src=/20220602-%E7%AB%AF%E5%8D%88%E6%8A%97%E7%96%AB%E5%AE%A3%E4%BC%A0%E5%85%AC%E7%9B%8A%E5%B0%8F%E6%B8%B8%E6%88%8F-%E7%94%A8python%E4%B8%BA%E7%B2%BD%E5%AD%90%E5%AE%9D%E5%AE%9D%E6%88%B4%E5%8F%A3%E7%BD%A9/mask_mouse2.gif data-srcset="/20220602-%E7%AB%AF%E5%8D%88%E6%8A%97%E7%96%AB%E5%AE%A3%E4%BC%A0%E5%85%AC%E7%9B%8A%E5%B0%8F%E6%B8%B8%E6%88%8F-%E7%94%A8python%E4%B8%BA%E7%B2%BD%E5%AD%90%E5%AE%9D%E5%AE%9D%E6%88%B4%E5%8F%A3%E7%BD%A9/mask_mouse2.gif, /20220602-%E7%AB%AF%E5%8D%88%E6%8A%97%E7%96%AB%E5%AE%A3%E4%BC%A0%E5%85%AC%E7%9B%8A%E5%B0%8F%E6%B8%B8%E6%88%8F-%E7%94%A8python%E4%B8%BA%E7%B2%BD%E5%AD%90%E5%AE%9D%E5%AE%9D%E6%88%B4%E5%8F%A3%E7%BD%A9/mask_mouse2.gif 1.5x, /20220602-%E7%AB%AF%E5%8D%88%E6%8A%97%E7%96%AB%E5%AE%A3%E4%BC%A0%E5%85%AC%E7%9B%8A%E5%B0%8F%E6%B8%B8%E6%88%8F-%E7%94%A8python%E4%B8%BA%E7%B2%BD%E5%AD%90%E5%AE%9D%E5%AE%9D%E6%88%B4%E5%8F%A3%E7%BD%A9/mask_mouse2.gif 2x" data-sizes=auto alt=/20220602-%E7%AB%AF%E5%8D%88%E6%8A%97%E7%96%AB%E5%AE%A3%E4%BC%A0%E5%85%AC%E7%9B%8A%E5%B0%8F%E6%B8%B8%E6%88%8F-%E7%94%A8python%E4%B8%BA%E7%B2%BD%E5%AD%90%E5%AE%9D%E5%AE%9D%E6%88%B4%E5%8F%A3%E7%BD%A9/mask_mouse2.gif title=mask_mouse2.gif width=792 height=819></p>
+<p>此处有背景音乐🎵～</p>
+<h2 id=关键技术>关键技术</h2>
+<p>首先安装<code>pygame</code>游戏库 <code>pip install pygame</code></p>
+<h3 id=素材及目录结构>素材及目录结构</h3>
+<p>仅有五个文件，包括两张图片素材，一个音乐素材，一个字体素材及源码文件。源码及素材见文末
+<img class=lazyload src=/svg/loading.min.svg data-src=/20220602-%E7%AB%AF%E5%8D%88%E6%8A%97%E7%96%AB%E5%AE%A3%E4%BC%A0%E5%85%AC%E7%9B%8A%E5%B0%8F%E6%B8%B8%E6%88%8F-%E7%94%A8python%E4%B8%BA%E7%B2%BD%E5%AD%90%E5%AE%9D%E5%AE%9D%E6%88%B4%E5%8F%A3%E7%BD%A9/51d54d683b9d4662af7be2f39d143e1b.png data-srcset="/20220602-%E7%AB%AF%E5%8D%88%E6%8A%97%E7%96%AB%E5%AE%A3%E4%BC%A0%E5%85%AC%E7%9B%8A%E5%B0%8F%E6%B8%B8%E6%88%8F-%E7%94%A8python%E4%B8%BA%E7%B2%BD%E5%AD%90%E5%AE%9D%E5%AE%9D%E6%88%B4%E5%8F%A3%E7%BD%A9/51d54d683b9d4662af7be2f39d143e1b.png, /20220602-%E7%AB%AF%E5%8D%88%E6%8A%97%E7%96%AB%E5%AE%A3%E4%BC%A0%E5%85%AC%E7%9B%8A%E5%B0%8F%E6%B8%B8%E6%88%8F-%E7%94%A8python%E4%B8%BA%E7%B2%BD%E5%AD%90%E5%AE%9D%E5%AE%9D%E6%88%B4%E5%8F%A3%E7%BD%A9/51d54d683b9d4662af7be2f39d143e1b.png 1.5x, /20220602-%E7%AB%AF%E5%8D%88%E6%8A%97%E7%96%AB%E5%AE%A3%E4%BC%A0%E5%85%AC%E7%9B%8A%E5%B0%8F%E6%B8%B8%E6%88%8F-%E7%94%A8python%E4%B8%BA%E7%B2%BD%E5%AD%90%E5%AE%9D%E5%AE%9D%E6%88%B4%E5%8F%A3%E7%BD%A9/51d54d683b9d4662af7be2f39d143e1b.png 2x" data-sizes=auto alt=/20220602-%E7%AB%AF%E5%8D%88%E6%8A%97%E7%96%AB%E5%AE%A3%E4%BC%A0%E5%85%AC%E7%9B%8A%E5%B0%8F%E6%B8%B8%E6%88%8F-%E7%94%A8python%E4%B8%BA%E7%B2%BD%E5%AD%90%E5%AE%9D%E5%AE%9D%E6%88%B4%E5%8F%A3%E7%BD%A9/51d54d683b9d4662af7be2f39d143e1b.png title="截屏2022-08-24 23.32.54.png" width=286 height=246></p>
+<h3 id=游戏对象初始化>游戏对象初始化</h3>
+<p>使用Pygame框架首先要初始化pygame对象。</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=k>def</span> <span class=nf>init_game</span><span class=p>(</span><span class=n>caption</span><span class=p>):</span>
+    <span class=c1># 初始化pygame</span>
+    <span class=n>pygame</span><span class=o>.</span><span class=n>init</span><span class=p>()</span>
+    <span class=c1># 变量定义</span>
+    <span class=n>size</span> <span class=o>=</span> <span class=n>width</span><span class=p>,</span> <span class=n>height</span> <span class=o>=</span> <span class=mi>800</span><span class=p>,</span> <span class=mi>800</span>
+    <span class=c1># 创建一个游戏窗口</span>
+    <span class=n>screen</span> <span class=o>=</span> <span class=n>pygame</span><span class=o>.</span><span class=n>display</span><span class=o>.</span><span class=n>set_mode</span><span class=p>(</span><span class=n>size</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=mi>32</span><span class=p>)</span>
+    <span class=c1>#设置窗口标题</span>
+    <span class=n>pygame</span><span class=o>.</span><span class=n>display</span><span class=o>.</span><span class=n>set_caption</span><span class=p>(</span><span class=n>caption</span><span class=p>)</span>
+    <span class=k>return</span> <span class=n>screen</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id=背景音乐>背景音乐</h3>
+<p>我们可以使用<code>load</code>载入需要播放的音乐文件。
+<code>play</code>方法的第一个参数<code>loops</code>和第二个参数<code>start</code>分别代表重复的次数和开始播放的位置。<code>-1</code>就是循环播放。</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=k>def</span> <span class=nf>play_music</span><span class=p>():</span>
+    <span class=n>pygame</span><span class=o>.</span><span class=n>mixer</span><span class=o>.</span><span class=n>music</span><span class=o>.</span><span class=n>load</span><span class=p>(</span><span class=s1>&#39;sp.mp3&#39;</span><span class=p>)</span>
+    <span class=n>pygame</span><span class=o>.</span><span class=n>mixer</span><span class=o>.</span><span class=n>music</span><span class=o>.</span><span class=n>play</span><span class=p>(</span><span class=o>-</span><span class=mi>1</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id=渲染图片>渲染图片</h3>
+<ol>
+<li>加载图片对象</li>
+</ol>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=n>zongzi</span> <span class=o>=</span> <span class=n>pygame</span><span class=o>.</span><span class=n>image</span><span class=o>.</span><span class=n>load</span><span class=p>(</span><span class=s2>&#34;zongzi.png&#34;</span><span class=p>)</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start=2>
+<li>平滑缩放图像，可以控制图片的大小。</li>
+</ol>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=n>zongzi</span> <span class=o>=</span> <span class=n>pygame</span><span class=o>.</span><span class=n>transform</span><span class=o>.</span><span class=n>smoothscale</span><span class=p>(</span><span class=n>zongzi</span><span class=p>,</span> <span class=p>(</span><span class=mi>500</span><span class=p>,</span> <span class=mi>700</span><span class=p>))</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start=3>
+<li>图片透明度设置</li>
+</ol>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=n>mask</span><span class=o>.</span><span class=n>set_alpha</span><span class=p>(</span><span class=mi>200</span><span class=p>)</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start=4>
+<li>渲染图片</li>
+</ol>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=n>screen</span><span class=o>.</span><span class=n>blit</span><span class=p>(</span><span class=n>zongzi</span><span class=p>,(</span><span class=mi>200</span><span class=p>,</span><span class=mi>200</span><span class=p>))</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id=文字渲染>文字渲染</h3>
+<ol>
+<li>通过字体文件获得字体对象</li>
+</ol>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=n>fontObj</span> <span class=o>=</span> <span class=n>pygame</span><span class=o>.</span><span class=n>font</span><span class=o>.</span><span class=n>Font</span><span class=p>(</span><span class=s1>&#39;Songti.ttc&#39;</span><span class=p>,</span> <span class=mi>26</span><span class=p>)</span> 
+</code></pre></td></tr></table>
+</div>
+</div><ol start=2>
+<li>配置要显示的文字</li>
+</ol>
+<p>可以设置文字的内容及字体颜色。</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=n>textSurfaceObj</span> <span class=o>=</span> <span class=n>fontObj</span><span class=o>.</span><span class=n>render</span><span class=p>(</span><span class=s1>&#39;你真棒，粽宝宝已成功佩戴好口罩！&#39;</span><span class=p>,</span> <span class=kc>False</span><span class=p>,</span> <span class=p>(</span><span class=mi>255</span><span class=p>,</span><span class=mi>10</span><span class=p>,</span><span class=mi>10</span><span class=p>))</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id=键盘控制>键盘控制</h3>
+<p>使用 <code>pygame.KEYDOWN</code> 获取键盘事件。
+<code>K_UP</code>,<code>K_DOWN</code>,<code>K_LEFT</code>,<code>K_RIGHT</code> 分别对应键盘方向键<code>上下左右</code>
+通过坐标的加减，来改变坐标的位置，这里以<code>10</code>为按键一次的移动距离。</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=k>if</span> <span class=n>event</span><span class=o>.</span><span class=n>type</span> <span class=o>==</span> <span class=n>pygame</span><span class=o>.</span><span class=n>KEYDOWN</span><span class=p>:</span>
+    <span class=k>if</span> <span class=n>event</span><span class=o>.</span><span class=n>key</span> <span class=o>==</span> <span class=n>pygame</span><span class=o>.</span><span class=n>K_UP</span><span class=p>:</span>
+        <span class=n>mask_y</span> <span class=o>-=</span> <span class=mi>10</span>
+    <span class=k>if</span> <span class=n>event</span><span class=o>.</span><span class=n>key</span> <span class=o>==</span> <span class=n>pygame</span><span class=o>.</span><span class=n>K_DOWN</span><span class=p>:</span>
+        <span class=n>mask_y</span> <span class=o>+=</span> <span class=mi>10</span>
+    <span class=k>if</span> <span class=n>event</span><span class=o>.</span><span class=n>key</span> <span class=o>==</span> <span class=n>pygame</span><span class=o>.</span><span class=n>K_LEFT</span><span class=p>:</span>
+        <span class=n>mask_x</span> <span class=o>-=</span> <span class=mi>10</span>
+    <span class=k>if</span> <span class=n>event</span><span class=o>.</span><span class=n>key</span> <span class=o>==</span> <span class=n>pygame</span><span class=o>.</span><span class=n>K_RIGHT</span><span class=p>:</span>
+        <span class=n>mask_x</span> <span class=o>+=</span> <span class=mi>10</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id=思考>思考</h2>
+<p>对啦，整个游戏其实就是一个状态机，总共有开始，胜利 ，游戏中三种状态。那么我们可以使用一个 while 语句，搞起一个事件循环 。就可以一直愉快滴玩耍啦！开心不开心？</p>
+<p>虽然该篇程序没有复杂的算法，但使用简单的顺序，判断，循环 语句就可实现稍稍复杂的小游戏。</p>
+<p>正所谓：大道至简 重剑无锋 大巧不工</p>
+<p>这个游戏还有很多可以扩展的内容，下面留下几个思考题，让游戏更好玩吧～</p>
+<ol>
+<li>
+<p>增加游戏难度，如何让粽子宝宝随机移动，一边移动一边尝试戴口罩？[已实现]
+<img class=lazyload src=/svg/loading.min.svg data-src=/20220602-%E7%AB%AF%E5%8D%88%E6%8A%97%E7%96%AB%E5%AE%A3%E4%BC%A0%E5%85%AC%E7%9B%8A%E5%B0%8F%E6%B8%B8%E6%88%8F-%E7%94%A8python%E4%B8%BA%E7%B2%BD%E5%AD%90%E5%AE%9D%E5%AE%9D%E6%88%B4%E5%8F%A3%E7%BD%A9/zongzi_move.gif data-srcset="/20220602-%E7%AB%AF%E5%8D%88%E6%8A%97%E7%96%AB%E5%AE%A3%E4%BC%A0%E5%85%AC%E7%9B%8A%E5%B0%8F%E6%B8%B8%E6%88%8F-%E7%94%A8python%E4%B8%BA%E7%B2%BD%E5%AD%90%E5%AE%9D%E5%AE%9D%E6%88%B4%E5%8F%A3%E7%BD%A9/zongzi_move.gif, /20220602-%E7%AB%AF%E5%8D%88%E6%8A%97%E7%96%AB%E5%AE%A3%E4%BC%A0%E5%85%AC%E7%9B%8A%E5%B0%8F%E6%B8%B8%E6%88%8F-%E7%94%A8python%E4%B8%BA%E7%B2%BD%E5%AD%90%E5%AE%9D%E5%AE%9D%E6%88%B4%E5%8F%A3%E7%BD%A9/zongzi_move.gif 1.5x, /20220602-%E7%AB%AF%E5%8D%88%E6%8A%97%E7%96%AB%E5%AE%A3%E4%BC%A0%E5%85%AC%E7%9B%8A%E5%B0%8F%E6%B8%B8%E6%88%8F-%E7%94%A8python%E4%B8%BA%E7%B2%BD%E5%AD%90%E5%AE%9D%E5%AE%9D%E6%88%B4%E5%8F%A3%E7%BD%A9/zongzi_move.gif 2x" data-sizes=auto alt=/20220602-%E7%AB%AF%E5%8D%88%E6%8A%97%E7%96%AB%E5%AE%A3%E4%BC%A0%E5%85%AC%E7%9B%8A%E5%B0%8F%E6%B8%B8%E6%88%8F-%E7%94%A8python%E4%B8%BA%E7%B2%BD%E5%AD%90%E5%AE%9D%E5%AE%9D%E6%88%B4%E5%8F%A3%E7%BD%A9/zongzi_move.gif title=zongzi_move.gif width=598 height=424></p>
+</li>
+<li>
+<p>使用鼠标控制口罩。[已实现]
+原理：实时获取鼠标光标的坐标，将图片的坐标与鼠标光标的相对位置绑定即可</p>
+</li>
+</ol>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=c1># 获取光标位置</span>
+<span class=n>x</span><span class=p>,</span> <span class=n>y</span> <span class=o>=</span> <span class=n>pygame</span><span class=o>.</span><span class=n>mouse</span><span class=o>.</span><span class=n>get_pos</span><span class=p>()</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img class=lazyload src=/svg/loading.min.svg data-src=/20220602-%E7%AB%AF%E5%8D%88%E6%8A%97%E7%96%AB%E5%AE%A3%E4%BC%A0%E5%85%AC%E7%9B%8A%E5%B0%8F%E6%B8%B8%E6%88%8F-%E7%94%A8python%E4%B8%BA%E7%B2%BD%E5%AD%90%E5%AE%9D%E5%AE%9D%E6%88%B4%E5%8F%A3%E7%BD%A9/mask_mouse.gif data-srcset="/20220602-%E7%AB%AF%E5%8D%88%E6%8A%97%E7%96%AB%E5%AE%A3%E4%BC%A0%E5%85%AC%E7%9B%8A%E5%B0%8F%E6%B8%B8%E6%88%8F-%E7%94%A8python%E4%B8%BA%E7%B2%BD%E5%AD%90%E5%AE%9D%E5%AE%9D%E6%88%B4%E5%8F%A3%E7%BD%A9/mask_mouse.gif, /20220602-%E7%AB%AF%E5%8D%88%E6%8A%97%E7%96%AB%E5%AE%A3%E4%BC%A0%E5%85%AC%E7%9B%8A%E5%B0%8F%E6%B8%B8%E6%88%8F-%E7%94%A8python%E4%B8%BA%E7%B2%BD%E5%AD%90%E5%AE%9D%E5%AE%9D%E6%88%B4%E5%8F%A3%E7%BD%A9/mask_mouse.gif 1.5x, /20220602-%E7%AB%AF%E5%8D%88%E6%8A%97%E7%96%AB%E5%AE%A3%E4%BC%A0%E5%85%AC%E7%9B%8A%E5%B0%8F%E6%B8%B8%E6%88%8F-%E7%94%A8python%E4%B8%BA%E7%B2%BD%E5%AD%90%E5%AE%9D%E5%AE%9D%E6%88%B4%E5%8F%A3%E7%BD%A9/mask_mouse.gif 2x" data-sizes=auto alt=/20220602-%E7%AB%AF%E5%8D%88%E6%8A%97%E7%96%AB%E5%AE%A3%E4%BC%A0%E5%85%AC%E7%9B%8A%E5%B0%8F%E6%B8%B8%E6%88%8F-%E7%94%A8python%E4%B8%BA%E7%B2%BD%E5%AD%90%E5%AE%9D%E5%AE%9D%E6%88%B4%E5%8F%A3%E7%BD%A9/mask_mouse.gif title=mask_mouse.gif width=792 height=614>
+3. 加入计时及显示功能。</p>
+<hr>
+<p>源码见： <code>https://github.com/spaceack/spaceack_games/tree/main/mask_zongzi</code> 或关注公众号【编程之舞】回复<code>maskzongzi</code>领取。</p>
+</div><div class=post-footer id=post-footer>
+<div class=post-info>
+<div class=post-info-line>
+<div class=post-info-mod>
+<span>更新于 2022-06-02</span>
+</div></div>
+<div class=post-info-line>
+<div class=post-info-md><span>
+<a class=link-to-markdown href=/20220602-%E7%AB%AF%E5%8D%88%E6%8A%97%E7%96%AB%E5%AE%A3%E4%BC%A0%E5%85%AC%E7%9B%8A%E5%B0%8F%E6%B8%B8%E6%88%8F-%E7%94%A8python%E4%B8%BA%E7%B2%BD%E5%AD%90%E5%AE%9D%E5%AE%9D%E6%88%B4%E5%8F%A3%E7%BD%A9/index.md target=_blank>阅读原始文档</a>
+</span></div>
+<div class=post-info-share>
+<span><a href=javascript:void(0); title="分享到 Twitter" data-sharer=twitter data-url=https://spaceack.github.io/20220602-%E7%AB%AF%E5%8D%88%E6%8A%97%E7%96%AB%E5%AE%A3%E4%BC%A0%E5%85%AC%E7%9B%8A%E5%B0%8F%E6%B8%B8%E6%88%8F-%E7%94%A8python%E4%B8%BA%E7%B2%BD%E5%AD%90%E5%AE%9D%E5%AE%9D%E6%88%B4%E5%8F%A3%E7%BD%A9/ data-title=端午抗疫宣传公益小游戏-用Python为粽子宝宝戴口罩 data-hashtags=python,pygame,算法,游戏><i class="fab fa-twitter fa-fw" aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=https://spaceack.github.io/20220602-%E7%AB%AF%E5%8D%88%E6%8A%97%E7%96%AB%E5%AE%A3%E4%BC%A0%E5%85%AC%E7%9B%8A%E5%B0%8F%E6%B8%B8%E6%88%8F-%E7%94%A8python%E4%B8%BA%E7%B2%BD%E5%AD%90%E5%AE%9D%E5%AE%9D%E6%88%B4%E5%8F%A3%E7%BD%A9/ data-hashtag=python><i class="fab fa-facebook-square fa-fw" aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 Hacker News" data-sharer=hackernews data-url=https://spaceack.github.io/20220602-%E7%AB%AF%E5%8D%88%E6%8A%97%E7%96%AB%E5%AE%A3%E4%BC%A0%E5%85%AC%E7%9B%8A%E5%B0%8F%E6%B8%B8%E6%88%8F-%E7%94%A8python%E4%B8%BA%E7%B2%BD%E5%AD%90%E5%AE%9D%E5%AE%9D%E6%88%B4%E5%8F%A3%E7%BD%A9/ data-title=端午抗疫宣传公益小游戏-用Python为粽子宝宝戴口罩><i class="fab fa-hacker-news fa-fw" aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 Line" data-sharer=line data-url=https://spaceack.github.io/20220602-%E7%AB%AF%E5%8D%88%E6%8A%97%E7%96%AB%E5%AE%A3%E4%BC%A0%E5%85%AC%E7%9B%8A%E5%B0%8F%E6%B8%B8%E6%88%8F-%E7%94%A8python%E4%B8%BA%E7%B2%BD%E5%AD%90%E5%AE%9D%E5%AE%9D%E6%88%B4%E5%8F%A3%E7%BD%A9/ data-title=端午抗疫宣传公益小游戏-用Python为粽子宝宝戴口罩><i data-svg-src=https://cdn.jsdelivr.net/npm/simple-icons@6.20.0/icons/line.svg aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=https://spaceack.github.io/20220602-%E7%AB%AF%E5%8D%88%E6%8A%97%E7%96%AB%E5%AE%A3%E4%BC%A0%E5%85%AC%E7%9B%8A%E5%B0%8F%E6%B8%B8%E6%88%8F-%E7%94%A8python%E4%B8%BA%E7%B2%BD%E5%AD%90%E5%AE%9D%E5%AE%9D%E6%88%B4%E5%8F%A3%E7%BD%A9/ data-title=端午抗疫宣传公益小游戏-用Python为粽子宝宝戴口罩><i class="fab fa-weibo fa-fw" aria-hidden=true></i></a></span>
+</div>
+</div>
+</div>
+<div class=post-info-more>
+<section class=post-tags><i class="fas fa-tags fa-fw" aria-hidden=true></i>&nbsp;<a href=/tags/python/>python</a>,&nbsp;<a href=/tags/pygame/>pygame</a>,&nbsp;<a href=/tags/%E7%AE%97%E6%B3%95/>算法</a>,&nbsp;<a href=/tags/%E6%B8%B8%E6%88%8F/>游戏</a></section>
+<section>
+<span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span>
+</section>
+</div>
+<div class=post-nav><a href=/20220518-linux%E5%AE%89%E8%A3%85%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/ class=prev rel=prev title="Linux 安装基础知识"><i class="fas fa-angle-left fa-fw" aria-hidden=true></i>Linux 安装基础知识</a>
+<a href=/20190614-%E5%A6%82%E6%9E%9C%E6%B2%A1%E6%9C%89%E4%BD%A0/ class=next rel=next title=如果没有你>如果没有你<i class="fas fa-angle-right fa-fw" aria-hidden=true></i></a></div>
+</div>
+</article></div>
+</main><footer class=footer>
+<div class=footer-container><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.87.0">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/dillonzq/LoveIt target=_blank rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden=true></i> LoveIt</a>
+</div><div class=footer-line itemscope itemtype=http://schema.org/CreativeWork><i class="far fa-copyright fa-fw" aria-hidden=true></i><span itemprop=copyrightYear>2014 - 2022</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=/about target=_blank>Spaceack</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div>
+</div>
+</footer></div>
+<div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部>
+<i class="fas fa-arrow-up fa-fw" aria-hidden=true></i>
+</a><a href=# id=view-comments class=fixed-button title=查看评论>
+<i class="fas fa-comment fa-fw" aria-hidden=true></i>
+</a>
+</div><script type=text/javascript src=https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/algoliasearch@4.13.0/dist/algoliasearch-lite.umd.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:50},comment:{},search:{algoliaAppID:"VXI4TRVSM5",algoliaIndex:"index.zh-cn",algoliaSearchKey:"4987343c645c7f8c574d58035d43fe96",highlightTag:"em",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50,type:"algolia"}}</script><script type=text/javascript src=/js/theme.min.js></script></body>
+</html>
