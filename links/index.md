@@ -55,7 +55,7 @@
 |[阿里天池](https://tianchi.aliyun.com/)|算法，编程比赛|
 |[腾讯云+竞赛](https://cloud.tencent.com/developer/competition)|算法，编程比赛|
 |[洛谷](https://www.luogu.com.cn/)|NOIP题库，比赛|
-|[力扣](https://leetcode-cn.com/)|leetcode中国|
+|[力扣](https://leetcode.cn/)|leetcode中国|
 |[牛客竞赛](https://ac.nowcoder.com/)|ACM编程|
 |[计蒜客](https://www.jisuanke.com/)|ACM， 信息学编程比赛|
 |[蓝桥/实验楼](https://www.lanqiao.cn/)|技术实战，比赛|
@@ -64,6 +64,8 @@
 |[codewars](https://www.codewars.com/)|编程比赛|
 |[codejam](g.co/codejam)|编程比赛|
 |[KAGGLE](https://www.kaggle.com/)|数据分析比赛|
+|[pyweek](https://pyweek.org/)|python游戏开发挑战赛|
+|[CodinGame](http://www.codingame.com/)|编码游戏，编码挑战|
 
 
 ### 规范化标准
