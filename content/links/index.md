@@ -67,6 +67,7 @@ date: 2019-11-28 00:19:01
 |[codejam](g.co/codejam)|编程比赛|
 |[KAGGLE](https://www.kaggle.com/)|数据分析比赛|
 |[pyweek](https://pyweek.org/)|python游戏开发挑战赛|
+|[CodinGame](http://www.codingame.com/)|编码游戏，编码挑战|
 
 
 ### 规范化标准
