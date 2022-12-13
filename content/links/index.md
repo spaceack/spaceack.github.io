@@ -5,7 +5,6 @@ date: 2019-11-28 00:19:01
 
 ## 友链
 
-
 |url|tags|desc|
 |-|-|-|
 |[Spaceack's Blog](https://spaceack.com/)|生活, 技术, Python, Linux|做一个有追求的人 即对爱的渴望，知识的渴求, 苦难的理解|
@@ -31,6 +30,8 @@ date: 2019-11-28 00:19:01
 |[Jeremy's blog](https://www.isyin.cn/)|Python| |
 |[Shall We Code?](https://www.waynerv.com/)|Python, Go, Linux, Kubernetes| |
 |[建造者说](http://guoze.me/)|Python| |
+|[dabeaz](http://www.dabeaz.com/)|Python cookbook作者||
+
 ## 网址导航
 
 ### 常用网站导航
@@ -70,7 +71,6 @@ date: 2019-11-28 00:19:01
 |[pyweek](https://pyweek.org/)|python游戏开发挑战赛|
 |[CodinGame](http://www.codingame.com/)|编码游戏，编码挑战|
 
-
 ### 规范化标准
 
 |url|tags|
@@ -95,16 +95,16 @@ date: 2019-11-28 00:19:01
 |[le5le](http://topology.le5le.com/workspace)|在线画图（流程图，时序图...）|
 
 ### 趣味游戏站
+
 |url|tags|
 |-|-|
 |[Flash 保存计划](https://flash.zczc.cz/)|海量Flash游戏资源，得益于ruffle模拟器，浏览器无需flash插件也可流畅运行|
 |[在线DOS游戏](https://dos.zczc.cz/)|大量DOS游戏，可以直接在浏览器中开玩|
 |[poki](https://poki.cn/)|免费在线游戏|
 
-
 ## 添加本站为友链
 
-```
+```bash
 # 名称
 Spaceack's Blog
 # 主页 
