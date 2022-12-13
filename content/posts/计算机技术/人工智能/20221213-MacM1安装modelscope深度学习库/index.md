@@ -10,6 +10,7 @@ tags:
   - 人工智能
   - Pytorch
   - tensorflow
+  - MacOS
 ---
 ## 简介
 
