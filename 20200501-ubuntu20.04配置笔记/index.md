@@ -16,9 +16,7 @@
 追加写入全局配置路径 `/etc/profile`
 写入当前用户配置路径 `~/.bashrc` or `~/.zshrc`
 
-
 ```bash
-
 # HISTORY history 日志添加时间戳；默认的2000条记录上限提高至99999条
 export HISTTIMEFORMAT="%Y-%m-%d %H:%M:%S "
 export HISTFILESIZE=99999
@@ -160,6 +158,7 @@ sudo apt-get install -y gnome-tweaks;
 # sudo pip3 install jupyterlab;
 '
 ```
+
 ```bash
 # 检查是否存在SSH秘钥
 ls -al ~/.ssh
@@ -179,10 +178,15 @@ sudo systemctl disable --now ssh
 # 重启
 sudo systemctl enable --now ssh
 
+需要注意 `.ssh`目录中文件的权限，否则会爆错 `bad permissions`
+
+chmod 600 .ssh/id_rsa
+chmod 644 .ssh/id_rsa.pub
 ```
 
 - npm非root全局安装权限
-  ```
+
+  ```bash
   mkdir ~/.npm-global
   npm config set prefix '~/.npm-global'
   # .bashrc 加入 export PATH=~/.npm-global/bin:$PATH
@@ -190,6 +194,7 @@ sudo systemctl enable --now ssh
   ```
 
 ### 实用工具
+
 **rime输入法**
 
 `F4` 切换输入方案
@@ -222,7 +227,8 @@ ibus engine rime
   `sudo snap install redis-desktop-manager`
 
 **Zeal**
-  (离线文档浏览器)[https://zealdocs.org/]
+  [离线文档浏览器](https://zealdocs.org/)
+
   ```
   sudo add-apt-repository ppa:zeal-developers/ppa
   sudo apt-get update
@@ -231,12 +237,14 @@ ibus engine rime
 
 **OBS(Open Broadcaster Software)**
 开源视频录制与直播软件
+
 ```
 sudo apt install ffmpeg
 sudo add-apt-repository ppa:obsproject/obs-studio
 sudo apt update
 sudo apt install obs-studio
 ```
+
 **ventoy**
 多系统安装启动U盘制作工具  [Ventoy](https://github.com/ventoy/Ventoy)
 
@@ -272,7 +280,7 @@ sudo apt-get install peek
   虚拟机
 
 **Motrix**
-多功能下载器 
+多功能下载器
 特性： Async DNS BitTorrent Firefox3 Cookie GZip HTTPS Message Digest Metalink XML-RPC SFTP
 
 **balenaEtcher**
@@ -281,16 +289,17 @@ sudo apt-get install peek
 
 **calibre**
   电子书管理工具
+
   ```
   sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin
   ```
+
 **永中Office**
 体验不佳，暂不推荐~
 推荐使用 LibreOffice
 
 **robo3t**
 MongoDB可视化工具
-
 
 **OmegaT**
 [开源计算机辅助翻译软件](https://omegat.org/)
@@ -303,13 +312,13 @@ sudo gpasswd -a $USER video
 sudo chmod u+s /usr/bin/fbterm
 ```
 
-
 ### 趣味软件
 
 **sonic-pi**
   通过编码的音乐合成器
 
 **figlet**
+  命令行艺术字效果
 
 **neofetch**
 ![neofetch.png](neofetch.png)
@@ -318,5 +327,5 @@ sudo chmod u+s /usr/bin/fbterm
 开源游戏引擎
 
 **命令行查询天气**
- curl http://wttr.in/
+`curl http://wttr.in/`
 
