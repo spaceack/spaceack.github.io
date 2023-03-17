@@ -1,0 +1,112 @@
+# 蓝桥 卷“兔”来袭编程竞赛专场-08列置换加密 题解
+
+## 赛题介绍
+
+### 挑战介绍
+
+- 列置换加密是明文以每行固定字数（key 的字母种类数，一般情况下 key 会选择字母不重复的单词）一行一行写下，如果最后一行字数小于每行的固定字数，则使用特殊符号补充，这样就形成了一个矩阵。然后依照 key 的字母顺序对矩阵列的位置进行调整，最后再将排列好的列依次读取，得到密文。例如：
+- 明文： `welcometolq`
+- key： `qiao`
+- 补充字符： `,`
+- 首先确定 qiao 有 4 个字母，长度为 4。然后按照 26 个英文字母的顺序对 qiao 进行编号，越靠前的字母编号越小，可以得到的编号依次是 4-2-1-3。
+- 然后对明文分行。每行 4 （key 的长度）个字母，则可以写成 4 列：
+
+| 1 | 2 | 3 | 4 |
+| ---- | ---- | ---- |---- |
+| w | e | l | c |
+| o | m | e | t |
+| o | l | q | , |
+
+- 由于最后一行缺一个字母，就使用补充字符填充。
+- 最后根据 key 的编号顺序对矩阵的列顺序调整，就有：
+
+| 4 | 2 | 1 | 3 |
+| ---- | ---- | ---- |---- |
+| c | e | w | l |
+| t | m | o | e |
+| , | l | o | q |
+
+- 然后一列一列地依次读取内容，就得到密文：ct,emlwooleq
+- 解密的方式和加密时的顺序相反，通过字母总数和 key 的长度获得列数，其次根据列数将密文一列一列地展开，然后通过 key 的编号顺序调整列位置，最后一行一行读取内容就可以得到明文。
+
+### 挑战目标
+
+- 补充文件  `column_permutation.py`  下  `column_permutation_encryption(text)`  函数中的 TODO 部分，使其实现我们需要的功能：
+- 输入一段文本，使用 key： `qiao`  和补充字符： `,` （英文逗号）对内容进行列置换加密，并将密文返回。
+- 如果输入的文本中没有内容，则返回  `None` 。
+
+```python
+def column_permutation_encryption(text: str) -> str:
+    """TODO
+    """
+    encryption_text : str = ''
+    return encryption_text
+```
+
+### 挑战要求
+
+- 题目需使用 Python3 完成，不能使用标准库和第三方库。
+- 函数传入的 text 为字符串类型，可能为空、 `None`  等值。
+- 不得修改文件路径、文件名  `column_permutation.py`  以及函数名  `column_permutation_encryption(text)` 。
+- 请只保留文件  `column_permutation.py`  及文件中函数，不要添加测试或执行代码，避免检测时出错。
+- 线上环境调试代码时，请使用  `python3 column_permutation.py`  命令调用 Python3。
+
+### 参考样例
+
+```python
+# 样例 1
+text = "welcometolq"; encryption_text = "ct,emlwooleq"
+# 样例 2
+text = "welcometolq "; encryption_text = "ct emlwooleq"
+# 样例 3
+text = "w"; encryption_text = ",,w,"
+# 样例 4
+text = None; encryption_text = None
+```
+
+注意：最终实现效果以完全满足要求为准，而不是仅满足如上样例。
+
+---
+
+## 题解
+
+### 解题思路
+
+简单的模拟题
+
+1. 要注意对传入参数类型与长度检查。
+2. 使用`ljust`方法补全 `,` 号
+3. 最后使用`join`方法将列表拼接为字符串返回即可。
+
+```python
+def column_permutation_encryption(text: str) -> str:
+    """TODO
+    """
+    if not isinstance(text, str):
+        return None
+    result = []
+    key_len = 4
+    text_len = len(text)
+    if text_len <= 0:
+        return None
+    non_blank = text.replace(' ','')
+    if len(non_blank) == 0:
+        return None
+    col_index  = [3, 1, 0, 2]
+    nums = 0 if text_len % 4 == 0 else len(text) + key_len - len(text) % key_len
+
+    text = text.ljust(nums,',')
+    matrix = [text[i:i+key_len] for i in range(0,len(text), key_len)]
+
+    for col in col_index:
+        for i, _ in enumerate(matrix):
+            result.append(matrix[i][col])
+
+    encryption_text : str = ''.join(result)
+    return encryption_text
+```
+
+---
+
+题目来源：蓝桥 [列置换加密](https://www.lanqiao.cn/problems/2402/learning/?contest_id=83)
+

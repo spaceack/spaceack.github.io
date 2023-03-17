@@ -1,0 +1,344 @@
+<!doctype html><html lang=zh-cn>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=robots content="noodp">
+<title>蓝桥 卷“兔”来袭编程竞赛专场-08列置换加密 题解 - Spaceack's Blog</title><meta name=Description content="Spaceck的个人Blog 编程之舞"><meta property="og:title" content="蓝桥 卷“兔”来袭编程竞赛专场-08列置换加密 题解">
+<meta property="og:description" content="赛题介绍 挑战介绍 列置换加密是明文以每行固定字数（key 的字母种类数，一般情况下 key 会选择字母不重复的单词）一行一行写下，如果最后一行字数小于每">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA08%E5%88%97%E7%BD%AE%E6%8D%A2%E5%8A%A0%E5%AF%86/"><meta property="og:image" content="https://spaceack.github.io/logo.png"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2023-02-26T16:00:00+00:00">
+<meta property="article:modified_time" content="2023-02-26T16:00:00+00:00"><meta property="og:site_name" content="My cool site">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://spaceack.github.io/logo.png">
+<meta name=twitter:title content="蓝桥 卷“兔”来袭编程竞赛专场-08列置换加密 题解">
+<meta name=twitter:description content="赛题介绍 挑战介绍 列置换加密是明文以每行固定字数（key 的字母种类数，一般情况下 key 会选择字母不重复的单词）一行一行写下，如果最后一行字数小于每">
+<meta name=application-name content="Spaceack's Blog">
+<meta name=apple-mobile-web-app-title content="Spaceack's Blog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA08%E5%88%97%E7%BD%AE%E6%8D%A2%E5%8A%A0%E5%AF%86/><link rel=prev href=https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA07%E6%98%8E%E7%A0%81%E5%8A%A0%E5%AF%86/><link rel=next href=https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA09%E5%87%AF%E6%92%92%E5%8A%A0%E5%AF%86/><link rel=stylesheet href=/css/style.min.css><link rel=preload href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css as=style onload="this.onload=null,this.rel='stylesheet'">
+<noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css></noscript><link rel=preload href=https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css as=style onload="this.onload=null,this.rel='stylesheet'">
+<noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css></noscript><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"蓝桥 卷“兔”来袭编程竞赛专场-08列置换加密 题解","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/spaceack.github.io\/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA08%E5%88%97%E7%BD%AE%E6%8D%A2%E5%8A%A0%E5%AF%86\/"},"image":["https:\/\/spaceack.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"python, Crypto, 题解, 比赛","wordcount":961,"url":"https:\/\/spaceack.github.io\/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA08%E5%88%97%E7%BD%AE%E6%8D%A2%E5%8A%A0%E5%AF%86\/","datePublished":"2023-02-26T16:00:00+00:00","dateModified":"2023-02-26T16:00:00+00:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"Spaceack","logo":"https:\/\/spaceack.github.io\/images\/avatar.jpeg"},"author":{"@type":"Person","name":"Spaceack"},"description":""}</script></head>
+<body data-header-desktop=fixed data-header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':'auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark')&&document.body.setAttribute('theme','dark')</script>
+<div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
+<div class=header-wrapper>
+<div class=header-title>
+<a href=/ title="Spaceack's Blog"><span class=header-title-pre><i class="far fa-kiss-wink-heart fa-fw"></i></span>Spaceack's Blog</a>
+</div>
+<div class=menu>
+<div class=menu-inner><a class=menu-item href=/posts/> 所有文章 </a><a class=menu-item href=/tags/> 标签 </a><a class=menu-item href=/categories/> 分类 </a><a class=menu-item href=/links/> 友链 </a><a class=menu-item href=/about/> 关于 </a><a class=menu-item href=/challenge/> 战利品 </a><a class=menu-item href=/book/> 读书 </a><a class=menu-item href=https://github.com/spaceack title=GitHub rel="noopener noreffer" target=_blank><i class="fab fa-github fa-fw"></i> </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索>
+<i class="fas fa-search fa-fw" aria-hidden=true></i>
+</a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空>
+<i class="fas fa-times-circle fa-fw" aria-hidden=true></i>
+</a>
+<span class="search-button search-loading" id=search-loading-desktop>
+<i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i>
+</span>
+</span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw" aria-hidden=true></i>
+</a>
+</div>
+</div>
+</div>
+</header><header class=mobile id=header-mobile>
+<div class=header-container>
+<div class=header-wrapper>
+<div class=header-title>
+<a href=/ title="Spaceack's Blog"><span class=header-title-pre><i class="far fa-kiss-wink-heart fa-fw"></i></span>Spaceack's Blog</a>
+</div>
+<div class=menu-toggle id=menu-toggle-mobile>
+<span></span><span></span><span></span>
+</div>
+</div>
+<div class=menu id=menu-mobile><div class=search-wrapper>
+<div class="search mobile" id=search-mobile>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索>
+<i class="fas fa-search fa-fw" aria-hidden=true></i>
+</a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空>
+<i class="fas fa-times-circle fa-fw" aria-hidden=true></i>
+</a>
+<span class="search-button search-loading" id=search-loading-mobile>
+<i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i>
+</span>
+</div>
+<a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>
+取消
+</a>
+</div><a class=menu-item href=/posts/ title>所有文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a class=menu-item href=/links/ title>友链</a><a class=menu-item href=/about/ title>关于</a><a class=menu-item href=/challenge/ title>战利品</a><a class=menu-item href=/book/ title>读书</a><a class=menu-item href=https://github.com/spaceack title=GitHub rel="noopener noreffer" target=_blank><i class="fab fa-github fa-fw"></i></a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw" aria-hidden=true></i>
+</a></div>
+</div>
+</header><div class="search-dropdown desktop">
+<div id=search-dropdown-desktop></div>
+</div>
+<div class="search-dropdown mobile">
+<div id=search-dropdown-mobile></div>
+</div><main class=main>
+<div class=container><div class=toc id=toc-auto>
+<h2 class=toc-title>目录</h2>
+<div class=toc-content id=toc-content-auto></div>
+</div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">蓝桥 卷“兔”来袭编程竞赛专场-08列置换加密 题解</h1><div class=post-meta>
+<div class=post-meta-line><span class=post-author><a href=/about title=Author rel=" author" class=author><i class="fas fa-user-circle fa-fw" aria-hidden=true></i>Spaceack</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/python/><i class="far fa-folder fa-fw" aria-hidden=true></i>Python</a></span></div>
+<div class=post-meta-line><i class="far fa-calendar-alt fa-fw" aria-hidden=true></i>&nbsp;<time datetime=2023-02-26>2023-02-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden=true></i>&nbsp;约 961 字&nbsp;
+<i class="far fa-clock fa-fw" aria-hidden=true></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
+</div><div class="details toc" id=toc-static data-kept>
+<div class="details-summary toc-title">
+<span>目录</span>
+<span><i class="details-icon fas fa-angle-right" aria-hidden=true></i></span>
+</div>
+<div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents>
+<ul>
+<li><a href=#赛题介绍>赛题介绍</a>
+<ul>
+<li><a href=#挑战介绍>挑战介绍</a></li>
+<li><a href=#挑战目标>挑战目标</a></li>
+<li><a href=#挑战要求>挑战要求</a></li>
+<li><a href=#参考样例>参考样例</a></li>
+</ul>
+</li>
+<li><a href=#题解>题解</a>
+<ul>
+<li><a href=#解题思路>解题思路</a></li>
+</ul>
+</li>
+</ul>
+</nav></div>
+</div><div class=content id=content><h2 id=赛题介绍>赛题介绍</h2>
+<h3 id=挑战介绍>挑战介绍</h3>
+<ul>
+<li>列置换加密是明文以每行固定字数（key 的字母种类数，一般情况下 key 会选择字母不重复的单词）一行一行写下，如果最后一行字数小于每行的固定字数，则使用特殊符号补充，这样就形成了一个矩阵。然后依照 key 的字母顺序对矩阵列的位置进行调整，最后再将排列好的列依次读取，得到密文。例如：</li>
+<li>明文： <code>welcometolq</code></li>
+<li>key： <code>qiao</code></li>
+<li>补充字符： <code>,</code></li>
+<li>首先确定 qiao 有 4 个字母，长度为 4。然后按照 26 个英文字母的顺序对 qiao 进行编号，越靠前的字母编号越小，可以得到的编号依次是 4-2-1-3。</li>
+<li>然后对明文分行。每行 4 （key 的长度）个字母，则可以写成 4 列：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>w</td>
+<td>e</td>
+<td>l</td>
+<td>c</td>
+</tr>
+<tr>
+<td>o</td>
+<td>m</td>
+<td>e</td>
+<td>t</td>
+</tr>
+<tr>
+<td>o</td>
+<td>l</td>
+<td>q</td>
+<td>,</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>由于最后一行缺一个字母，就使用补充字符填充。</li>
+<li>最后根据 key 的编号顺序对矩阵的列顺序调整，就有：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>4</th>
+<th>2</th>
+<th>1</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>c</td>
+<td>e</td>
+<td>w</td>
+<td>l</td>
+</tr>
+<tr>
+<td>t</td>
+<td>m</td>
+<td>o</td>
+<td>e</td>
+</tr>
+<tr>
+<td>,</td>
+<td>l</td>
+<td>o</td>
+<td>q</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>然后一列一列地依次读取内容，就得到密文：ct,emlwooleq</li>
+<li>解密的方式和加密时的顺序相反，通过字母总数和 key 的长度获得列数，其次根据列数将密文一列一列地展开，然后通过 key 的编号顺序调整列位置，最后一行一行读取内容就可以得到明文。</li>
+</ul>
+<h3 id=挑战目标>挑战目标</h3>
+<ul>
+<li>补充文件  <code>column_permutation.py</code>  下  <code>column_permutation_encryption(text)</code>  函数中的 TODO 部分，使其实现我们需要的功能：</li>
+<li>输入一段文本，使用 key： <code>qiao</code>  和补充字符： <code>,</code> （英文逗号）对内容进行列置换加密，并将密文返回。</li>
+<li>如果输入的文本中没有内容，则返回  <code>None</code> 。</li>
+</ul>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=k>def</span> <span class=nf>column_permutation_encryption</span><span class=p>(</span><span class=n>text</span><span class=p>:</span> <span class=nb>str</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=nb>str</span><span class=p>:</span>
+    <span class=s2>&#34;&#34;&#34;TODO
+</span><span class=s2>    &#34;&#34;&#34;</span>
+    <span class=n>encryption_text</span> <span class=p>:</span> <span class=nb>str</span> <span class=o>=</span> <span class=s1>&#39;&#39;</span>
+    <span class=k>return</span> <span class=n>encryption_text</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id=挑战要求>挑战要求</h3>
+<ul>
+<li>题目需使用 Python3 完成，不能使用标准库和第三方库。</li>
+<li>函数传入的 text 为字符串类型，可能为空、 <code>None</code>  等值。</li>
+<li>不得修改文件路径、文件名  <code>column_permutation.py</code>  以及函数名  <code>column_permutation_encryption(text)</code> 。</li>
+<li>请只保留文件  <code>column_permutation.py</code>  及文件中函数，不要添加测试或执行代码，避免检测时出错。</li>
+<li>线上环境调试代码时，请使用  <code>python3 column_permutation.py</code>  命令调用 Python3。</li>
+</ul>
+<h3 id=参考样例>参考样例</h3>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=c1># 样例 1</span>
+<span class=n>text</span> <span class=o>=</span> <span class=s2>&#34;welcometolq&#34;</span><span class=p>;</span> <span class=n>encryption_text</span> <span class=o>=</span> <span class=s2>&#34;ct,emlwooleq&#34;</span>
+<span class=c1># 样例 2</span>
+<span class=n>text</span> <span class=o>=</span> <span class=s2>&#34;welcometolq &#34;</span><span class=p>;</span> <span class=n>encryption_text</span> <span class=o>=</span> <span class=s2>&#34;ct emlwooleq&#34;</span>
+<span class=c1># 样例 3</span>
+<span class=n>text</span> <span class=o>=</span> <span class=s2>&#34;w&#34;</span><span class=p>;</span> <span class=n>encryption_text</span> <span class=o>=</span> <span class=s2>&#34;,,w,&#34;</span>
+<span class=c1># 样例 4</span>
+<span class=n>text</span> <span class=o>=</span> <span class=kc>None</span><span class=p>;</span> <span class=n>encryption_text</span> <span class=o>=</span> <span class=kc>None</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>注意：最终实现效果以完全满足要求为准，而不是仅满足如上样例。</p>
+<hr>
+<h2 id=题解>题解</h2>
+<h3 id=解题思路>解题思路</h3>
+<p>简单的模拟题</p>
+<ol>
+<li>要注意对传入参数类型与长度检查。</li>
+<li>使用<code>ljust</code>方法补全 <code>,</code> 号</li>
+<li>最后使用<code>join</code>方法将列表拼接为字符串返回即可。</li>
+</ol>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=k>def</span> <span class=nf>column_permutation_encryption</span><span class=p>(</span><span class=n>text</span><span class=p>:</span> <span class=nb>str</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=nb>str</span><span class=p>:</span>
+    <span class=s2>&#34;&#34;&#34;TODO
+</span><span class=s2>    &#34;&#34;&#34;</span>
+    <span class=k>if</span> <span class=ow>not</span> <span class=nb>isinstance</span><span class=p>(</span><span class=n>text</span><span class=p>,</span> <span class=nb>str</span><span class=p>):</span>
+        <span class=k>return</span> <span class=kc>None</span>
+    <span class=n>result</span> <span class=o>=</span> <span class=p>[]</span>
+    <span class=n>key_len</span> <span class=o>=</span> <span class=mi>4</span>
+    <span class=n>text_len</span> <span class=o>=</span> <span class=nb>len</span><span class=p>(</span><span class=n>text</span><span class=p>)</span>
+    <span class=k>if</span> <span class=n>text_len</span> <span class=o>&lt;=</span> <span class=mi>0</span><span class=p>:</span>
+        <span class=k>return</span> <span class=kc>None</span>
+    <span class=n>non_blank</span> <span class=o>=</span> <span class=n>text</span><span class=o>.</span><span class=n>replace</span><span class=p>(</span><span class=s1>&#39; &#39;</span><span class=p>,</span><span class=s1>&#39;&#39;</span><span class=p>)</span>
+    <span class=k>if</span> <span class=nb>len</span><span class=p>(</span><span class=n>non_blank</span><span class=p>)</span> <span class=o>==</span> <span class=mi>0</span><span class=p>:</span>
+        <span class=k>return</span> <span class=kc>None</span>
+    <span class=n>col_index</span>  <span class=o>=</span> <span class=p>[</span><span class=mi>3</span><span class=p>,</span> <span class=mi>1</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=mi>2</span><span class=p>]</span>
+    <span class=n>nums</span> <span class=o>=</span> <span class=mi>0</span> <span class=k>if</span> <span class=n>text_len</span> <span class=o>%</span> <span class=mi>4</span> <span class=o>==</span> <span class=mi>0</span> <span class=k>else</span> <span class=nb>len</span><span class=p>(</span><span class=n>text</span><span class=p>)</span> <span class=o>+</span> <span class=n>key_len</span> <span class=o>-</span> <span class=nb>len</span><span class=p>(</span><span class=n>text</span><span class=p>)</span> <span class=o>%</span> <span class=n>key_len</span>
+
+    <span class=n>text</span> <span class=o>=</span> <span class=n>text</span><span class=o>.</span><span class=n>ljust</span><span class=p>(</span><span class=n>nums</span><span class=p>,</span><span class=s1>&#39;,&#39;</span><span class=p>)</span>
+    <span class=n>matrix</span> <span class=o>=</span> <span class=p>[</span><span class=n>text</span><span class=p>[</span><span class=n>i</span><span class=p>:</span><span class=n>i</span><span class=o>+</span><span class=n>key_len</span><span class=p>]</span> <span class=k>for</span> <span class=n>i</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span><span class=nb>len</span><span class=p>(</span><span class=n>text</span><span class=p>),</span> <span class=n>key_len</span><span class=p>)]</span>
+
+    <span class=k>for</span> <span class=n>col</span> <span class=ow>in</span> <span class=n>col_index</span><span class=p>:</span>
+        <span class=k>for</span> <span class=n>i</span><span class=p>,</span> <span class=n>_</span> <span class=ow>in</span> <span class=nb>enumerate</span><span class=p>(</span><span class=n>matrix</span><span class=p>):</span>
+            <span class=n>result</span><span class=o>.</span><span class=n>append</span><span class=p>(</span><span class=n>matrix</span><span class=p>[</span><span class=n>i</span><span class=p>][</span><span class=n>col</span><span class=p>])</span>
+
+    <span class=n>encryption_text</span> <span class=p>:</span> <span class=nb>str</span> <span class=o>=</span> <span class=s1>&#39;&#39;</span><span class=o>.</span><span class=n>join</span><span class=p>(</span><span class=n>result</span><span class=p>)</span>
+    <span class=k>return</span> <span class=n>encryption_text</span>
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<p>题目来源：蓝桥 <a href="https://www.lanqiao.cn/problems/2402/learning/?contest_id=83" target=_blank rel="noopener noreffer">列置换加密</a></p>
+</div><div class=post-footer id=post-footer>
+<div class=post-info>
+<div class=post-info-line>
+<div class=post-info-mod>
+<span>更新于 2023-02-26</span>
+</div></div>
+<div class=post-info-line>
+<div class=post-info-md><span>
+<a class=link-to-markdown href=/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA08%E5%88%97%E7%BD%AE%E6%8D%A2%E5%8A%A0%E5%AF%86/index.md target=_blank>阅读原始文档</a>
+</span></div>
+<div class=post-info-share>
+<span><a href=javascript:void(0); title="分享到 Twitter" data-sharer=twitter data-url=https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA08%E5%88%97%E7%BD%AE%E6%8D%A2%E5%8A%A0%E5%AF%86/ data-title="蓝桥 卷“兔”来袭编程竞赛专场-08列置换加密 题解" data-hashtags=python,Crypto,题解,比赛><i class="fab fa-twitter fa-fw" aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA08%E5%88%97%E7%BD%AE%E6%8D%A2%E5%8A%A0%E5%AF%86/ data-hashtag=python><i class="fab fa-facebook-square fa-fw" aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 Hacker News" data-sharer=hackernews data-url=https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA08%E5%88%97%E7%BD%AE%E6%8D%A2%E5%8A%A0%E5%AF%86/ data-title="蓝桥 卷“兔”来袭编程竞赛专场-08列置换加密 题解"><i class="fab fa-hacker-news fa-fw" aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 Line" data-sharer=line data-url=https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA08%E5%88%97%E7%BD%AE%E6%8D%A2%E5%8A%A0%E5%AF%86/ data-title="蓝桥 卷“兔”来袭编程竞赛专场-08列置换加密 题解"><i data-svg-src=https://cdn.jsdelivr.net/npm/simple-icons@6.20.0/icons/line.svg aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA08%E5%88%97%E7%BD%AE%E6%8D%A2%E5%8A%A0%E5%AF%86/ data-title="蓝桥 卷“兔”来袭编程竞赛专场-08列置换加密 题解"><i class="fab fa-weibo fa-fw" aria-hidden=true></i></a></span>
+</div>
+</div>
+</div>
+<div class=post-info-more>
+<section class=post-tags><i class="fas fa-tags fa-fw" aria-hidden=true></i>&nbsp;<a href=/tags/python/>python</a>,&nbsp;<a href=/tags/crypto/>Crypto</a>,&nbsp;<a href=/tags/%E9%A2%98%E8%A7%A3/>题解</a>,&nbsp;<a href=/tags/%E6%AF%94%E8%B5%9B/>比赛</a></section>
+<section>
+<span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span>
+</section>
+</div>
+<div class=post-nav><a href=/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA07%E6%98%8E%E7%A0%81%E5%8A%A0%E5%AF%86/ class=prev rel=prev title="蓝桥 卷“兔”来袭编程竞赛专场-07明码加密 题解"><i class="fas fa-angle-left fa-fw" aria-hidden=true></i>蓝桥 卷“兔”来袭编程竞赛专场-07明码加密 题解</a>
+<a href=/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA09%E5%87%AF%E6%92%92%E5%8A%A0%E5%AF%86/ class=next rel=next title="蓝桥 卷“兔”来袭编程竞赛专场-09凯撒加密 题解">蓝桥 卷“兔”来袭编程竞赛专场-09凯撒加密 题解<i class="fas fa-angle-right fa-fw" aria-hidden=true></i></a></div>
+</div>
+</article></div>
+</main><footer class=footer>
+<div class=footer-container><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.87.0">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/dillonzq/LoveIt target=_blank rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden=true></i> LoveIt</a>
+</div><div class=footer-line itemscope itemtype=http://schema.org/CreativeWork><i class="far fa-copyright fa-fw" aria-hidden=true></i><span itemprop=copyrightYear>2014 - 2023</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=/about target=_blank>Spaceack</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div>
+</div>
+</footer></div>
+<div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部>
+<i class="fas fa-arrow-up fa-fw" aria-hidden=true></i>
+</a><a href=# id=view-comments class=fixed-button title=查看评论>
+<i class="fas fa-comment fa-fw" aria-hidden=true></i>
+</a>
+</div><script type=text/javascript src=https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/algoliasearch@4.13.0/dist/algoliasearch-lite.umd.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:50},comment:{},search:{algoliaAppID:"VXI4TRVSM5",algoliaIndex:"index.zh-cn",algoliaSearchKey:"4987343c645c7f8c574d58035d43fe96",highlightTag:"em",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50,type:"algolia"}}</script><script type=text/javascript src=/js/theme.min.js></script></body>
+</html>

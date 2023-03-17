@@ -1,0 +1,102 @@
+# 蓝桥 卷“兔”来袭编程竞赛专场-03破解三角形密码 题解
+
+## 赛题介绍
+
+### 挑战介绍
+
+三角形密码指的是将一串字符串按照正直角三角形的形状排列，传递的信息隐藏在每一行的最后一个字符，然后将所有的行的最后一个字符依次连接，就是需要传递的信息。
+
+例如加密后的字符串是：我们爱的是蓝色的心桥
+
+将加密字符串按照正直角三角形填充后如下：
+
+| 我 |  |  |  |
+| ---- | ---- | ---- | ---- |
+| 们 | **爱** |  |  |
+| 的 | 是 | **蓝** |  |
+| 色 | 的 | 心 | **桥** |
+
+提取每一行的最后一个字符，然后连起来就是：我爱蓝桥，也就是传递的信息。
+
+### 挑战目标
+
+补充文件 `triangle.py` 下 `triangle_decryption(text)` 函数中的 TODO 部分，使其实现我们需要的功能：
+
+- 输入一段字符串，使用正直角三角形进行破解，返回破解的内容。
+- 如果最后一行字符串不足三角形的边长，则获取最后一个字符。例如密文“我们爱的你”，对应的明文是“我爱你”。
+- 如果输入的字符串前后有空格，请先去掉空格再使用正直角三角形破解。字符串中间的空格不需要去掉。
+- 如果输入的内容不是字符串或字符串为空则返回 `None`。
+
+```python
+def triangle_decryption(text: str) -> str:
+    """TODO
+    """
+    decryption_text : str = ''
+    return decryption_text
+```
+
+### 挑战要求
+
+- 题目需使用 Python3 完成，不能使用标准库和第三方库。
+- 函数传入 text 为字符串类型，可能为空、`None` 等值。
+- 不得修改文件路径、文件名 `triangle.py` 以及函数名 `triangle_decryption(text)`。
+- 请只保留文件 `triangle.py` 及文件中函数，不要添加测试或执行代码，避免检测时出错。
+- 线上环境调试代码时，请使用 `python3 triangle.py` 命令调用 Python3。
+
+### 参考样例
+
+```python
+# 样例 1
+text = "我们爱的是蓝色的心桥"; decryption_text = "我爱蓝桥"
+# 样例 2
+text = "我们爱的你"; decryption_text = "我爱你"
+# 样例 3
+text = " 我们爱的是蓝色的心桥"; decryption_text = "我爱蓝桥"
+# 样例 4
+text = "我 爱你"; decryption_text = "我爱你"
+# 样例 5
+text = None; decryption_text = None
+```
+
+注意：最终实现效果以完全满足要求为准，而不是仅满足如上样例。
+
+---
+
+## 题解
+
+### 解题思路
+
+简单的模拟题
+
+1. 要注意对传入参数类型的检查，包括空字符串等情形。
+2. 当输入仅有一个字符的时候，原样返回即可。
+3. 需要考虑好对边界情况的判断。
+4. 最后使用`join`方法将列表拼接为字符串返回即可。
+
+```python
+def triangle_decryption(text: str) -> str:
+    """TODO
+    """
+    result = []
+    i = 2
+    index = 0
+    if text == '' or None or not isinstance(text, str):
+        return None
+    text = text.strip()
+    if len(text) == 1:
+        return text
+    while index < len(text):
+        result.append(text[index])
+        index = index + i
+        i = i + 1
+        if index + 1 >= len(text):
+            result.append(text[-1])
+            break
+    decryption_text: str = "".join(result)
+    return decryption_text
+```
+
+---
+
+题目来源：蓝桥[破解三角形密码](https://www.lanqiao.cn/problems/2397/learning/?contest_id=83)
+

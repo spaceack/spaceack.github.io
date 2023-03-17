@@ -1,0 +1,95 @@
+# 蓝桥 卷“兔”来袭编程竞赛专场-04栅栏加密 题解
+
+## 赛题介绍
+
+### 挑战介绍
+
+栅栏密码是一种简单的移动字符位置的加密方法，规则简单。加密方式是将明文按照一定的字数分成多个组，取每组第一个字连起来得到密文 1，再取每组第二个字连起来得到密文 2，以此类推，最后将密文 1、密文 2...密文 N 连成整段密文。例如：
+
+明文：这是一段栅栏加密文字
+
+将每两个字分成一组，会得到五组内容：这是 | 一段 | 栅栏 | 加密 | 文字
+
+提取每组中的第一个字构成第一段文字：这一栅加文
+
+提取每组中的第二个字构成第二段文字：是段栏密字
+
+然后将两段文字合在一起，就得到了密文：这一栅加文是段栏密字
+
+### 挑战目标
+
+补充文件 `fence.py` 下 `fence_encryption(text)` 函数中的 TODO 部分，使其实现我们需要的功能：
+
+- 输入一段文本，将文本中每两个字符（字母、汉字或其它文字）为一组进行分组；然后提取每组中的第一个字构成第一段文字，第二个字构成第二段文字；最后将第二段文字写在第一段文字后面，合在一起返回。
+- 如果文本中有空格，请先去掉空格再拆分文本。
+- 返回的密文中不应该存在空格。
+- 如果文本中没有内容，则返回 `None`。
+
+```python
+def fence_encryption(text: str) -> str:
+    """TODO
+    """
+    encryption_text : str = ''
+    return encryption_text
+```
+
+### 挑战要求
+
+- 题目需使用 Python3 完成，不能使用标准库和第三方库。
+- 函数传入的 text 为字符串类型，可能为空、`None` 等值。
+- 不得修改文件路径、文件名 `fence.py` 以及函数名 `fence_encryption(text)`。
+- 请只保留文件 `fence.py` 及文件中函数，不要添加测试或执行代码，避免检测时出错。
+- 线上环境调试代码时，请使用 `python3 fence.py` 命令调用 Python3。
+
+### 参考样例
+
+```python
+# 样例 1
+text = "这是一段栅栏加密文字"; encryption_text = "这一栅加文是段栏密字"
+# 样例 2
+text = "这是 一段栅栏  加密文字"; encryption_text = "这一栅加文是段栏密字"
+# 样例 3
+text = None; encryption_text = None
+```
+
+注意：最终实现效果以完全满足要求为准，而不是仅满足如上样例。
+
+---
+
+## 题解
+
+### 解题思路
+
+简单的模拟题
+
+1. 要注意对传入参数类型的检查，包括空字符串等情形。
+2. 利用奇偶判断将字符分别放到两个列表中。
+3. 最后使用`join`方法将列表拼接为字符串返回即可。
+
+```python
+def fence_encryption(text: str) -> str:
+    """TODO
+    """
+    f1 = []
+    f2 = []
+    if not isinstance(text, str):
+        return None
+
+    text = text.replace(' ', '')
+
+    if text == "":
+        return None
+
+    for i, v in enumerate(text):
+        if i % 2 == 0:
+            f1.append(v)
+        else:
+            f2.append(v)
+
+    encryption_text: str = ''.join(f1) + ''.join(f2)
+    return encryption_text
+```
+
+---
+题目来源：蓝桥 [栅栏加密](https://www.lanqiao.cn/problems/2398/learning/?contest_id=83)
+

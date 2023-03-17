@@ -1,0 +1,98 @@
+# 蓝桥 卷“兔”来袭编程竞赛专场-09凯撒加密 题解
+
+## 赛题介绍
+
+### 挑战介绍
+
+恺撒密码也称恺撒加密、恺撒变换、变换加密，是一种最简单且最广为人知的加密技术。采用的是替换方法对信息中的英文字符循环替换为字母表序列中该字符后面或前面的第 N 个字符。例如当  `N = 2`  时，所有的字母 A 都会被替换成 C，B 替换成 D，以此类推。即字母表的对照关系如下：
+
+原文：ABCDEFGHIJKLMNOPQRSTUVWXYZ
+密文：CDEFGHIJKLMNOPQRSTUVWXYZAB
+
+### 挑战目标
+
+- 补充文件  `caesar_cipher.py`  下  `caesar_encryption(text)`  函数中的 TODO 部分，使其实现我们需要的功能：
+- 输入一段字符串，将字符串中所有英文字符向后偏移 2 位。
+- 只对半角英文字符进行转换，其它内容保持不变。
+- 字符大小写保持不变，例如 A 转换后为 C，b 转换后为 d。
+
+```python
+def caesar_encryption(text: str) -> str:
+    """TODO
+    """
+    encryption_text : str = ''
+    return encryption_text
+```
+
+### 挑战要求
+
+- 题目需使用 Python3 完成，不能使用标准库和第三方库。  
+- 函数传入 text 为字符串类型，可能为空、 `None`  等值。  
+- 不得修改文件路径、文件名  `caesar_cipher.py`  以及函数名  `caesar_encryption(text)` 。  
+- 请只保留文件  `caesar_cipher.py`  及文件中函数，不要添加测试或执行代码，避免检测时出错。  
+- 线上环境调试代码时，请使用  `python3 caesar_cipher.py`  命令调用 Python3。  
+
+### 参考样例
+
+```python
+# 样例 1
+text = "python"; encryption_text = "ravjqp"
+# 样例 2
+text = "pyThon"; encryption_text = "raVjqp"
+# 样例 3
+text = "Python31"; encryption_text = "Ravjqp31"
+# 样例 4
+text = "Python 您好！"; encryption_text = "Ravjqp 您好！"
+# 样例 5
+text = None; encryption_text = None
+```
+
+注意：最终实现效果以完全满足要求为准，而不是仅满足如上样例。
+
+---
+
+## 题解
+
+### 解题思路
+
+1. 要注意对传入参数类型与长度检查。
+2. 因为字母有序，使用`chr`和`ord`对字符移位操作。
+3. 最后使用`join`方法将列表拼接为字符串返回即可。
+
+```python
+def caesar_encryption(text: str) -> str:
+    """TODO
+    """
+    result = []
+    upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    low = "abcdefghijklmnopqrstuvwxyz"
+    if not isinstance(text, str):
+        return None
+    if text == "" or text == None:
+        return None
+    for t in text:
+        if t in upper:
+            if t == 'Y':
+                result.append('A')
+            elif t == 'Z':
+                result.append('B')
+            else:
+                result.append(chr(ord(t)+2))
+        elif t in low:
+            if t == 'y':
+                result.append('a')
+            elif t == 'z':
+                result.append('b')
+            else:
+                result.append(chr(ord(t)+2))
+        else:
+            result.append(t)
+
+    encryption_text : str = ''.join(result)
+    return encryption_text
+```
+
+---
+
+题目来源：蓝桥 [凯撒加密](https://www.lanqiao.cn/problems/2403/learning/?contest_id=83)
+
