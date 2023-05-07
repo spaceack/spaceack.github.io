@@ -31,6 +31,7 @@ date: 2019-11-28 00:19:01
 |[Shall We Code?](https://www.waynerv.com/)|Python, Go, Linux, Kubernetes| |
 |[建造者说](http://guoze.me/)|Python| |
 |[dabeaz](http://www.dabeaz.com/)|Python cookbook作者||
+|[嘻嘻琦琦 | Vickey’s Blog](https://vickey.fun/)|nginx, 云主机，https||
 
 ## 网址导航
 
@@ -57,6 +58,7 @@ date: 2019-11-28 00:19:01
 |-|-|
 |[阿里天池](https://tianchi.aliyun.com/)|算法，编程比赛|
 |[腾讯云+竞赛](https://cloud.tencent.com/developer/competition)|算法，编程比赛|
+|[稀土掘金-码上掘金](https://juejin.cn/challenge)|项目挑战赛|
 |[洛谷](https://www.luogu.com.cn/)|NOIP题库，比赛|
 |[力扣](https://leetcode.cn/)|leetcode中国|
 |[牛客竞赛](https://ac.nowcoder.com/)|ACM编程|
