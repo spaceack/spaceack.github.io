@@ -29,7 +29,7 @@
 |[Shall We Code?](https://www.waynerv.com/)|Python, Go, Linux, Kubernetes| |
 |[建造者说](http://guoze.me/)|Python| |
 |[dabeaz](http://www.dabeaz.com/)|Python cookbook作者||
-|[嘻嘻琦琦 | Vickey’s Blog](https://vickey.fun/)|nginx, 云主机，https||
+|[嘻嘻琦琦 Vickey’s Blog](https://vickey.fun/)|nginx, 云主机，https||
 
 ## 网址导航
 
