@@ -70,3 +70,17 @@ Mac `Shift+option+鼠标列选择`
 
 `CodeLLDB`
 
+---
+
+### Python Import “xxx“ could not be resolved from source
+
+setting.json中的配置项：
+
+```json
+"python.analysis.extraPaths": [
+    "./src",// 自定义模块的相对路径，可多个，可绝对路径　　
+    "./modules",
+    "/Users/spaceack/miniconda3/lib/python3.9/site-packages" // 添加的模块路径
+]
+```
+

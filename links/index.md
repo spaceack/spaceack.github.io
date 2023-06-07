@@ -30,6 +30,7 @@
 |[建造者说](http://guoze.me/)|Python| |
 |[dabeaz](http://www.dabeaz.com/)|Python cookbook作者||
 |[嘻嘻琦琦 Vickey’s Blog](https://vickey.fun/)|nginx, 云主机，https||
+|[Jason's Blog](https://890214.net)|AI知识&工具分享||
 
 ## 网址导航
 
