@@ -1,17 +1,21 @@
 # Linux 常用命令
 
-##  系统篇
-```
+
+## 系统篇
+
+```bash
 # 查看LBS 发行版本
 cat /etc/lsb-release
 ```
-```
+
+```bash
 DISTRIB_ID=Ubuntu
 DISTRIB_RELEASE=18.04
 DISTRIB_CODENAME=bionic
 DISTRIB_DESCRIPTION="Ubuntu 18.04.5 LTS"
 
 ```
+
 ```bash
 # 查看系统有哪些shell
 cat /etc/shell
@@ -23,8 +27,10 @@ sudo usermod -aG sudo spaceack
 sudo useradd -d /home/spaceack -s /bash/zsh spaceack
 
 ```
+
 ### linux 查询进程所在目录
-```
+
+```bash
 # 找到进程id
 ps -aux | grep xxx
 ll /proc/进程pid
@@ -33,15 +39,17 @@ lsof -p 进程pid
 ```
 
 ### CPU
+
 ```bash
 lscpu
 cat /proc/cpuinfo
 # 查看CPU架构
 uname -a | awk '{print $12}'
 ```
+
 ### 内存
 
-```bash 
+```bash
 # 查看主板内存插槽数及使用情况
 dmidecode|grep -P -A 5 "Memory\s+Device" | grep Size|grep -v Range
 
@@ -58,6 +66,7 @@ free -m
 ```
 
 ### 磁盘 df
+
 ```bash
 # 查看目录的剩余空间, 本质是查看该目录挂载的磁盘的剩余空间。 默认是千字节。
 ubuntu@primary:~$ df /tmp
@@ -79,7 +88,25 @@ Filesystem     Inodes  IUsed  IFree IUse% Mounted on
 
 ```
 
+#### 快速删除大量文件
+
+```bash
+# 创建空目录
+mkdir /tmp/empty/
+# 使用 rsync 快速删除 /data/logs/ 目录下文件
+rsync --delete-before -d /tmp/empty/ /data/logs/
+# 删除空目录
+rmdir /tmp/empty/
+```
+
+#### 禁用某个目录的写入权限
+
+```bash
+chattr +i /tmp/empty/
+```
+
 #### 交换分区
+
 查看类型为 swap 的 交换分区名称
 
 `sudo fdisk -l | grep swap`
@@ -98,6 +125,7 @@ Filesystem     Inodes  IUsed  IFree IUse% Mounted on
 `sudo swapon /dev/sda5`
 
 ### 硬件设备
+
 ```bash
 # 查看硬件设备
 lshw
@@ -107,9 +135,10 @@ lspci
 lsblk
 # 列出分区表
 fdisk -l
-
 ```
+
 ### 网络
+
 ```bash
 # 改ip
 sudo ifconfig down
@@ -118,6 +147,7 @@ sudo ifconfig eth0 192.168.0.200 netmask 255.255.255.0 up
 echo 'password' | sudo -S ifconfig eth0 192.168.0.200 netmask 255.255.255.0 up
 sudo /etc/init.d/networking restart
 ```
+
 ## 传输篇
 
 ### scp
@@ -131,7 +161,7 @@ sudo /etc/init.d/networking restart
   scp   remote_username@remote_ip:/remote_path/*  .
   ```
 
-### 使用rsync断点续传备份包含大量数据的资源目录!
+### 使用rsync断点续传备份包含大量数据的资源目录
 
   ```bash
   rsync -vrtP --rsh='ssh -p 10050' root@66.6.66.666:/data/* /data/backup
@@ -163,6 +193,7 @@ sudo /etc/init.d/networking restart
   ```
 
 ## 其它
+
 ```bash
 # 查看主机 ssh 连接数
 w | grep pts |wc -l
@@ -172,10 +203,14 @@ apt install rename
 
 # 制作U盘启动盘（Centos7）
 pv -cN source < CentOS-7-x86_64-DVD-1804.iso | sudo dd of=/dev/sdc
+
 ```
+
 ### 选择时区 tzselect
+
 ```bash
 tzselect
 # 查看时间
 date
 ```
+

@@ -16,7 +16,7 @@
 <meta name=application-name content="Spaceack's Blog">
 <meta name=apple-mobile-web-app-title content="Spaceack's Blog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://spaceack.github.io/20140910-linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/><link rel=prev href=https://spaceack.github.io/20100818-windows%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/><link rel=next href=https://spaceack.github.io/20141012-ubuntu%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/><link rel=stylesheet href=/css/style.min.css><link rel=preload href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css as=style onload="this.onload=null,this.rel='stylesheet'">
 <noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css></noscript><link rel=preload href=https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css as=style onload="this.onload=null,this.rel='stylesheet'">
-<noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css></noscript><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Linux 常用命令","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/spaceack.github.io\/20140910-linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4\/"},"image":["https:\/\/spaceack.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"Linux","wordcount":1030,"url":"https:\/\/spaceack.github.io\/20140910-linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4\/","datePublished":"2014-09-10T12:00:00+00:00","dateModified":"2014-09-10T12:00:00+00:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"Spaceack","logo":"https:\/\/spaceack.github.io\/images\/avatar.jpeg"},"author":{"@type":"Person","name":"Spaceack"},"description":""}</script></head>
+<noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css></noscript><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Linux 常用命令","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/spaceack.github.io\/20140910-linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4\/"},"image":["https:\/\/spaceack.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"Linux","wordcount":1093,"url":"https:\/\/spaceack.github.io\/20140910-linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4\/","datePublished":"2014-09-10T12:00:00+00:00","dateModified":"2014-09-10T12:00:00+00:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"Spaceack","logo":"https:\/\/spaceack.github.io\/images\/avatar.jpeg"},"author":{"@type":"Person","name":"Spaceack"},"description":""}</script></head>
 <body data-header-desktop=fixed data-header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':'auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark')&&document.body.setAttribute('theme','dark')</script>
 <div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
 <div class=header-wrapper>
@@ -82,7 +82,7 @@
 <div class=toc-content id=toc-content-auto></div>
 </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Linux 常用命令</h1><div class=post-meta>
 <div class=post-meta-line><span class=post-author><a href=/about title=Author rel=" author" class=author><i class="fas fa-user-circle fa-fw" aria-hidden=true></i>Spaceack</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/linux/><i class="far fa-folder fa-fw" aria-hidden=true></i>Linux</a></span></div>
-<div class=post-meta-line><i class="far fa-calendar-alt fa-fw" aria-hidden=true></i>&nbsp;<time datetime=2014-09-10>2014-09-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden=true></i>&nbsp;约 1030 字&nbsp;
+<div class=post-meta-line><i class="far fa-calendar-alt fa-fw" aria-hidden=true></i>&nbsp;<time datetime=2014-09-10>2014-09-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden=true></i>&nbsp;约 1093 字&nbsp;
 <i class="far fa-clock fa-fw" aria-hidden=true></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
 </div><div class="details toc" id=toc-static data-kept>
 <div class="details-summary toc-title">
@@ -98,6 +98,8 @@
 <li><a href=#内存>内存</a></li>
 <li><a href=#磁盘-df>磁盘 df</a>
 <ul>
+<li><a href=#快速删除大量文件>快速删除大量文件</a></li>
+<li><a href=#禁用某个目录的写入权限>禁用某个目录的写入权限</a></li>
 <li><a href=#交换分区>交换分区</a></li>
 </ul>
 </li>
@@ -108,7 +110,7 @@
 <li><a href=#传输篇>传输篇</a>
 <ul>
 <li><a href=#scp>scp</a></li>
-<li><a href=#使用rsync断点续传备份包含大量数据的资源目录>使用rsync断点续传备份包含大量数据的资源目录!</a></li>
+<li><a href=#使用rsync断点续传备份包含大量数据的资源目录>使用rsync断点续传备份包含大量数据的资源目录</a></li>
 <li><a href=#curl>curl</a></li>
 </ul>
 </li>
@@ -126,7 +128,7 @@
 </span><span class=lnt>2
 </span></code></pre></td>
 <td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback># 查看LBS 发行版本
+<pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=c1># 查看LBS 发行版本</span>
 cat /etc/lsb-release
 </code></pre></td></tr></table>
 </div>
@@ -139,10 +141,10 @@ cat /etc/lsb-release
 </span><span class=lnt>5
 </span></code></pre></td>
 <td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>DISTRIB_ID=Ubuntu
-DISTRIB_RELEASE=18.04
-DISTRIB_CODENAME=bionic
-DISTRIB_DESCRIPTION=&#34;Ubuntu 18.04.5 LTS&#34;
+<pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=nv>DISTRIB_ID</span><span class=o>=</span>Ubuntu
+<span class=nv>DISTRIB_RELEASE</span><span class=o>=</span>18.04
+<span class=nv>DISTRIB_CODENAME</span><span class=o>=</span>bionic
+<span class=nv>DISTRIB_DESCRIPTION</span><span class=o>=</span><span class=s2>&#34;Ubuntu 18.04.5 LTS&#34;</span>
 
 </code></pre></td></tr></table>
 </div>
@@ -180,8 +182,8 @@ sudo useradd -d /home/spaceack -s /bash/zsh spaceack
 </span><span class=lnt>5
 </span></code></pre></td>
 <td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback># 找到进程id
-ps -aux | grep xxx
+<pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=c1># 找到进程id</span>
+ps -aux <span class=p>|</span> grep xxx
 ll /proc/进程pid
 
 lsof -p 进程pid
@@ -278,6 +280,34 @@ Filesystem     Inodes  IUsed  IFree IUse% Mounted on
 
 </code></pre></td></tr></table>
 </div>
+</div><h4 id=快速删除大量文件>快速删除大量文件</h4>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=c1># 创建空目录</span>
+mkdir /tmp/empty/
+<span class=c1># 使用 rsync 快速删除 /data/logs/ 目录下文件</span>
+rsync --delete-before -d /tmp/empty/ /data/logs/
+<span class=c1># 删除空目录</span>
+rmdir /tmp/empty/
+</code></pre></td></tr></table>
+</div>
+</div><h4 id=禁用某个目录的写入权限>禁用某个目录的写入权限</h4>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>chattr +i /tmp/empty/
+</code></pre></td></tr></table>
+</div>
 </div><h4 id=交换分区>交换分区</h4>
 <p>查看类型为 swap 的 交换分区名称</p>
 <p><code>sudo fdisk -l | grep swap</code></p>
@@ -299,7 +329,6 @@ Filesystem     Inodes  IUsed  IFree IUse% Mounted on
 </span><span class=lnt>6
 </span><span class=lnt>7
 </span><span class=lnt>8
-</span><span class=lnt>9
 </span></code></pre></td>
 <td class=lntd>
 <pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=c1># 查看硬件设备</span>
@@ -310,7 +339,6 @@ lspci
 lsblk
 <span class=c1># 列出分区表</span>
 fdisk -l
-
 </code></pre></td></tr></table>
 </div>
 </div><h3 id=网络>网络</h3>
@@ -352,7 +380,7 @@ scp -P <span class=m>22</span> /data/data.zip root@spaceack.com:/data
 scp   remote_username@remote_ip:/remote_path/*  .
 </code></pre></td></tr></table>
 </div>
-</div><h3 id=使用rsync断点续传备份包含大量数据的资源目录>使用rsync断点续传备份包含大量数据的资源目录!</h3>
+</div><h3 id=使用rsync断点续传备份包含大量数据的资源目录>使用rsync断点续传备份包含大量数据的资源目录</h3>
 <div class=highlight><div class=chroma>
 <table class=lntable><tr><td class=lntd>
 <pre tabindex=0 class=chroma><code><span class=lnt>1
@@ -398,6 +426,7 @@ curl -k https://spaceack.com
 </span><span class=lnt>6
 </span><span class=lnt>7
 </span><span class=lnt>8
+</span><span class=lnt>9
 </span></code></pre></td>
 <td class=lntd>
 <pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=c1># 查看主机 ssh 连接数</span>
@@ -408,6 +437,7 @@ apt install rename
 
 <span class=c1># 制作U盘启动盘（Centos7）</span>
 pv -cN <span class=nb>source</span> &lt; CentOS-7-x86_64-DVD-1804.iso <span class=p>|</span> sudo dd <span class=nv>of</span><span class=o>=</span>/dev/sdc
+
 </code></pre></td></tr></table>
 </div>
 </div><h3 id=选择时区-tzselect>选择时区 tzselect</h3>
