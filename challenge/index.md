@@ -1,5 +1,13 @@
 # 项目挑战
 
+## 2023奖品合集
+
+1. OpenEuler 卫衣x2
+2. OpenEuler 颈枕
+
+![OpenEuler 卫衣](challenge/2023openeuler1.jpeg "OpenEuler 卫衣")
+![OpenEuler 情侣卫衣](challenge/2023openeuler2.png "OpenEuler 情侣卫衣")
+![OpenEuler 颈枕](challenge/2023openeuler3.png "OpenEuler 颈枕")
 
 ## 2022各种活动的战利品
 
@@ -100,7 +108,7 @@
 
 ---
 
-## 蓝桥第23期楼赛-Python专题编程挑战赛
+## 2020蓝桥第23期楼赛-Python专题编程挑战赛
 
 2020-09-25 收到了前三名的奖品，好开心。
 
@@ -114,7 +122,7 @@
 
 ---
 
-## 阿里天池“超级码力”编程大赛
+## 2020阿里天池“超级码力”在线编程大赛
 
 2020-09-24 收到了优胜奖奖品，开心。
 
@@ -126,7 +134,7 @@
 
 ---
 
-## 腾讯云开发这社区活动
+## 2020腾讯云开发这社区活动
 
 战利品：
 鼠年QQ公仔 x1

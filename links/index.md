@@ -31,7 +31,7 @@
 |[dabeaz](http://www.dabeaz.com/)|Python cookbook作者||
 |[嘻嘻琦琦 Vickey’s Blog](https://vickey.fun/)|nginx, 云主机，https||
 |[Jason's Blog](https://890214.net)|AI知识&工具分享||
-
+|[小谷的编程随笔空间](https://gu.ink/)|小谷的编程随笔空间||
 ## 网址导航
 
 ### 常用网站导航
