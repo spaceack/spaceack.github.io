@@ -27,7 +27,6 @@ sudo usermod -aG sudo spaceack
 sudo useradd -d /home/spaceack -s /bash/zsh spaceack
 
 ```
-
 ### linux 查询进程所在目录
 
 ```bash
@@ -37,7 +36,6 @@ ll /proc/进程pid
 
 lsof -p 进程pid
 ```
-
 ### CPU
 
 ```bash
@@ -46,7 +44,6 @@ cat /proc/cpuinfo
 # 查看CPU架构
 uname -a | awk '{print $12}'
 ```
-
 ### 内存
 
 ```bash
@@ -64,7 +61,6 @@ sudo dmidecode | grep -A16 "Memory Device"|grep 'Speed'
 free -m
 
 ```
-
 ### 磁盘 df
 
 ```bash
@@ -87,7 +83,6 @@ Filesystem     Inodes  IUsed  IFree IUse% Mounted on
 /dev/sda1      648320 137952 510368   22% /
 
 ```
-
 #### 快速删除大量文件
 
 ```bash
@@ -98,13 +93,11 @@ rsync --delete-before -d /tmp/empty/ /data/logs/
 # 删除空目录
 rmdir /tmp/empty/
 ```
-
 #### 禁用某个目录的写入权限
 
 ```bash
 chattr +i /tmp/empty/
 ```
-
 #### 交换分区
 
 查看类型为 swap 的 交换分区名称
@@ -123,7 +116,6 @@ chattr +i /tmp/empty/
 开启交换分区
 
 `sudo swapon /dev/sda5`
-
 ### 硬件设备
 
 ```bash
@@ -136,7 +128,6 @@ lsblk
 # 列出分区表
 fdisk -l
 ```
-
 ### 网络
 
 ```bash
@@ -147,51 +138,46 @@ sudo ifconfig eth0 192.168.0.200 netmask 255.255.255.0 up
 echo 'password' | sudo -S ifconfig eth0 192.168.0.200 netmask 255.255.255.0 up
 sudo /etc/init.d/networking restart
 ```
-
 ## 传输篇
-
-### scp
-
+- ### scp
+  
   ```bash
   # 使用scp 传输文件 将本地文件data.zip 传到服务器 /data 目录 -
   # P ssh端口号
   scp -P 22 /data/data.zip root@spaceack.com:/data
-
+  
   # 使用scp 传输文件 将远程目录 remote_path 传到本地当前目录
-  scp   remote_username@remote_ip:/remote_path/*  .
+  scp -r remote_username@remote_ip:/remote_path/*  .
   ```
-
 ### 使用rsync断点续传备份包含大量数据的资源目录
 
-  ```bash
-  rsync -vrtP --rsh='ssh -p 10050' root@66.6.66.666:/data/* /data/backup
-  ```
+```bash
+rsync -vrtP --rsh='ssh -p 10050' root@66.6.66.666:/data/* /data/backup
+```
 
-  -v, --verbose 详细模式输出.
+-v, --verbose 详细模式输出.
 
-  -r, --recursive 子目录递归处理.
+-r, --recursive 子目录递归处理.
 
-  -t, --times 保持文件时间信息.
+-t, --times 保持文件时间信息.
 
-  -P,--partial 断点续传, --progress 显示传输过程.
+-P,--partial 断点续传, --progress 显示传输过程.
 
-  --rsh=COMMAND 指定使用rsh、ssh方式进行数据同步, rsh为明文传输.
+--rsh=COMMAND 指定使用rsh、ssh方式进行数据同步, rsh为明文传输.
 
-  -u, 只进行更新，防止本地新文件被重写(不覆盖更新的文件).
+-u, 只进行更新，防止本地新文件被重写(不覆盖更新的文件).
 
-  --ignore-existing, 跳过接收端已存在的文件,目录增量备份会用到.
-
+--ignore-existing, 跳过接收端已存在的文件,目录增量备份会用到.
 ### curl
 
-  ```bash
-  # 下载文件
-  curl -O http://spaceack.com/data.zip
-  # 上传文件
-  curl -F "file=@/data/data.zip" http://spaceack.com/upload
-  # https忽略证书验证 -k 参数
-  curl -k https://spaceack.com
-  ```
-
+```bash
+# 下载文件
+curl -O http://spaceack.com/data.zip
+# 上传文件
+curl -F "file=@/data/data.zip" http://spaceack.com/upload
+# https忽略证书验证 -k 参数
+curl -k https://spaceack.com
+```
 ## 其它
 
 ```bash
@@ -205,7 +191,6 @@ apt install rename
 pv -cN source < CentOS-7-x86_64-DVD-1804.iso | sudo dd of=/dev/sdc
 
 ```
-
 ### 选择时区 tzselect
 
 ```bash
@@ -213,4 +198,3 @@ tzselect
 # 查看时间
 date
 ```
-
