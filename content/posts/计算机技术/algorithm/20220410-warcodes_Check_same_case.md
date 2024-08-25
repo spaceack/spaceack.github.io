@@ -1,5 +1,5 @@
 ---
-title: Co-350-两个数组的交集 II
+title: Check same case
 date: 2022-04-10 23:01:18
 update: 2022-04-10 23:01:18
 author: Spaceack
