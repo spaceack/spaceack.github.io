@@ -31,7 +31,63 @@
 ### 验证
 
 #### 验证程序
+
 由于安装程序可能很快完成，来不及看到锁文件。所以我们可以快速实现一个简易的验证程序：
+
+```python
+import os
+import shutil
+import time
+import subprocess
+def runcmd(command):
+    ret = subprocess.run(command, shell=True, timeout=60, stdout=subprocess.PIPE, stderr=subprocess.PIPE, encoding="utf-8")
+    if ret.returncode == 0:
+        return ret.stdout
+    else:
+        print(str(ret))
+
+def check_dnf_lock_pid():
+    """若进程锁文件存在，有其它正在执行的安装程序， 返回其它进程信息 或 True; 否则返回 None
+        早期系统 yum 包安装程序通过 '/var/run/yum.pid' 判断。
+        新系统   dnf 包安装程序通过以下4个进程锁文件判断。
+            "/var/cache/dnf/download_lock.pid",
+            "/var/cache/dnf/metadata_lock.pid",
+            "/var/lib/dnf/rpmdb_lock.pid",
+            "/var/log/log_lock.pid",
+    """
+    lock_pid_path = [
+        "/var/cache/dnf/download_lock.pid",
+        "/var/cache/dnf/metadata_lock.pid",
+        "/var/lib/dnf/rpmdb_lock.pid",
+        "/var/log/log_lock.pid",
+        "/var/run/yum.pid",
+        "/var/lib/rpm/.rpm.lock",
+    ]
+    for pid_path in lock_pid_path:
+        if os.path.exists(pid_path):
+            if "pid" in pid_path:
+                cat_command = "cat %s" % (pid_path)
+                pid = runcmd(cat_command)
+                pid = pid.replace("\n","") if pid else None
+            if ".rpm.lock" in pid_path:
+                fuser_command = "fuser %s" % (pid_path)
+                pid = runcmd(fuser_command)
+                if isinstance(pid, str):
+                    pid = pid.replace(" ", "").replace("\n", "") if pid else None
+                else:
+                    pid = pid.stdout.decode("utf-8").replace(" ", "").replace("\n", "") if pid else None
+            if pid and pid.isdigit():
+                run_time_c = "ps -p %s -o etimes=|awk '{print $1}'" % (pid)
+                run_time = runcmd(run_time_c)
+                run_time = run_time.replace("\n","") if run_time else None
+            if pid and run_time and pid.isdigit() and run_time.isdigit():
+                return "当前安前程序进程%s正在执行，已运行%s秒，请等待结束后再尝试。等待进程%s" % (pid, run_time, pid_path,)
+            if pid and pid.isdigit():
+                return "当前安装程序进程%s正在执行，请等待结束后再尝试。等待进程%s" % (pid, pid_path,)
+while True:
+    c = check_dnf_lock_pid()
+    print(c)
+```
 
 #### 山穷水尽疑无路
 

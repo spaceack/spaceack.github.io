@@ -150,6 +150,8 @@
 <p>题解1:</p>
 <p>执行用时：44 ms, 在所有 Python3 提交中击败了42.77%的用户
 内存消耗：14.8 MB, 在所有 Python3 提交中击败了38.92%的用户</p>
+</li>
+</ul>
 <div class=highlight><div class=chroma>
 <table class=lntable><tr><td class=lntd>
 <pre tabindex=0 class=chroma><code><span class=lnt> 1
@@ -191,7 +193,7 @@
 
     <span class=k>def</span> <span class=nf>lastStoneWeight</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>stones</span><span class=p>:</span> <span class=n>List</span><span class=p>[</span><span class=nb>int</span><span class=p>])</span> <span class=o>-&gt;</span> <span class=nb>int</span><span class=p>:</span>
         <span class=k>if</span> <span class=nb>len</span><span class=p>(</span><span class=n>stones</span><span class=p>)</span> <span class=o>==</span> <span class=mi>0</span><span class=p>:</span>
-            <span class=k>return</span> <span class=mi>0</span> 
+            <span class=k>return</span> <span class=mi>0</span>
         <span class=k>elif</span> <span class=nb>len</span><span class=p>(</span><span class=n>stones</span><span class=p>)</span> <span class=o>==</span> <span class=mi>1</span><span class=p>:</span>
             <span class=k>return</span> <span class=n>stones</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span>
         <span class=k>elif</span> <span class=nb>len</span><span class=p>(</span><span class=n>stones</span><span class=p>)</span> <span class=o>&gt;</span> <span class=mi>1</span><span class=p>:</span>
@@ -214,9 +216,7 @@
                 <span class=k>return</span> <span class=bp>self</span><span class=o>.</span><span class=n>lastStoneWeight</span><span class=p>(</span><span class=n>stones</span><span class=p>)</span>
 </code></pre></td></tr></table>
 </div>
-</div></li>
-</ul>
-</div><div class=post-footer id=post-footer>
+</div></div><div class=post-footer id=post-footer>
 <div class=post-info>
 <div class=post-info-line>
 <div class=post-info-mod>
