@@ -75,6 +75,10 @@ date: 2019-11-28 00:19:01
 |[pyweek](https://pyweek.org/)|python游戏开发挑战赛|
 |[CodinGame](http://www.codingame.com/)|编码游戏，编码挑战|
 |[hackerrank](https://www.hackerrank.com/dashboard)|编码挑战|
+|[IBM Ponder](https://research.ibm.com/haifa/ponderthis/index.shtml)|谜题挑战月赛|
+|[CTF Wiki](https://ctf-wiki.org/)|CTF Wiki|
+|[OI Wiki](https://oi-wiki.org/)|OI Wiki|
+
 
 ### 规范化标准
 
@@ -83,6 +87,9 @@ date: 2019-11-28 00:19:01
 |[中文文案指北](https://github.com/mzlogin/chinese-copywriting-guidelines)|统一中文文案、排版的相关用法，降低团队成员之间的沟通成本，增强网站气质。|
 |[Message Headers](https://www.iana.org/assignments/message-headers/message-headers.xhtml)|HTTP 消息头说明 RFC|
 |[HTTP Methods](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods)|HTTP 请求方法|
+|[semver](https://semver.org/lang/zh-CN/)|语义化版本 2.0.0|
+
+
 
 ### 工具
 
