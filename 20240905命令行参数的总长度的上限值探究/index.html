@@ -1,0 +1,199 @@
+<!doctype html><html lang=zh-cn>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=robots content="noodp">
+<title>Linux命令行参数的总长度的上限值探究 - Spaceack's Blog</title><meta name=Description content="Spaceck的个人Blog 编程之舞"><meta property="og:title" content="Linux命令行参数的总长度的上限值探究">
+<meta property="og:description" content="对于 Linux bash 参数过长错误 “Argument list too long” 网上有很多解决方案，但并没有解释这个最大长度的值的范围。本着追根溯源的态度，本文对此问题">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://spaceack.github.io/20240905%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E7%9A%84%E6%80%BB%E9%95%BF%E5%BA%A6%E7%9A%84%E4%B8%8A%E9%99%90%E5%80%BC%E6%8E%A2%E7%A9%B6/"><meta property="og:image" content="https://spaceack.github.io/logo.png"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2024-09-05T21:00:00+00:00">
+<meta property="article:modified_time" content="2024-09-05T21:00:00+00:00"><meta property="og:site_name" content="My cool site">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://spaceack.github.io/logo.png">
+<meta name=twitter:title content="Linux命令行参数的总长度的上限值探究">
+<meta name=twitter:description content="对于 Linux bash 参数过长错误 “Argument list too long” 网上有很多解决方案，但并没有解释这个最大长度的值的范围。本着追根溯源的态度，本文对此问题">
+<meta name=application-name content="Spaceack's Blog">
+<meta name=apple-mobile-web-app-title content="Spaceack's Blog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://spaceack.github.io/20240905%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E7%9A%84%E6%80%BB%E9%95%BF%E5%BA%A6%E7%9A%84%E4%B8%8A%E9%99%90%E5%80%BC%E6%8E%A2%E7%A9%B6/><link rel=prev href=https://spaceack.github.io/20231109-nginx%E7%9A%84%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%9813-permission-denied%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/><link rel=next href=https://spaceack.github.io/20241026-rac-python%E8%BF%9B%E7%A8%8B%E5%81%87%E6%AD%BB%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90/><link rel=stylesheet href=/css/style.min.css><link rel=preload href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css as=style onload="this.onload=null,this.rel='stylesheet'">
+<noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css></noscript><link rel=preload href=https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css as=style onload="this.onload=null,this.rel='stylesheet'">
+<noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css></noscript><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Linux命令行参数的总长度的上限值探究","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/spaceack.github.io\/20240905%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E7%9A%84%E6%80%BB%E9%95%BF%E5%BA%A6%E7%9A%84%E4%B8%8A%E9%99%90%E5%80%BC%E6%8E%A2%E7%A9%B6\/"},"image":["https:\/\/spaceack.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"Linux","wordcount":525,"url":"https:\/\/spaceack.github.io\/20240905%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E7%9A%84%E6%80%BB%E9%95%BF%E5%BA%A6%E7%9A%84%E4%B8%8A%E9%99%90%E5%80%BC%E6%8E%A2%E7%A9%B6\/","datePublished":"2024-09-05T21:00:00+00:00","dateModified":"2024-09-05T21:00:00+00:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"Spaceack","logo":"https:\/\/spaceack.github.io\/images\/avatar.jpeg"},"author":{"@type":"Person","name":"Spaceack"},"description":""}</script></head>
+<body data-header-desktop=fixed data-header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':'auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark')&&document.body.setAttribute('theme','dark')</script>
+<div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
+<div class=header-wrapper>
+<div class=header-title>
+<a href=/ title="Spaceack's Blog"><span class=header-title-pre><i class="far fa-kiss-wink-heart fa-fw"></i></span>Spaceack's Blog</a>
+</div>
+<div class=menu>
+<div class=menu-inner><a class=menu-item href=/posts/> 所有文章 </a><a class=menu-item href=/tags/> 标签 </a><a class=menu-item href=/categories/> 分类 </a><a class=menu-item href=/links/> 友链 </a><a class=menu-item href=/about/> 关于 </a><a class=menu-item href=/challenge/> 战利品 </a><a class=menu-item href=/book/> 读书 </a><a class=menu-item href=https://github.com/spaceack title=GitHub rel="noopener noreffer" target=_blank><i class="fab fa-github fa-fw"></i> </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索>
+<i class="fas fa-search fa-fw" aria-hidden=true></i>
+</a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空>
+<i class="fas fa-times-circle fa-fw" aria-hidden=true></i>
+</a>
+<span class="search-button search-loading" id=search-loading-desktop>
+<i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i>
+</span>
+</span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw" aria-hidden=true></i>
+</a>
+</div>
+</div>
+</div>
+</header><header class=mobile id=header-mobile>
+<div class=header-container>
+<div class=header-wrapper>
+<div class=header-title>
+<a href=/ title="Spaceack's Blog"><span class=header-title-pre><i class="far fa-kiss-wink-heart fa-fw"></i></span>Spaceack's Blog</a>
+</div>
+<div class=menu-toggle id=menu-toggle-mobile>
+<span></span><span></span><span></span>
+</div>
+</div>
+<div class=menu id=menu-mobile><div class=search-wrapper>
+<div class="search mobile" id=search-mobile>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索>
+<i class="fas fa-search fa-fw" aria-hidden=true></i>
+</a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空>
+<i class="fas fa-times-circle fa-fw" aria-hidden=true></i>
+</a>
+<span class="search-button search-loading" id=search-loading-mobile>
+<i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i>
+</span>
+</div>
+<a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>
+取消
+</a>
+</div><a class=menu-item href=/posts/ title>所有文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a class=menu-item href=/links/ title>友链</a><a class=menu-item href=/about/ title>关于</a><a class=menu-item href=/challenge/ title>战利品</a><a class=menu-item href=/book/ title>读书</a><a class=menu-item href=https://github.com/spaceack title=GitHub rel="noopener noreffer" target=_blank><i class="fab fa-github fa-fw"></i></a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw" aria-hidden=true></i>
+</a></div>
+</div>
+</header><div class="search-dropdown desktop">
+<div id=search-dropdown-desktop></div>
+</div>
+<div class="search-dropdown mobile">
+<div id=search-dropdown-mobile></div>
+</div><main class=main>
+<div class=container><div class=toc id=toc-auto>
+<h2 class=toc-title>目录</h2>
+<div class=toc-content id=toc-content-auto></div>
+</div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Linux命令行参数的总长度的上限值探究</h1><div class=post-meta>
+<div class=post-meta-line><span class=post-author><a href=/about title=Author rel=" author" class=author><i class="fas fa-user-circle fa-fw" aria-hidden=true></i>Spaceack</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/linux/><i class="far fa-folder fa-fw" aria-hidden=true></i>Linux</a></span></div>
+<div class=post-meta-line><i class="far fa-calendar-alt fa-fw" aria-hidden=true></i>&nbsp;<time datetime=2024-09-05>2024-09-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden=true></i>&nbsp;约 525 字&nbsp;
+<i class="far fa-clock fa-fw" aria-hidden=true></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
+</div><div class="details toc" id=toc-static data-kept>
+<div class="details-summary toc-title">
+<span>目录</span>
+<span><i class="details-icon fas fa-angle-right" aria-hidden=true></i></span>
+</div>
+<div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents>
+<ul>
+<li><a href=#参数最大长度>参数最大长度</a></li>
+<li><a href=#验证>验证</a></li>
+</ul>
+</nav></div>
+</div><div class=content id=content><p>对于 Linux bash 参数过长错误 “Argument list too long” 网上有很多解决方案，但并没有解释这个最大长度的值的范围。本着追根溯源的态度，本文对此问题做一个探究。记录下限制参数长度的因素以及最大长度。</p>
+<h2 id=参数最大长度>参数最大长度</h2>
+<p>如何确认Linux bash中能接受的最大长度呢？</p>
+<blockquote>
+<p>Number of arguments and maximum length of one argument
+At least on Linux 2.6, there&rsquo;s also a limit on the maximum number of arguments in argv[].
+On Linux 2.6.14 the function do_execve() in fs/exec.c tests if the number exceeds
+PAGE_SIZE*MAX_ARG_PAGES-sizeof(void *) / sizeof(void *)
+On a 32-bit Linux, this is ARGMAX/4-1 (32767). This becomes relevant if the average length of arguments is smaller than 4.
+Since Linux 2.6.23, this function tests if the number exceeds MAX_ARG_STRINGS in &lt;linux/binfmts.h> (2^32-1 = 4294967296-1).
+And as additional limit since 2.6.23, one argument must not be longer than MAX_ARG_STRLEN (131072).
+This might become relevant if you generate a long call like &ldquo;sh -c &lsquo;automatically generated with many arguments&rsquo;&rdquo;.
+(pointed out by Xan Lopez and Ralf Wildenhues)</p>
+</blockquote>
+<p>参考<a href=https://www.in-ulm.de/~mascheck/various/argmax/ target=_blank rel="noopener noreffer">ARG_MAX, maximum length of arguments for a new process</a>
+从以上文献中能看出在Linux2.6.23内核以后参数长度最长不能超过<code>MAX_ARG_STRLEN</code></p>
+<p><code>MAX_ARG_STRLEN</code>在<code>&lt;linux/binfmts.h></code>中定义为:</p>
+<blockquote>
+<p>#define MAX_ARG_STRLEN (PAGE_SIZE * 32)
+<img class=lazyload src=/svg/loading.min.svg data-src=/20240905%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E7%9A%84%E6%80%BB%E9%95%BF%E5%BA%A6%E7%9A%84%E4%B8%8A%E9%99%90%E5%80%BC%E6%8E%A2%E7%A9%B6/MAX_ARG_STRLEN.png data-srcset="/20240905%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E7%9A%84%E6%80%BB%E9%95%BF%E5%BA%A6%E7%9A%84%E4%B8%8A%E9%99%90%E5%80%BC%E6%8E%A2%E7%A9%B6/MAX_ARG_STRLEN.png, /20240905%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E7%9A%84%E6%80%BB%E9%95%BF%E5%BA%A6%E7%9A%84%E4%B8%8A%E9%99%90%E5%80%BC%E6%8E%A2%E7%A9%B6/MAX_ARG_STRLEN.png 1.5x, /20240905%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E7%9A%84%E6%80%BB%E9%95%BF%E5%BA%A6%E7%9A%84%E4%B8%8A%E9%99%90%E5%80%BC%E6%8E%A2%E7%A9%B6/MAX_ARG_STRLEN.png 2x" data-sizes=auto alt=/20240905%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E7%9A%84%E6%80%BB%E9%95%BF%E5%BA%A6%E7%9A%84%E4%B8%8A%E9%99%90%E5%80%BC%E6%8E%A2%E7%A9%B6/MAX_ARG_STRLEN.png title=MAX_ARG_STRLEN width=1254 height=976></p>
+</blockquote>
+<h2 id=验证>验证</h2>
+<p>如下图验证所示：
+可以通过<code>getconf PAGE_SIZE</code> 获取内存页大小。</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=c1># 获取内存页大小</span>
+<span class=o>(</span>base<span class=o>)</span> <span class=o>[</span>root@localhost ~<span class=o>]</span><span class=c1># getconf PAGE_SIZE</span>
+<span class=m>4096</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>通过<code>echo $(( $(getconf PAGE_SIZE)*32 )) </code>得到 <code>MAX_ARG_STRLEN</code>值，</p>
+<p><img class=lazyload src=/svg/loading.min.svg data-src=/20240905%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E7%9A%84%E6%80%BB%E9%95%BF%E5%BA%A6%E7%9A%84%E4%B8%8A%E9%99%90%E5%80%BC%E6%8E%A2%E7%A9%B6/arg_pagesize.png data-srcset="/20240905%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E7%9A%84%E6%80%BB%E9%95%BF%E5%BA%A6%E7%9A%84%E4%B8%8A%E9%99%90%E5%80%BC%E6%8E%A2%E7%A9%B6/arg_pagesize.png, /20240905%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E7%9A%84%E6%80%BB%E9%95%BF%E5%BA%A6%E7%9A%84%E4%B8%8A%E9%99%90%E5%80%BC%E6%8E%A2%E7%A9%B6/arg_pagesize.png 1.5x, /20240905%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E7%9A%84%E6%80%BB%E9%95%BF%E5%BA%A6%E7%9A%84%E4%B8%8A%E9%99%90%E5%80%BC%E6%8E%A2%E7%A9%B6/arg_pagesize.png 2x" data-sizes=auto alt=/20240905%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E7%9A%84%E6%80%BB%E9%95%BF%E5%BA%A6%E7%9A%84%E4%B8%8A%E9%99%90%E5%80%BC%E6%8E%A2%E7%A9%B6/arg_pagesize.png title=test width=660 height=133></p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=o>(</span>base<span class=o>)</span> <span class=o>[</span>root@localhost ~<span class=o>]</span><span class=c1># echo $(($(getconf PAGE_SIZE)*32))</span>
+<span class=m>131072</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=c1># 131072 字节的参数列表，报错</span>
+<span class=o>(</span>base<span class=o>)</span> <span class=o>[</span>root@localhost ~<span class=o>]</span><span class=c1># /bin/echo &#34;$(printf &#34;%*s&#34; 131072 &#34;a&#34;)&#34;&gt;/dev/null</span>
+-bash: /bin/echo: Argument list too long
+<span class=c1># 131071 字节的参数列表，没有问题</span>
+<span class=o>(</span>base<span class=o>)</span> <span class=o>[</span>root@localhost ~<span class=o>]</span><span class=c1># /bin/echo &#34;$(printf &#34;%*s&#34; 131071 &#34;a&#34;)&#34;&gt;/dev/null</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>131071 字节是参数列表的最大支持长度, 结果符合我们的预测。</p>
+</div><div class=post-footer id=post-footer>
+<div class=post-info>
+<div class=post-info-line>
+<div class=post-info-mod>
+<span>更新于 2024-09-05</span>
+</div></div>
+<div class=post-info-line>
+<div class=post-info-md><span>
+<a class=link-to-markdown href=/20240905%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E7%9A%84%E6%80%BB%E9%95%BF%E5%BA%A6%E7%9A%84%E4%B8%8A%E9%99%90%E5%80%BC%E6%8E%A2%E7%A9%B6/index.md target=_blank>阅读原始文档</a>
+</span></div>
+<div class=post-info-share>
+<span><a href=javascript:void(0); title="分享到 Twitter" data-sharer=twitter data-url=https://spaceack.github.io/20240905%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E7%9A%84%E6%80%BB%E9%95%BF%E5%BA%A6%E7%9A%84%E4%B8%8A%E9%99%90%E5%80%BC%E6%8E%A2%E7%A9%B6/ data-title=Linux命令行参数的总长度的上限值探究 data-hashtags=Linux><i class="fab fa-twitter fa-fw" aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=https://spaceack.github.io/20240905%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E7%9A%84%E6%80%BB%E9%95%BF%E5%BA%A6%E7%9A%84%E4%B8%8A%E9%99%90%E5%80%BC%E6%8E%A2%E7%A9%B6/ data-hashtag=Linux><i class="fab fa-facebook-square fa-fw" aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 Hacker News" data-sharer=hackernews data-url=https://spaceack.github.io/20240905%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E7%9A%84%E6%80%BB%E9%95%BF%E5%BA%A6%E7%9A%84%E4%B8%8A%E9%99%90%E5%80%BC%E6%8E%A2%E7%A9%B6/ data-title=Linux命令行参数的总长度的上限值探究><i class="fab fa-hacker-news fa-fw" aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 Line" data-sharer=line data-url=https://spaceack.github.io/20240905%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E7%9A%84%E6%80%BB%E9%95%BF%E5%BA%A6%E7%9A%84%E4%B8%8A%E9%99%90%E5%80%BC%E6%8E%A2%E7%A9%B6/ data-title=Linux命令行参数的总长度的上限值探究><i data-svg-src=https://cdn.jsdelivr.net/npm/simple-icons@6.20.0/icons/line.svg aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=https://spaceack.github.io/20240905%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E7%9A%84%E6%80%BB%E9%95%BF%E5%BA%A6%E7%9A%84%E4%B8%8A%E9%99%90%E5%80%BC%E6%8E%A2%E7%A9%B6/ data-title=Linux命令行参数的总长度的上限值探究><i class="fab fa-weibo fa-fw" aria-hidden=true></i></a></span>
+</div>
+</div>
+</div>
+<div class=post-info-more>
+<section class=post-tags><i class="fas fa-tags fa-fw" aria-hidden=true></i>&nbsp;<a href=/tags/linux/>Linux</a></section>
+<section>
+<span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span>
+</section>
+</div>
+<div class=post-nav><a href=/20231109-nginx%E7%9A%84%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%9813-permission-denied%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/ class=prev rel=prev title=Nginx配置SSL证书><i class="fas fa-angle-left fa-fw" aria-hidden=true></i>Nginx配置SSL证书</a>
+<a href=/20241026-rac-python%E8%BF%9B%E7%A8%8B%E5%81%87%E6%AD%BB%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90/ class=next rel=next title=RAC-Python进程假死根本原因分析>RAC-Python进程假死根本原因分析<i class="fas fa-angle-right fa-fw" aria-hidden=true></i></a></div>
+</div>
+</article></div>
+</main><footer class=footer>
+<div class=footer-container><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.87.0">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/dillonzq/LoveIt target=_blank rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden=true></i> LoveIt</a>
+</div><div class=footer-line itemscope itemtype=http://schema.org/CreativeWork><i class="far fa-copyright fa-fw" aria-hidden=true></i><span itemprop=copyrightYear>2014 - 2024</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=/about target=_blank>Spaceack</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div>
+</div>
+</footer></div>
+<div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部>
+<i class="fas fa-arrow-up fa-fw" aria-hidden=true></i>
+</a><a href=# id=view-comments class=fixed-button title=查看评论>
+<i class="fas fa-comment fa-fw" aria-hidden=true></i>
+</a>
+</div><script type=text/javascript src=https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/algoliasearch@4.13.0/dist/algoliasearch-lite.umd.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:50},comment:{},search:{algoliaAppID:"VXI4TRVSM5",algoliaIndex:"index.zh-cn",algoliaSearchKey:"4987343c645c7f8c574d58035d43fe96",highlightTag:"em",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50,type:"algolia"}}</script><script type=text/javascript src=/js/theme.min.js></script></body>
+</html>

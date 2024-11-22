@@ -1,0 +1,245 @@
+<!doctype html><html lang=zh-cn>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=robots content="noodp">
+<title>RAC-Python进程假死根本原因分析 - Spaceack's Blog</title><meta name=Description content="Spaceck的个人Blog 编程之舞"><meta property="og:title" content="RAC-Python进程假死根本原因分析">
+<meta property="og:description" content="问题现象 一个Python进行执行特定操作时，CPU占用100%。有阻塞情况发生，无法处理其它任务。服务状态是正常的。服务进程并没有崩溃。 分析">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://spaceack.github.io/20241026-rac-python%E8%BF%9B%E7%A8%8B%E5%81%87%E6%AD%BB%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90/"><meta property="og:image" content="https://spaceack.github.io/logo.png"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2024-10-26T23:00:00+00:00">
+<meta property="article:modified_time" content="2024-10-26T23:00:00+00:00"><meta property="og:site_name" content="My cool site">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://spaceack.github.io/logo.png">
+<meta name=twitter:title content="RAC-Python进程假死根本原因分析">
+<meta name=twitter:description content="问题现象 一个Python进行执行特定操作时，CPU占用100%。有阻塞情况发生，无法处理其它任务。服务状态是正常的。服务进程并没有崩溃。 分析">
+<meta name=application-name content="Spaceack's Blog">
+<meta name=apple-mobile-web-app-title content="Spaceack's Blog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://spaceack.github.io/20241026-rac-python%E8%BF%9B%E7%A8%8B%E5%81%87%E6%AD%BB%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90/><link rel=prev href=https://spaceack.github.io/20240905%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E7%9A%84%E6%80%BB%E9%95%BF%E5%BA%A6%E7%9A%84%E4%B8%8A%E9%99%90%E5%80%BC%E6%8E%A2%E7%A9%B6/><link rel=next href=https://spaceack.github.io/20190614-%E5%A6%82%E6%9E%9C%E6%B2%A1%E6%9C%89%E4%BD%A0/><link rel=stylesheet href=/css/style.min.css><link rel=preload href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css as=style onload="this.onload=null,this.rel='stylesheet'">
+<noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css></noscript><link rel=preload href=https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css as=style onload="this.onload=null,this.rel='stylesheet'">
+<noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css></noscript><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"RAC-Python进程假死根本原因分析","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/spaceack.github.io\/20241026-rac-python%E8%BF%9B%E7%A8%8B%E5%81%87%E6%AD%BB%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90\/"},"image":["https:\/\/spaceack.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"RAC, py-spy","wordcount":1050,"url":"https:\/\/spaceack.github.io\/20241026-rac-python%E8%BF%9B%E7%A8%8B%E5%81%87%E6%AD%BB%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90\/","datePublished":"2024-10-26T23:00:00+00:00","dateModified":"2024-10-26T23:00:00+00:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"Spaceack","logo":"https:\/\/spaceack.github.io\/images\/avatar.jpeg"},"author":{"@type":"Person","name":"Spaceack"},"description":""}</script></head>
+<body data-header-desktop=fixed data-header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':'auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark')&&document.body.setAttribute('theme','dark')</script>
+<div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
+<div class=header-wrapper>
+<div class=header-title>
+<a href=/ title="Spaceack's Blog"><span class=header-title-pre><i class="far fa-kiss-wink-heart fa-fw"></i></span>Spaceack's Blog</a>
+</div>
+<div class=menu>
+<div class=menu-inner><a class=menu-item href=/posts/> 所有文章 </a><a class=menu-item href=/tags/> 标签 </a><a class=menu-item href=/categories/> 分类 </a><a class=menu-item href=/links/> 友链 </a><a class=menu-item href=/about/> 关于 </a><a class=menu-item href=/challenge/> 战利品 </a><a class=menu-item href=/book/> 读书 </a><a class=menu-item href=https://github.com/spaceack title=GitHub rel="noopener noreffer" target=_blank><i class="fab fa-github fa-fw"></i> </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索>
+<i class="fas fa-search fa-fw" aria-hidden=true></i>
+</a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空>
+<i class="fas fa-times-circle fa-fw" aria-hidden=true></i>
+</a>
+<span class="search-button search-loading" id=search-loading-desktop>
+<i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i>
+</span>
+</span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw" aria-hidden=true></i>
+</a>
+</div>
+</div>
+</div>
+</header><header class=mobile id=header-mobile>
+<div class=header-container>
+<div class=header-wrapper>
+<div class=header-title>
+<a href=/ title="Spaceack's Blog"><span class=header-title-pre><i class="far fa-kiss-wink-heart fa-fw"></i></span>Spaceack's Blog</a>
+</div>
+<div class=menu-toggle id=menu-toggle-mobile>
+<span></span><span></span><span></span>
+</div>
+</div>
+<div class=menu id=menu-mobile><div class=search-wrapper>
+<div class="search mobile" id=search-mobile>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索>
+<i class="fas fa-search fa-fw" aria-hidden=true></i>
+</a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空>
+<i class="fas fa-times-circle fa-fw" aria-hidden=true></i>
+</a>
+<span class="search-button search-loading" id=search-loading-mobile>
+<i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i>
+</span>
+</div>
+<a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>
+取消
+</a>
+</div><a class=menu-item href=/posts/ title>所有文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a class=menu-item href=/links/ title>友链</a><a class=menu-item href=/about/ title>关于</a><a class=menu-item href=/challenge/ title>战利品</a><a class=menu-item href=/book/ title>读书</a><a class=menu-item href=https://github.com/spaceack title=GitHub rel="noopener noreffer" target=_blank><i class="fab fa-github fa-fw"></i></a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw" aria-hidden=true></i>
+</a></div>
+</div>
+</header><div class="search-dropdown desktop">
+<div id=search-dropdown-desktop></div>
+</div>
+<div class="search-dropdown mobile">
+<div id=search-dropdown-mobile></div>
+</div><main class=main>
+<div class=container><div class=toc id=toc-auto>
+<h2 class=toc-title>目录</h2>
+<div class=toc-content id=toc-content-auto></div>
+</div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">RAC-Python进程假死根本原因分析</h1><div class=post-meta>
+<div class=post-meta-line><span class=post-author><a href=/about title=Author rel=" author" class=author><i class="fas fa-user-circle fa-fw" aria-hidden=true></i>Spaceack</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/python/><i class="far fa-folder fa-fw" aria-hidden=true></i>Python</a></span></div>
+<div class=post-meta-line><i class="far fa-calendar-alt fa-fw" aria-hidden=true></i>&nbsp;<time datetime=2024-10-26>2024-10-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden=true></i>&nbsp;约 1050 字&nbsp;
+<i class="far fa-clock fa-fw" aria-hidden=true></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+</div><div class="details toc" id=toc-static data-kept>
+<div class="details-summary toc-title">
+<span>目录</span>
+<span><i class="details-icon fas fa-angle-right" aria-hidden=true></i></span>
+</div>
+<div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents>
+<ul>
+<li><a href=#问题现象>问题现象</a></li>
+<li><a href=#分析原因>分析原因</a>
+<ul>
+<li><a href=#问题定位>问题定位</a></li>
+<li><a href=#正则分析>正则分析</a></li>
+<li><a href=#测试验证>测试验证</a></li>
+</ul>
+</li>
+<li><a href=#解决方案>解决方案</a></li>
+<li><a href=#经验总结>经验总结</a></li>
+</ul>
+</nav></div>
+</div><div class=content id=content><h2 id=问题现象>问题现象</h2>
+<ul>
+<li>一个Python进行执行特定操作时，CPU占用100%。有阻塞情况发生，无法处理其它任务。服务状态是正常的。服务进程并没有崩溃。</li>
+</ul>
+<h2 id=分析原因>分析原因</h2>
+<h3 id=问题定位>问题定位</h3>
+<ul>
+<li>由于服务日志与系统日志没有报任何错误信息，给问题排查定位带来了一定的阻碍。</li>
+<li>因此，借助Python 程序的采样分析器<code>py-spy</code>来帮助我们排查问题，<code>py-spy</code>主要使用<code>Rust</code>语言编写。开销低，使用另外的进程对Python程序监控，无需<code>插桩</code>等改动代码， 绿色无污染，可以安全的对生产代码作监控。通过生成的<code>火焰图</code>可知，程序阻塞在一个<code>re</code>的正则函数上。</li>
+</ul>
+<h3 id=正则分析>正则分析</h3>
+<ul>
+<li>正则表达式的复杂度通常取决于其模式的长度和复杂性。当正则表达式包含多个<code>非贪婪匹配</code>和通配符，这通常会导致回溯（backtracking），尤其是在匹配失败时。回溯会增加正则表达式的执行时间，尤其是在输入文本较长的情况下。</li>
+<li>正则表达式的执行时间通常与输入文本的长度成正比。对于一个长度为 <code>n</code> 的输入文本，最坏情况下，正则表达式的复杂度可能是 <code>O(n^2)</code>，尤其是在存在大量回溯的情况下。</li>
+<li>如果输入文本较短，且正则表达式的匹配路径较为简单，复杂度可能接近 <code>O(n)</code>。如果输入文本较长，且正则表达式包含多个非贪婪匹配和通配符，复杂度可能接近 <code>O(n^2)</code>。</li>
+</ul>
+<h3 id=测试验证>测试验证</h3>
+<ul>
+<li>分别观测数据规模为1，5，10，15，20 的正则处理的时间</li>
+<li>得到时间消耗分别为0.05s, 0.11s, 2,29s,18.89s, 81.97s</li>
+<li>直观感觉这是一个指数级别的增涨。为了更加直观观测，可以使用二次拟合（抛物线法）做个拟合图。
+<img class=lazyload src=/svg/loading.min.svg data-src=/20241026-rac-python%E8%BF%9B%E7%A8%8B%E5%81%87%E6%AD%BB%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90/Quadratic.png data-srcset="/20241026-rac-python%E8%BF%9B%E7%A8%8B%E5%81%87%E6%AD%BB%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90/Quadratic.png, /20241026-rac-python%E8%BF%9B%E7%A8%8B%E5%81%87%E6%AD%BB%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90/Quadratic.png 1.5x, /20241026-rac-python%E8%BF%9B%E7%A8%8B%E5%81%87%E6%AD%BB%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90/Quadratic.png 2x" data-sizes=auto alt=/20241026-rac-python%E8%BF%9B%E7%A8%8B%E5%81%87%E6%AD%BB%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90/Quadratic.png title=Quadratic width=1164 height=904></li>
+<li>从拟合图可直观观测到， 前两个点增长较为平缓， 从第三个点开始，斜率徒增。以下是拟合代码。</li>
+</ul>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-python3 data-lang=python3><span class=kn>import</span> <span class=nn>numpy</span> <span class=k>as</span> <span class=nn>np</span>
+<span class=kn>import</span> <span class=nn>matplotlib.pyplot</span> <span class=k>as</span> <span class=nn>plt</span>
+
+<span class=c1># 给定的数据</span>
+<span class=n>x</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>array</span><span class=p>([</span><span class=mi>1</span><span class=p>,</span> <span class=mi>5</span><span class=p>,</span> <span class=mi>10</span><span class=p>,</span> <span class=mi>15</span><span class=p>,</span> <span class=mi>20</span><span class=p>])</span>
+<span class=n>y</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>array</span><span class=p>([</span><span class=mf>0.05</span><span class=p>,</span> <span class=mf>0.11</span><span class=p>,</span> <span class=mf>2.29</span><span class=p>,</span> <span class=mf>18.89</span><span class=p>,</span> <span class=mf>81.97</span><span class=p>])</span>
+
+<span class=c1># 计算二次多项式拟合的系数</span>
+<span class=n>coefficients</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>polyfit</span><span class=p>(</span><span class=n>x</span><span class=p>,</span> <span class=n>y</span><span class=p>,</span> <span class=mi>2</span><span class=p>)</span>
+<span class=n>a</span><span class=p>,</span> <span class=n>b</span><span class=p>,</span> <span class=n>c</span> <span class=o>=</span> <span class=n>coefficients</span>
+
+<span class=c1># 生成拟合曲线上的点</span>
+<span class=n>fit_curve</span> <span class=o>=</span> <span class=n>a</span> <span class=o>*</span> <span class=n>x</span><span class=o>**</span><span class=mi>2</span> <span class=o>+</span> <span class=n>b</span> <span class=o>*</span> <span class=n>x</span> <span class=o>+</span> <span class=n>c</span>
+
+<span class=c1># 绘制原始数据点和拟合曲线</span>
+<span class=n>plt</span><span class=o>.</span><span class=n>scatter</span><span class=p>(</span><span class=n>x</span><span class=p>,</span> <span class=n>y</span><span class=p>,</span> <span class=n>color</span><span class=o>=</span><span class=s1>&#39;blue&#39;</span><span class=p>,</span> <span class=n>label</span><span class=o>=</span><span class=s1>&#39;Data points&#39;</span><span class=p>)</span>
+<span class=n>plt</span><span class=o>.</span><span class=n>plot</span><span class=p>(</span><span class=n>x</span><span class=p>,</span> <span class=n>fit_curve</span><span class=p>,</span> <span class=n>color</span><span class=o>=</span><span class=s1>&#39;red&#39;</span><span class=p>,</span> <span class=n>label</span><span class=o>=</span><span class=s1>&#39;Quadratic fit&#39;</span><span class=p>)</span>
+
+<span class=c1># 添加图例和标签</span>
+<span class=n>plt</span><span class=o>.</span><span class=n>legend</span><span class=p>()</span>
+<span class=n>plt</span><span class=o>.</span><span class=n>xlabel</span><span class=p>(</span><span class=s1>&#39;x&#39;</span><span class=p>)</span>
+<span class=n>plt</span><span class=o>.</span><span class=n>ylabel</span><span class=p>(</span><span class=s1>&#39;y&#39;</span><span class=p>)</span>
+<span class=n>plt</span><span class=o>.</span><span class=n>title</span><span class=p>(</span><span class=s1>&#39;Quadratic Fit&#39;</span><span class=p>)</span>
+
+<span class=c1># 显示图形</span>
+<span class=n>plt</span><span class=o>.</span><span class=n>show</span><span class=p>()</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>问题得到了定位与验证，是由于一个正则解析不合理导致。</li>
+</ul>
+<h2 id=解决方案>解决方案</h2>
+<ul>
+<li>对文本进行分段匹配，避免一次性匹配整个文本。</li>
+</ul>
+<h2 id=经验总结>经验总结</h2>
+<ol>
+<li>对正则的处理一定要格外小心，尽量使用复杂度低的正则解析。若有负责的解析表达式，尽可能对其拆分，分段处理。</li>
+<li>需要对正则表达式进行测试，尤其是不同量级规模的文本。增加对文本规模的限制。</li>
+<li>灵活运用<code>py-spy</code>等性能分析工具，提升排查问题效率</li>
+</ol>
+<hr>
+<p>最后分享一段关于正则的笑话：</p>
+<blockquote>
+<p>有些人在碰到问题时，就想：“我知道，我可以使用正则表达式。”现在，他们就有了两个问题。 —Jamie“jwz” Zawinski， 1997 年8 月</p>
+</blockquote>
+<hr>
+</div><div class=post-footer id=post-footer>
+<div class=post-info>
+<div class=post-info-line>
+<div class=post-info-mod>
+<span>更新于 2024-10-26</span>
+</div></div>
+<div class=post-info-line>
+<div class=post-info-md><span>
+<a class=link-to-markdown href=/20241026-rac-python%E8%BF%9B%E7%A8%8B%E5%81%87%E6%AD%BB%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90/index.md target=_blank>阅读原始文档</a>
+</span></div>
+<div class=post-info-share>
+<span><a href=javascript:void(0); title="分享到 Twitter" data-sharer=twitter data-url=https://spaceack.github.io/20241026-rac-python%E8%BF%9B%E7%A8%8B%E5%81%87%E6%AD%BB%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90/ data-title=RAC-Python进程假死根本原因分析 data-hashtags=RAC,py-spy><i class="fab fa-twitter fa-fw" aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=https://spaceack.github.io/20241026-rac-python%E8%BF%9B%E7%A8%8B%E5%81%87%E6%AD%BB%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90/ data-hashtag=RAC><i class="fab fa-facebook-square fa-fw" aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 Hacker News" data-sharer=hackernews data-url=https://spaceack.github.io/20241026-rac-python%E8%BF%9B%E7%A8%8B%E5%81%87%E6%AD%BB%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90/ data-title=RAC-Python进程假死根本原因分析><i class="fab fa-hacker-news fa-fw" aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 Line" data-sharer=line data-url=https://spaceack.github.io/20241026-rac-python%E8%BF%9B%E7%A8%8B%E5%81%87%E6%AD%BB%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90/ data-title=RAC-Python进程假死根本原因分析><i data-svg-src=https://cdn.jsdelivr.net/npm/simple-icons@6.20.0/icons/line.svg aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=https://spaceack.github.io/20241026-rac-python%E8%BF%9B%E7%A8%8B%E5%81%87%E6%AD%BB%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90/ data-title=RAC-Python进程假死根本原因分析><i class="fab fa-weibo fa-fw" aria-hidden=true></i></a></span>
+</div>
+</div>
+</div>
+<div class=post-info-more>
+<section class=post-tags><i class="fas fa-tags fa-fw" aria-hidden=true></i>&nbsp;<a href=/tags/rac/>RAC</a>,&nbsp;<a href=/tags/py-spy/>py-spy</a></section>
+<section>
+<span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span>
+</section>
+</div>
+<div class=post-nav><a href=/20240905%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E7%9A%84%E6%80%BB%E9%95%BF%E5%BA%A6%E7%9A%84%E4%B8%8A%E9%99%90%E5%80%BC%E6%8E%A2%E7%A9%B6/ class=prev rel=prev title=Linux命令行参数的总长度的上限值探究><i class="fas fa-angle-left fa-fw" aria-hidden=true></i>Linux命令行参数的总长度的上限值探究</a>
+<a href=/20190614-%E5%A6%82%E6%9E%9C%E6%B2%A1%E6%9C%89%E4%BD%A0/ class=next rel=next title=如果没有你>如果没有你<i class="fas fa-angle-right fa-fw" aria-hidden=true></i></a></div>
+</div>
+</article></div>
+</main><footer class=footer>
+<div class=footer-container><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.87.0">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/dillonzq/LoveIt target=_blank rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden=true></i> LoveIt</a>
+</div><div class=footer-line itemscope itemtype=http://schema.org/CreativeWork><i class="far fa-copyright fa-fw" aria-hidden=true></i><span itemprop=copyrightYear>2014 - 2024</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=/about target=_blank>Spaceack</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div>
+</div>
+</footer></div>
+<div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部>
+<i class="fas fa-arrow-up fa-fw" aria-hidden=true></i>
+</a><a href=# id=view-comments class=fixed-button title=查看评论>
+<i class="fas fa-comment fa-fw" aria-hidden=true></i>
+</a>
+</div><script type=text/javascript src=https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/algoliasearch@4.13.0/dist/algoliasearch-lite.umd.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:50},comment:{},search:{algoliaAppID:"VXI4TRVSM5",algoliaIndex:"index.zh-cn",algoliaSearchKey:"4987343c645c7f8c574d58035d43fe96",highlightTag:"em",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50,type:"algolia"}}</script><script type=text/javascript src=/js/theme.min.js></script></body>
+</html>
