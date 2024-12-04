@@ -74,6 +74,7 @@
 |[CodinGame](http://www.codingame.com/)|编码游戏，编码挑战|
 |[hackerrank](https://www.hackerrank.com/dashboard)|编码挑战|
 |[IBM Ponder](https://research.ibm.com/haifa/ponderthis/index.shtml)|谜题挑战月赛|
+|[Advent of Code](https://adventofcode.com/)|每年12月1日到25日的编程谜题挑战|
 |[CTF Wiki](https://ctf-wiki.org/)|CTF Wiki|
 |[OI Wiki](https://oi-wiki.org/)|OI Wiki|
 
