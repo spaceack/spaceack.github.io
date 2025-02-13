@@ -1,13 +1,60 @@
 # 项目挑战
 
+
+
+## 2024奖品合集
+
+### 开放原子开源基金会 Godot x OpenAtom openKylin开发大赛（Godot Hub Festival 2024）
+
+1. Godot Hub Festival 2024 获奖证书
+
+![Godot Hub Festival 2024 获奖证书](challenge/2024-godot-festival-certificate.jpg "Godot Hub Festival 2024 获奖证书")
+
+### 阿里天池《2024年Moonbit全球创新挑战赛》Code JAM奖品
+
+1. 阿里云小宝x1
+2. Moonbit马克杯x1
+3. Moonbit帆布袋x1
+
+![阿里云小宝](challenge/2024-tianchi-alibaba1.jpg "阿里云小宝")
+![阿里云小宝](challenge/2024-tianchi-alibaba2.jpg "阿里云小宝")
+![Moonbit马克杯](challenge/2024-tianchi-moonbit.jpg "Moonbit马克杯")
+![Moonbit帆布袋](challenge/2024-tianchi-bag1.jpg "Moonbit帆布袋")
+![Moonbit帆布袋](challenge/2024-tianchi-bag2.jpg "Moonbit帆布袋")
+
+### 阿里天池《2024云原生编程挑战赛-赛道1:构建多模态模型，生成主机观测指标》奖品
+
+1. 比赛限量版纪念T恤x1
+2. 阿里定制雨伞x1
+3. 阿里定制保温杯x1
+
+![比赛限量版纪念T恤](challenge/2024-tianchi-tshirt1.jpg "比赛限量版纪念T恤")
+![比赛限量版纪念T恤](challenge/2024-tianchi-tshirt2.jpg "比赛限量版纪念T恤")
+![阿里定制雨伞](challenge/2024-tianchi-umbrella.jpg "阿里定制雨伞")
+![阿里定制保温杯](challenge/2024-tianchi-mug.jpg "阿里定制保温杯")
+
+---
+
+
 ## 2023奖品合集
 
 1. OpenEuler 卫衣x2
 2. OpenEuler 颈枕
 
+### 阿里天池2023《AI领航太空探索学习赛》第三名
+
+3. 天猫精灵x5智能音箱
+4. Tianchi天池铭牌马克杯 x1
+5. OPPLE LED台灯 x1
+
 ![OpenEuler 卫衣](challenge/2023openeuler1.jpeg "OpenEuler 卫衣")
 ![OpenEuler 情侣卫衣](challenge/2023openeuler2.png "OpenEuler 情侣卫衣")
 ![OpenEuler 颈枕](challenge/2023openeuler3.png "OpenEuler 颈枕")
+![天猫精灵x5智能音箱](challenge/2023tianchi-tianmaojinglingx5.jpg "天猫精灵x5智能音箱")
+![Tianchi天池铭牌马克杯](challenge/2023tianchicup.jpg "Tianchi天池铭牌马克杯")
+![OPPLE LED台灯](challenge/2023-tianchi-oppleled.jpg "OPPLE LED台灯")
+![阿里天池2023《AI领航太空探索学习赛》第三名](challenge/2023-tianchi-top3.jpg "阿里天池2023《AI领航太空探索学习赛》第三名")
+
 
 ## 2022各种活动的战利品
 
