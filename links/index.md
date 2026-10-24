@@ -33,6 +33,9 @@
 |[Jason's Blog](https://890214.net)|AI知识&工具分享||
 |[小谷的编程随笔空间](https://gu.ink/)|小谷的编程随笔空间||
 |[凡梦星尘空间站](https://lisenhui.cn)||再平凡的人也有属于他的梦想！|
+|[强曰为道](https://pkold.com/)||
+与天地相似，故不违。知周乎万物，而道济天下，故不过。旁行而不流，乐天知命，故不忧.|
+
 ## 网址导航
 
 ### 常用网站导航
@@ -105,12 +108,13 @@
 |[carbon](https://carbon.now.sh/)|生成代码美化的图片|
 |[diagrams](https://app.diagrams.net/)|在线画图（流程图，时序图...）|
 |[le5le](http://topology.le5le.com/workspace)|在线画图（流程图，时序图...）|
+|[tio](https://tio.run/)|短代码测试分享|
 
 ### 趣味游戏站
 
 |url|tags|
 |-|-|
-|[Flash 保存计划](https://flash.zczc.cz/)|海量Flash游戏资源，得益于ruffle模拟器，浏览器无需flash插件也可流畅运行|
+|[Flash 保存计划](https://flash.homes/flash)|海量Flash游戏资源，得益于ruffle模拟器，浏览器无需flash插件也可流畅运行|
 |[在线DOS游戏](https://dos.zczc.cz/)|大量DOS游戏，可以直接在浏览器中开玩|
 |[poki](https://poki.cn/)|免费在线游戏|
 
