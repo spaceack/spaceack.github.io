@@ -7,7 +7,6 @@ categories: ["消息队列"]
 tags: 
   - MQ
   - mysql
-weight: 1
 ---
 
 ![罗小黑羽毛球趣图](1.gif)
