@@ -100,7 +100,15 @@ enableEmoji = true
         url = "https://github.com/spaceack"
         title = "GitHub"
         weight = 8
-        [[languages.zh-cn.menu.main]]
+      [[languages.zh-cn.menu.main]]
+        identifier = "travelling"
+        pre = "<i class='fas fa-train fa-fw'></i>"
+        post = ""
+        name = "开往"
+        url = "https://www.travellings.cn/go.html"
+        title = "开往-友链接力"
+        weight = 9
+      [[languages.zh-cn.menu.main]]
         identifier = "book"
         pre = ""
         post = ""
@@ -293,7 +301,32 @@ enableEmoji = true
     enable = true
     # Custom content (HTML format is supported)
     # 自定义内容 (支持 HTML 格式)
-    custom = ''
+    custom = '''
+<div class="site-badges">
+  <a href="https://www.travellings.cn/go.html" target="_blank" rel="noopener" title="开往-友链接力">
+    <img class="badge-light-only" src="https://www.travellings.cn/assets/w.png" alt="开往-友链接力" height="32">
+    <img class="badge-dark-only" src="https://www.travellings.cn/assets/b.png" alt="开往-友链接力" height="32">
+  </a>
+  <a href="https://www.boyouquan.com/certificates/spaceack.github.io" target="_blank" rel="noopener" title="正在博友圈履约中">
+    <img class="badge-light-only" src="https://www.boyouquan.com/images/logo/performance.svg?domainName=spaceack.github.io" alt="正在博友圈履约中" height="32">
+    <img class="badge-dark-only" src="https://www.boyouquan.com/images/logo/performance-dark.svg?domainName=spaceack.github.io" alt="正在博友圈履约中" height="32">
+  </a>
+  <a href="https://www.foreverblog.cn/" target="_blank" rel="noopener" title="十年之约成员博客">
+    <img class="badge-light-only" src="https://www.foreverblog.cn/assets/logo/logo_v2_black.png" alt="十年之约" height="32">
+    <img class="badge-dark-only" src="https://www.foreverblog.cn/assets/logo/logo_v2_light.png" alt="十年之约" height="32">
+  </a>
+  <a href="https://www.foreverblog.cn/go.html" target="_blank" rel="noopener" title="虫洞 · 随机访问十年之约成员博客">
+    <img class="badge-light-only" src="https://www.foreverblog.cn/assets/logo/wormhole_v2_dark.webp" alt="十年之约虫洞" height="32">
+    <img class="badge-dark-only" src="https://www.foreverblog.cn/assets/logo/wormhole_v2_light.webp" alt="十年之约虫洞" height="32">
+  </a>
+</div>
+<div class="vercount-line">
+  本站总访问 <span id="vercount_value_site_pv">Loading</span> 次 ·
+  访客 <span id="vercount_value_site_uv">Loading</span> 人 ·
+  本文浏览 <span id="vercount_value_page_pv">Loading</span> 次
+</div>
+<script defer src="https://events.vercount.one/js"></script>
+'''
     # whether to show Hugo and theme info
     # 是否显示 Hugo 和主题信息
     hugo = true
@@ -550,6 +583,7 @@ enableEmoji = true
         # located in "assets/" 位于 "assets/"
         # Or 或者
         # someCSS = "https://cdn.example.com/some.css"
+        blogBadges = "css/blog-badges.css"
       [params.page.library.js]
         # someJavascript = "some.js"
         # located in "assets/" 位于 "assets/"
