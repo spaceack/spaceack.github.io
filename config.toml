@@ -388,8 +388,8 @@ enableEmoji = true
       # 是否显示代码块的复制按钮
       copy = true
       # the maximum number of lines of displayed code by default
-      # 默认展开显示的代码行数
-      maxShownLines = 50
+      # 默认展开显示的代码行数（调大以让所有代码块默认展开，行号与复制按钮直接可见）
+      maxShownLines = 500
     # KaTeX mathematical formulas config (KaTeX https://katex.org/)
     # KaTeX 数学公式配置 (KaTeX https://katex.org/)
     [params.page.math]
@@ -643,7 +643,12 @@ enableEmoji = true
     # 位于 "themes/LoveIt/assets/data/cdn/" 目录
     # 可以在你的项目下相同路径存放你自己的数据文件:
     # "assets/data/cdn/"
-    data = "jsdelivr.yml"
+    # 关闭 CDN：jsdelivr 在国内经常 TLS 握手失败，会导致 clipboard.js / FontAwesome
+    # 加载失败，进而使代码块复制按钮、图标与整个主题 JS 初始化失效。
+    # 置空后全部改用主题自带的 assets/lib/ 本地库。
+    # 注意：必须显式写 data = "" 覆盖主题 themes/LoveIt/hugo.toml 中的默认值，
+    # 直接注释掉反而会让主题自带的 data = "jsdelivr.yml" 生效。
+    data = ""
 
 
   # Compatibility config

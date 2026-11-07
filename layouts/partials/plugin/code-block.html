@@ -1,0 +1,27 @@
+{{- /* Site override of LoveIt v0.3.1 plugin/code-block.html.
+      Hugo >= 0.112 normalises config keys to lower case, so the theme's
+      `$params.code.maxShownLines` never matches the merged params map and the
+      code block always falls back to the built-in 10-line threshold (blocks
+      longer than 10 lines render collapsed, with no visible line numbers or
+      copy button). Read the lower-case key here and keep a sensible default. */ -}}
+{{- $content := .Content -}}
+{{- $lang := .Lang -}}
+{{- $params := .Page.Scratch.Get "params" -}}
+{{- $maxShownLines := $params.code.maxshownlines | default 500 | int -}}
+{{- $copy := $params.code.copy | default true -}}
+{{- $lines := split $content "\n" | len -}}
+{{- $options := dict "lineNoStart" 1 "lineNos" true -}}
+{{- $options = .Options | partial "function/dict.html" | merge $options -}}
+{{- $lineNoStart := $options.lineNoStart | int -}}
+{{- $lineNos := $options.lineNos | partial "function/bool.html" -}}
+
+{{- $options = dict "noClasses" false "lineNos" false | merge $options -}}
+{{- $result := transform.Highlight $content $lang $options -}}
+<div class="code-block{{ if $lineNos }} code-line-numbers{{ end }}{{ if le $lines $maxShownLines }} open{{ end }}" style="counter-reset: code-block {{ sub $lineNoStart 1 }}">
+    <div class="code-header language-{{ $lang }}">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        {{ if $copy }}<span class="copy" title="{{ T "copyToClipboard" }}"><i class="far fa-copy" aria-hidden="true"></i></span>{{ end }}
+    </div>
+    {{- $result -}}
+</div>
