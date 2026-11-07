@@ -1,1 +1,57 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>域名 - 标签 - 春和景明-Spaceack's Blog</title><link>https://spaceack.github.io/tags/%E5%9F%9F%E5%90%8D/</link><description>域名 - 标签 - 春和景明-Spaceack's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>spaceack@qq.com (Spaceack)</managingEditor><webMaster>spaceack@qq.com (Spaceack)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 25 Jun 2019 21:00:00 +0000</lastBuildDate><atom:link href="https://spaceack.github.io/tags/%E5%9F%9F%E5%90%8D/" rel="self" type="application/rss+xml"/><item><title>域名解析知识</title><link>https://spaceack.github.io/20190625-%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E7%9F%A5%E8%AF%86/</link><pubDate>Tue, 25 Jun 2019 21:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20190625-%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E7%9F%A5%E8%AF%86/</guid><description>主机记录 域名前缀 记录类型 类型 说明 A 将域名指向一个IPV4地址 CNAME 将域名指向另一个域名 AAAA 将域名指向一个IPV6地址 NS 将子域名指定其他DNS服务器</description></item></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>域名 - 标签 - 春和景明-Spaceack's Blog</title><link>https://spaceack.github.io/tags/%E5%9F%9F%E5%90%8D/</link><description>域名 - 标签 - 春和景明-Spaceack's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>spaceack@qq.com (Spaceack)</managingEditor><webMaster>spaceack@qq.com (Spaceack)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 25 Jun 2019 21:00:00 +0000</lastBuildDate><atom:link href="https://spaceack.github.io/tags/%E5%9F%9F%E5%90%8D/" rel="self" type="application/rss+xml"/><item><title>域名解析知识</title><link>https://spaceack.github.io/20190625-%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E7%9F%A5%E8%AF%86/</link><pubDate>Tue, 25 Jun 2019 21:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20190625-%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E7%9F%A5%E8%AF%86/</guid><description><![CDATA[<h2 id="主机记录">主机记录</h2>
+<p>域名前缀</p>
+<h2 id="记录类型">记录类型</h2>
+<table>
+  <thead>
+      <tr>
+          <th>类型</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>A</td>
+          <td>将域名指向一个IPV4地址</td>
+      </tr>
+      <tr>
+          <td>CNAME</td>
+          <td>将域名指向另一个域名</td>
+      </tr>
+      <tr>
+          <td>AAAA</td>
+          <td>将域名指向一个IPV6地址</td>
+      </tr>
+      <tr>
+          <td>NS</td>
+          <td>将子域名指定其他DNS服务器解析</td>
+      </tr>
+      <tr>
+          <td>MX</td>
+          <td>将域名指向邮件服务器地址</td>
+      </tr>
+      <tr>
+          <td>SRV</td>
+          <td>记录提供特定的服务的服务器</td>
+      </tr>
+      <tr>
+          <td>TXT</td>
+          <td>文本长度限制512，通常做SPF记录（反垃圾邮件）</td>
+      </tr>
+      <tr>
+          <td>CAA</td>
+          <td>CA证书办法机构授权校验</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="解析线路isp">解析线路(isp)</h2>
+<h2 id="记录值">记录值</h2>
+<ul>
+<li>服务器IP</li>
+</ul>
+<h2 id="ttl">TTL</h2>
+<ul>
+<li>Time To Live，缓存的生存时间。指地方dns缓存您域名记录信息的时间。</li>
+<li>600（10分钟）：建议正常情况下使用 600。</li>
+<li>60（1分钟）：如果您经常修改IP，修改记录一分钟即可生效。长期使用 60，解析速度会略受影响。</li>
+<li>3600（1小时）：如果您IP极少变动（一年几次），建议选择 3600，解析速度快。如果要修改IP，提前一天改为 60，即可快速生效。</li>
+</ul>]]></description></item></channel></rss>

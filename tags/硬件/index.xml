@@ -1,1 +1,69 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>硬件 - 标签 - 春和景明-Spaceack's Blog</title><link>https://spaceack.github.io/tags/%E7%A1%AC%E4%BB%B6/</link><description>硬件 - 标签 - 春和景明-Spaceack's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>spaceack@qq.com (Spaceack)</managingEditor><webMaster>spaceack@qq.com (Spaceack)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 17 Nov 2019 21:00:00 +0000</lastBuildDate><atom:link href="https://spaceack.github.io/tags/%E7%A1%AC%E4%BB%B6/" rel="self" type="application/rss+xml"/><item><title>第一次攒机记录-1-基本配置</title><link>https://spaceack.github.io/20191117-%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%94%92%E6%9C%BA%E8%AE%B0%E5%BD%95/</link><pubDate>Sun, 17 Nov 2019 21:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20191117-%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%94%92%E6%9C%BA%E8%AE%B0%E5%BD%95/</guid><description>配置明细： 组件 选型 选型分析 价格 CPU 盒装AMD Ryzen 7 3700X 4.4GHz Max Boost, 3.6GGz Base 7nm 8核16线程65w,性能强劲，性价比高 2660.15（含主板） 主板 MSI B450M PRO-VDH MAX 集成声</description></item></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>硬件 - 标签 - 春和景明-Spaceack's Blog</title><link>https://spaceack.github.io/tags/%E7%A1%AC%E4%BB%B6/</link><description>硬件 - 标签 - 春和景明-Spaceack's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>spaceack@qq.com (Spaceack)</managingEditor><webMaster>spaceack@qq.com (Spaceack)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 17 Nov 2019 21:00:00 +0000</lastBuildDate><atom:link href="https://spaceack.github.io/tags/%E7%A1%AC%E4%BB%B6/" rel="self" type="application/rss+xml"/><item><title>第一次攒机记录-1-基本配置</title><link>https://spaceack.github.io/20191117-%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%94%92%E6%9C%BA%E8%AE%B0%E5%BD%95/</link><pubDate>Sun, 17 Nov 2019 21:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20191117-%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%94%92%E6%9C%BA%E8%AE%B0%E5%BD%95/</guid><description><![CDATA[<h2 id="配置明细">配置明细：</h2>
+<table>
+  <thead>
+      <tr>
+          <th>组件</th>
+          <th>选型</th>
+          <th>选型分析</th>
+          <th>价格</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>CPU</td>
+          <td>盒装AMD Ryzen 7 3700X</td>
+          <td>4.4GHz Max Boost, 3.6GGz Base 7nm 8核16线程65w,性能强劲，性价比高</td>
+          <td>2660.15（含主板）</td>
+      </tr>
+      <tr>
+          <td>主板</td>
+          <td>MSI B450M PRO-VDH MAX</td>
+          <td>集成声卡/网卡，最大内存容量64GB， 有较大扩展性</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>内存</td>
+          <td>金士顿HX430C5PB3/16 SP</td>
+          <td></td>
+          <td>549</td>
+      </tr>
+      <tr>
+          <td>显卡</td>
+          <td>盈通 RX550 2G</td>
+          <td></td>
+          <td>369</td>
+      </tr>
+      <tr>
+          <td>SSD</td>
+          <td>Samsung SSD 970 EVO Plus 250G</td>
+          <td>用做系统盘，秒启的秘密</td>
+          <td>422.82</td>
+      </tr>
+      <tr>
+          <td>硬盘</td>
+          <td>WD 蓝盘 20EZAZ RZ 2T</td>
+          <td>数据盘</td>
+          <td>340.03</td>
+      </tr>
+      <tr>
+          <td>电源</td>
+          <td>先马金牌500W全模组</td>
+          <td></td>
+          <td>338</td>
+      </tr>
+      <tr>
+          <td>机箱</td>
+          <td>爱国者YOGO M2</td>
+          <td>白色机箱很好看ヾ(o◕∀◕)ﾉヾ</td>
+          <td>165.62</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>4844.62</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="cpu参数">CPU参数</h3>
+<p><code>lscpu</code></p>]]></description></item></channel></rss>

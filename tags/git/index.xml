@@ -1,1 +1,67 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>git - 标签 - 春和景明-Spaceack's Blog</title><link>https://spaceack.github.io/tags/git/</link><description>git - 标签 - 春和景明-Spaceack's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>spaceack@qq.com (Spaceack)</managingEditor><webMaster>spaceack@qq.com (Spaceack)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 02 Jul 2020 21:00:00 +0000</lastBuildDate><atom:link href="https://spaceack.github.io/tags/git/" rel="self" type="application/rss+xml"/><item><title>git常见问题处理</title><link>https://spaceack.github.io/2020-07-02-git%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/</link><pubDate>Thu, 02 Jul 2020 21:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/2020-07-02-git%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/</guid><description>git status 中文显示异常 中文名等特殊符号被转义，不易读。 使用下面命令可正常显示中文。 git config --global core.quotepath false 查看项目中某个人的代码数 1 2 3 4 git log --author=&amp;#34;Spaceack&amp;#34; --pretty=tformat: --numstat | awk &amp;#39;{ add += $1;</description></item><item><title>Git常用命令</title><link>https://spaceack.github.io/20190613-git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link><pubDate>Thu, 13 Jun 2019 21:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20190613-git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid><description>create a new repository on the command line 1 2 3 4 5 git init git add README.md git commit -m &amp;#34;first commit&amp;#34; git remote add origin git@github.com:user/project_name.git git push -u origin master push an existing repository from the command line 1 2 git remote add origin git@github.com:user/project_name.git git push -u origin master tag 1 2 3 4 5 6 7 8 9 10 11 12 13 14 # 查</description></item></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Git - 标签 - 春和景明-Spaceack's Blog</title><link>https://spaceack.github.io/tags/git/</link><description>Git - 标签 - 春和景明-Spaceack's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>spaceack@qq.com (Spaceack)</managingEditor><webMaster>spaceack@qq.com (Spaceack)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 02 Jul 2020 21:00:00 +0000</lastBuildDate><atom:link href="https://spaceack.github.io/tags/git/" rel="self" type="application/rss+xml"/><item><title>git常见问题处理</title><link>https://spaceack.github.io/2020-07-02-git%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/</link><pubDate>Thu, 02 Jul 2020 21:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/2020-07-02-git%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/</guid><description><![CDATA[<h3 id="git-status-中文显示异常">git status 中文显示异常</h3>
+<p>中文名等特殊符号被转义，不易读。
+使用下面命令可正常显示中文。
+<code>git config --global core.quotepath false</code></p>
+<h3 id="查看项目中某个人的代码数">查看项目中某个人的代码数</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-bash">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">git log --author<span class="o">=</span><span class="s2">&#34;Spaceack&#34;</span> --pretty<span class="o">=</span>tformat: --numstat <span class="p">|</span> awk <span class="s1">&#39;{ add += $1; subs += $2; loc += $1 - $2 } END { printf &#34;added lines: %s, removed lines: %s, total lines: %s\n&#34;, add, subs, loc }&#39;</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">added lines: 1280, removed lines: 198, total lines: <span class="m">1082</span></span></span></code></pre></div></div>
+<h3 id="合并多次commit">合并多次commit</h3>
+<p>例如要合并 最新的三次提交,将后两个提交合并到第一个：</p>]]></description></item><item><title>Git常用命令</title><link>https://spaceack.github.io/20190613-git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link><pubDate>Thu, 13 Jun 2019 21:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20190613-git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid><description><![CDATA[<h3 id="create-a-new-repository-on-the-command-line">create a new repository on the command line</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sh">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">git init
+</span></span><span class="line"><span class="cl">git add README.md
+</span></span><span class="line"><span class="cl">git commit -m <span class="s2">&#34;first commit&#34;</span>
+</span></span><span class="line"><span class="cl">git remote add origin git@github.com:user/project_name.git
+</span></span><span class="line"><span class="cl">git push -u origin master</span></span></code></pre></div></div>
+<h3 id="push-an-existing-repository-from-the-command-line">push an existing repository from the command line</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sh">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">git remote add origin git@github.com:user/project_name.git
+</span></span><span class="line"><span class="cl">git push -u origin master</span></span></code></pre></div></div>
+<h3 id="tag">tag</h3>
+<div class="code-block code-line-numbers" style="counter-reset: code-block 0">
+    <div class="code-header language-bash">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 查看</span>
+</span></span><span class="line"><span class="cl">git tag
+</span></span><span class="line"><span class="cl"><span class="c1"># 在某个 commit 打 tag</span>
+</span></span><span class="line"><span class="cl">git tag tag_name commit_id
+</span></span><span class="line"><span class="cl"><span class="c1"># 本地 tag 推到线上</span>
+</span></span><span class="line"><span class="cl">git push origin tag_name
+</span></span><span class="line"><span class="cl"><span class="c1"># 删除本地 tag</span>
+</span></span><span class="line"><span class="cl">git tag -d tag_name
+</span></span><span class="line"><span class="cl"><span class="c1"># 删除本地，然后删除线上tag</span>
+</span></span><span class="line"><span class="cl">git push origin :refs/tags/tag_name
+</span></span><span class="line"><span class="cl"><span class="c1"># 添加tag 并推送到远程</span>
+</span></span><span class="line"><span class="cl">git tag tag_name -m <span class="s2">&#34;tag_msg&#34;</span>
+</span></span><span class="line"><span class="cl">git push origin tag_name</span></span></code></pre></div></div>
+<h3 id="commit">commit</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-bash">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 统计提交次数</span>
+</span></span><span class="line"><span class="cl">git log <span class="p">|</span> grep <span class="s2">&#34;^Author: Spaceack&#34;</span><span class="p">|</span>wc -l
+</span></span><span class="line"><span class="cl"><span class="c1"># 统计合并次数</span>
+</span></span><span class="line"><span class="cl">git log <span class="p">|</span> grep <span class="s2">&#34;^Merge&#34;</span> <span class="p">|</span> wc -l
+</span></span><span class="line"><span class="cl"><span class="c1"># 修改当前分支最新的一次提交。commit的 hash 不变. 避免有多个commit的情况。</span>
+</span></span><span class="line"><span class="cl">git commit --amend</span></span></code></pre></div></div>
+<h3 id="revert">revert</h3>
+<p><code>git revert -n commit-id</code></p>]]></description></item></channel></rss>

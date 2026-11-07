@@ -1,1 +1,127 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>docker-compose - 标签 - 春和景明-Spaceack's Blog</title><link>https://spaceack.github.io/tags/docker-compose/</link><description>docker-compose - 标签 - 春和景明-Spaceack's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>spaceack@qq.com (Spaceack)</managingEditor><webMaster>spaceack@qq.com (Spaceack)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 27 May 2021 00:22:09 +0000</lastBuildDate><atom:link href="https://spaceack.github.io/tags/docker-compose/" rel="self" type="application/rss+xml"/><item><title>搭建etcd分布式kv数据库集群并使用python操作</title><link>https://spaceack.github.io/20210527-%E6%90%AD%E5%BB%BAetcd%E5%88%86%E5%B8%83%E5%BC%8Fkv%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9B%86%E7%BE%A4%E5%B9%B6%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9C/</link><pubDate>Thu, 27 May 2021 00:22:09 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20210527-%E6%90%AD%E5%BB%BAetcd%E5%88%86%E5%B8%83%E5%BC%8Fkv%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9B%86%E7%BE%A4%E5%B9%B6%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9C/</guid><description>介绍 etcd 是一个分布式、可靠的键值存储数据库，用于收集分布式系统中最关键的数据。是k8s的组件之一，使用Raft一致性算法，为分布式系统而生。常</description></item><item><title>使用docker模拟双机环境测试mysql双机互为主备</title><link>https://spaceack.github.io/20210222-%E4%BD%BF%E7%94%A8docker%E6%A8%A1%E6%8B%9F%E5%8F%8C%E6%9C%BA%E7%8E%AF%E5%A2%83%E6%B5%8B%E8%AF%95mysql%E5%8F%8C%E6%9C%BA%E4%BA%92%E4%B8%BA%E4%B8%BB%E5%A4%87/</link><pubDate>Mon, 22 Feb 2021 22:30:35 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20210222-%E4%BD%BF%E7%94%A8docker%E6%A8%A1%E6%8B%9F%E5%8F%8C%E6%9C%BA%E7%8E%AF%E5%A2%83%E6%B5%8B%E8%AF%95mysql%E5%8F%8C%E6%9C%BA%E4%BA%92%E4%B8%BA%E4%B8%BB%E5%A4%87/</guid><description>MariaDB双主模式测试 1. 环境准备 创建目录 mkdir conf conf2 data data2 log log2 创建 MariaDB 配置文件 touch conf/my.cnf conf2/my.cnf conf/my.cnf文件 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18</description></item><item><title>使用docker-compose安装mariadb</title><link>https://spaceack.github.io/20200910-%E4%BD%BF%E7%94%A8docker-compose%E5%AE%89%E8%A3%85mariadb/</link><pubDate>Thu, 10 Sep 2020 21:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20200910-%E4%BD%BF%E7%94%A8docker-compose%E5%AE%89%E8%A3%85mariadb/</guid><description><![CDATA[step1: 创建目录 1 2 mkdir -p /server/mariadb/{config,data,log} chmod -R 777 /server/mariadb step2: 编写docker-compose.yml 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 version:&#39;3.1&#39;services:mariadb:image:mariadb:10.5.5container_name:&#34;mariadb1&#34;restart:alwaysenvironment:MYSQL_USER:&#34;root&#34;MYSQL_PASSWORD:&#34;123456&#34;MYSQL_ROOT_PASSWORD:&#34;123456&#34;TZ:&#34;Asia/Shanghai&#34;ports:- &#34;3306:3306&#34;volumes:- ./data:/var/lib/mysql- ./log:/var/log/mysql- ./conf/my.cnf:/etc/mysql/my.cnf step3: 拷贝/etc/mysql]]></description></item><item><title>Docker笔记-使用Dockerfile构建Django镜像的简单示例</title><link>https://spaceack.github.io/20200513-docker%E7%AC%94%E8%AE%B0-%E4%BD%BF%E7%94%A8dockerfile%E6%9E%84%E5%BB%BAdjango%E9%95%9C%E5%83%8F%E7%9A%84%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B/</link><pubDate>Wed, 13 May 2020 21:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20200513-docker%E7%AC%94%E8%AE%B0-%E4%BD%BF%E7%94%A8dockerfile%E6%9E%84%E5%BB%BAdjango%E9%95%9C%E5%83%8F%E7%9A%84%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B/</guid><description><![CDATA[Dockerfile 1 2 3 4 5 6 7 FROM python:3.8.2 ENV PYTHONUNBUFFERED 1 RUN mkdir /code WORKDIR /code COPY requirements.txt /code/ RUN pip install -r requirements.txt COPY . /code/ RUN docker build . docker-compose.yml 1 2 3 4 5 6 7 8 9 10 version:&#39;3&#39;services:web:build:.command:python manage.py runserver 0.0.0.0:8080volumes:- .:/codeports:- &#34;8080:8080&#34; RUN docker-compose up -d]]></description></item></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Docker-Compose - 标签 - 春和景明-Spaceack's Blog</title><link>https://spaceack.github.io/tags/docker-compose/</link><description>Docker-Compose - 标签 - 春和景明-Spaceack's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>spaceack@qq.com (Spaceack)</managingEditor><webMaster>spaceack@qq.com (Spaceack)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 27 May 2021 00:22:09 +0000</lastBuildDate><atom:link href="https://spaceack.github.io/tags/docker-compose/" rel="self" type="application/rss+xml"/><item><title>搭建etcd分布式kv数据库集群并使用python操作</title><link>https://spaceack.github.io/20210527-%E6%90%AD%E5%BB%BAetcd%E5%88%86%E5%B8%83%E5%BC%8Fkv%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9B%86%E7%BE%A4%E5%B9%B6%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9C/</link><pubDate>Thu, 27 May 2021 00:22:09 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20210527-%E6%90%AD%E5%BB%BAetcd%E5%88%86%E5%B8%83%E5%BC%8Fkv%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9B%86%E7%BE%A4%E5%B9%B6%E4%BD%BF%E7%94%A8python%E6%93%8D%E4%BD%9C/</guid><description><![CDATA[<h2 id="介绍">介绍</h2>
+<p><code>etcd</code> 是一个分布式、可靠的键值存储数据库，用于收集分布式系统中最关键的数据。是k8s的组件之一，使用Raft一致性算法，为分布式系统而生。常用做服务发现和配置共享等应用场景。</p>]]></description></item><item><title>使用docker模拟双机环境测试mysql双机互为主备</title><link>https://spaceack.github.io/20210222-%E4%BD%BF%E7%94%A8docker%E6%A8%A1%E6%8B%9F%E5%8F%8C%E6%9C%BA%E7%8E%AF%E5%A2%83%E6%B5%8B%E8%AF%95mysql%E5%8F%8C%E6%9C%BA%E4%BA%92%E4%B8%BA%E4%B8%BB%E5%A4%87/</link><pubDate>Mon, 22 Feb 2021 22:30:35 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20210222-%E4%BD%BF%E7%94%A8docker%E6%A8%A1%E6%8B%9F%E5%8F%8C%E6%9C%BA%E7%8E%AF%E5%A2%83%E6%B5%8B%E8%AF%95mysql%E5%8F%8C%E6%9C%BA%E4%BA%92%E4%B8%BA%E4%B8%BB%E5%A4%87/</guid><description><![CDATA[<h2 id="mariadb双主模式测试">MariaDB双主模式测试</h2>
+<h3 id="1-环境准备">1. 环境准备</h3>
+<p>创建目录 <code>mkdir conf conf2 data data2 log log2 </code>
+创建 <strong>MariaDB</strong> 配置文件 <code>touch conf/my.cnf conf2/my.cnf </code>
+<strong>conf/my.cnf文件</strong></p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-bash">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># The MariaDB configuration file</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># The MariaDB/MySQL tools read configuration files in the following order:</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 0. &#34;/etc/mysql/my.cnf&#34; symlinks to this file, reason why all the rest is read.</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 1. &#34;/etc/mysql/mariadb.cnf&#34; (this file) to set global defaults,</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 2. &#34;/etc/mysql/conf.d/*.cnf&#34; to set global options.</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 3. &#34;/etc/mysql/mariadb.conf.d/*.cnf&#34; to set MariaDB-only options.</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 4. &#34;~/.my.cnf&#34; to set user-specific options.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># If the same option is defined multiple times, the last one will apply.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># One can use all long options that the program supports.</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Run program with --help to get a list of available options and with</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># --print-defaults to see which it would actually understand and use.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># If you are new to MariaDB, check out https://mariadb.com/kb/en/basic-mariadb-articles/</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># This group is read both by the client and the server</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># use it for options that affect everything</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>client-server<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Port or socket location where to connect</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># port = 3306</span>
+</span></span><span class="line"><span class="cl"><span class="nv">socket</span> <span class="o">=</span> /run/mysqld/mysqld.sock
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Import all .cnf files from configuration directory</span>
+</span></span><span class="line"><span class="cl">!includedir /etc/mysql/conf.d/
+</span></span><span class="line"><span class="cl">!includedir /etc/mysql/mariadb.conf.d/
+</span></span><span class="line"><span class="cl"><span class="o">[</span>mysqld<span class="o">]</span>
+</span></span><span class="line"><span class="cl">server-id<span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl">log-bin<span class="o">=</span>mysql-bin
+</span></span><span class="line"><span class="cl"><span class="nv">binlog_format</span> <span class="o">=</span> mixed
+</span></span><span class="line"><span class="cl">binlog-do-db<span class="o">=</span>event_analysis 
+</span></span><span class="line"><span class="cl">binlog-ignore-db <span class="o">=</span>mysql
+</span></span><span class="line"><span class="cl">binlog-ignore-db <span class="o">=</span>information_schema
+</span></span><span class="line"><span class="cl">binlog-ignore-db <span class="o">=</span>performance_schema
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">replicate-do-db<span class="o">=</span>event_analysis
+</span></span><span class="line"><span class="cl">replicate-ignore-db<span class="o">=</span>mysql
+</span></span><span class="line"><span class="cl">replicate-ignore-db<span class="o">=</span>information_schema
+</span></span><span class="line"><span class="cl">replicate-ignore-db<span class="o">=</span>performance_schema
+</span></span><span class="line"><span class="cl">read-only<span class="o">=</span><span class="m">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">relay_log</span><span class="o">=</span>mysqld-relay-bin
+</span></span><span class="line"><span class="cl">log-slave-updates<span class="o">=</span>ON
+</span></span><span class="line"><span class="cl">auto-increment-increment <span class="o">=</span> <span class="m">2</span>
+</span></span><span class="line"><span class="cl">auto-increment-offset <span class="o">=</span> <span class="m">1</span></span></span></code></pre></div></div>
+<p><strong>conf/my.cnf文件</strong></p>]]></description></item><item><title>使用docker-compose安装mariadb</title><link>https://spaceack.github.io/20200910-%E4%BD%BF%E7%94%A8docker-compose%E5%AE%89%E8%A3%85mariadb/</link><pubDate>Thu, 10 Sep 2020 21:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20200910-%E4%BD%BF%E7%94%A8docker-compose%E5%AE%89%E8%A3%85mariadb/</guid><description><![CDATA[<ul>
+<li>
+<p>step1: 创建目录</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-bash">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir -p /server/mariadb/<span class="o">{</span>config,data,log<span class="o">}</span>
+</span></span><span class="line"><span class="cl">chmod -R <span class="m">777</span> /server/mariadb</span></span></code></pre></div></div>
+</li>
+<li>
+<p>step2: 编写docker-compose.yml</p>
+<div class="code-block code-line-numbers" style="counter-reset: code-block 0">
+    <div class="code-header language-yaml">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;3.1&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">mariadb</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">mariadb:10.5.5</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;mariadb1&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">always</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">MYSQL_USER</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;root&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">MYSQL_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;123456&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">MYSQL_ROOT_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;123456&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">TZ</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Asia/Shanghai&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;3306:3306&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">./data:/var/lib/mysql</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">./log:/var/log/mysql</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">./conf/my.cnf:/etc/mysql/my.cnf</span></span></span></code></pre></div></div>
+</li>
+<li>
+<p>step3: 拷贝/etc/mysql/my.cnf 到 /server/mariadb/conf/my.cnf</p>]]></description></item><item><title>Docker笔记-使用Dockerfile构建Django镜像的简单示例</title><link>https://spaceack.github.io/20200513-docker%E7%AC%94%E8%AE%B0-%E4%BD%BF%E7%94%A8dockerfile%E6%9E%84%E5%BB%BAdjango%E9%95%9C%E5%83%8F%E7%9A%84%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B/</link><pubDate>Wed, 13 May 2020 21:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20200513-docker%E7%AC%94%E8%AE%B0-%E4%BD%BF%E7%94%A8dockerfile%E6%9E%84%E5%BB%BAdjango%E9%95%9C%E5%83%8F%E7%9A%84%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B/</guid><description><![CDATA[<h3 id="dockerfile">Dockerfile</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">FROM python:3.8.2
+</span></span><span class="line"><span class="cl">ENV PYTHONUNBUFFERED 1
+</span></span><span class="line"><span class="cl">RUN mkdir /code
+</span></span><span class="line"><span class="cl">WORKDIR /code
+</span></span><span class="line"><span class="cl">COPY requirements.txt /code/
+</span></span><span class="line"><span class="cl">RUN pip install -r requirements.txt
+</span></span><span class="line"><span class="cl">COPY . /code/</span></span></code></pre></div></div>
+<p>RUN <code>docker build .</code></p>
+<h3 id="docker-composeyml">docker-compose.yml</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-yml">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;3&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">web</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w"> </span><span class="l">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l">python manage.py runserver 0.0.0.0:8080</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">.:/code</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;8080:8080&#34;</span></span></span></code></pre></div></div>
+<p>RUN <code>docker-compose up -d</code></p>]]></description></item></channel></rss>

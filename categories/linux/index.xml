@@ -1,1 +1,122 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Linux - 分类 - 春和景明-Spaceack's Blog</title><link>https://spaceack.github.io/categories/linux/</link><description>Linux - 分类 - 春和景明-Spaceack's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>spaceack@qq.com (Spaceack)</managingEditor><webMaster>spaceack@qq.com (Spaceack)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 05 Sep 2024 21:00:00 +0000</lastBuildDate><atom:link href="https://spaceack.github.io/categories/linux/" rel="self" type="application/rss+xml"/><item><title>Linux命令行参数的总长度的上限值探究</title><link>https://spaceack.github.io/20240905%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E7%9A%84%E6%80%BB%E9%95%BF%E5%BA%A6%E7%9A%84%E4%B8%8A%E9%99%90%E5%80%BC%E6%8E%A2%E7%A9%B6/</link><pubDate>Thu, 05 Sep 2024 21:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20240905%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E7%9A%84%E6%80%BB%E9%95%BF%E5%BA%A6%E7%9A%84%E4%B8%8A%E9%99%90%E5%80%BC%E6%8E%A2%E7%A9%B6/</guid><description>对于 Linux bash 参数过长错误 “Argument list too long” 网上有很多解决方案，但并没有解释这个最大长度的值的范围。本着追根溯源的态度，本文对此问题</description></item><item><title>Linux 安装基础知识</title><link>https://spaceack.github.io/20220518-linux%E5%AE%89%E8%A3%85%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link><pubDate>Wed, 18 May 2022 21:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20220518-linux%E5%AE%89%E8%A3%85%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid><description>BIOS Mode 将硬件资源抽象 传递给内核，引导内核。 传统 windows BIOS : legacy UEFI（Unified Extensible Firmware Interface）统一可扩展固件接口：负责加电自检（POS</description></item><item><title>如何准确判断rpm,yum,dnf进程是否阻塞[运行]？</title><link>https://spaceack.github.io/20220427-%E5%A6%82%E4%BD%95%E5%87%86%E7%A1%AE%E5%88%A4%E6%96%ADrpm%E5%92%8Cyum%E8%BF%9B%E7%A8%8B%E6%98%AF%E5%90%A6%E9%98%BB%E5%A1%9E/</link><pubDate>Wed, 27 Apr 2022 21:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20220427-%E5%A6%82%E4%BD%95%E5%87%86%E7%A1%AE%E5%88%A4%E6%96%ADrpm%E5%92%8Cyum%E8%BF%9B%E7%A8%8B%E6%98%AF%E5%90%A6%E9%98%BB%E5%A1%9E/</guid><description>如果你是一个程序员，你会知道，rpm, yum, dnf这三个进程是否运行，如果运行，是否阻塞？ 简单常用但不严谨的做法 一个简单方法是通过 ps -ef | grep rpm | grep</description></item><item><title>Linux 磁盘挂载</title><link>https://spaceack.github.io/20210710-%E7%A3%81%E7%9B%98%E6%8C%82%E8%BD%BD/</link><pubDate>Sat, 10 Jul 2021 23:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20210710-%E7%A3%81%E7%9B%98%E6%8C%82%E8%BD%BD/</guid><description>查看磁盘 1 2 3 4 sudo fdisk -l sudo lsblk sudo mkfs -t ext4 /dev/mmcblk1 # 格式化 sudo mount /dev/mmcblk1 /home/root/data/ 卸载挂载 1 sudo umount /dev/mmcblk1 自动挂载 1 2 3 sudo blkid # 获取UUID sudo vim /etc/fstab UUID=6b7eaf8d-0b66-6e26-bdff-fa63f7dd1126 /u01 ext4 defaults 1 1</description></item><item><title>Linux下检测某个ip端口的连通状态</title><link>https://spaceack.github.io/20210121-linux%E4%B8%8B%E6%A3%80%E6%B5%8B%E6%9F%90%E4%B8%AAip%E7%AB%AF%E5%8F%A3%E7%9A%84%E8%BF%9E%E9%80%9A%E7%8A%B6%E6%80%81/</link><pubDate>Thu, 21 Jan 2021 21:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20210121-linux%E4%B8%8B%E6%A3%80%E6%B5%8B%E6%9F%90%E4%B8%AAip%E7%AB%AF%E5%8F%A3%E7%9A%84%E8%BF%9E%E9%80%9A%E7%8A%B6%E6%80%81/</guid><description>举个例子，要测试的 ip+port: 192.168.0.100:8080 使用 telnet 命令 telnet 192.168.0.100 8080 连通成功： 1 2 3 4 Trying 192.168.0.100... Connected to 192.168.0.100. Escape character is &amp;#39;^]&amp;#39;. Connection closed by foreign host. 连通失败： 1 2 rying 192.168.0.100... telnet: Unable to connect to remote host: Connection refused 使用 nc 命令 nc -zvw3 192.168.0.100 8080 参</description></item><item><title>解决VScode与LinuxRime中州韵输入法CTRL+~热键冲突</title><link>https://spaceack.github.io/20210120-%E8%A7%A3%E5%86%B3vscode%E4%B8%8Elinuxrime%E4%B8%AD%E5%B7%9E%E9%9F%B5%E8%BE%93%E5%85%A5%E6%B3%95ctrl-~%E7%83%AD%E9%94%AE%E5%86%B2%E7%AA%81/</link><pubDate>Wed, 20 Jan 2021 21:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20210120-%E8%A7%A3%E5%86%B3vscode%E4%B8%8Elinuxrime%E4%B8%AD%E5%B7%9E%E9%9F%B5%E8%BE%93%E5%85%A5%E6%B3%95ctrl-~%E7%83%AD%E9%94%AE%E5%86%B2%E7%AA%81/</guid><description>Ctrl + ~ 为 VScode 调出集成终端的快捷键。同时也是 Rime 输入法方案菜单的快捷键。VScode 的快捷键会被覆盖。 因为 rime 热键 F4 与 CTRL + ~ 作用相同， 这里去掉 CTRL + ~</description></item><item><title>为debian10添加软件源</title><link>https://spaceack.github.io/20200720-%E4%B8%BAdebian10%E6%B7%BB%E5%8A%A0%E8%BD%AF%E4%BB%B6%E6%BA%90/</link><pubDate>Mon, 20 Jul 2020 21:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20200720-%E4%B8%BAdebian10%E6%B7%BB%E5%8A%A0%E8%BD%AF%E4%BB%B6%E6%BA%90/</guid><description>Debian 10添加163软件源： 1 2 3 4 5 vi /etc/apt/source.list deb http://mirrors.163.com/debian/ buster main contrib non-free deb http://mirrors.163.com/debian/ buster-updates main contrib non-free deb http://mirrors.163.com/debian-security/ buster/updates main contrib non-free :wq 其它debian发行版本同理，更改代号即可，历史代号可到官网查看</description></item><item><title>使用fsck命令检查并修复linux文件系统</title><link>https://spaceack.github.io/20200605-%E4%BD%BF%E7%94%A8fsck%E6%A3%80%E6%9F%A5%E5%B9%B6%E4%BF%AE%E5%A4%8Dlinux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</link><pubDate>Fri, 05 Jun 2020 21:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20200605-%E4%BD%BF%E7%94%A8fsck%E6%A3%80%E6%9F%A5%E5%B9%B6%E4%BF%AE%E5%A4%8Dlinux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</guid><description>问题现象 今天遇到一个奇怪的问题： 非正常重启后，或热插拔主板接口设备？。导致鼠标，键盘失去响应，重新插拔USB接口后，鼠标键盘电源灯无法点亮，</description></item><item><title>Ubuntu20.04配置笔记</title><link>https://spaceack.github.io/20200501-ubuntu20.04%E9%85%8D%E7%BD%AE%E7%AC%94%E8%AE%B0/</link><pubDate>Fri, 01 May 2020 21:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20200501-ubuntu20.04%E9%85%8D%E7%BD%AE%E7%AC%94%E8%AE%B0/</guid><description>将中文名目录改为英文（因为英文名称在 Terminal 终端 中更容易操作。）： #debian/Ubuntu export LANG=en_US xdg-user-dirs-gtk-update export LANG=zh_CN 在弹出的窗口中勾选 升级新的名称 重启后 现在是英文名称，在弹出的窗口中勾</description></item><item><title>ubuntu18.04编译安装python3.8</title><link>https://spaceack.github.io/20191118-ubuntu18-04%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85python3-8/</link><pubDate>Mon, 18 Nov 2019 12:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20191118-ubuntu18-04%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85python3-8/</guid><description>下载 1 2 3 4 5 # 下载源码包至`opt`目录 wget -c -P /opt https://www.python.org/ftp/python/3.8.0/Python-3.8.0.tar.xz # 解压解包 tar - xvf Python-3.8.0.tar.xz cd Python-3.8.0 编译安装 1 2 3 4 5 6 7 8 9 10 # 更新系统 apt-get update apt-get upgrade apt-get dist-upgrade # 安装依赖库 apt-get install</description></item></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Linux - 分类 - 春和景明-Spaceack's Blog</title><link>https://spaceack.github.io/categories/linux/</link><description>Linux - 分类 - 春和景明-Spaceack's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>spaceack@qq.com (Spaceack)</managingEditor><webMaster>spaceack@qq.com (Spaceack)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 05 Sep 2024 21:00:00 +0000</lastBuildDate><atom:link href="https://spaceack.github.io/categories/linux/" rel="self" type="application/rss+xml"/><item><title>Linux命令行参数的总长度的上限值探究</title><link>https://spaceack.github.io/20240905%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E7%9A%84%E6%80%BB%E9%95%BF%E5%BA%A6%E7%9A%84%E4%B8%8A%E9%99%90%E5%80%BC%E6%8E%A2%E7%A9%B6/</link><pubDate>Thu, 05 Sep 2024 21:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20240905%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E7%9A%84%E6%80%BB%E9%95%BF%E5%BA%A6%E7%9A%84%E4%B8%8A%E9%99%90%E5%80%BC%E6%8E%A2%E7%A9%B6/</guid><description>&lt;p>对于 Linux bash 参数过长错误 “Argument list too long” 网上有很多解决方案，但并没有解释这个最大长度的值的范围。本着追根溯源的态度，本文对此问题做一个探究。记录下限制参数长度的因素以及最大长度。&lt;/p></description></item><item><title>Linux 安装基础知识</title><link>https://spaceack.github.io/20220518-linux%E5%AE%89%E8%A3%85%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link><pubDate>Wed, 18 May 2022 21:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20220518-linux%E5%AE%89%E8%A3%85%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid><description><![CDATA[<h2 id="bios-mode">BIOS Mode</h2>
+<p>将硬件资源抽象 传递给内核，引导内核。</p>
+<ul>
+<li>传统 windows BIOS : legacy</li>
+<li><code>UEFI</code>（Unified Extensible Firmware Interface）统一可扩展固件接口：负责加电自检（POST）等。</li>
+<li>嵌入式：pmon u-boot</li>
+</ul>
+<p><code>固件（firmware）</code>嵌入在硬件设备的软件。位于特殊应用集成电路（ASIC）或可编程逻辑器件（PLD）中的闪存，EEPROM或PROM中，有的可更新。</p>]]></description></item><item><title>如何准确判断rpm,yum,dnf进程是否阻塞[运行]？</title><link>https://spaceack.github.io/20220427-%E5%A6%82%E4%BD%95%E5%87%86%E7%A1%AE%E5%88%A4%E6%96%ADrpm%E5%92%8Cyum%E8%BF%9B%E7%A8%8B%E6%98%AF%E5%90%A6%E9%98%BB%E5%A1%9E/</link><pubDate>Wed, 27 Apr 2022 21:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20220427-%E5%A6%82%E4%BD%95%E5%87%86%E7%A1%AE%E5%88%A4%E6%96%ADrpm%E5%92%8Cyum%E8%BF%9B%E7%A8%8B%E6%98%AF%E5%90%A6%E9%98%BB%E5%A1%9E/</guid><description><![CDATA[<p>如果你是一个程序员，你会知道，<code>rpm</code>, <code>yum</code>, <code>dnf</code>这三个进程是否运行，如果运行，是否阻塞？</p>
+<h2 id="简单常用但不严谨的做法">简单常用但不严谨的做法</h2>
+<p>一个简单方法是通过 <code>ps -ef | grep rpm | grep -v grep</code> 命令来判断。</p>
+<p>但这种方法有两个问题：</p>]]></description></item><item><title>Linux 磁盘挂载</title><link>https://spaceack.github.io/20210710-%E7%A3%81%E7%9B%98%E6%8C%82%E8%BD%BD/</link><pubDate>Sat, 10 Jul 2021 23:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20210710-%E7%A3%81%E7%9B%98%E6%8C%82%E8%BD%BD/</guid><description><![CDATA[<h3 id="查看磁盘">查看磁盘</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo fdisk -l
+</span></span><span class="line"><span class="cl">sudo lsblk
+</span></span><span class="line"><span class="cl">sudo mkfs -t ext4 /dev/mmcblk1 # 格式化
+</span></span><span class="line"><span class="cl">sudo mount /dev/mmcblk1 /home/root/data/</span></span></code></pre></div></div>
+<h3 id="卸载挂载">卸载挂载</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo umount /dev/mmcblk1</span></span></code></pre></div></div>
+<h3 id="自动挂载">自动挂载</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo blkid # 获取UUID
+</span></span><span class="line"><span class="cl">sudo vim /etc/fstab
+</span></span><span class="line"><span class="cl">UUID=6b7eaf8d-0b66-6e26-bdff-fa63f7dd1126 /u01 ext4 defaults 1 1</span></span></code></pre></div></div>]]></description></item><item><title>Linux下检测某个ip端口的连通状态</title><link>https://spaceack.github.io/20210121-linux%E4%B8%8B%E6%A3%80%E6%B5%8B%E6%9F%90%E4%B8%AAip%E7%AB%AF%E5%8F%A3%E7%9A%84%E8%BF%9E%E9%80%9A%E7%8A%B6%E6%80%81/</link><pubDate>Thu, 21 Jan 2021 21:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20210121-linux%E4%B8%8B%E6%A3%80%E6%B5%8B%E6%9F%90%E4%B8%AAip%E7%AB%AF%E5%8F%A3%E7%9A%84%E8%BF%9E%E9%80%9A%E7%8A%B6%E6%80%81/</guid><description><![CDATA[<p>举个例子，要测试的 ip+port: 192.168.0.100:8080</p>
+<ol>
+<li>
+<p>使用 <code>telnet</code> 命令</p>
+<p><code>telnet 192.168.0.100 8080</code></p>
+<p>连通成功：</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Trying 192.168.0.100...
+</span></span><span class="line"><span class="cl">Connected to 192.168.0.100.
+</span></span><span class="line"><span class="cl">Escape character is &#39;^]&#39;.
+</span></span><span class="line"><span class="cl">Connection closed by foreign host.</span></span></code></pre></div></div>
+<p>连通失败：</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">rying 192.168.0.100...
+</span></span><span class="line"><span class="cl">telnet: Unable to connect to remote host: Connection refused</span></span></code></pre></div></div>
+</li>
+<li>
+<p>使用 <code>nc</code> 命令</p>]]></description></item><item><title>解决VScode与LinuxRime中州韵输入法CTRL+~热键冲突</title><link>https://spaceack.github.io/20210120-%E8%A7%A3%E5%86%B3vscode%E4%B8%8Elinuxrime%E4%B8%AD%E5%B7%9E%E9%9F%B5%E8%BE%93%E5%85%A5%E6%B3%95ctrl-~%E7%83%AD%E9%94%AE%E5%86%B2%E7%AA%81/</link><pubDate>Wed, 20 Jan 2021 21:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20210120-%E8%A7%A3%E5%86%B3vscode%E4%B8%8Elinuxrime%E4%B8%AD%E5%B7%9E%E9%9F%B5%E8%BE%93%E5%85%A5%E6%B3%95ctrl-~%E7%83%AD%E9%94%AE%E5%86%B2%E7%AA%81/</guid><description><![CDATA[<p><code>Ctrl + ~</code>  为 <code>VScode</code> 调出集成终端的快捷键。同时也是 <code>Rime</code> 输入法方案菜单的快捷键。<code>VScode</code> 的快捷键会被覆盖。</p>
+<p>因为 <code>rime</code> 热键 <code>F4</code> 与 <code>CTRL + ~</code> 作用相同， 这里去掉 <code>CTRL + ~</code> 热键：</p>]]></description></item><item><title>为debian10添加软件源</title><link>https://spaceack.github.io/20200720-%E4%B8%BAdebian10%E6%B7%BB%E5%8A%A0%E8%BD%AF%E4%BB%B6%E6%BA%90/</link><pubDate>Mon, 20 Jul 2020 21:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20200720-%E4%B8%BAdebian10%E6%B7%BB%E5%8A%A0%E8%BD%AF%E4%BB%B6%E6%BA%90/</guid><description><![CDATA[<p>Debian 10添加163软件源：</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">vi /etc/apt/source.list
+</span></span><span class="line"><span class="cl">deb http://mirrors.163.com/debian/ buster main contrib non-free
+</span></span><span class="line"><span class="cl">deb http://mirrors.163.com/debian/ buster-updates main contrib non-free
+</span></span><span class="line"><span class="cl">deb http://mirrors.163.com/debian-security/ buster/updates main contrib non-free
+</span></span><span class="line"><span class="cl">:wq</span></span></code></pre></div></div>
+<p>其它debian发行版本同理，更改代号即可，历史代号可到官网查看 <a href="https://www.debian.org/releases/index.zh-cn.html" target="_blank" rel="noopener noreffer ">debian.org</a></p>]]></description></item><item><title>使用fsck命令检查并修复linux文件系统</title><link>https://spaceack.github.io/20200605-%E4%BD%BF%E7%94%A8fsck%E6%A3%80%E6%9F%A5%E5%B9%B6%E4%BF%AE%E5%A4%8Dlinux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</link><pubDate>Fri, 05 Jun 2020 21:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20200605-%E4%BD%BF%E7%94%A8fsck%E6%A3%80%E6%9F%A5%E5%B9%B6%E4%BF%AE%E5%A4%8Dlinux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</guid><description><![CDATA[<h2 id="问题现象">问题现象</h2>
+<p>今天遇到一个奇怪的问题：</p>
+<p>非正常重启后，或热插拔主板接口设备？。导致鼠标，键盘失去响应，重新插拔USB接口后，鼠标键盘电源灯无法点亮，屏幕无响应。再次重启后出现黑屏，提示错误如下：</p>]]></description></item><item><title>Ubuntu20.04配置笔记</title><link>https://spaceack.github.io/20200501-ubuntu20.04%E9%85%8D%E7%BD%AE%E7%AC%94%E8%AE%B0/</link><pubDate>Fri, 01 May 2020 21:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20200501-ubuntu20.04%E9%85%8D%E7%BD%AE%E7%AC%94%E8%AE%B0/</guid><description><![CDATA[<p>将中文名目录改为英文（因为英文名称在 <code>Terminal 终端</code> 中更容易操作。）：</p>
+<pre><code>#debian/Ubuntu
+export LANG=en_US
+xdg-user-dirs-gtk-update
+export LANG=zh_CN
+</code></pre>
+<ol>
+<li>在弹出的窗口中勾选 升级新的名称</li>
+<li>重启后 现在是英文名称，在弹出的窗口中勾选保留现有名称，并勾选下次不再询问，然后点击确定。</li>
+</ol>
+<h2 id="环境变量">环境变量</h2>
+<p>追加写入全局配置路径 <code>/etc/profile</code>
+写入当前用户配置路径 <code>~/.bashrc</code> or <code>~/.zshrc</code></p>]]></description></item><item><title>ubuntu18.04编译安装python3.8</title><link>https://spaceack.github.io/20191118-ubuntu18-04%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85python3-8/</link><pubDate>Mon, 18 Nov 2019 12:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20191118-ubuntu18-04%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85python3-8/</guid><description><![CDATA[<h2 id="下载">下载</h2>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-bash">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 下载源码包至`opt`目录</span>
+</span></span><span class="line"><span class="cl">wget -c -P /opt https://www.python.org/ftp/python/3.8.0/Python-3.8.0.tar.xz
+</span></span><span class="line"><span class="cl"><span class="c1"># 解压解包</span>
+</span></span><span class="line"><span class="cl">tar - xvf Python-3.8.0.tar.xz 
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> Python-3.8.0</span></span></code></pre></div></div>
+<h2 id="编译安装">编译安装</h2>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-bash">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 更新系统</span>
+</span></span><span class="line"><span class="cl">apt-get update
+</span></span><span class="line"><span class="cl">apt-get upgrade
+</span></span><span class="line"><span class="cl">apt-get dist-upgrade
+</span></span><span class="line"><span class="cl"><span class="c1"># 安装依赖库</span>
+</span></span><span class="line"><span class="cl">apt-get install libbz2-dev libncurses5-dev libgdbm-dev libgdbm-compat-dev liblzma-dev libsqlite3-dev libssl-dev openssl tk-dev uuid-dev libreadline-dev  python-dev
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">./configure --enable-optimizations --enable-shared
+</span></span><span class="line"><span class="cl">make -j8
+</span></span><span class="line"><span class="cl">make altinstall</span></span></code></pre></div></div>
+<h2 id="运行测试">运行测试</h2>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-bash">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python3.8
+</span></span><span class="line"><span class="cl"><span class="c1"># python3.8: error while loading shared libraries: libpython3.8.so.1.0: cannot open shared object file: No such file or directory</span></span></span></code></pre></div></div>
+<p>配置动态链接库路径</p>]]></description></item></channel></rss>

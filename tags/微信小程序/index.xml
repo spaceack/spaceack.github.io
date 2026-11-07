@@ -1,1 +1,65 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>微信小程序 - 标签 - 春和景明-Spaceack's Blog</title><link>https://spaceack.github.io/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/</link><description>微信小程序 - 标签 - 春和景明-Spaceack's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>spaceack@qq.com (Spaceack)</managingEditor><webMaster>spaceack@qq.com (Spaceack)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 17 Mar 2018 12:00:00 +0000</lastBuildDate><atom:link href="https://spaceack.github.io/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="self" type="application/rss+xml"/><item><title>小程序"生命数计算器"用户画像分析(1-2月)</title><link>https://spaceack.github.io/20180317-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%94%9F%E5%91%BD%E6%95%B0%E8%AE%A1%E7%AE%97%E5%99%A8%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F%E5%88%86%E6%9E%90/</link><pubDate>Sat, 17 Mar 2018 12:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20180317-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%94%9F%E5%91%BD%E6%95%B0%E8%AE%A1%E7%AE%97%E5%99%A8%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F%E5%88%86%E6%9E%90/</guid><description><![CDATA[微信小程序&quot;生命数计算器&quot;是一个根据&quot;生日&quot;,&ldquo;星座&quot;来分析性格特点，爱情匹配]]></description></item><item><title>微信小程序开发笔记</title><link>https://spaceack.github.io/2017-10-13-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/</link><pubDate>Fri, 13 Oct 2017 12:45:39 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/2017-10-13-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/</guid><description>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ├── app.js 应用程序逻辑 ├── app.json 页面路径(默认显示第一个)，全局应用程序配置 ├── app.wxss 应用程序公共样式 ├── pages 页面</description></item></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>微信小程序 - 标签 - 春和景明-Spaceack's Blog</title><link>https://spaceack.github.io/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/</link><description>微信小程序 - 标签 - 春和景明-Spaceack's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>spaceack@qq.com (Spaceack)</managingEditor><webMaster>spaceack@qq.com (Spaceack)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 17 Mar 2018 12:00:00 +0000</lastBuildDate><atom:link href="https://spaceack.github.io/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="self" type="application/rss+xml"/><item><title>小程序"生命数计算器"用户画像分析(1-2月)</title><link>https://spaceack.github.io/20180317-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%94%9F%E5%91%BD%E6%95%B0%E8%AE%A1%E7%AE%97%E5%99%A8%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F%E5%88%86%E6%9E%90/</link><pubDate>Sat, 17 Mar 2018 12:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20180317-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%94%9F%E5%91%BD%E6%95%B0%E8%AE%A1%E7%AE%97%E5%99%A8%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F%E5%88%86%E6%9E%90/</guid><description><![CDATA[<ul>
+<li>微信小程序&quot;生命数计算器&quot;是一个根据&quot;生日&quot;,&ldquo;星座&quot;来分析性格特点，爱情匹配等信息的一款“娱乐玄学”小应用。</li>
+</ul>
+<p></p>]]></description></item><item><title>微信小程序开发笔记</title><link>https://spaceack.github.io/2017-10-13-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/</link><pubDate>Fri, 13 Oct 2017 12:45:39 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/2017-10-13-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/</guid><description><![CDATA[<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">├── app.js                  应用程序逻辑
+</span></span><span class="line"><span class="cl">├── app.json                页面路径(默认显示第一个)，全局应用程序配置
+</span></span><span class="line"><span class="cl">├── app.wxss                应用程序公共样式
+</span></span><span class="line"><span class="cl">├── pages					页面目录
+</span></span><span class="line"><span class="cl">│   ├── index				index 页面
+</span></span><span class="line"><span class="cl">│   │   ├── index.js         页面入口，index页面逻辑
+</span></span><span class="line"><span class="cl">│   │   ├── index.wxml	   index页面结构
+</span></span><span class="line"><span class="cl">│   │   └── index.wxss	   index页面样式
+</span></span><span class="line"><span class="cl">│   └── logs			logs页面
+</span></span><span class="line"><span class="cl">│       ├── logs.js     逻辑页面
+</span></span><span class="line"><span class="cl">│       ├── logs.json   
+</span></span><span class="line"><span class="cl">│       ├── logs.wxml   结构页面
+</span></span><span class="line"><span class="cl">│       └── logs.wxss   样式页面
+</span></span><span class="line"><span class="cl">└── utils               公共脚本目录
+</span></span><span class="line"><span class="cl">    └── util.js         公共脚本</span></span></code></pre></div></div>
+<table>
+  <thead>
+      <tr>
+          <th>tool</th>
+          <th>desc</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="https://mp.weixin.qq.com" target="_blank" rel="noopener noreffer ">微信小程序控制台</a></td>
+          <td>开发管理，数据分析，设置，获取AppID</td>
+      </tr>
+      <tr>
+          <td><a href="https://mp.weixin.qq.com/debug/wxadoc/dev/api/" target="_blank" rel="noopener noreffer ">开发文档API</a></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><a href="https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/devtools.html" target="_blank" rel="noopener noreffer ">开发者工具</a></td>
+          <td>wx小程序IDE</td>
+      </tr>
+      <tr>
+          <td><a href="https://github.com/cytle/wechat_web_devtools" target="_blank" rel="noopener noreffer ">Linux开发者工具</a></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><a href="https://github.com/dunizb/wxapp-sCalc" target="_blank" rel="noopener noreffer ">计算器Demo参考sCalc</a></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><a href="https://github.com/Tencent/weui-wxss/" target="_blank" rel="noopener noreffer ">WeUI</a></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><a href="https://leancloud.cn/dashboard/login.html#/signin" target="_blank" rel="noopener noreffer ">leancloud控制台</a></td>
+          <td>可作为免费的微信小程序后台数据测试服务器</td>
+      </tr>
+  </tbody>
+</table>
+<ul>
+<li>小程序数据助手</li>
+</ul>
+<p>{:height=&ldquo;200px&rdquo; width=&ldquo;400px&rdquo;}</p>]]></description></item></channel></rss>

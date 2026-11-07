@@ -1,1 +1,141 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>模拟 - 标签 - 春和景明-Spaceack's Blog</title><link>https://spaceack.github.io/tags/%E6%A8%A1%E6%8B%9F/</link><description>模拟 - 标签 - 春和景明-Spaceack's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>spaceack@qq.com (Spaceack)</managingEditor><webMaster>spaceack@qq.com (Spaceack)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 07 Nov 2020 23:50:31 +0000</lastBuildDate><atom:link href="https://spaceack.github.io/tags/%E6%A8%A1%E6%8B%9F/" rel="self" type="application/rss+xml"/><item><title>天池编程大赛周赛-Character deletion</title><link>https://spaceack.github.io/20201107-%E5%A4%A9%E6%B1%A0%E7%BC%96%E7%A8%8B%E5%A4%A7%E8%B5%9B%E5%91%A8%E8%B5%9B-characterdeletion/</link><pubDate>Sat, 07 Nov 2020 23:50:31 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20201107-%E5%A4%A9%E6%B1%A0%E7%BC%96%E7%A8%8B%E5%A4%A7%E8%B5%9B%E5%91%A8%E8%B5%9B-characterdeletion/</guid><description>题目描述 Enter two strings and delete all characters in the second string from the first string String contains spaces $1\leq len(str),len(sub) \leq 10^5$ 示例 示例 1: 1 2 Input: str=”They are students”，sub=”aeiou” Output: ”Thy</description></item><item><title>天池编程大赛周赛-插入五</title><link>https://spaceack.github.io/20201107-%E5%A4%A9%E6%B1%A0%E7%BC%96%E7%A8%8B%E5%A4%A7%E8%B5%9B%E5%91%A8%E8%B5%9B-%E6%8F%92%E5%85%A5%E4%BA%94/</link><pubDate>Sat, 07 Nov 2020 23:50:31 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20201107-%E5%A4%A9%E6%B1%A0%E7%BC%96%E7%A8%8B%E5%A4%A7%E8%B5%9B%E5%91%A8%E8%B5%9B-%E6%8F%92%E5%85%A5%E4%BA%94/</guid><description>题目描述 给定一个数字，在数字的任意位置插入一个5，使得插入后的这个数字最大 $$|a| \leq 10^6$$ 示例 示例 1: 1 2 输入: a = 234 输出: 5234 来源：九章算法 链接：htt</description></item><item><title>2020计蒜之道预赛第二场-群星</title><link>https://spaceack.github.io/20200918-2020%E8%AE%A1%E8%92%9C%E4%B9%8B%E9%81%93%E9%A2%84%E8%B5%9B%E7%AC%AC%E4%BA%8C%E5%9C%BA-%E7%BE%A4%E6%98%9F/</link><pubDate>Fri, 18 Sep 2020 21:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20200918-2020%E8%AE%A1%E8%92%9C%E4%B9%8B%E9%81%93%E9%A2%84%E8%B5%9B%E7%AC%AC%E4%BA%8C%E5%9C%BA-%E7%BE%A4%E6%98%9F/</guid><description>题目描述 蒜头君是一个 P 社玩家，每天从计蒜客下班回家之后的第一件事情就是打开《群星》，开始继续他的第四天灾之旅。这次他把注意力集中到了银河市场</description></item><item><title>leetcode-414-第三大的数</title><link>https://spaceack.github.io/20200904-leetcode-414-%E7%AC%AC%E4%B8%89%E5%A4%A7%E7%9A%84%E6%95%B0/</link><pubDate>Fri, 04 Sep 2020 21:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20200904-leetcode-414-%E7%AC%AC%E4%B8%89%E5%A4%A7%E7%9A%84%E6%95%B0/</guid><description>题目描述 给定一个非空数组，返回此数组中第三大的数。如果不存在，则返回数组中最大的数。要求算法时间复杂度必须是O(n)。 示例 示例 1: 1 2 3 4 5 输</description></item><item><title>leetcode-495-提莫攻击</title><link>https://spaceack.github.io/20200903-leetcode-495-%E6%8F%90%E8%8E%AB%E6%94%BB%E5%87%BB/</link><pubDate>Thu, 03 Sep 2020 21:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20200903-leetcode-495-%E6%8F%90%E8%8E%AB%E6%94%BB%E5%87%BB/</guid><description>题目描述 在《英雄联盟》的世界中，有一个叫 “提莫” 的英雄，他的攻击可以让敌方英雄艾希（编者注：寒冰射手）进入中毒状态。现在，给出提莫对艾希的攻</description></item><item><title>2017 计蒜之道 初赛 第一场 阿里的新游戏 题解</title><link>https://spaceack.github.io/20170728-2017%E8%AE%A1%E8%92%9C%E4%B9%8B%E9%81%93%E5%88%9D%E8%B5%9B%E7%AC%AC%E4%B8%80%E5%9C%BA%E9%98%BF%E9%87%8C%E7%9A%84%E6%96%B0%E6%B8%B8%E6%88%8F%E9%A2%98%E8%A7%A3/</link><pubDate>Mon, 19 Jun 2017 12:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20170728-2017%E8%AE%A1%E8%92%9C%E4%B9%8B%E9%81%93%E5%88%9D%E8%B5%9B%E7%AC%AC%E4%B8%80%E5%9C%BA%E9%98%BF%E9%87%8C%E7%9A%84%E6%96%B0%E6%B8%B8%E6%88%8F%E9%A2%98%E8%A7%A3/</guid><description>问题: 阿里九游开放平台近日上架了一款新的益智类游戏——成三棋。成三棋是我国非常古老的一个双人棋类游戏. 成三棋的棋盘上有很多条线段，只能在线段</description></item></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>模拟 - 标签 - 春和景明-Spaceack's Blog</title><link>https://spaceack.github.io/tags/%E6%A8%A1%E6%8B%9F/</link><description>模拟 - 标签 - 春和景明-Spaceack's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>spaceack@qq.com (Spaceack)</managingEditor><webMaster>spaceack@qq.com (Spaceack)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 07 Nov 2020 23:50:31 +0000</lastBuildDate><atom:link href="https://spaceack.github.io/tags/%E6%A8%A1%E6%8B%9F/" rel="self" type="application/rss+xml"/><item><title>天池编程大赛周赛-Character deletion</title><link>https://spaceack.github.io/20201107-%E5%A4%A9%E6%B1%A0%E7%BC%96%E7%A8%8B%E5%A4%A7%E8%B5%9B%E5%91%A8%E8%B5%9B-characterdeletion/</link><pubDate>Sat, 07 Nov 2020 23:50:31 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20201107-%E5%A4%A9%E6%B1%A0%E7%BC%96%E7%A8%8B%E5%A4%A7%E8%B5%9B%E5%91%A8%E8%B5%9B-characterdeletion/</guid><description><![CDATA[<h2 id="题目描述">题目描述</h2>
+<p>Enter two strings and delete all characters in the second string from the first string</p>
+<p>String contains spaces $1\leq len(str),len(sub) \leq 10^5$</p>
+<h2 id="示例">示例</h2>
+<ul>
+<li>示例 1:
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Input:  str=”They are students”，sub=”aeiou”
+</span></span><span class="line"><span class="cl">Output: ”Thy r stdnts”</span></span></code></pre></div></div>
+来源：九章算法
+链接：https://tianchi.aliyun.com/oj/141754208384739500/160296091929219251</li>
+</ul>
+<hr>
+<ul>
+<li>解题思路</li>
+</ul>
+<p>很简单的模拟题，由于子串可能会比较长， 直接使用 in sub 会导致超时情况， 需要先用集合操作化简。</p>]]></description></item><item><title>天池编程大赛周赛-插入五</title><link>https://spaceack.github.io/20201107-%E5%A4%A9%E6%B1%A0%E7%BC%96%E7%A8%8B%E5%A4%A7%E8%B5%9B%E5%91%A8%E8%B5%9B-%E6%8F%92%E5%85%A5%E4%BA%94/</link><pubDate>Sat, 07 Nov 2020 23:50:31 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20201107-%E5%A4%A9%E6%B1%A0%E7%BC%96%E7%A8%8B%E5%A4%A7%E8%B5%9B%E5%91%A8%E8%B5%9B-%E6%8F%92%E5%85%A5%E4%BA%94/</guid><description><![CDATA[<h2 id="题目描述">题目描述</h2>
+<p>给定一个数字，在数字的任意位置插入一个5，使得插入后的这个数字最大</p>
+<p>$$|a| \leq 10^6$$</p>
+<h2 id="示例">示例</h2>
+<ul>
+<li>示例 1:
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">输入:  a = 234
+</span></span><span class="line"><span class="cl">输出: 5234    </span></span></code></pre></div></div>
+来源：九章算法
+链接：https://tianchi.aliyun.com/oj/141758389886413149/160295184768372892</li>
+</ul>
+<hr>
+<ul>
+<li>解题思路</li>
+</ul>
+<p>很简单的模拟题， 但是还是要注意审题，一看到带有绝对值的取值范围，就要立刻想到负数情况。
+又是第二次才AC， 有点儿遗憾。</p>]]></description></item><item><title>2020计蒜之道预赛第二场-群星</title><link>https://spaceack.github.io/20200918-2020%E8%AE%A1%E8%92%9C%E4%B9%8B%E9%81%93%E9%A2%84%E8%B5%9B%E7%AC%AC%E4%BA%8C%E5%9C%BA-%E7%BE%A4%E6%98%9F/</link><pubDate>Fri, 18 Sep 2020 21:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20200918-2020%E8%AE%A1%E8%92%9C%E4%B9%8B%E9%81%93%E9%A2%84%E8%B5%9B%E7%AC%AC%E4%BA%8C%E5%9C%BA-%E7%BE%A4%E6%98%9F/</guid><description><![CDATA[<h2 id="题目描述">题目描述</h2>
+<p>蒜头君是一个 P 社玩家，每天从计蒜客下班回家之后的第一件事情就是打开《群星》，开始继续他的第四天灾之旅。这次他把注意力集中到了银河市场里面。</p>
+<p>银河市场里面商品的价格都通过以下公式计算：</p>]]></description></item><item><title>leetcode-414-第三大的数</title><link>https://spaceack.github.io/20200904-leetcode-414-%E7%AC%AC%E4%B8%89%E5%A4%A7%E7%9A%84%E6%95%B0/</link><pubDate>Fri, 04 Sep 2020 21:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20200904-leetcode-414-%E7%AC%AC%E4%B8%89%E5%A4%A7%E7%9A%84%E6%95%B0/</guid><description><![CDATA[<h2 id="题目描述">题目描述</h2>
+<p>给定一个非空数组，返回此数组中第三大的数。如果不存在，则返回数组中最大的数。要求算法时间复杂度必须是O(n)。</p>
+<h2 id="示例">示例</h2>
+<ul>
+<li>
+<p>示例 1:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">输入: [3, 2, 1]
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">输出: 1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">解释: 第三大的数是 1.</span></span></code></pre></div></div>
+</li>
+<li>
+<p>示例 2:</p>]]></description></item><item><title>leetcode-495-提莫攻击</title><link>https://spaceack.github.io/20200903-leetcode-495-%E6%8F%90%E8%8E%AB%E6%94%BB%E5%87%BB/</link><pubDate>Thu, 03 Sep 2020 21:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20200903-leetcode-495-%E6%8F%90%E8%8E%AB%E6%94%BB%E5%87%BB/</guid><description>&lt;h2 id="题目描述">题目描述&lt;/h2>
+&lt;p>在《英雄联盟》的世界中，有一个叫 “提莫” 的英雄，他的攻击可以让敌方英雄艾希（编者注：寒冰射手）进入中毒状态。现在，给出提莫对艾希的攻击时间序列和提莫攻击的中毒持续时间，你需要输出艾希的中毒状态总时长。&lt;/p></description></item><item><title>2017 计蒜之道 初赛 第一场 阿里的新游戏 题解</title><link>https://spaceack.github.io/20170728-2017%E8%AE%A1%E8%92%9C%E4%B9%8B%E9%81%93%E5%88%9D%E8%B5%9B%E7%AC%AC%E4%B8%80%E5%9C%BA%E9%98%BF%E9%87%8C%E7%9A%84%E6%96%B0%E6%B8%B8%E6%88%8F%E9%A2%98%E8%A7%A3/</link><pubDate>Mon, 19 Jun 2017 12:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20170728-2017%E8%AE%A1%E8%92%9C%E4%B9%8B%E9%81%93%E5%88%9D%E8%B5%9B%E7%AC%AC%E4%B8%80%E5%9C%BA%E9%98%BF%E9%87%8C%E7%9A%84%E6%96%B0%E6%B8%B8%E6%88%8F%E9%A2%98%E8%A7%A3/</guid><description><![CDATA[<h4 id="问题">问题:</h4>
+<ul>
+<li>阿里九游开放平台近日上架了一款新的益智类游戏——成三棋。成三棋是我国非常古老的一个双人棋类游戏.</li>
+<li>成三棋的棋盘上有很多条线段，只能在线段交叉点上放入棋子。我们可以用坐标系来描述棋盘.</li>
+<li>如果一条线段上的三个交叉点都被同一玩家的棋子占据的话，则称这条线段被该玩家 成三。现在，小红和小明两人在游戏平台上下棋，其中小红的棋子是黑色的。请你帮小红计算他成三的线段数。</li>
+<li>样例对应的棋盘如下：
+</li>
+</ul>
+<h5 id="输入">输入</h5>
+<ul>
+<li>输入第一行两个整数 (n,m(3 \le n, m \le 9))，n表示小红的棋子数，m表示小明的棋子数。</li>
+<li>接下来 n行输入小红的棋子坐标。</li>
+<li>接下来 m行输入小明的棋子坐标。</li>
+<li>输入保证坐标合法，并且棋子之间不重合。</li>
+</ul>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">6 3
+</span></span><span class="line"><span class="cl">-1 0
+</span></span><span class="line"><span class="cl">-2 0
+</span></span><span class="line"><span class="cl">-3 0
+</span></span><span class="line"><span class="cl">-1 -1
+</span></span><span class="line"><span class="cl">-1 1
+</span></span><span class="line"><span class="cl">1 0
+</span></span><span class="line"><span class="cl">0 2
+</span></span><span class="line"><span class="cl">0 3
+</span></span><span class="line"><span class="cl">2 2</span></span></code></pre></div></div>
+<h5 id="样例输出">样例输出</h5>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 输出小红成三的线段数。
+</span></span><span class="line"><span class="cl">2</span></span></code></pre></div></div>
+<h5 id="题解">题解</h5>
+<ul>
+<li>按一定规则对成三棋盘进行扫描，应避免某些坐标点漏扫或重复扫描．</li>
+</ul>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">x</span> <span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span><span class="o">.</span><span class="n">split</span><span class="p">()]</span>
+</span></span><span class="line"><span class="cl"><span class="n">R</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">mx</span><span class="p">,</span><span class="n">my</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span><span class="o">.</span><span class="n">split</span><span class="p">()]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">R</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">tuple</span><span class="p">((</span><span class="n">mx</span><span class="p">,</span><span class="n">my</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">num</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">([(</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">)]))</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 正方形竖边</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="p">)</span> <span class="ow">in</span> <span class="n">R</span> <span class="ow">and</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="o">-</span><span class="n">x</span><span class="p">)</span> <span class="ow">in</span> <span class="n">R</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">num</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># X正半轴</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">x</span><span class="o">==</span><span class="mi">2</span> <span class="ow">and</span> <span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="ow">in</span> <span class="n">R</span> <span class="ow">and</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="ow">in</span> <span class="n">R</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">num</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># X负半轴</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">x</span><span class="o">==-</span><span class="mi">2</span> <span class="ow">and</span> <span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="ow">in</span> <span class="n">R</span> <span class="ow">and</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="ow">in</span> <span class="n">R</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">num</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span><span class="n">x</span><span class="p">)]))</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 正方形横边</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="p">)</span> <span class="ow">in</span> <span class="n">R</span> <span class="ow">and</span> <span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="p">)</span> <span class="ow">in</span> <span class="n">R</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">num</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Y正半轴</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="ow">in</span> <span class="n">R</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="ow">in</span> <span class="n">R</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">num</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Y负半轴</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="o">-</span><span class="mi">2</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="ow">in</span> <span class="n">R</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="ow">in</span> <span class="n">R</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">num</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span></span></span></code></pre></div></div>]]></description></item></channel></rss>

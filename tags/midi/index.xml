@@ -1,1 +1,30 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>midi - 标签 - 春和景明-Spaceack's Blog</title><link>https://spaceack.github.io/tags/midi/</link><description>midi - 标签 - 春和景明-Spaceack's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>spaceack@qq.com (Spaceack)</managingEditor><webMaster>spaceack@qq.com (Spaceack)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 23 Oct 2017 12:00:00 +0000</lastBuildDate><atom:link href="https://spaceack.github.io/tags/midi/" rel="self" type="application/rss+xml"/><item><title>玩转midi:使用vmpk在Gnu/Linux下弹钢琴</title><link>https://spaceack.github.io/20171023-%E4%BD%BF%E7%94%A8vmpk%E5%9C%A8linux%E4%B8%8B%E5%BC%B9%E9%92%A2%E7%90%B4/</link><pubDate>Mon, 23 Oct 2017 12:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20171023-%E4%BD%BF%E7%94%A8vmpk%E5%9C%A8linux%E4%B8%8B%E5%BC%B9%E9%92%A2%E7%90%B4/</guid><description>安装 1 2 sudo apt-get install vmpk sudo apt-get install timidity 配置 依次打开 QjackCTL，Qsynth(打开后其它音乐软件会禁声), VMPK, 配置Qsynth: Soundfonts → Open 加载sf2文件，(</description></item></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Midi - 标签 - 春和景明-Spaceack's Blog</title><link>https://spaceack.github.io/tags/midi/</link><description>Midi - 标签 - 春和景明-Spaceack's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>spaceack@qq.com (Spaceack)</managingEditor><webMaster>spaceack@qq.com (Spaceack)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 23 Oct 2017 12:00:00 +0000</lastBuildDate><atom:link href="https://spaceack.github.io/tags/midi/" rel="self" type="application/rss+xml"/><item><title>玩转midi:使用vmpk在Gnu/Linux下弹钢琴</title><link>https://spaceack.github.io/20171023-%E4%BD%BF%E7%94%A8vmpk%E5%9C%A8linux%E4%B8%8B%E5%BC%B9%E9%92%A2%E7%90%B4/</link><pubDate>Mon, 23 Oct 2017 12:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20171023-%E4%BD%BF%E7%94%A8vmpk%E5%9C%A8linux%E4%B8%8B%E5%BC%B9%E9%92%A2%E7%90%B4/</guid><description><![CDATA[<h3 id="安装">安装</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-bash">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt-get install vmpk
+</span></span><span class="line"><span class="cl">sudo apt-get install timidity</span></span></code></pre></div></div>
+<h3 id="配置">配置</h3>
+<ul>
+<li>依次打开　QjackCTL，Qsynth(打开后其它音乐软件会禁声),  VMPK,</li>
+</ul>
+<h4 id="配置qsynth">配置Qsynth:</h4>
+<ul>
+<li>Soundfonts　→　Open 加载sf2文件，(一般路径为/usr/share/sounds/sf2/FluidR3_GM.sf2)</li>
+</ul>
+<h4 id="配置qjackctl">配置QjackCTL:</h4>
+<ul>
+<li>1.Start</li>
+<li>2.Connect
+<ul>
+<li>Audio: qsynth match system</li>
+<li>ALSA: VMPK Output match FLUID Synth(21225)</li>
+</ul>
+</li>
+</ul>
+<h4 id="配置vmpk">配置VMPK</h4>
+<ul>
+<li>
+<p>Edit → Connections → Output MIDI Connection: FLUID Synth → OK</p>]]></description></item></channel></rss>

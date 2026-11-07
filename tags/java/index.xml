@@ -1,1 +1,113 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Java - 标签 - 春和景明-Spaceack's Blog</title><link>https://spaceack.github.io/tags/java/</link><description>Java - 标签 - 春和景明-Spaceack's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>spaceack@qq.com (Spaceack)</managingEditor><webMaster>spaceack@qq.com (Spaceack)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 28 Jul 2020 21:00:00 +0000</lastBuildDate><atom:link href="https://spaceack.github.io/tags/java/" rel="self" type="application/rss+xml"/><item><title>P1001 A+B Problem</title><link>https://spaceack.github.io/20200728-p1001-a-b-problem/</link><pubDate>Tue, 28 Jul 2020 21:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20200728-p1001-a-b-problem/</guid><description>题目描述 输入两个整数 a,b输出它们的和。 输入格式 两个整数以空格分开。 输出格式 一个整数。 输入输出样例 输入 #1 20 30 输出 #1 50 1 2 # 80ms / 3.16MB / 45B Python 3 print(sum([int(x) for</description></item><item><title>Java学习笔记-基本程序设计结构</title><link>https://spaceack.github.io/20160903-java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/</link><pubDate>Sat, 03 Sep 2016 12:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20160903-java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/</guid><description>Java 文档下载 使用集成开发环境 Eclipse 新建项目 File-New-Project 对话框中选择Java Project 点击Finish Virtual Studio Code 安装扩展包Java Extension Pack Ctrl-Shift-D 根据提示生成launch.json</description></item><item><title>Linux切换jdk默认版本</title><link>https://spaceack.github.io/20150302-linux%E5%88%87%E6%8D%A2jdk%E7%89%88%E6%9C%AC/</link><pubDate>Mon, 02 Mar 2015 21:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20150302-linux%E5%88%87%E6%8D%A2jdk%E7%89%88%E6%9C%AC/</guid><description>安装多个jdk版本 sudo yum install java-1.8.0-openjdk-devel sudo yum install java-11-openjdk-devel 查看当前默认版本 java -version 切换默认版本 sudo alternatives --config java</description></item></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Java - 标签 - 春和景明-Spaceack's Blog</title><link>https://spaceack.github.io/tags/java/</link><description>Java - 标签 - 春和景明-Spaceack's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>spaceack@qq.com (Spaceack)</managingEditor><webMaster>spaceack@qq.com (Spaceack)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 28 Jul 2020 21:00:00 +0000</lastBuildDate><atom:link href="https://spaceack.github.io/tags/java/" rel="self" type="application/rss+xml"/><item><title>P1001 A+B Problem</title><link>https://spaceack.github.io/20200728-p1001-a-b-problem/</link><pubDate>Tue, 28 Jul 2020 21:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20200728-p1001-a-b-problem/</guid><description><![CDATA[<h3 id="题目描述">题目描述</h3>
+<blockquote>
+<p>输入两个整数 a,b输出它们的和。</p></blockquote>
+<h3 id="输入格式">输入格式</h3>
+<p>两个整数以空格分开。</p>
+<h3 id="输出格式">输出格式</h3>
+<p>一个整数。</p>
+<h3 id="输入输出样例">输入输出样例</h3>
+<h4 id="输入-1">输入 #1</h4>
+<blockquote>
+<p>20 30</p></blockquote>
+<h4 id="输出-1">输出 #1</h4>
+<blockquote>
+<p>50</p></blockquote>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># 80ms /  3.16MB /  45B Python 3</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()]))</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-go">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">22ms /  6.92MB /  128B Go
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
+</span></span><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">a</span> <span class="kt">int64</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">b</span> <span class="kt">int64</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Scanf</span><span class="p">(</span><span class="s">&#34;%d%d&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">a</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">b</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span> <span class="nx">a</span><span class="o">+</span><span class="nx">b</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-java">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm"> 514ms /  11.43MB /  232B Java 8
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.*</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Main</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Scanner</span><span class="w"> </span><span class="n">cin</span><span class="o">=</span><span class="k">new</span><span class="w"> </span><span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cin</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cin</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span></span></span></code></pre></div></div>]]></description></item><item><title>Java学习笔记-基本程序设计结构</title><link>https://spaceack.github.io/20160903-java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/</link><pubDate>Sat, 03 Sep 2016 12:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20160903-java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/</guid><description><![CDATA[<p><a href="http://www.oracle.com/technetwork/java/javase/downloads" target="_blank" rel="noopener noreffer ">Java 文档下载</a></p>
+<h2 id="使用集成开发环境">使用集成开发环境</h2>
+<h3 id="eclipse">Eclipse</h3>
+<h4 id="新建项目">新建项目</h4>
+<ol>
+<li>File-New-Project</li>
+<li>对话框中选择<code>Java Project</code></li>
+</ol>
+<p></p>
+<ol start="3">
+<li>点击<code>Finish</code></li>
+</ol>
+<h3 id="virtual-studio-code">Virtual Studio Code</h3>
+<ol>
+<li>安装扩展包<code>Java Extension Pack</code></li>
+<li><code>Ctrl-Shift-D</code> 根据提示生成<code>launch.json</code>配置文件</li>
+<li><code>F5</code>运行程序</li>
+</ol>
+<h2 id="第一段java程序">第一段Java程序</h2>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-Java">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="c1">// Welcome/Welcome.java</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Welcome</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">greeting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;Welcome to Spaceack&#39;s blog&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">greeting</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="n">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="n">greeting</span><span class="p">.</span><span class="na">length</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&#34;=&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span></span></span></code></pre></div></div>
+<h4 id="程序解读">程序解读</h4>
+<ol>
+<li>
+<p>关键字<code>public</code>称为<code>访问修饰符（access modifier）</code>用于控制程序其它部分对这段代码的访问级别。</p>]]></description></item><item><title>Linux切换jdk默认版本</title><link>https://spaceack.github.io/20150302-linux%E5%88%87%E6%8D%A2jdk%E7%89%88%E6%9C%AC/</link><pubDate>Mon, 02 Mar 2015 21:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20150302-linux%E5%88%87%E6%8D%A2jdk%E7%89%88%E6%9C%AC/</guid><description><![CDATA[<ol>
+<li>安装多个jdk版本</li>
+</ol>
+<p><code>sudo yum install java-1.8.0-openjdk-devel</code></p>
+<p><code>sudo yum install java-11-openjdk-devel</code></p>
+<ol start="2">
+<li>
+<p>查看当前默认版本
+<code>java -version</code></p>
+</li>
+<li>
+<p>切换默认版本
+<code>sudo alternatives --config java</code></p>
+</li>
+</ol>]]></description></item></channel></rss>

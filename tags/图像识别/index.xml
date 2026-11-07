@@ -1,1 +1,151 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>图像识别 - 标签 - 春和景明-Spaceack's Blog</title><link>https://spaceack.github.io/tags/%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB/</link><description>图像识别 - 标签 - 春和景明-Spaceack's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>spaceack@qq.com (Spaceack)</managingEditor><webMaster>spaceack@qq.com (Spaceack)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 25 Aug 2017 12:00:00 +0000</lastBuildDate><atom:link href="https://spaceack.github.io/tags/%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB/" rel="self" type="application/rss+xml"/><item><title>Ubuntu16.04 下编译安装tesseract 4.00.00alpha 及测试</title><link>https://spaceack.github.io/20170825-ubuntu16-04%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85tesseract4/</link><pubDate>Fri, 25 Aug 2017 12:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20170825-ubuntu16-04%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85tesseract4/</guid><description>3.05.01 及 以后的版本没有Linux的二进制包,需要编译安装. 1 2 3 4 5 6 7 8 9 10 11 12 # 安装相关组件 sudo apt-get install g++ # or clang++ (presumably) sudo apt-get install autoconf automake libtool sudo apt-get install autoconf-archive sudo apt-get install pkg-config sudo apt-get</description></item><item><title>基于相同颜色连通像素个数的统计进行图像字符识别</title><link>https://spaceack.github.io/20170823-%E5%9F%BA%E4%BA%8E%E7%9B%B8%E5%90%8C%E9%A2%9C%E8%89%B2%E8%BF%9E%E9%80%9A%E5%83%8F%E7%B4%A0%E4%B8%AA%E6%95%B0%E7%9A%84%E7%BB%9F%E8%AE%A1%E8%BF%9B%E8%A1%8C%E5%9B%BE%E5%83%8F%E5%AD%97%E7%AC%A6%E8%AF%86%E5%88%AB/</link><pubDate>Wed, 23 Aug 2017 12:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20170823-%E5%9F%BA%E4%BA%8E%E7%9B%B8%E5%90%8C%E9%A2%9C%E8%89%B2%E8%BF%9E%E9%80%9A%E5%83%8F%E7%B4%A0%E4%B8%AA%E6%95%B0%E7%9A%84%E7%BB%9F%E8%AE%A1%E8%BF%9B%E8%A1%8C%E5%9B%BE%E5%83%8F%E5%AD%97%E7%AC%A6%E8%AF%86%E5%88%AB/</guid><description>问题: 对如下图中的字符进行识别: 样本: 解题思路: 无论是图像，音频的识别，不外乎是对各种特征(特征向量)进行统计归纳。 放大后的样本: 通过观察，</description></item></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>图像识别 - 标签 - 春和景明-Spaceack's Blog</title><link>https://spaceack.github.io/tags/%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB/</link><description>图像识别 - 标签 - 春和景明-Spaceack's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>spaceack@qq.com (Spaceack)</managingEditor><webMaster>spaceack@qq.com (Spaceack)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 25 Aug 2017 12:00:00 +0000</lastBuildDate><atom:link href="https://spaceack.github.io/tags/%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB/" rel="self" type="application/rss+xml"/><item><title>Ubuntu16.04 下编译安装tesseract 4.00.00alpha 及测试</title><link>https://spaceack.github.io/20170825-ubuntu16-04%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85tesseract4/</link><pubDate>Fri, 25 Aug 2017 12:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20170825-ubuntu16-04%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85tesseract4/</guid><description><![CDATA[<ol>
+<li>3.05.01 及 以后的版本没有Linux的二进制包,需要编译安装.</li>
+</ol>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-bash">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 安装相关组件</span>
+</span></span><span class="line"><span class="cl">sudo apt-get install g++ <span class="c1"># or clang++ (presumably)</span>
+</span></span><span class="line"><span class="cl">sudo apt-get install autoconf automake libtool
+</span></span><span class="line"><span class="cl">sudo apt-get install autoconf-archive
+</span></span><span class="line"><span class="cl">sudo apt-get install pkg-config
+</span></span><span class="line"><span class="cl">sudo apt-get install libpng12-dev
+</span></span><span class="line"><span class="cl">sudo apt-get install libjpeg8-dev
+</span></span><span class="line"><span class="cl">sudo apt-get install libtiff5-dev
+</span></span><span class="line"><span class="cl">sudo apt-get install zlib1g-dev
+</span></span><span class="line"><span class="cl">sudo apt-get install libicu-dev
+</span></span><span class="line"><span class="cl">sudo apt-get install libpango1.0-dev
+</span></span><span class="line"><span class="cl">sudo apt-get install libcairo2-dev</span></span></code></pre></div></div>
+<ol start="2">
+<li>依赖图像库<a href="http://www.leptonica.org/download.html" target="_blank" rel="noopener noreffer ">Leptonica</a>,在编译tesseract前先编译Leptonica, 版本对应关系见<a href="https://github.com/tesseract-ocr/tesseract/wiki/Compiling#linux" target="_blank" rel="noopener noreffer ">Compiling#linux</a>,3.05对应<a href="http://www.leptonica.org/source/leptonica-1.74.tar.gz" target="_blank" rel="noopener noreffer ">leptonica-1.74.tar.gz</a></li>
+</ol>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-bash">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wget http://www.leptonica.org/source/leptonica-1.74.tar.gz
+</span></span><span class="line"><span class="cl">tar -xvf leptonica-1.74.tar.gz
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> leptonica-1.74
+</span></span><span class="line"><span class="cl">./configure 
+</span></span><span class="line"><span class="cl">make
+</span></span><span class="line"><span class="cl">make install</span></span></code></pre></div></div>
+<ol start="3">
+<li>编译安装tesseract 4.00.00alpha</li>
+</ol>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-bash">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone https://github.com/tesseract-ocr/tesseract.git
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> tesseract
+</span></span><span class="line"><span class="cl">./autogen.sh
+</span></span><span class="line"><span class="cl">./configure 
+</span></span><span class="line"><span class="cl">make
+</span></span><span class="line"><span class="cl">make install</span></span></code></pre></div></div>
+<hr>
+<ul>
+<li><a href="https://github.com/tesseract-ocr/tesseract/wiki" target="_blank" rel="noopener noreffer ">wiki</a></li>
+</ul>
+<h3 id="python3-调用">python3 调用</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-bash">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo pip3 install pytesseract</span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pytesseract</span>
+</span></span><span class="line"><span class="cl"><span class="n">vcode</span> <span class="o">=</span> <span class="n">pytesseract</span><span class="o">.</span><span class="n">image_to_string</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s1">&#39;eng&#39;</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="s1">&#39;-psm 12 --tessdata-dir /tessdata/&#39;</span><span class="p">)</span></span></span></code></pre></div></div>]]></description></item><item><title>基于相同颜色连通像素个数的统计进行图像字符识别</title><link>https://spaceack.github.io/20170823-%E5%9F%BA%E4%BA%8E%E7%9B%B8%E5%90%8C%E9%A2%9C%E8%89%B2%E8%BF%9E%E9%80%9A%E5%83%8F%E7%B4%A0%E4%B8%AA%E6%95%B0%E7%9A%84%E7%BB%9F%E8%AE%A1%E8%BF%9B%E8%A1%8C%E5%9B%BE%E5%83%8F%E5%AD%97%E7%AC%A6%E8%AF%86%E5%88%AB/</link><pubDate>Wed, 23 Aug 2017 12:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20170823-%E5%9F%BA%E4%BA%8E%E7%9B%B8%E5%90%8C%E9%A2%9C%E8%89%B2%E8%BF%9E%E9%80%9A%E5%83%8F%E7%B4%A0%E4%B8%AA%E6%95%B0%E7%9A%84%E7%BB%9F%E8%AE%A1%E8%BF%9B%E8%A1%8C%E5%9B%BE%E5%83%8F%E5%AD%97%E7%AC%A6%E8%AF%86%E5%88%AB/</guid><description><![CDATA[<h3 id="问题-对如下图中的字符进行识别">问题: 对如下图中的字符进行识别:</h3>
+<ul>
+<li>样本:</li>
+</ul>
+<h3 id="解题思路">解题思路:</h3>
+<ul>
+<li>无论是图像，音频的识别，不外乎是对各种特征(特征向量)进行统计归纳。</li>
+<li>放大后的样本:</li>
+<li>通过观察，发现这是一张简单的，非常有规律可循的图。 越有规律越容易进行分类。这里的思路就是自左至右依次对相同颜色的像素连通区进行像素个数统计，从而制成像素与字符对应的字典进行识别。</li>
+</ul>
+<h3 id="局限性及应对措施">局限性及应对措施:</h3>
+<ul>
+<li>此种方法只针对&rsquo;少量的&rsquo;，’简单的‘字符图形。若字符种类过多，容易造成不同像素个数冲突的问题。</li>
+<li>针对冲突问题，一种有限的解决办法即针对’不同’的特征，进行二次验证。</li>
+</ul>
+<h3 id="python实现">python实现:</h3>
+<div class="code-block code-line-numbers" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">dfs_simple_digital_chacpt</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">white</span> <span class="o">=</span> <span class="p">[</span><span class="mi">238</span><span class="p">,</span> <span class="mi">238</span><span class="p">,</span> <span class="mi">238</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">row_num</span> <span class="o">=</span> <span class="mi">10</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">col_num</span> <span class="o">=</span> <span class="mi">40</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">walked_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">roming_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">dfs_num</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">        <span class="n">im</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">image_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">im</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">dfs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">rgb</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;&#39;&#39;
+</span></span></span><span class="line"><span class="cl"><span class="s1">        desc:用递归实现搜索范围内相同rgb值的像素
+</span></span></span><span class="line"><span class="cl"><span class="s1">        :param x: 
+</span></span></span><span class="line"><span class="cl"><span class="s1">        :param y: 
+</span></span></span><span class="line"><span class="cl"><span class="s1">        :param char: 
+</span></span></span><span class="line"><span class="cl"><span class="s1">        :return: 
+</span></span></span><span class="line"><span class="cl"><span class="s1">        &#39;&#39;&#39;</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">roming_set</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">tuple</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]))</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="mi">0</span> <span class="o">&gt;</span> <span class="n">x</span> <span class="ow">or</span> <span class="mi">0</span> <span class="o">&gt;</span> <span class="n">y</span> <span class="ow">or</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">row_num</span> <span class="ow">or</span> <span class="n">y</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">col_num</span><span class="p">:</span> <span class="c1"># 越界检查</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nb">tuple</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">])</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">walked_set</span><span class="p">:</span> <span class="c1"># 重复遍历检查</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">rgb</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_array</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]:</span> <span class="c1"># 目标rgb值检查</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">walked_set</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">tuple</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">dfs</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">rgb</span><span class="p">)</span>  <span class="c1"># x</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">dfs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">rgb</span><span class="p">)</span>  <span class="c1"># y</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">dfs</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">rgb</span><span class="p">)</span>  <span class="c1"># -x</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">dfs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">rgb</span><span class="p">)</span>  <span class="c1"># -y</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">dfs</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">rgb</span><span class="p">)</span>  <span class="c1"># Ⅰ</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">dfs</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">rgb</span><span class="p">)</span>  <span class="c1"># Ⅱ</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">dfs</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">rgb</span><span class="p">)</span>  <span class="c1"># Ⅲ</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">dfs</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">rgb</span><span class="p">)</span>  <span class="c1"># Ⅳ</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">walk</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;&#39;&#39;
+</span></span></span><span class="line"><span class="cl"><span class="s1">        desc: 
+</span></span></span><span class="line"><span class="cl"><span class="s1">        :return: 
+</span></span></span><span class="line"><span class="cl"><span class="s1">        &#39;&#39;&#39;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">col_num</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">row_num</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">                <span class="n">rgb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_array</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="nb">tuple</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">roming_set</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">continue</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="n">rgb</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">white</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="bp">self</span><span class="o">.</span><span class="n">dfs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">rgb</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">num</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">walked_set</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                    <span class="bp">self</span><span class="o">.</span><span class="n">walked_set</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">roming_set</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">c</span> <span class="o">=</span> <span class="n">dfs_simple_digital_chacpt</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dfs_num</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">walk</span><span class="p">()</span></span></span></code></pre></div></div>]]></description></item></channel></rss>

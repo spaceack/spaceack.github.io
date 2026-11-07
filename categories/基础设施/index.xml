@@ -1,1 +1,184 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>基础设施 - 分类 - 春和景明-Spaceack's Blog</title><link>https://spaceack.github.io/categories/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD/</link><description>基础设施 - 分类 - 春和景明-Spaceack's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>spaceack@qq.com (Spaceack)</managingEditor><webMaster>spaceack@qq.com (Spaceack)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 08 Apr 2022 21:00:00 +0000</lastBuildDate><atom:link href="https://spaceack.github.io/categories/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD/" rel="self" type="application/rss+xml"/><item><title>Docker问题处理</title><link>https://spaceack.github.io/20220405-docker%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/</link><pubDate>Fri, 08 Apr 2022 21:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20220405-docker%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/</guid><description>x509: certificate signed by unknown authority docker pull 或 docker login 192.1.11.18 报错 1 Error response from daemon: Get &amp;#34;https://192.1.11.18/v2/&amp;#34;: x509: certificate signed by unknown authority 解决方法： 在/etc/docker/daemon.json/daemon.json 添加</description></item><item><title>使用docker-compose安装mariadb</title><link>https://spaceack.github.io/20200910-%E4%BD%BF%E7%94%A8docker-compose%E5%AE%89%E8%A3%85mariadb/</link><pubDate>Thu, 10 Sep 2020 21:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20200910-%E4%BD%BF%E7%94%A8docker-compose%E5%AE%89%E8%A3%85mariadb/</guid><description><![CDATA[step1: 创建目录 1 2 mkdir -p /server/mariadb/{config,data,log} chmod -R 777 /server/mariadb step2: 编写docker-compose.yml 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 version:&#39;3.1&#39;services:mariadb:image:mariadb:10.5.5container_name:&#34;mariadb1&#34;restart:alwaysenvironment:MYSQL_USER:&#34;root&#34;MYSQL_PASSWORD:&#34;123456&#34;MYSQL_ROOT_PASSWORD:&#34;123456&#34;TZ:&#34;Asia/Shanghai&#34;ports:- &#34;3306:3306&#34;volumes:- ./data:/var/lib/mysql- ./log:/var/log/mysql- ./conf/my.cnf:/etc/mysql/my.cnf step3: 拷贝/etc/mysql]]></description></item><item><title>Docker笔记-使用Dockerfile构建Django镜像的简单示例</title><link>https://spaceack.github.io/20200513-docker%E7%AC%94%E8%AE%B0-%E4%BD%BF%E7%94%A8dockerfile%E6%9E%84%E5%BB%BAdjango%E9%95%9C%E5%83%8F%E7%9A%84%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B/</link><pubDate>Wed, 13 May 2020 21:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20200513-docker%E7%AC%94%E8%AE%B0-%E4%BD%BF%E7%94%A8dockerfile%E6%9E%84%E5%BB%BAdjango%E9%95%9C%E5%83%8F%E7%9A%84%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B/</guid><description><![CDATA[Dockerfile 1 2 3 4 5 6 7 FROM python:3.8.2 ENV PYTHONUNBUFFERED 1 RUN mkdir /code WORKDIR /code COPY requirements.txt /code/ RUN pip install -r requirements.txt COPY . /code/ RUN docker build . docker-compose.yml 1 2 3 4 5 6 7 8 9 10 version:&#39;3&#39;services:web:build:.command:python manage.py runserver 0.0.0.0:8080volumes:- .:/codeports:- &#34;8080:8080&#34; RUN docker-compose up -d]]></description></item><item><title>Docker笔记-基础操作</title><link>https://spaceack.github.io/20191007-docker%E7%AC%94%E8%AE%B0-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</link><pubDate>Mon, 07 Oct 2019 21:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20191007-docker%E7%AC%94%E8%AE%B0-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</guid><description>docker info - 查看系统(docker)层面信息 docker images - 查看镜像信息</description></item><item><title>Docker笔记-介绍</title><link>https://spaceack.github.io/20191006-docker%E7%AC%94%E8%AE%B0-%E4%BB%8B%E7%BB%8D/</link><pubDate>Sun, 06 Oct 2019 21:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20191006-docker%E7%AC%94%E8%AE%B0-%E4%BB%8B%E7%BB%8D/</guid><description>Docker 能做什么，与虚拟机区别： 与虚拟机区别， 每个虚拟机是一个操作系统。docker 是操作系统上的应用。 环境打包成镜像，自动化运行容器，打包部署自</description></item><item><title>Docker笔记-安装配置</title><link>https://spaceack.github.io/20191005-docker%E7%AC%94%E8%AE%B0-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</link><pubDate>Sat, 05 Oct 2019 21:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20191005-docker%E7%AC%94%E8%AE%B0-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</guid><description>dcoker Install ubuntu 安装文档 Uninstall old versions sudo apt-get remove docker docker-engine docker.io containerd runc Install using the repository 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 sudo apt-get update sudo apt-get install \ apt-transport-https \ ca-certificates \ curl \ gnupg-agent \ software-properties-common curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - sudo apt-key fingerprint 0EBFCD88 sudo add-apt-repository \</description></item></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>基础设施 - 分类 - 春和景明-Spaceack's Blog</title><link>https://spaceack.github.io/categories/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD/</link><description>基础设施 - 分类 - 春和景明-Spaceack's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>spaceack@qq.com (Spaceack)</managingEditor><webMaster>spaceack@qq.com (Spaceack)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 08 Apr 2022 21:00:00 +0000</lastBuildDate><atom:link href="https://spaceack.github.io/categories/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD/" rel="self" type="application/rss+xml"/><item><title>Docker问题处理</title><link>https://spaceack.github.io/20220405-docker%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/</link><pubDate>Fri, 08 Apr 2022 21:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20220405-docker%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/</guid><description><![CDATA[<h3 id="x509-certificate-signed-by-unknown-authority">x509: certificate signed by unknown authority</h3>
+<p><code>docker pull</code> 或 <code>docker login 192.1.11.18</code> 报错</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Error response from daemon: Get &#34;https://192.1.11.18/v2/&#34;: x509: certificate signed by unknown authority</span></span></code></pre></div></div>
+<p>解决方法：</p>
+<ul>
+<li>
+<p>在<code>/etc/docker/daemon.json/daemon.json</code> 添加 <code>{insecure-registries&quot;:[&quot;192.1.11.18&quot;]}</code>, <code>sudo systemctl restart docker</code></p>]]></description></item><item><title>使用docker-compose安装mariadb</title><link>https://spaceack.github.io/20200910-%E4%BD%BF%E7%94%A8docker-compose%E5%AE%89%E8%A3%85mariadb/</link><pubDate>Thu, 10 Sep 2020 21:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20200910-%E4%BD%BF%E7%94%A8docker-compose%E5%AE%89%E8%A3%85mariadb/</guid><description><![CDATA[<ul>
+<li>
+<p>step1: 创建目录</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-bash">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir -p /server/mariadb/<span class="o">{</span>config,data,log<span class="o">}</span>
+</span></span><span class="line"><span class="cl">chmod -R <span class="m">777</span> /server/mariadb</span></span></code></pre></div></div>
+</li>
+<li>
+<p>step2: 编写docker-compose.yml</p>
+<div class="code-block code-line-numbers" style="counter-reset: code-block 0">
+    <div class="code-header language-yaml">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;3.1&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">mariadb</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">mariadb:10.5.5</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;mariadb1&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">always</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">MYSQL_USER</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;root&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">MYSQL_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;123456&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">MYSQL_ROOT_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;123456&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">TZ</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Asia/Shanghai&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;3306:3306&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">./data:/var/lib/mysql</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">./log:/var/log/mysql</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">./conf/my.cnf:/etc/mysql/my.cnf</span></span></span></code></pre></div></div>
+</li>
+<li>
+<p>step3: 拷贝/etc/mysql/my.cnf 到 /server/mariadb/conf/my.cnf</p>]]></description></item><item><title>Docker笔记-使用Dockerfile构建Django镜像的简单示例</title><link>https://spaceack.github.io/20200513-docker%E7%AC%94%E8%AE%B0-%E4%BD%BF%E7%94%A8dockerfile%E6%9E%84%E5%BB%BAdjango%E9%95%9C%E5%83%8F%E7%9A%84%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B/</link><pubDate>Wed, 13 May 2020 21:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20200513-docker%E7%AC%94%E8%AE%B0-%E4%BD%BF%E7%94%A8dockerfile%E6%9E%84%E5%BB%BAdjango%E9%95%9C%E5%83%8F%E7%9A%84%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B/</guid><description><![CDATA[<h3 id="dockerfile">Dockerfile</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">FROM python:3.8.2
+</span></span><span class="line"><span class="cl">ENV PYTHONUNBUFFERED 1
+</span></span><span class="line"><span class="cl">RUN mkdir /code
+</span></span><span class="line"><span class="cl">WORKDIR /code
+</span></span><span class="line"><span class="cl">COPY requirements.txt /code/
+</span></span><span class="line"><span class="cl">RUN pip install -r requirements.txt
+</span></span><span class="line"><span class="cl">COPY . /code/</span></span></code></pre></div></div>
+<p>RUN <code>docker build .</code></p>
+<h3 id="docker-composeyml">docker-compose.yml</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-yml">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;3&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">web</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w"> </span><span class="l">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l">python manage.py runserver 0.0.0.0:8080</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">.:/code</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;8080:8080&#34;</span></span></span></code></pre></div></div>
+<p>RUN <code>docker-compose up -d</code></p>]]></description></item><item><title>Docker笔记-基础操作</title><link>https://spaceack.github.io/20191007-docker%E7%AC%94%E8%AE%B0-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</link><pubDate>Mon, 07 Oct 2019 21:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20191007-docker%E7%AC%94%E8%AE%B0-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</guid><description>&lt;h3 id="docker-info---查看系统docker层面信息">docker info - 查看系统(docker)层面信息&lt;/h3>
+&lt;p>docker images - 查看镜像信息&lt;/p></description></item><item><title>Docker笔记-介绍</title><link>https://spaceack.github.io/20191006-docker%E7%AC%94%E8%AE%B0-%E4%BB%8B%E7%BB%8D/</link><pubDate>Sun, 06 Oct 2019 21:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20191006-docker%E7%AC%94%E8%AE%B0-%E4%BB%8B%E7%BB%8D/</guid><description><![CDATA[<h2 id="docker-能做什么与虚拟机区别">Docker 能做什么，与虚拟机区别：</h2>
+<p>与虚拟机区别， 每个虚拟机是一个操作系统。docker 是操作系统上的应用。</p>
+<ol>
+<li>环境打包成镜像，自动化运行容器，打包部署自动化。</li>
+<li>创建轻量，私密的PAAS环境。</li>
+<li>实现自动化测试和持续的集成/部署。</li>
+<li>部署与扩展webapp,数据库和后台服务。</li>
+<li>完全沙箱机制。</li>
+</ol>
+<table>
+  <thead>
+      <tr>
+          <th>项目</th>
+          <th>传统虚拟机</th>
+          <th>Docker虚拟机</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>占用空间</td>
+          <td>大</td>
+          <td>小</td>
+      </tr>
+      <tr>
+          <td>启动速度</td>
+          <td>慢</td>
+          <td>快</td>
+      </tr>
+      <tr>
+          <td>资源利用率</td>
+          <td>低</td>
+          <td>高</td>
+      </tr>
+      <tr>
+          <td>运行基础</td>
+          <td>Hypervisor CPU虚拟化技术</td>
+          <td>Linux内核虚拟化</td>
+      </tr>
+      <tr>
+          <td>部署</td>
+          <td>复杂</td>
+          <td>方便</td>
+      </tr>
+      <tr>
+          <td>隔离</td>
+          <td>操作系统级别</td>
+          <td>容器级别 基于namespace隔离</td>
+      </tr>
+      <tr>
+          <td>相互通信</td>
+          <td>简单造作系统间通信</td>
+          <td>复杂 容器间通信</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="docker组成">Docker组成：</h2>
+<ol>
+<li>Docker Client 客户端：通过API访问Docker Daemon 管理Docker镜像。</li>
+<li>Docker Daemon 守护进程：负责Docker镜像的创建，删除，启动，停止等服务。</li>
+<li>Docker Image镜像：“只读”系统。</li>
+<li>Docker Container 容器 Docker images的仓库 Docker Hub dockerhub.com</li>
+</ol>
+<h2 id="基础概念">基础概念</h2>
+<ol>
+<li>
+<p>镜像（Image）:
+特殊文件系统，除了提供容器运行时所需的程序，库，资源，配置文件外，还包含配置参数（匿名卷，环境变量，用户等）。不包含然和动态数据。构建之后也不会改变。
+镜像构建时，会一层层构建，前一层是后一层基础。</p>]]></description></item><item><title>Docker笔记-安装配置</title><link>https://spaceack.github.io/20191005-docker%E7%AC%94%E8%AE%B0-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</link><pubDate>Sat, 05 Oct 2019 21:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20191005-docker%E7%AC%94%E8%AE%B0-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</guid><description><![CDATA[<h2 id="dcoker-install">dcoker Install</h2>
+<h3 id="ubuntu">ubuntu</h3>
+<p><a href="https://docs.docker.com/get-docker/" target="_blank" rel="noopener noreffer ">安装文档</a></p>
+<h4 id="uninstall-old-versions">Uninstall old versions</h4>
+<p><code>sudo apt-get remove docker docker-engine docker.io containerd runc</code></p>
+<h4 id="install-using-the-repository">Install using the repository</h4>
+<div class="code-block code-line-numbers" style="counter-reset: code-block 0">
+    <div class="code-header language-">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> \
+</span></span><span class="line"><span class="cl">    <span class="n">apt</span><span class="o">-</span><span class="n">transport</span><span class="o">-</span><span class="n">https</span> \
+</span></span><span class="line"><span class="cl">    <span class="n">ca</span><span class="o">-</span><span class="n">certificates</span> \
+</span></span><span class="line"><span class="cl">    <span class="n">curl</span> \
+</span></span><span class="line"><span class="cl">    <span class="n">gnupg</span><span class="o">-</span><span class="n">agent</span> \
+</span></span><span class="line"><span class="cl">    <span class="n">software</span><span class="o">-</span><span class="n">properties</span><span class="o">-</span><span class="n">common</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">curl</span> <span class="o">-</span><span class="n">fsSL</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">download</span><span class="o">.</span><span class="n">docker</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">ubuntu</span><span class="o">/</span><span class="n">gpg</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">key</span> <span class="n">add</span> <span class="o">-</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">key</span> <span class="n">fingerprint</span> <span class="mi">0</span><span class="n">EBFCD88</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">sudo</span> <span class="n">add</span><span class="o">-</span><span class="n">apt</span><span class="o">-</span><span class="n">repository</span> \
+</span></span><span class="line"><span class="cl">   <span class="s2">&#34;deb [arch=amd64] https://download.docker.com/linux/ubuntu </span><span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="s2">   $(lsb_release -cs) </span><span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="s2">   stable&#34;</span></span></span></code></pre></div></div>
+<h4 id="install-docker-engine">INSTALL DOCKER ENGINE</h4>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo apt-get update
+</span></span><span class="line"><span class="cl">sudo apt-get install docker-ce docker-ce-cli containerd.io</span></span></code></pre></div></div>
+<h4 id="verify">Verify</h4>
+<p><code>sudo docker run hello-world</code></p>]]></description></item></channel></rss>

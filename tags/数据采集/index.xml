@@ -1,1 +1,66 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>数据采集 - 标签 - 春和景明-Spaceack's Blog</title><link>https://spaceack.github.io/tags/%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86/</link><description>数据采集 - 标签 - 春和景明-Spaceack's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>spaceack@qq.com (Spaceack)</managingEditor><webMaster>spaceack@qq.com (Spaceack)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 19 Jun 2017 12:00:00 +0000</lastBuildDate><atom:link href="https://spaceack.github.io/tags/%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86/" rel="self" type="application/rss+xml"/><item><title>使用lxml提取HTML/XML 数据</title><link>https://spaceack.github.io/20170619-python%E4%BD%BF%E7%94%A8lxml%E6%8F%90%E5%8F%96xml%E6%95%B0%E6%8D%AE/</link><pubDate>Mon, 19 Jun 2017 12:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20170619-python%E4%BD%BF%E7%94%A8lxml%E6%8F%90%E5%8F%96xml%E6%95%B0%E6%8D%AE/</guid><description><![CDATA[demo 1 2 3 4 5 #更新： 新版本引入etree模块方式 from lxml import html etree = html.etree tree = etree.HTML(&#34;&#34;) 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 html = &#39;&#39;&#39; &lt;html]]></description></item></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>数据采集 - 标签 - 春和景明-Spaceack's Blog</title><link>https://spaceack.github.io/tags/%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86/</link><description>数据采集 - 标签 - 春和景明-Spaceack's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>spaceack@qq.com (Spaceack)</managingEditor><webMaster>spaceack@qq.com (Spaceack)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 19 Jun 2017 12:00:00 +0000</lastBuildDate><atom:link href="https://spaceack.github.io/tags/%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86/" rel="self" type="application/rss+xml"/><item><title>使用lxml提取HTML/XML 数据</title><link>https://spaceack.github.io/20170619-python%E4%BD%BF%E7%94%A8lxml%E6%8F%90%E5%8F%96xml%E6%95%B0%E6%8D%AE/</link><pubDate>Mon, 19 Jun 2017 12:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20170619-python%E4%BD%BF%E7%94%A8lxml%E6%8F%90%E5%8F%96xml%E6%95%B0%E6%8D%AE/</guid><description><![CDATA[<h1 id="demo">demo</h1>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1">#更新： 新版本引入etree模块方式</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">html</span>
+</span></span><span class="line"><span class="cl"><span class="n">etree</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">etree</span>
+</span></span><span class="line"><span class="cl"><span class="n">tree</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&#34;&#34;</span><span class="p">)</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">html</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;
+</span></span></span><span class="line"><span class="cl"><span class="s1">&lt;html lang=&#34;en&#34;&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">&lt;head&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">    &lt;meta charset=&#34;UTF-8&#34;&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">    &lt;title class=&#34;sub_title&#34;&gt;Title&lt;/title&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">&lt;/head&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">&lt;body&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">&lt;div class=&#34;none&#34;&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">&lt;a href =&#34;#&#34;&gt;Spaceack&#39;s code&lt;/a&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">&lt;/div&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">&lt;div class=&#34;link&#34;&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">&lt;a href =&#34;http://spaceack.com&#34;&gt;Spaceack&#39;s blog&lt;/a&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">&lt;/div&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">&lt;/body&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">&lt;/html&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">&#39;&#39;&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">etree</span>
+</span></span><span class="line"><span class="cl"><span class="n">tree</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 获取class为link的a标签的元素内容</span>
+</span></span><span class="line"><span class="cl"><span class="n">a_content</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;.//div[@class=&#34;link&#34;]/a/text()&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">a_content</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># [&#34;Spaceack&#39;s blog&#34;]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 使用attrib获取标签的属性值</span>
+</span></span><span class="line"><span class="cl"><span class="n">href_element</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;.//div[@class=&#34;link&#34;]/a&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">href_element</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># [&lt;Element a at 0x7ff3571a4d80&gt;]</span>
+</span></span><span class="line"><span class="cl"><span class="n">href</span> <span class="o">=</span> <span class="n">href_element</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">attrib</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">href</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># http://spaceack.com</span></span></span></code></pre></div></div>
+<h3 id="获取标签元素内容为空的两种不同效果">获取标签元素内容为空的两种不同效果:</h3>
+<ul>
+<li>demo</li>
+</ul>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">etree</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 可见第二个标签 td 元素内容为空</span>
+</span></span><span class="line"><span class="cl"><span class="n">tree</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&#34;&lt;th&gt;水果&lt;/th&gt;&lt;td&gt;苹果&lt;/td&gt;&lt;th&gt;价格&lt;/th&gt;&lt;td&gt;&lt;/td&gt;&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">key</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&#34;//th/text()&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">value</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&#34;//td/text()&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;&#39;&#39;
+</span></span></span><span class="line"><span class="cl"><span class="s1">[&#39;水果&#39;, &#39;价格&#39;] [&#39;苹果&#39;]
+</span></span></span><span class="line"><span class="cl"><span class="s1">&#39;&#39;&#39;</span></span></span></code></pre></div></div>
+<p>如果想让价格使用<code>None</code>或空字符串<code>''</code>来占位，可以这样做:</p>]]></description></item></channel></rss>

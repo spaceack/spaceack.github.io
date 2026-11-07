@@ -1,1 +1,66 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>mount - 标签 - 春和景明-Spaceack's Blog</title><link>https://spaceack.github.io/tags/mount/</link><description>mount - 标签 - 春和景明-Spaceack's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>spaceack@qq.com (Spaceack)</managingEditor><webMaster>spaceack@qq.com (Spaceack)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 10 Jul 2021 23:00:00 +0000</lastBuildDate><atom:link href="https://spaceack.github.io/tags/mount/" rel="self" type="application/rss+xml"/><item><title>Linux 磁盘挂载</title><link>https://spaceack.github.io/20210710-%E7%A3%81%E7%9B%98%E6%8C%82%E8%BD%BD/</link><pubDate>Sat, 10 Jul 2021 23:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20210710-%E7%A3%81%E7%9B%98%E6%8C%82%E8%BD%BD/</guid><description>查看磁盘 1 2 3 4 sudo fdisk -l sudo lsblk sudo mkfs -t ext4 /dev/mmcblk1 # 格式化 sudo mount /dev/mmcblk1 /home/root/data/ 卸载挂载 1 sudo umount /dev/mmcblk1 自动挂载 1 2 3 sudo blkid # 获取UUID sudo vim /etc/fstab UUID=6b7eaf8d-0b66-6e26-bdff-fa63f7dd1126 /u01 ext4 defaults 1 1</description></item><item><title>Linux磁盘检测，分区与挂载</title><link>https://spaceack.github.io/20190926-linux%E7%A3%81%E7%9B%98%E6%A3%80%E6%B5%8B%E5%88%86%E5%8C%BA%E4%B8%8E%E6%8C%82%E8%BD%BD/</link><pubDate>Mon, 23 Sep 2019 21:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20190926-linux%E7%A3%81%E7%9B%98%E6%A3%80%E6%B5%8B%E5%88%86%E5%8C%BA%E4%B8%8E%E6%8C%82%E8%BD%BD/</guid><description>新增1T磁盘一块 使用df -h查看当前硬盘信息（并未出现要挂在的磁盘） 1 2 3 4 5 6 7 文件系统 容量 已用 可用 已用% 挂载点 /dev/vda1 50G 5.0G 42G 11% / devtmpfs 1.9G 0 1.9G 0% /dev tmpfs</description></item></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Mount - 标签 - 春和景明-Spaceack's Blog</title><link>https://spaceack.github.io/tags/mount/</link><description>Mount - 标签 - 春和景明-Spaceack's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>spaceack@qq.com (Spaceack)</managingEditor><webMaster>spaceack@qq.com (Spaceack)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 10 Jul 2021 23:00:00 +0000</lastBuildDate><atom:link href="https://spaceack.github.io/tags/mount/" rel="self" type="application/rss+xml"/><item><title>Linux 磁盘挂载</title><link>https://spaceack.github.io/20210710-%E7%A3%81%E7%9B%98%E6%8C%82%E8%BD%BD/</link><pubDate>Sat, 10 Jul 2021 23:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20210710-%E7%A3%81%E7%9B%98%E6%8C%82%E8%BD%BD/</guid><description><![CDATA[<h3 id="查看磁盘">查看磁盘</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo fdisk -l
+</span></span><span class="line"><span class="cl">sudo lsblk
+</span></span><span class="line"><span class="cl">sudo mkfs -t ext4 /dev/mmcblk1 # 格式化
+</span></span><span class="line"><span class="cl">sudo mount /dev/mmcblk1 /home/root/data/</span></span></code></pre></div></div>
+<h3 id="卸载挂载">卸载挂载</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo umount /dev/mmcblk1</span></span></code></pre></div></div>
+<h3 id="自动挂载">自动挂载</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo blkid # 获取UUID
+</span></span><span class="line"><span class="cl">sudo vim /etc/fstab
+</span></span><span class="line"><span class="cl">UUID=6b7eaf8d-0b66-6e26-bdff-fa63f7dd1126 /u01 ext4 defaults 1 1</span></span></code></pre></div></div>]]></description></item><item><title>Linux磁盘检测，分区与挂载</title><link>https://spaceack.github.io/20190926-linux%E7%A3%81%E7%9B%98%E6%A3%80%E6%B5%8B%E5%88%86%E5%8C%BA%E4%B8%8E%E6%8C%82%E8%BD%BD/</link><pubDate>Mon, 23 Sep 2019 21:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20190926-linux%E7%A3%81%E7%9B%98%E6%A3%80%E6%B5%8B%E5%88%86%E5%8C%BA%E4%B8%8E%E6%8C%82%E8%BD%BD/</guid><description><![CDATA[<ul>
+<li>新增1T磁盘一块</li>
+</ul>
+<ol start="0">
+<li>使用<code>df -h</code>查看当前硬盘信息（并未出现要挂在的磁盘）</li>
+</ol>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">文件系统        容量  已用  可用 已用% 挂载点
+</span></span><span class="line"><span class="cl">/dev/vda1        50G  5.0G   42G   11% /
+</span></span><span class="line"><span class="cl">devtmpfs        1.9G     0  1.9G    0% /dev
+</span></span><span class="line"><span class="cl">tmpfs           1.9G     0  1.9G    0% /dev/shm
+</span></span><span class="line"><span class="cl">tmpfs           1.9G  208M  1.7G   11% /run
+</span></span><span class="line"><span class="cl">tmpfs           1.9G     0  1.9G    0% /sys/fs/cgroup
+</span></span><span class="line"><span class="cl">tmpfs           383M     0  383M    0% /run/user/0</span></span></code></pre></div></div>
+<ol>
+<li>使用命令<code>fdisk -l</code>查看所有磁盘信息（包括未挂载磁盘）</li>
+</ol>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-bash">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">磁盘 /dev/vda：53.7 GB, <span class="m">53687091200</span> 字节，104857600 个扇区
+</span></span><span class="line"><span class="cl"><span class="nv">Units</span> <span class="o">=</span> 扇区 of <span class="m">1</span> * <span class="nv">512</span> <span class="o">=</span> <span class="m">512</span> bytes
+</span></span><span class="line"><span class="cl">扇区大小<span class="o">(</span>逻辑/物理<span class="o">)</span>：512 字节 / <span class="m">512</span> 字节
+</span></span><span class="line"><span class="cl">I/O 大小<span class="o">(</span>最小/最佳<span class="o">)</span>：512 字节 / <span class="m">512</span> 字节
+</span></span><span class="line"><span class="cl">磁盘标签类型：dos
+</span></span><span class="line"><span class="cl">磁盘标识符：0x000c4895
+</span></span><span class="line"><span class="cl">   设备 Boot      Start         End      Blocks   Id  System
+</span></span><span class="line"><span class="cl">/dev/vda1   *        <span class="m">2048</span>   <span class="m">104857599</span>    <span class="m">52427776</span>   <span class="m">83</span>  Linux
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">磁盘 /dev/vdb：1099.5 GB, <span class="m">1099511627776</span> 字节，2147483648 个扇区
+</span></span><span class="line"><span class="cl"><span class="nv">Units</span> <span class="o">=</span> 扇区 of <span class="m">1</span> * <span class="nv">512</span> <span class="o">=</span> <span class="m">512</span> bytes
+</span></span><span class="line"><span class="cl">扇区大小<span class="o">(</span>逻辑/物理<span class="o">)</span>：512 字节 / <span class="m">512</span> 字节
+</span></span><span class="line"><span class="cl">I/O 大小<span class="o">(</span>最小/最佳<span class="o">)</span>：512 字节 / <span class="m">512</span> 字节</span></span></code></pre></div></div>
+<p>磁盘 <strong>/dev/vdb</strong> 为需要挂载的磁盘。
+2. 通过<code>lsblk</code>查看</p>]]></description></item></channel></rss>

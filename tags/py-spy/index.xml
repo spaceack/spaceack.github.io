@@ -1,1 +1,71 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>py-spy - 标签 - 春和景明-Spaceack's Blog</title><link>https://spaceack.github.io/tags/py-spy/</link><description>py-spy - 标签 - 春和景明-Spaceack's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>spaceack@qq.com (Spaceack)</managingEditor><webMaster>spaceack@qq.com (Spaceack)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 26 Oct 2024 23:00:00 +0000</lastBuildDate><atom:link href="https://spaceack.github.io/tags/py-spy/" rel="self" type="application/rss+xml"/><item><title>RAC-Python进程假死根本原因分析</title><link>https://spaceack.github.io/20241026-rac-python%E8%BF%9B%E7%A8%8B%E5%81%87%E6%AD%BB%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90/</link><pubDate>Sat, 26 Oct 2024 23:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20241026-rac-python%E8%BF%9B%E7%A8%8B%E5%81%87%E6%AD%BB%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90/</guid><description>问题现象 一个Python进行执行特定操作时，CPU占用100%。有阻塞情况发生，无法处理其它任务。服务状态是正常的。服务进程并没有崩溃。 分析</description></item></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Py-Spy - 标签 - 春和景明-Spaceack's Blog</title><link>https://spaceack.github.io/tags/py-spy/</link><description>Py-Spy - 标签 - 春和景明-Spaceack's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>spaceack@qq.com (Spaceack)</managingEditor><webMaster>spaceack@qq.com (Spaceack)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 26 Oct 2024 23:00:00 +0000</lastBuildDate><atom:link href="https://spaceack.github.io/tags/py-spy/" rel="self" type="application/rss+xml"/><item><title>RAC-Python进程假死根本原因分析</title><link>https://spaceack.github.io/20241026-rac-python%E8%BF%9B%E7%A8%8B%E5%81%87%E6%AD%BB%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90/</link><pubDate>Sat, 26 Oct 2024 23:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20241026-rac-python%E8%BF%9B%E7%A8%8B%E5%81%87%E6%AD%BB%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90/</guid><description><![CDATA[<h2 id="问题现象">问题现象</h2>
+<ul>
+<li>一个Python进行执行特定操作时，CPU占用100%。有阻塞情况发生，无法处理其它任务。服务状态是正常的。服务进程并没有崩溃。</li>
+</ul>
+<h2 id="分析原因">分析原因</h2>
+<h3 id="问题定位">问题定位</h3>
+<ul>
+<li>由于服务日志与系统日志没有报任何错误信息，给问题排查定位带来了一定的阻碍。</li>
+<li>因此，借助Python 程序的采样分析器<code>py-spy</code>来帮助我们排查问题，<code>py-spy</code>主要使用<code>Rust</code>语言编写。开销低，使用另外的进程对Python程序监控，无需<code>插桩</code>等改动代码， 绿色无污染，可以安全的对生产代码作监控。通过生成的<code>火焰图</code>可知，程序阻塞在一个<code>re</code>的正则函数上。
+</li>
+</ul>
+<h3 id="正则分析">正则分析</h3>
+<ul>
+<li>正则表达式的复杂度通常取决于其模式的长度和复杂性。当正则表达式包含多个<code>非贪婪匹配</code>和通配符，这通常会导致回溯（backtracking），尤其是在匹配失败时。回溯会增加正则表达式的执行时间，尤其是在输入文本较长的情况下。</li>
+<li>正则表达式的执行时间通常与输入文本的长度成正比。对于一个长度为 <code>n</code> 的输入文本，最坏情况下，正则表达式的复杂度可能是 <code>O(n^2)</code>，尤其是在存在大量回溯的情况下。</li>
+<li>如果输入文本较短，且正则表达式的匹配路径较为简单，复杂度可能接近 <code>O(n)</code>。如果输入文本较长，且正则表达式包含多个非贪婪匹配和通配符，复杂度可能接近 <code>O(n^2)</code>。</li>
+</ul>
+<h3 id="测试验证">测试验证</h3>
+<ul>
+<li>分别观测数据规模为1，5，10，15，20 的正则处理的时间</li>
+<li>得到时间消耗分别为0.05s, 0.11s,  2,29s,18.89s,  81.97s</li>
+<li>直观感觉这是一个指数级别的增涨。为了更加直观观测，可以使用二次拟合（抛物线法）做个拟合图。
+</li>
+<li>从拟合图可直观观测到， 前两个点增长较为平缓， 从第三个点开始，斜率徒增。以下是拟合代码。</li>
+</ul>
+<div class="code-block code-line-numbers" style="counter-reset: code-block 0">
+    <div class="code-header language-python3">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python3" data-lang="python3"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 给定的数据</span>
+</span></span><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.11</span><span class="p">,</span> <span class="mf">2.29</span><span class="p">,</span> <span class="mf">18.89</span><span class="p">,</span> <span class="mf">81.97</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 计算二次多项式拟合的系数</span>
+</span></span><span class="line"><span class="cl"><span class="n">coefficients</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">coefficients</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 生成拟合曲线上的点</span>
+</span></span><span class="line"><span class="cl"><span class="n">fit_curve</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">c</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 绘制原始数据点和拟合曲线</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data points&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">fit_curve</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Quadratic fit&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 添加图例和标签</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Quadratic Fit&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 显示图形</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></span></span></code></pre></div></div>
+<ul>
+<li>问题得到了定位与验证，是由于一个正则解析不合理导致。</li>
+</ul>
+<h2 id="解决方案">解决方案</h2>
+<ul>
+<li>对文本进行分段匹配，避免一次性匹配整个文本。</li>
+</ul>
+<h2 id="经验总结">经验总结</h2>
+<ol>
+<li>对正则的处理一定要格外小心，尽量使用复杂度低的正则解析。若有复杂的解析表达式，尽可能对其拆分，分段处理。</li>
+<li>需要对正则表达式进行测试，尤其是不同量级规模的文本。增加对文本规模的限制。</li>
+<li>灵活运用<code>py-spy</code>等性能分析工具，提升排查问题效率</li>
+</ol>
+<hr>
+<p>最后分享一段关于正则的笑话：</p>]]></description></item></channel></rss>

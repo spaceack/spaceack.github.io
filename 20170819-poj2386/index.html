@@ -1,350 +1,107 @@
-<!doctype html><html lang=zh-cn>
-<head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=robots content="noodp">
-<title>《挑战程序设计(第二版)》（第二章）POJ No.2386 - 春和景明-Spaceack's Blog</title><meta name=Description content="Spaceck的个人Blog 编程之舞"><meta property="og:title" content="《挑战程序设计(第二版)》（第二章）POJ No.2386">
-<meta property="og:description" content="POJ 2386 问题: 有一个大小为N×M的园子，雨后积起了水。八连通的积水被认为是连在一起的。求园子里一共有多少水洼？\ 限制条件N,M<=100 输">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://spaceack.github.io/20170819-poj2386/"><meta property="og:image" content="https://spaceack.github.io/logo.png"><meta property="article:section" content="posts">
-<meta property="article:published_time" content="2017-08-19T11:53:23+00:00">
-<meta property="article:modified_time" content="2017-08-19T11:53:23+00:00"><meta property="og:site_name" content="My cool site">
-<meta name=twitter:card content="summary_large_image">
-<meta name=twitter:image content="https://spaceack.github.io/logo.png">
-<meta name=twitter:title content="《挑战程序设计(第二版)》（第二章）POJ No.2386">
-<meta name=twitter:description content="POJ 2386 问题: 有一个大小为N×M的园子，雨后积起了水。八连通的积水被认为是连在一起的。求园子里一共有多少水洼？\ 限制条件N,M<=100 输">
-<meta name=application-name content="Spaceack's Blog">
-<meta name=apple-mobile-web-app-title content="Spaceack's Blog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://spaceack.github.io/20170819-poj2386/><link rel=prev href=https://spaceack.github.io/20170802-%E7%81%AB%E8%BD%A6%E7%A5%A8%E4%B8%AD%E7%9A%84%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6%E4%BF%A1%E6%81%AF/><link rel=next href=https://spaceack.github.io/20170823-%E5%9F%BA%E4%BA%8E%E7%9B%B8%E5%90%8C%E9%A2%9C%E8%89%B2%E8%BF%9E%E9%80%9A%E5%83%8F%E7%B4%A0%E4%B8%AA%E6%95%B0%E7%9A%84%E7%BB%9F%E8%AE%A1%E8%BF%9B%E8%A1%8C%E5%9B%BE%E5%83%8F%E5%AD%97%E7%AC%A6%E8%AF%86%E5%88%AB/><link rel=stylesheet href=/css/style.min.css><link rel=preload href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css as=style onload="this.onload=null,this.rel='stylesheet'">
-<noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css></noscript><link rel=preload href=https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css as=style onload="this.onload=null,this.rel='stylesheet'">
-<noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css></noscript><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"《挑战程序设计(第二版)》（第二章）POJ No.2386","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/spaceack.github.io\/20170819-poj2386\/"},"image":["https:\/\/spaceack.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"《挑战程序设计(第二版)》, python, 算法, DFS","wordcount":472,"url":"https:\/\/spaceack.github.io\/20170819-poj2386\/","datePublished":"2017-08-19T11:53:23+00:00","dateModified":"2017-08-19T11:53:23+00:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"Spaceack","logo":"https:\/\/spaceack.github.io\/images\/avatar.jpeg"},"author":{"@type":"Person","name":"Spaceack"},"description":""}</script></head>
-<body data-header-desktop=fixed data-header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':'auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark')&&document.body.setAttribute('theme','dark')</script>
-<div id=mask></div><div class=wrapper><header class=desktop id=header-desktop>
-<div class=header-wrapper>
-<div class=header-title>
-<a href=/ title="春和景明-Spaceack's Blog"><span class=header-title-pre><i class="far fa-kiss-wink-heart fa-fw"></i></span>Spaceack's Blog</a>
-</div>
-<div class=menu>
-<div class=menu-inner><a class=menu-item href=/posts/> 所有文章 </a><a class=menu-item href=/tags/> 标签 </a><a class=menu-item href=/categories/> 分类 </a><a class=menu-item href=/links/> 友链 </a><a class=menu-item href=/about/> 关于 </a><a class=menu-item href=/challenge/> 战利品 </a><a class=menu-item href=/book/> 读书 </a><a class=menu-item href=https://github.com/spaceack title=GitHub rel="noopener noreffer" target=_blank><i class="fab fa-github fa-fw"></i> </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<!doctype html><html lang=zh-CN><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><title>《挑战程序设计(第二版)》（第二章）POJ No.2386 - 春和景明-Spaceack's Blog</title><meta name=Description content="Spaceck的个人Blog 编程之舞"><meta property="og:url" content="https://spaceack.github.io/20170819-poj2386/">
+<meta property="og:site_name" content="春和景明-Spaceack's Blog"><meta property="og:title" content="《挑战程序设计(第二版)》（第二章）POJ No.2386"><meta property="og:description" content="POJ 2386 问题: 有一个大小为N×M的园子，雨后积起了水。八连通的积水被认为是连在一起的。求园子里一共有多少水洼？\ 限制条件N,M<=100 输入 W........WW. .WWW.....WWW ....WW...WW. .........WW. .........W.. ..W......W.. .W.W.....WW. W.W.W.....W. .W.W......W. ..W.......W. 输出: 3 题解: DFS次数为水洼的个数， POJ No.2386 python 实现: # POJ No.2386 class poj2386(object): def __init__(self, map): self.row_num = 10 self.col_num = 12 self.m = self.matrix(map.replace('\n','')) self.walked_set = set() self.dfs_num = 0 def matrix(self, map): ''' desc: 字符串转数组，方便遍历 :return ['row0','row1'...] ''' col_num = 0 matrix = [] for r in range(self.row_num): matrix.append(map[col_num: col_num + self.col_num]) col_num = col_num + self.col_num return matrix def dfs(self, x, y, char): ''' desc:用递归实现搜索范围内相同字符 :param x: :param y: :param char: :return: ''' if 0 > x or 0 > y or x >= self.row_num or y >= self.col_num : # 越界检查 return if tuple([x,y]) in self.walked_set: # 重复遍历检查 return if char != self.m[x][y]: # 目标字符检查 return self.walked_set.add(tuple([x, y])) self.dfs(x + 1, y, char) # x self.dfs(x, y + 1, char) # y self.dfs(x - 1, y, char) # -x self.dfs(x, y - 1, char) # -y self.dfs(x + 1, y + 1, char) # Ⅰ self.dfs(x + 1, y - 1, char) # Ⅱ self.dfs(x - 1, y - 1, char) # Ⅲ self.dfs(x - 1, y + 1, char) # Ⅳ return def walk(self): ''' desc: 对矩阵遍历 :return: ''' for x in range(self.row_num-1): for y in range(self.col_num-1): if tuple([x, y]) in self.walked_set: continue if self.m[x][y] == '.': continue if self.m[x][y] == 'W': self.dfs(x, y, 'W') self.dfs_num +=1 return self.dfs_num if __name__ == '__main__': map = ''' W........WW. .WWW.....WWW ....WW...WW. .........WW. .........W.. ..W......W.. .W.W.....WW. W.W.W.....W. .W.W......W. ..W.......W. ''' c = poj2386(map) dfs_num = c.walk() print(dfs_num)"><meta property="og:locale" content="zh_CN"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2017-08-19T11:53:23+00:00"><meta property="article:modified_time" content="2017-08-19T11:53:23+00:00"><meta property="article:tag" content="《挑战程序设计(第二版)》"><meta property="article:tag" content="Python"><meta property="article:tag" content="算法"><meta property="article:tag" content="DFS"><meta property="og:image" content="https://spaceack.github.io/logo.png"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://spaceack.github.io/logo.png"><meta name=twitter:title content="《挑战程序设计(第二版)》（第二章）POJ No.2386"><meta name=twitter:description content="POJ 2386 问题: 有一个大小为N×M的园子，雨后积起了水。八连通的积水被认为是连在一起的。求园子里一共有多少水洼？\ 限制条件N,M<=100 输入 W........WW. .WWW.....WWW ....WW...WW. .........WW. .........W.. ..W......W.. .W.W.....WW. W.W.W.....W. .W.W......W. ..W.......W. 输出: 3 题解: DFS次数为水洼的个数， POJ No.2386 python 实现: # POJ No.2386 class poj2386(object): def __init__(self, map): self.row_num = 10 self.col_num = 12 self.m = self.matrix(map.replace('\n','')) self.walked_set = set() self.dfs_num = 0 def matrix(self, map): ''' desc: 字符串转数组，方便遍历 :return ['row0','row1'...] ''' col_num = 0 matrix = [] for r in range(self.row_num): matrix.append(map[col_num: col_num + self.col_num]) col_num = col_num + self.col_num return matrix def dfs(self, x, y, char): ''' desc:用递归实现搜索范围内相同字符 :param x: :param y: :param char: :return: ''' if 0 > x or 0 > y or x >= self.row_num or y >= self.col_num : # 越界检查 return if tuple([x,y]) in self.walked_set: # 重复遍历检查 return if char != self.m[x][y]: # 目标字符检查 return self.walked_set.add(tuple([x, y])) self.dfs(x + 1, y, char) # x self.dfs(x, y + 1, char) # y self.dfs(x - 1, y, char) # -x self.dfs(x, y - 1, char) # -y self.dfs(x + 1, y + 1, char) # Ⅰ self.dfs(x + 1, y - 1, char) # Ⅱ self.dfs(x - 1, y - 1, char) # Ⅲ self.dfs(x - 1, y + 1, char) # Ⅳ return def walk(self): ''' desc: 对矩阵遍历 :return: ''' for x in range(self.row_num-1): for y in range(self.col_num-1): if tuple([x, y]) in self.walked_set: continue if self.m[x][y] == '.': continue if self.m[x][y] == 'W': self.dfs(x, y, 'W') self.dfs_num +=1 return self.dfs_num if __name__ == '__main__': map = ''' W........WW. .WWW.....WWW ....WW...WW. .........WW. .........W.. ..W......W.. .W.W.....WW. W.W.W.....W. .W.W......W. ..W.......W. ''' c = poj2386(map) dfs_num = c.walk() print(dfs_num)"><meta name=application-name content="Spaceack's Blog"><meta name=apple-mobile-web-app-title content="Spaceack's Blog"><meta name=referrer content="no-referrer"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://spaceack.github.io/20170819-poj2386/><link rel=prev href=https://spaceack.github.io/20170802-%E7%81%AB%E8%BD%A6%E7%A5%A8%E4%B8%AD%E7%9A%84%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6%E4%BF%A1%E6%81%AF/><link rel=next href=https://spaceack.github.io/20170823-%E5%9F%BA%E4%BA%8E%E7%9B%B8%E5%90%8C%E9%A2%9C%E8%89%B2%E8%BF%9E%E9%80%9A%E5%83%8F%E7%B4%A0%E4%B8%AA%E6%95%B0%E7%9A%84%E7%BB%9F%E8%AE%A1%E8%BF%9B%E8%A1%8C%E5%9B%BE%E5%83%8F%E5%AD%97%E7%AC%A6%E8%AF%86%E5%88%AB/><link rel=stylesheet href=/css/style.min.css><link rel=preload href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css as=style onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css></noscript><link rel=preload href=https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css as=style onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css></noscript><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"《挑战程序设计(第二版)》（第二章）POJ No.2386","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/spaceack.github.io\/20170819-poj2386\/"},"image":["https:\/\/spaceack.github.io\/images\/Apple-Devices-Preview.png"],"genre":"posts","keywords":"《挑战程序设计(第二版)》, python, 算法, DFS","wordcount":382,"url":"https:\/\/spaceack.github.io\/20170819-poj2386\/","datePublished":"2017-08-19T11:53:23+00:00","dateModified":"2017-08-19T11:53:23+00:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"Spaceack","logo":"https:\/\/spaceack.github.io\/images\/avatar.jpeg"},"author":{"@type":"Person","name":"Spaceack"},"description":""}</script></head><body data-header-desktop=fixed data-header-mobile=auto><script>const query=window.matchMedia("(prefers-color-scheme: dark)");function applyTheme(){let e=window.localStorage?.getItem("theme")||"auto",t=e==="dark"||e==="auto"&&query.matches;document.body.setAttribute("theme",t?"dark":"light"),document.body.setAttribute("cfg-theme",e)}applyTheme(),query.addEventListener("change",applyTheme)</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title="春和景明-Spaceack's Blog"><span class=header-title-pre><i class='far fa-kiss-wink-heart fa-fw'></i></span>Spaceack's Blog</a></div><div class=menu><div class=menu-inner><a class=menu-item href=/posts/>所有文章 </a><a class=menu-item href=/tags/>标签 </a><a class=menu-item href=/categories/>分类 </a><a class=menu-item href=/links/>友链 </a><a class=menu-item href=/about/>关于 </a><a class=menu-item href=/challenge/>战利品 </a><a class=menu-item href=/book/>读书 </a><a class=menu-item href=https://github.com/spaceack title=GitHub rel="noopener noreffer" target=_blank><i class='fab fa-github fa-fw'></i> </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
 <input type=text placeholder=搜索文章标题或内容... id=search-input-desktop>
-<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索>
-<i class="fas fa-search fa-fw" aria-hidden=true></i>
-</a>
-<a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空>
-<i class="fas fa-times-circle fa-fw" aria-hidden=true></i>
-</a>
-<span class="search-button search-loading" id=search-loading-desktop>
-<i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i>
-</span>
-</span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
-<i class="fas fa-adjust fa-fw" aria-hidden=true></i>
-</a>
-</div>
-</div>
-</div>
-</header><header class=mobile id=header-mobile>
-<div class=header-container>
-<div class=header-wrapper>
-<div class=header-title>
-<a href=/ title="春和景明-Spaceack's Blog"><span class=header-title-pre><i class="far fa-kiss-wink-heart fa-fw"></i></span>Spaceack's Blog</a>
-</div>
-<div class=menu-toggle id=menu-toggle-mobile>
-<span></span><span></span><span></span>
-</div>
-</div>
-<div class=menu id=menu-mobile><div class=search-wrapper>
-<div class="search mobile" id=search-mobile>
-<input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
-<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索>
-<i class="fas fa-search fa-fw" aria-hidden=true></i>
-</a>
-<a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空>
-<i class="fas fa-times-circle fa-fw" aria-hidden=true></i>
-</a>
-<span class="search-button search-loading" id=search-loading-mobile>
-<i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i>
-</span>
-</div>
-<a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>
-取消
-</a>
-</div><a class=menu-item href=/posts/ title>所有文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a class=menu-item href=/links/ title>友链</a><a class=menu-item href=/about/ title>关于</a><a class=menu-item href=/challenge/ title>战利品</a><a class=menu-item href=/book/ title>读书</a><a class=menu-item href=https://github.com/spaceack title=GitHub rel="noopener noreffer" target=_blank><i class="fab fa-github fa-fw"></i></a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
-<i class="fas fa-adjust fa-fw" aria-hidden=true></i>
-</a></div>
-</div>
-</header><div class="search-dropdown desktop">
-<div id=search-dropdown-desktop></div>
-</div>
-<div class="search-dropdown mobile">
-<div id=search-dropdown-mobile></div>
-</div><main class=main>
-<div class=container><div class=toc id=toc-auto>
-<h2 class=toc-title>目录</h2>
-<div class=toc-content id=toc-content-auto></div>
-</div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">《挑战程序设计(第二版)》（第二章）POJ No.2386</h1><div class=post-meta>
-<div class=post-meta-line><span class=post-author><a href=/about title=Author rel=" author" class=author><i class="fas fa-user-circle fa-fw" aria-hidden=true></i>Spaceack</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/%E7%AE%97%E6%B3%95/><i class="far fa-folder fa-fw" aria-hidden=true></i>算法</a></span></div>
-<div class=post-meta-line><i class="far fa-calendar-alt fa-fw" aria-hidden=true></i>&nbsp;<time datetime=2017-08-19>2017-08-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden=true></i>&nbsp;约 472 字&nbsp;
-<i class="far fa-clock fa-fw" aria-hidden=true></i>&nbsp;预计阅读 1 分钟&nbsp;</div>
-</div><div class="details toc" id=toc-static data-kept>
-<div class="details-summary toc-title">
-<span>目录</span>
-<span><i class="details-icon fas fa-angle-right" aria-hidden=true></i></span>
-</div>
-<div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents>
-<ul>
-<li>
-<ul>
-<li><a href=#poj-2386>POJ 2386</a></li>
-</ul>
-</li>
-</ul>
-</nav></div>
-</div><div class=content id=content><h3 id=poj-2386>POJ 2386</h3>
-<ul>
-<li>问题:</li>
-<li>有一个大小为N×M的园子，雨后积起了水。八连通的积水被认为是连在一起的。求园子里一共有多少水洼？\</li>
-<li>限制条件N,M&lt;=100</li>
-<li>输入</li>
-</ul>
-<div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>W........WW.
-.WWW.....WWW
-....WW...WW.
-.........WW.
-.........W..
-..W......W..
-.W.W.....WW.
-W.W.W.....W.
-.W.W......W.
-..W.......W.
-</code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>输出: 3</li>
-<li>题解:</li>
-</ul>
-<div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>DFS次数为水洼的个数，
-</code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>POJ No.2386 python 实现:</li>
-</ul>
-<div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span><span class=lnt>11
-</span><span class=lnt>12
-</span><span class=lnt>13
-</span><span class=lnt>14
-</span><span class=lnt>15
-</span><span class=lnt>16
-</span><span class=lnt>17
-</span><span class=lnt>18
-</span><span class=lnt>19
-</span><span class=lnt>20
-</span><span class=lnt>21
-</span><span class=lnt>22
-</span><span class=lnt>23
-</span><span class=lnt>24
-</span><span class=lnt>25
-</span><span class=lnt>26
-</span><span class=lnt>27
-</span><span class=lnt>28
-</span><span class=lnt>29
-</span><span class=lnt>30
-</span><span class=lnt>31
-</span><span class=lnt>32
-</span><span class=lnt>33
-</span><span class=lnt>34
-</span><span class=lnt>35
-</span><span class=lnt>36
-</span><span class=lnt>37
-</span><span class=lnt>38
-</span><span class=lnt>39
-</span><span class=lnt>40
-</span><span class=lnt>41
-</span><span class=lnt>42
-</span><span class=lnt>43
-</span><span class=lnt>44
-</span><span class=lnt>45
-</span><span class=lnt>46
-</span><span class=lnt>47
-</span><span class=lnt>48
-</span><span class=lnt>49
-</span><span class=lnt>50
-</span><span class=lnt>51
-</span><span class=lnt>52
-</span><span class=lnt>53
-</span><span class=lnt>54
-</span><span class=lnt>55
-</span><span class=lnt>56
-</span><span class=lnt>57
-</span><span class=lnt>58
-</span><span class=lnt>59
-</span><span class=lnt>60
-</span><span class=lnt>61
-</span><span class=lnt>62
-</span><span class=lnt>63
-</span><span class=lnt>64
-</span><span class=lnt>65
-</span><span class=lnt>66
-</span><span class=lnt>67
-</span><span class=lnt>68
-</span><span class=lnt>69
-</span><span class=lnt>70
-</span><span class=lnt>71
-</span><span class=lnt>72
-</span><span class=lnt>73
-</span><span class=lnt>74
-</span><span class=lnt>75
-</span><span class=lnt>76
-</span><span class=lnt>77
-</span><span class=lnt>78
-</span><span class=lnt>79
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=c1># POJ No.2386</span>
-<span class=k>class</span> <span class=nc>poj2386</span><span class=p>(</span><span class=nb>object</span><span class=p>):</span>
-    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=nb>map</span><span class=p>):</span>
-        <span class=bp>self</span><span class=o>.</span><span class=n>row_num</span> <span class=o>=</span> <span class=mi>10</span>
-        <span class=bp>self</span><span class=o>.</span><span class=n>col_num</span> <span class=o>=</span> <span class=mi>12</span>
-        <span class=bp>self</span><span class=o>.</span><span class=n>m</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>matrix</span><span class=p>(</span><span class=nb>map</span><span class=o>.</span><span class=n>replace</span><span class=p>(</span><span class=s1>&#39;</span><span class=se>\n</span><span class=s1>&#39;</span><span class=p>,</span><span class=s1>&#39;&#39;</span><span class=p>))</span>
-        <span class=bp>self</span><span class=o>.</span><span class=n>walked_set</span> <span class=o>=</span> <span class=nb>set</span><span class=p>()</span>
-        <span class=bp>self</span><span class=o>.</span><span class=n>dfs_num</span> <span class=o>=</span> <span class=mi>0</span>
-
-    <span class=k>def</span> <span class=nf>matrix</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=nb>map</span><span class=p>):</span>
-        <span class=s1>&#39;&#39;&#39;
-</span><span class=s1>        desc: 字符串转数组，方便遍历
-</span><span class=s1>        :return [&#39;row0&#39;,&#39;row1&#39;...]
-</span><span class=s1>        &#39;&#39;&#39;</span>
-        <span class=n>col_num</span> <span class=o>=</span> <span class=mi>0</span>
-        <span class=n>matrix</span> <span class=o>=</span> <span class=p>[]</span>
-        <span class=k>for</span> <span class=n>r</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>row_num</span><span class=p>):</span>
-            <span class=n>matrix</span><span class=o>.</span><span class=n>append</span><span class=p>(</span><span class=nb>map</span><span class=p>[</span><span class=n>col_num</span><span class=p>:</span> <span class=n>col_num</span> <span class=o>+</span> <span class=bp>self</span><span class=o>.</span><span class=n>col_num</span><span class=p>])</span>
-            <span class=n>col_num</span> <span class=o>=</span> <span class=n>col_num</span> <span class=o>+</span> <span class=bp>self</span><span class=o>.</span><span class=n>col_num</span>
-        <span class=k>return</span> <span class=n>matrix</span>
-
-    <span class=k>def</span> <span class=nf>dfs</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>x</span><span class=p>,</span> <span class=n>y</span><span class=p>,</span> <span class=n>char</span><span class=p>):</span>
-        <span class=s1>&#39;&#39;&#39;
-</span><span class=s1>        desc:用递归实现搜索范围内相同字符
-</span><span class=s1>        :param x: 
-</span><span class=s1>        :param y: 
-</span><span class=s1>        :param char: 
-</span><span class=s1>        :return: 
-</span><span class=s1>        &#39;&#39;&#39;</span>
-        <span class=k>if</span> <span class=mi>0</span> <span class=o>&gt;</span> <span class=n>x</span> <span class=ow>or</span> <span class=mi>0</span> <span class=o>&gt;</span> <span class=n>y</span> <span class=ow>or</span> <span class=n>x</span> <span class=o>&gt;=</span> <span class=bp>self</span><span class=o>.</span><span class=n>row_num</span>  <span class=ow>or</span> <span class=n>y</span> <span class=o>&gt;=</span> <span class=bp>self</span><span class=o>.</span><span class=n>col_num</span> <span class=p>:</span> <span class=c1># 越界检查</span>
-            <span class=k>return</span>
-        <span class=k>if</span> <span class=nb>tuple</span><span class=p>([</span><span class=n>x</span><span class=p>,</span><span class=n>y</span><span class=p>])</span> <span class=ow>in</span> <span class=bp>self</span><span class=o>.</span><span class=n>walked_set</span><span class=p>:</span> <span class=c1># 重复遍历检查</span>
-            <span class=k>return</span>
-        <span class=k>if</span> <span class=n>char</span> <span class=o>!=</span> <span class=bp>self</span><span class=o>.</span><span class=n>m</span><span class=p>[</span><span class=n>x</span><span class=p>][</span><span class=n>y</span><span class=p>]:</span> <span class=c1># 目标字符检查</span>
-            <span class=k>return</span>
-
-        <span class=bp>self</span><span class=o>.</span><span class=n>walked_set</span><span class=o>.</span><span class=n>add</span><span class=p>(</span><span class=nb>tuple</span><span class=p>([</span><span class=n>x</span><span class=p>,</span> <span class=n>y</span><span class=p>]))</span>
-
-        <span class=bp>self</span><span class=o>.</span><span class=n>dfs</span><span class=p>(</span><span class=n>x</span> <span class=o>+</span> <span class=mi>1</span><span class=p>,</span> <span class=n>y</span><span class=p>,</span> <span class=n>char</span><span class=p>)</span>  <span class=c1># x</span>
-        <span class=bp>self</span><span class=o>.</span><span class=n>dfs</span><span class=p>(</span><span class=n>x</span><span class=p>,</span> <span class=n>y</span> <span class=o>+</span> <span class=mi>1</span><span class=p>,</span> <span class=n>char</span><span class=p>)</span>  <span class=c1># y</span>
-        <span class=bp>self</span><span class=o>.</span><span class=n>dfs</span><span class=p>(</span><span class=n>x</span> <span class=o>-</span> <span class=mi>1</span><span class=p>,</span> <span class=n>y</span><span class=p>,</span> <span class=n>char</span><span class=p>)</span>  <span class=c1># -x</span>
-        <span class=bp>self</span><span class=o>.</span><span class=n>dfs</span><span class=p>(</span><span class=n>x</span><span class=p>,</span> <span class=n>y</span> <span class=o>-</span> <span class=mi>1</span><span class=p>,</span> <span class=n>char</span><span class=p>)</span>  <span class=c1># -y</span>
-        <span class=bp>self</span><span class=o>.</span><span class=n>dfs</span><span class=p>(</span><span class=n>x</span> <span class=o>+</span> <span class=mi>1</span><span class=p>,</span> <span class=n>y</span> <span class=o>+</span> <span class=mi>1</span><span class=p>,</span> <span class=n>char</span><span class=p>)</span>  <span class=c1># Ⅰ</span>
-        <span class=bp>self</span><span class=o>.</span><span class=n>dfs</span><span class=p>(</span><span class=n>x</span> <span class=o>+</span> <span class=mi>1</span><span class=p>,</span> <span class=n>y</span> <span class=o>-</span> <span class=mi>1</span><span class=p>,</span> <span class=n>char</span><span class=p>)</span>  <span class=c1># Ⅱ</span>
-        <span class=bp>self</span><span class=o>.</span><span class=n>dfs</span><span class=p>(</span><span class=n>x</span> <span class=o>-</span> <span class=mi>1</span><span class=p>,</span> <span class=n>y</span> <span class=o>-</span> <span class=mi>1</span><span class=p>,</span> <span class=n>char</span><span class=p>)</span>  <span class=c1># Ⅲ</span>
-        <span class=bp>self</span><span class=o>.</span><span class=n>dfs</span><span class=p>(</span><span class=n>x</span> <span class=o>-</span> <span class=mi>1</span><span class=p>,</span> <span class=n>y</span> <span class=o>+</span> <span class=mi>1</span><span class=p>,</span> <span class=n>char</span><span class=p>)</span>  <span class=c1># Ⅳ</span>
-        <span class=k>return</span>
-
-    <span class=k>def</span> <span class=nf>walk</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
-        <span class=s1>&#39;&#39;&#39;
-</span><span class=s1>        desc: 对矩阵遍历
-</span><span class=s1>        :return: 
-</span><span class=s1>        &#39;&#39;&#39;</span>
-        <span class=k>for</span> <span class=n>x</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>row_num</span><span class=o>-</span><span class=mi>1</span><span class=p>):</span>
-            <span class=k>for</span> <span class=n>y</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>col_num</span><span class=o>-</span><span class=mi>1</span><span class=p>):</span>
-                <span class=k>if</span> <span class=nb>tuple</span><span class=p>([</span><span class=n>x</span><span class=p>,</span> <span class=n>y</span><span class=p>])</span> <span class=ow>in</span> <span class=bp>self</span><span class=o>.</span><span class=n>walked_set</span><span class=p>:</span>
-                    <span class=k>continue</span>
-                <span class=k>if</span> <span class=bp>self</span><span class=o>.</span><span class=n>m</span><span class=p>[</span><span class=n>x</span><span class=p>][</span><span class=n>y</span><span class=p>]</span> <span class=o>==</span> <span class=s1>&#39;.&#39;</span><span class=p>:</span>
-                    <span class=k>continue</span>
-                <span class=k>if</span> <span class=bp>self</span><span class=o>.</span><span class=n>m</span><span class=p>[</span><span class=n>x</span><span class=p>][</span><span class=n>y</span><span class=p>]</span> <span class=o>==</span> <span class=s1>&#39;W&#39;</span><span class=p>:</span>
-                    <span class=bp>self</span><span class=o>.</span><span class=n>dfs</span><span class=p>(</span><span class=n>x</span><span class=p>,</span> <span class=n>y</span><span class=p>,</span> <span class=s1>&#39;W&#39;</span><span class=p>)</span>
-                    <span class=bp>self</span><span class=o>.</span><span class=n>dfs_num</span> <span class=o>+=</span><span class=mi>1</span>
-        <span class=k>return</span> <span class=bp>self</span><span class=o>.</span><span class=n>dfs_num</span>
-<span class=k>if</span> <span class=vm>__name__</span> <span class=o>==</span> <span class=s1>&#39;__main__&#39;</span><span class=p>:</span>
-    <span class=nb>map</span> <span class=o>=</span> <span class=s1>&#39;&#39;&#39;
-</span><span class=s1>W........WW.
-</span><span class=s1>.WWW.....WWW
-</span><span class=s1>....WW...WW.
-</span><span class=s1>.........WW.
-</span><span class=s1>.........W..
-</span><span class=s1>..W......W..
-</span><span class=s1>.W.W.....WW.
-</span><span class=s1>W.W.W.....W.
-</span><span class=s1>.W.W......W.
-</span><span class=s1>..W.......W.
-</span><span class=s1>&#39;&#39;&#39;</span>
-    <span class=n>c</span> <span class=o>=</span> <span class=n>poj2386</span><span class=p>(</span><span class=nb>map</span><span class=p>)</span>
-    <span class=n>dfs_num</span> <span class=o>=</span> <span class=n>c</span><span class=o>.</span><span class=n>walk</span><span class=p>()</span>
-    <span class=nb>print</span><span class=p>(</span><span class=n>dfs_num</span><span class=p>)</span>
-</code></pre></td></tr></table>
-</div>
-</div></div><div class=post-footer id=post-footer>
-<div class=post-info>
-<div class=post-info-line>
-<div class=post-info-mod>
-<span>更新于 2017-08-19</span>
-</div></div>
-<div class=post-info-line>
-<div class=post-info-md><span>
-<a class=link-to-markdown href=/20170819-poj2386/index.md target=_blank>阅读原始文档</a>
-</span></div>
-<div class=post-info-share>
-<span><a href=javascript:void(0); title="分享到 Twitter" data-sharer=twitter data-url=https://spaceack.github.io/20170819-poj2386/ data-title="《挑战程序设计(第二版)》（第二章）POJ No.2386" data-hashtags=《挑战程序设计(第二版)》,python,算法,DFS><i class="fab fa-twitter fa-fw" aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=https://spaceack.github.io/20170819-poj2386/ data-hashtag=《挑战程序设计(第二版)》><i class="fab fa-facebook-square fa-fw" aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 Hacker News" data-sharer=hackernews data-url=https://spaceack.github.io/20170819-poj2386/ data-title="《挑战程序设计(第二版)》（第二章）POJ No.2386"><i class="fab fa-hacker-news fa-fw" aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 Line" data-sharer=line data-url=https://spaceack.github.io/20170819-poj2386/ data-title="《挑战程序设计(第二版)》（第二章）POJ No.2386"><i data-svg-src=https://cdn.jsdelivr.net/npm/simple-icons@6.20.0/icons/line.svg aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=https://spaceack.github.io/20170819-poj2386/ data-title="《挑战程序设计(第二版)》（第二章）POJ No.2386"><i class="fab fa-weibo fa-fw" aria-hidden=true></i></a></span>
-</div>
-</div>
-</div>
-<div class=post-info-more>
-<section class=post-tags><i class="fas fa-tags fa-fw" aria-hidden=true></i>&nbsp;<a href=/tags/%E6%8C%91%E6%88%98%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AC%AC%E4%BA%8C%E7%89%88/>《挑战程序设计(第二版)》</a>,&nbsp;<a href=/tags/python/>python</a>,&nbsp;<a href=/tags/%E7%AE%97%E6%B3%95/>算法</a>,&nbsp;<a href=/tags/dfs/>DFS</a></section>
-<section>
-<span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span>
-</section>
-</div>
-<div class=post-nav><a href=/20170802-%E7%81%AB%E8%BD%A6%E7%A5%A8%E4%B8%AD%E7%9A%84%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6%E4%BF%A1%E6%81%AF/ class=prev rel=prev title=火车票中的社会工程学信息><i class="fas fa-angle-left fa-fw" aria-hidden=true></i>火车票中的社会工程学信息</a>
-<a href=/20170823-%E5%9F%BA%E4%BA%8E%E7%9B%B8%E5%90%8C%E9%A2%9C%E8%89%B2%E8%BF%9E%E9%80%9A%E5%83%8F%E7%B4%A0%E4%B8%AA%E6%95%B0%E7%9A%84%E7%BB%9F%E8%AE%A1%E8%BF%9B%E8%A1%8C%E5%9B%BE%E5%83%8F%E5%AD%97%E7%AC%A6%E8%AF%86%E5%88%AB/ class=next rel=next title=基于相同颜色连通像素个数的统计进行图像字符识别>基于相同颜色连通像素个数的统计进行图像字符识别<i class="fas fa-angle-right fa-fw" aria-hidden=true></i></a></div>
-</div>
-</article></div>
-</main><footer class=footer>
-<div class=footer-container><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.87.0">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/dillonzq/LoveIt target=_blank rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden=true></i> LoveIt</a>
-</div><div class=footer-line itemscope itemtype=http://schema.org/CreativeWork><i class="far fa-copyright fa-fw" aria-hidden=true></i><span itemprop=copyrightYear>2014 - 2026</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=/about target=_blank>Spaceack</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span><span class=icp-splitter>&nbsp;|&nbsp;</span><br class=icp-br>
-<span class=icp><a href="https://icp.gov.moe/?keyword=20268363" target=_blank>萌ICP备20268363号</a></span></div>
-</div>
-</footer></div>
-<div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部>
-<i class="fas fa-arrow-up fa-fw" aria-hidden=true></i>
-</a><a href=# id=view-comments class=fixed-button title=查看评论>
-<i class="fas fa-comment fa-fw" aria-hidden=true></i>
-</a>
-</div><script type=text/javascript src=https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/algoliasearch@4.13.0/dist/algoliasearch-lite.umd.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:50},comment:{},search:{algoliaAppID:"VXI4TRVSM5",algoliaIndex:"index.zh-cn",algoliaSearchKey:"4987343c645c7f8c574d58035d43fe96",highlightTag:"em",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50,type:"algolia"}}</script><script type=text/javascript src=/js/theme.min.js></script></body>
-</html>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索><i class="fas fa-search" aria-hidden=true></i>
+</a><a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空><i class="fas fa-times-circle" aria-hidden=true></i>
+</a><span class="search-button search-loading" id=search-loading-desktop><i class="fas fa-spinner fa-spin" aria-hidden=true></i>
+</span></span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题><i class="fas fa-adjust" aria-hidden=true></i></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title="春和景明-Spaceack's Blog"><span class=header-title-pre><i class='far fa-kiss-wink-heart fa-fw'></i></span>Spaceack's Blog</a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><div class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索><i class="fas fa-search" aria-hidden=true></i>
+</a><a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空><i class="fas fa-times-circle" aria-hidden=true></i>
+</a><span class="search-button search-loading" id=search-loading-mobile><i class="fas fa-spinner fa-spin" aria-hidden=true></i></span></div><a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>取消</a></div><a class=menu-item href=/posts/ title>所有文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a class=menu-item href=/links/ title>友链</a><a class=menu-item href=/about/ title>关于</a><a class=menu-item href=/challenge/ title>战利品</a><a class=menu-item href=/book/ title>读书</a><a class=menu-item href=https://github.com/spaceack title=GitHub rel="noopener noreffer" target=_blank><i class='fab fa-github fa-fw'></i></a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust" aria-hidden=true></i></a></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=main><div class=container><div class=toc id=toc-auto><h2 class=toc-title>目录</h2><div class=toc-content id=toc-content-auto></div></div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">《挑战程序设计(第二版)》（第二章）POJ No.2386</h1><div class=post-meta><div class=post-meta-line><span class=post-author><a href=/about title=Author rel=author class=author><i class="fas fa-user-circle" aria-hidden=true></i>Spaceack</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/%E7%AE%97%E6%B3%95/><i class="far fa-folder" aria-hidden=true></i>算法</a></span></div><div class=post-meta-line><i class="far fa-calendar-alt" aria-hidden=true></i>&nbsp;<time datetime=2017-08-19>2017-08-19</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden=true></i>&nbsp;约 382 字&nbsp;
+<i class="far fa-clock" aria-hidden=true></i>&nbsp;预计阅读 1 分钟&nbsp;</div></div><div class="details toc" id=toc-static data-kept><div class="details-summary toc-title"><span>目录</span>
+<span><i class="details-icon fas fa-angle-right" aria-hidden=true></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><ul><li><a href=#poj-2386>POJ 2386</a></li></ul></li></ul></nav></div></div><div class=content id=content><h3 id=poj-2386>POJ 2386</h3><ul><li>问题:</li><li>有一个大小为N×M的园子，雨后积起了水。八连通的积水被认为是连在一起的。求园子里一共有多少水洼？\</li><li>限制条件N,M&lt;=100</li><li>输入</li></ul><div class="code-block code-line-numbers open" style="counter-reset:code-block 0"><div class="code-header language-"><span class=code-title><i class="arrow fas fa-angle-right" aria-hidden=true></i></span>
+<span class=ellipses><i class="fas fa-ellipsis-h" aria-hidden=true></i></span>
+<span class=copy title=复制到剪贴板><i class="far fa-copy" aria-hidden=true></i></span></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>W........WW.
+</span></span><span class=line><span class=cl>.WWW.....WWW
+</span></span><span class=line><span class=cl>....WW...WW.
+</span></span><span class=line><span class=cl>.........WW.
+</span></span><span class=line><span class=cl>.........W..
+</span></span><span class=line><span class=cl>..W......W..
+</span></span><span class=line><span class=cl>.W.W.....WW.
+</span></span><span class=line><span class=cl>W.W.W.....W.
+</span></span><span class=line><span class=cl>.W.W......W.
+</span></span><span class=line><span class=cl>..W.......W.</span></span></code></pre></div></div><ul><li>输出: 3</li><li>题解:</li></ul><div class="code-block code-line-numbers open" style="counter-reset:code-block 0"><div class="code-header language-"><span class=code-title><i class="arrow fas fa-angle-right" aria-hidden=true></i></span>
+<span class=ellipses><i class="fas fa-ellipsis-h" aria-hidden=true></i></span>
+<span class=copy title=复制到剪贴板><i class="far fa-copy" aria-hidden=true></i></span></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>DFS次数为水洼的个数，</span></span></code></pre></div></div><ul><li>POJ No.2386 python 实现:</li></ul><div class="code-block code-line-numbers" style="counter-reset:code-block 0"><div class="code-header language-python"><span class=code-title><i class="arrow fas fa-angle-right" aria-hidden=true></i></span>
+<span class=ellipses><i class="fas fa-ellipsis-h" aria-hidden=true></i></span>
+<span class=copy title=复制到剪贴板><i class="far fa-copy" aria-hidden=true></i></span></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=c1># POJ No.2386</span>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>poj2386</span><span class=p>(</span><span class=nb>object</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=nb>map</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>row_num</span> <span class=o>=</span> <span class=mi>10</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>col_num</span> <span class=o>=</span> <span class=mi>12</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>m</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>matrix</span><span class=p>(</span><span class=nb>map</span><span class=o>.</span><span class=n>replace</span><span class=p>(</span><span class=s1>&#39;</span><span class=se>\n</span><span class=s1>&#39;</span><span class=p>,</span><span class=s1>&#39;&#39;</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>walked_set</span> <span class=o>=</span> <span class=nb>set</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>dfs_num</span> <span class=o>=</span> <span class=mi>0</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>matrix</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=nb>map</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=s1>&#39;&#39;&#39;
+</span></span></span><span class=line><span class=cl><span class=s1>        desc: 字符串转数组，方便遍历
+</span></span></span><span class=line><span class=cl><span class=s1>        :return [&#39;row0&#39;,&#39;row1&#39;...]
+</span></span></span><span class=line><span class=cl><span class=s1>        &#39;&#39;&#39;</span>
+</span></span><span class=line><span class=cl>        <span class=n>col_num</span> <span class=o>=</span> <span class=mi>0</span>
+</span></span><span class=line><span class=cl>        <span class=n>matrix</span> <span class=o>=</span> <span class=p>[]</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=n>r</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>row_num</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>            <span class=n>matrix</span><span class=o>.</span><span class=n>append</span><span class=p>(</span><span class=nb>map</span><span class=p>[</span><span class=n>col_num</span><span class=p>:</span> <span class=n>col_num</span> <span class=o>+</span> <span class=bp>self</span><span class=o>.</span><span class=n>col_num</span><span class=p>])</span>
+</span></span><span class=line><span class=cl>            <span class=n>col_num</span> <span class=o>=</span> <span class=n>col_num</span> <span class=o>+</span> <span class=bp>self</span><span class=o>.</span><span class=n>col_num</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>matrix</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>dfs</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>x</span><span class=p>,</span> <span class=n>y</span><span class=p>,</span> <span class=n>char</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=s1>&#39;&#39;&#39;
+</span></span></span><span class=line><span class=cl><span class=s1>        desc:用递归实现搜索范围内相同字符
+</span></span></span><span class=line><span class=cl><span class=s1>        :param x: 
+</span></span></span><span class=line><span class=cl><span class=s1>        :param y: 
+</span></span></span><span class=line><span class=cl><span class=s1>        :param char: 
+</span></span></span><span class=line><span class=cl><span class=s1>        :return: 
+</span></span></span><span class=line><span class=cl><span class=s1>        &#39;&#39;&#39;</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=mi>0</span> <span class=o>&gt;</span> <span class=n>x</span> <span class=ow>or</span> <span class=mi>0</span> <span class=o>&gt;</span> <span class=n>y</span> <span class=ow>or</span> <span class=n>x</span> <span class=o>&gt;=</span> <span class=bp>self</span><span class=o>.</span><span class=n>row_num</span>  <span class=ow>or</span> <span class=n>y</span> <span class=o>&gt;=</span> <span class=bp>self</span><span class=o>.</span><span class=n>col_num</span> <span class=p>:</span> <span class=c1># 越界检查</span>
+</span></span><span class=line><span class=cl>            <span class=k>return</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=nb>tuple</span><span class=p>([</span><span class=n>x</span><span class=p>,</span><span class=n>y</span><span class=p>])</span> <span class=ow>in</span> <span class=bp>self</span><span class=o>.</span><span class=n>walked_set</span><span class=p>:</span> <span class=c1># 重复遍历检查</span>
+</span></span><span class=line><span class=cl>            <span class=k>return</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=n>char</span> <span class=o>!=</span> <span class=bp>self</span><span class=o>.</span><span class=n>m</span><span class=p>[</span><span class=n>x</span><span class=p>][</span><span class=n>y</span><span class=p>]:</span> <span class=c1># 目标字符检查</span>
+</span></span><span class=line><span class=cl>            <span class=k>return</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>walked_set</span><span class=o>.</span><span class=n>add</span><span class=p>(</span><span class=nb>tuple</span><span class=p>([</span><span class=n>x</span><span class=p>,</span> <span class=n>y</span><span class=p>]))</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>dfs</span><span class=p>(</span><span class=n>x</span> <span class=o>+</span> <span class=mi>1</span><span class=p>,</span> <span class=n>y</span><span class=p>,</span> <span class=n>char</span><span class=p>)</span>  <span class=c1># x</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>dfs</span><span class=p>(</span><span class=n>x</span><span class=p>,</span> <span class=n>y</span> <span class=o>+</span> <span class=mi>1</span><span class=p>,</span> <span class=n>char</span><span class=p>)</span>  <span class=c1># y</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>dfs</span><span class=p>(</span><span class=n>x</span> <span class=o>-</span> <span class=mi>1</span><span class=p>,</span> <span class=n>y</span><span class=p>,</span> <span class=n>char</span><span class=p>)</span>  <span class=c1># -x</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>dfs</span><span class=p>(</span><span class=n>x</span><span class=p>,</span> <span class=n>y</span> <span class=o>-</span> <span class=mi>1</span><span class=p>,</span> <span class=n>char</span><span class=p>)</span>  <span class=c1># -y</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>dfs</span><span class=p>(</span><span class=n>x</span> <span class=o>+</span> <span class=mi>1</span><span class=p>,</span> <span class=n>y</span> <span class=o>+</span> <span class=mi>1</span><span class=p>,</span> <span class=n>char</span><span class=p>)</span>  <span class=c1># Ⅰ</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>dfs</span><span class=p>(</span><span class=n>x</span> <span class=o>+</span> <span class=mi>1</span><span class=p>,</span> <span class=n>y</span> <span class=o>-</span> <span class=mi>1</span><span class=p>,</span> <span class=n>char</span><span class=p>)</span>  <span class=c1># Ⅱ</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>dfs</span><span class=p>(</span><span class=n>x</span> <span class=o>-</span> <span class=mi>1</span><span class=p>,</span> <span class=n>y</span> <span class=o>-</span> <span class=mi>1</span><span class=p>,</span> <span class=n>char</span><span class=p>)</span>  <span class=c1># Ⅲ</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>dfs</span><span class=p>(</span><span class=n>x</span> <span class=o>-</span> <span class=mi>1</span><span class=p>,</span> <span class=n>y</span> <span class=o>+</span> <span class=mi>1</span><span class=p>,</span> <span class=n>char</span><span class=p>)</span>  <span class=c1># Ⅳ</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>walk</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=s1>&#39;&#39;&#39;
+</span></span></span><span class=line><span class=cl><span class=s1>        desc: 对矩阵遍历
+</span></span></span><span class=line><span class=cl><span class=s1>        :return: 
+</span></span></span><span class=line><span class=cl><span class=s1>        &#39;&#39;&#39;</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=n>x</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>row_num</span><span class=o>-</span><span class=mi>1</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>            <span class=k>for</span> <span class=n>y</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>col_num</span><span class=o>-</span><span class=mi>1</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>                <span class=k>if</span> <span class=nb>tuple</span><span class=p>([</span><span class=n>x</span><span class=p>,</span> <span class=n>y</span><span class=p>])</span> <span class=ow>in</span> <span class=bp>self</span><span class=o>.</span><span class=n>walked_set</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>                    <span class=k>continue</span>
+</span></span><span class=line><span class=cl>                <span class=k>if</span> <span class=bp>self</span><span class=o>.</span><span class=n>m</span><span class=p>[</span><span class=n>x</span><span class=p>][</span><span class=n>y</span><span class=p>]</span> <span class=o>==</span> <span class=s1>&#39;.&#39;</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>                    <span class=k>continue</span>
+</span></span><span class=line><span class=cl>                <span class=k>if</span> <span class=bp>self</span><span class=o>.</span><span class=n>m</span><span class=p>[</span><span class=n>x</span><span class=p>][</span><span class=n>y</span><span class=p>]</span> <span class=o>==</span> <span class=s1>&#39;W&#39;</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>                    <span class=bp>self</span><span class=o>.</span><span class=n>dfs</span><span class=p>(</span><span class=n>x</span><span class=p>,</span> <span class=n>y</span><span class=p>,</span> <span class=s1>&#39;W&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>                    <span class=bp>self</span><span class=o>.</span><span class=n>dfs_num</span> <span class=o>+=</span><span class=mi>1</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=bp>self</span><span class=o>.</span><span class=n>dfs_num</span>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=vm>__name__</span> <span class=o>==</span> <span class=s1>&#39;__main__&#39;</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=nb>map</span> <span class=o>=</span> <span class=s1>&#39;&#39;&#39;
+</span></span></span><span class=line><span class=cl><span class=s1>W........WW.
+</span></span></span><span class=line><span class=cl><span class=s1>.WWW.....WWW
+</span></span></span><span class=line><span class=cl><span class=s1>....WW...WW.
+</span></span></span><span class=line><span class=cl><span class=s1>.........WW.
+</span></span></span><span class=line><span class=cl><span class=s1>.........W..
+</span></span></span><span class=line><span class=cl><span class=s1>..W......W..
+</span></span></span><span class=line><span class=cl><span class=s1>.W.W.....WW.
+</span></span></span><span class=line><span class=cl><span class=s1>W.W.W.....W.
+</span></span></span><span class=line><span class=cl><span class=s1>.W.W......W.
+</span></span></span><span class=line><span class=cl><span class=s1>..W.......W.
+</span></span></span><span class=line><span class=cl><span class=s1>&#39;&#39;&#39;</span>
+</span></span><span class=line><span class=cl>    <span class=n>c</span> <span class=o>=</span> <span class=n>poj2386</span><span class=p>(</span><span class=nb>map</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>dfs_num</span> <span class=o>=</span> <span class=n>c</span><span class=o>.</span><span class=n>walk</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=nb>print</span><span class=p>(</span><span class=n>dfs_num</span><span class=p>)</span></span></span></code></pre></div></div></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span>更新于 2017-08-19</span></div></div><div class=post-info-line><div class=post-info-md><span><a class=link-to-markdown href=/20170819-poj2386/index.md target=_blank>阅读原始文档</a></span></div><div class=post-info-share><span><a href=javascript:void(0); title="分享到 X" data-sharer=x data-url=https://spaceack.github.io/20170819-poj2386/ data-title="《挑战程序设计(第二版)》（第二章）POJ No.2386" data-hashtags=《挑战程序设计(第二版)》,python,算法,DFS><i class="fab fa-x-twitter" aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 Threads" data-sharer=threads data-url=https://spaceack.github.io/20170819-poj2386/ data-title="《挑战程序设计(第二版)》（第二章）POJ No.2386"><i class="fab fa-threads" aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=https://spaceack.github.io/20170819-poj2386/ data-hashtag=《挑战程序设计(第二版)》><i class="fab fa-facebook-square" aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 Hacker News" data-sharer=hackernews data-url=https://spaceack.github.io/20170819-poj2386/ data-title="《挑战程序设计(第二版)》（第二章）POJ No.2386"><i class="fab fa-hacker-news" aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 Line" data-sharer=line data-url=https://spaceack.github.io/20170819-poj2386/ data-title="《挑战程序设计(第二版)》（第二章）POJ No.2386"><i data-svg-src=https://cdn.jsdelivr.net/npm/simple-icons@15.14.0/icons/line.svg aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=https://spaceack.github.io/20170819-poj2386/ data-title="《挑战程序设计(第二版)》（第二章）POJ No.2386"><i class="fab fa-weibo" aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 Diaspora" data-sharer=diaspora data-url=https://spaceack.github.io/20170819-poj2386/ data-title="《挑战程序设计(第二版)》（第二章）POJ No.2386" data-description><i class="fab fa-diaspora" aria-hidden=true></i></a><a href="https://t.me/share/url?url=https%3a%2f%2fspaceack.github.io%2f20170819-poj2386%2f&amp;text=%e3%80%8a%e6%8c%91%e6%88%98%e7%a8%8b%e5%ba%8f%e8%ae%be%e8%ae%a1%28%e7%ac%ac%e4%ba%8c%e7%89%88%29%e3%80%8b%ef%bc%88%e7%ac%ac%e4%ba%8c%e7%ab%a0%ef%bc%89POJ%20No.2386" target=_blank title="分享到 Telegram"><i class="fab fa-telegram" aria-hidden=true></i></a></span></div></div></div><div class=post-info-more><section class=post-tags><i class="fas fa-tags" aria-hidden=true></i>&nbsp;<a href></a>,&nbsp;<a href=/tags/python/>Python</a>,&nbsp;<a href=/tags/%E7%AE%97%E6%B3%95/>算法</a>,&nbsp;<a href=/tags/dfs/>DFS</a></section><section><span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span></section></div><div class=post-nav><a href=/20170802-%E7%81%AB%E8%BD%A6%E7%A5%A8%E4%B8%AD%E7%9A%84%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6%E4%BF%A1%E6%81%AF/ class=prev rel=prev title=火车票中的社会工程学信息><i class="fas fa-angle-left" aria-hidden=true></i>火车票中的社会工程学信息</a>
+<a href=/20170823-%E5%9F%BA%E4%BA%8E%E7%9B%B8%E5%90%8C%E9%A2%9C%E8%89%B2%E8%BF%9E%E9%80%9A%E5%83%8F%E7%B4%A0%E4%B8%AA%E6%95%B0%E7%9A%84%E7%BB%9F%E8%AE%A1%E8%BF%9B%E8%A1%8C%E5%9B%BE%E5%83%8F%E5%AD%97%E7%AC%A6%E8%AF%86%E5%88%AB/ class=next rel=next title=基于相同颜色连通像素个数的统计进行图像字符识别>基于相同颜色连通像素个数的统计进行图像字符识别<i class="fas fa-angle-right" aria-hidden=true></i></a></div></div></article></div></main><footer class=footer><div class=footer-container><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.145.0">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/dillonzq/LoveIt target=_blank rel="noopener noreffer" title="LoveIt 0.3.1-DEV"><i class="far fa-kiss-wink-heart" aria-hidden=true></i> LoveIt</a></div><div class=footer-line itemscope itemtype=http://schema.org/CreativeWork><i class="far fa-copyright" aria-hidden=true></i><span itemprop=copyrightYear>2014 - 2026</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=/about target=_blank>Spaceack</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span><span class=icp-splitter>&nbsp;|&nbsp;</span><br class=icp-br><span class=icp><a href="https://icp.gov.moe/?keyword=20268363" target=_blank>萌ICP备20268363号</a></span></div></div></footer></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部><i class="fas fa-arrow-up" aria-hidden=true></i></a></div><div id=fixed-buttons-hidden><a href=# id=view-comments class=fixed-button title=查看评论><i class="fas fa-comment" aria-hidden=true></i></a></div><script src=https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js></script><script src=https://cdn.jsdelivr.net/npm/algoliasearch@5.20.2/dist/lite/builds/browser.umd.min.js></script><script src=https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js></script><script src=https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js></script><script src=https://cdn.jsdelivr.net/npm/sharer.js@0.5.2/sharer.min.js></script><script>window.config={comment:{},search:{algoliaAppID:"VXI4TRVSM5",algoliaIndex:"index.zh-cn",algoliaSearchKey:"4987343c645c7f8c574d58035d43fe96",highlightTag:"em",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50,type:"algolia"}}</script><script src=/js/theme.min.js></script></body></html>

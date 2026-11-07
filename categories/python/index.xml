@@ -1,1 +1,210 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Python - 分类 - 春和景明-Spaceack's Blog</title><link>https://spaceack.github.io/categories/python/</link><description>Python - 分类 - 春和景明-Spaceack's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>spaceack@qq.com (Spaceack)</managingEditor><webMaster>spaceack@qq.com (Spaceack)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 26 Oct 2024 23:00:00 +0000</lastBuildDate><atom:link href="https://spaceack.github.io/categories/python/" rel="self" type="application/rss+xml"/><item><title>Python利用matplotlib万花尺画月饼</title><link>https://spaceack.github.io/20201001-python%E5%88%A9%E7%94%A8matplotlib%E4%B8%87%E8%8A%B1%E5%B0%BA%E7%94%BB%E6%9C%88%E9%A5%BC/</link><pubDate>Thu, 01 Oct 2020 21:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20201001-python%E5%88%A9%E7%94%A8matplotlib%E4%B8%87%E8%8A%B1%E5%B0%BA%E7%94%BB%E6%9C%88%E9%A5%BC/</guid><description>今日正值中秋节，是中国民间的传统节日。中秋节自古便有祭月、赏月、吃月饼、玩花灯、赏桂花、饮桂花酒等民俗，流传至今，经久不息。 通过参加 画月饼过</description></item><item><title>RAC-Python进程假死根本原因分析</title><link>https://spaceack.github.io/20241026-rac-python%E8%BF%9B%E7%A8%8B%E5%81%87%E6%AD%BB%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90/</link><pubDate>Sat, 26 Oct 2024 23:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20241026-rac-python%E8%BF%9B%E7%A8%8B%E5%81%87%E6%AD%BB%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90/</guid><description>问题现象 一个Python进行执行特定操作时，CPU占用100%。有阻塞情况发生，无法处理其它任务。服务状态是正常的。服务进程并没有崩溃。 分析</description></item><item><title>蓝桥 卷“兔”来袭编程竞赛专场-10仿射加密 题解</title><link>https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA10%E4%BB%BF%E5%B0%84%E5%8A%A0%E5%AF%86/</link><pubDate>Sun, 26 Feb 2023 18:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA10%E4%BB%BF%E5%B0%84%E5%8A%A0%E5%AF%86/</guid><description>赛题介绍 挑战介绍 仿射密码结合了移位密码和乘数密码的特点，是一种替换密码。它是利用加密函数一个字母对一个字母的加密。加密函数是 y=ax+b(mod m) ，且 a,b∈</description></item><item><title>蓝桥 卷“兔”来袭编程竞赛专场-09凯撒加密 题解</title><link>https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA09%E5%87%AF%E6%92%92%E5%8A%A0%E5%AF%86/</link><pubDate>Sun, 26 Feb 2023 17:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA09%E5%87%AF%E6%92%92%E5%8A%A0%E5%AF%86/</guid><description>赛题介绍 挑战介绍 恺撒密码也称恺撒加密、恺撒变换、变换加密，是一种最简单且最广为人知的加密技术。采用的是替换方法对信息中的英文字符循环替换为字</description></item><item><title>蓝桥 卷“兔”来袭编程竞赛专场-08列置换加密 题解</title><link>https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA08%E5%88%97%E7%BD%AE%E6%8D%A2%E5%8A%A0%E5%AF%86/</link><pubDate>Sun, 26 Feb 2023 16:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA08%E5%88%97%E7%BD%AE%E6%8D%A2%E5%8A%A0%E5%AF%86/</guid><description>赛题介绍 挑战介绍 列置换加密是明文以每行固定字数（key 的字母种类数，一般情况下 key 会选择字母不重复的单词）一行一行写下，如果最后一行字数小于每</description></item><item><title>蓝桥 卷“兔”来袭编程竞赛专场-07明码加密 题解</title><link>https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA07%E6%98%8E%E7%A0%81%E5%8A%A0%E5%AF%86/</link><pubDate>Sun, 26 Feb 2023 15:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA07%E6%98%8E%E7%A0%81%E5%8A%A0%E5%AF%86/</guid><description>赛题介绍 挑战介绍 清末，电报技术进入中国。上海大北水线电报公司在 1871 年选用了六千八百九十七个汉字，代以四码数字，编写成了中国最早的电报明码本。为</description></item><item><title>蓝桥 卷“兔”来袭编程竞赛专场-06姜子牙阴书加密 题解</title><link>https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA06%E5%A7%9C%E5%AD%90%E7%89%99%E9%98%B4%E4%B9%A6%E5%8A%A0%E5%AF%86/</link><pubDate>Sun, 26 Feb 2023 14:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA06%E5%A7%9C%E5%AD%90%E7%89%99%E9%98%B4%E4%B9%A6%E5%8A%A0%E5%AF%86/</guid><description>赛题介绍 挑战介绍 姜子牙阴书密码是将一封完整的书信分割成三份，然后由三个送信者各送一份，收信人收到三份书信后再合并成一封完整的情报。如此，即使</description></item><item><title>蓝桥 卷“兔”来袭编程竞赛专场-05棋盘加密 题解</title><link>https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA05%E6%A3%8B%E7%9B%98%E5%8A%A0%E5%AF%86/</link><pubDate>Sun, 26 Feb 2023 13:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA05%E6%A3%8B%E7%9B%98%E5%8A%A0%E5%AF%86/</guid><description>赛题介绍 挑战介绍 棋盘密码是一种坐标加密法。棋盘密码通过将 26 个字母设法变成十位数来达到加密的目的，密钥是一个 5×5 的棋盘，将 26 个英文字母填在棋</description></item><item><title>蓝桥 卷“兔”来袭编程竞赛专场-04栅栏加密 题解</title><link>https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA04%E6%A0%85%E6%A0%8F%E5%8A%A0%E5%AF%86/</link><pubDate>Sun, 26 Feb 2023 11:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA04%E6%A0%85%E6%A0%8F%E5%8A%A0%E5%AF%86/</guid><description>赛题介绍 挑战介绍 栅栏密码是一种简单的移动字符位置的加密方法，规则简单。加密方式是将明文按照一定的字数分成多个组，取每组第一个字连起来得到密文</description></item><item><title>蓝桥 卷“兔”来袭编程竞赛专场-03破解三角形密码 题解</title><link>https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA03%E7%A0%B4%E8%A7%A3%E4%B8%89%E8%A7%92%E5%BD%A2%E5%AF%86%E7%A0%81/</link><pubDate>Sun, 26 Feb 2023 10:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA03%E7%A0%B4%E8%A7%A3%E4%B8%89%E8%A7%92%E5%BD%A2%E5%AF%86%E7%A0%81/</guid><description>赛题介绍 挑战介绍 三角形密码指的是将一串字符串按照正直角三角形的形状排列，传递的信息隐藏在每一行的最后一个字符，然后将所有的行的最后一个字符依</description></item></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Python - 分类 - 春和景明-Spaceack's Blog</title><link>https://spaceack.github.io/categories/python/</link><description>Python - 分类 - 春和景明-Spaceack's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>spaceack@qq.com (Spaceack)</managingEditor><webMaster>spaceack@qq.com (Spaceack)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 26 Oct 2024 23:00:00 +0000</lastBuildDate><atom:link href="https://spaceack.github.io/categories/python/" rel="self" type="application/rss+xml"/><item><title>RAC-Python进程假死根本原因分析</title><link>https://spaceack.github.io/20241026-rac-python%E8%BF%9B%E7%A8%8B%E5%81%87%E6%AD%BB%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90/</link><pubDate>Sat, 26 Oct 2024 23:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20241026-rac-python%E8%BF%9B%E7%A8%8B%E5%81%87%E6%AD%BB%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90/</guid><description><![CDATA[<h2 id="问题现象">问题现象</h2>
+<ul>
+<li>一个Python进行执行特定操作时，CPU占用100%。有阻塞情况发生，无法处理其它任务。服务状态是正常的。服务进程并没有崩溃。</li>
+</ul>
+<h2 id="分析原因">分析原因</h2>
+<h3 id="问题定位">问题定位</h3>
+<ul>
+<li>由于服务日志与系统日志没有报任何错误信息，给问题排查定位带来了一定的阻碍。</li>
+<li>因此，借助Python 程序的采样分析器<code>py-spy</code>来帮助我们排查问题，<code>py-spy</code>主要使用<code>Rust</code>语言编写。开销低，使用另外的进程对Python程序监控，无需<code>插桩</code>等改动代码， 绿色无污染，可以安全的对生产代码作监控。通过生成的<code>火焰图</code>可知，程序阻塞在一个<code>re</code>的正则函数上。
+</li>
+</ul>
+<h3 id="正则分析">正则分析</h3>
+<ul>
+<li>正则表达式的复杂度通常取决于其模式的长度和复杂性。当正则表达式包含多个<code>非贪婪匹配</code>和通配符，这通常会导致回溯（backtracking），尤其是在匹配失败时。回溯会增加正则表达式的执行时间，尤其是在输入文本较长的情况下。</li>
+<li>正则表达式的执行时间通常与输入文本的长度成正比。对于一个长度为 <code>n</code> 的输入文本，最坏情况下，正则表达式的复杂度可能是 <code>O(n^2)</code>，尤其是在存在大量回溯的情况下。</li>
+<li>如果输入文本较短，且正则表达式的匹配路径较为简单，复杂度可能接近 <code>O(n)</code>。如果输入文本较长，且正则表达式包含多个非贪婪匹配和通配符，复杂度可能接近 <code>O(n^2)</code>。</li>
+</ul>
+<h3 id="测试验证">测试验证</h3>
+<ul>
+<li>分别观测数据规模为1，5，10，15，20 的正则处理的时间</li>
+<li>得到时间消耗分别为0.05s, 0.11s,  2,29s,18.89s,  81.97s</li>
+<li>直观感觉这是一个指数级别的增涨。为了更加直观观测，可以使用二次拟合（抛物线法）做个拟合图。
+</li>
+<li>从拟合图可直观观测到， 前两个点增长较为平缓， 从第三个点开始，斜率徒增。以下是拟合代码。</li>
+</ul>
+<div class="code-block code-line-numbers" style="counter-reset: code-block 0">
+    <div class="code-header language-python3">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python3" data-lang="python3"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 给定的数据</span>
+</span></span><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.11</span><span class="p">,</span> <span class="mf">2.29</span><span class="p">,</span> <span class="mf">18.89</span><span class="p">,</span> <span class="mf">81.97</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 计算二次多项式拟合的系数</span>
+</span></span><span class="line"><span class="cl"><span class="n">coefficients</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">coefficients</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 生成拟合曲线上的点</span>
+</span></span><span class="line"><span class="cl"><span class="n">fit_curve</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">c</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 绘制原始数据点和拟合曲线</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data points&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">fit_curve</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Quadratic fit&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 添加图例和标签</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Quadratic Fit&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 显示图形</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></span></span></code></pre></div></div>
+<ul>
+<li>问题得到了定位与验证，是由于一个正则解析不合理导致。</li>
+</ul>
+<h2 id="解决方案">解决方案</h2>
+<ul>
+<li>对文本进行分段匹配，避免一次性匹配整个文本。</li>
+</ul>
+<h2 id="经验总结">经验总结</h2>
+<ol>
+<li>对正则的处理一定要格外小心，尽量使用复杂度低的正则解析。若有复杂的解析表达式，尽可能对其拆分，分段处理。</li>
+<li>需要对正则表达式进行测试，尤其是不同量级规模的文本。增加对文本规模的限制。</li>
+<li>灵活运用<code>py-spy</code>等性能分析工具，提升排查问题效率</li>
+</ol>
+<hr>
+<p>最后分享一段关于正则的笑话：</p>]]></description></item><item><title>蓝桥 卷“兔”来袭编程竞赛专场-10仿射加密 题解</title><link>https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA10%E4%BB%BF%E5%B0%84%E5%8A%A0%E5%AF%86/</link><pubDate>Sun, 26 Feb 2023 18:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA10%E4%BB%BF%E5%B0%84%E5%8A%A0%E5%AF%86/</guid><description><![CDATA[<h2 id="赛题介绍">赛题介绍</h2>
+<h3 id="挑战介绍">挑战介绍</h3>
+<ul>
+<li>
+<p>仿射密码结合了移位密码和乘数密码的特点，是一种替换密码。它是利用加密函数一个字母对一个字母的加密。加密函数是  <code>y=ax+b(mod m)</code> ，且  <code>a,b∈Zm</code>  （a、b 的值在 m 范围内），且 a、m 互质。 m 是字符集的大小，例如以 26 个字母作为编码，则  <code>m=26</code>  时，a 只能是 1、3、5、7、9、11、15、17、19、21、23、25 其中之一，b 为 0-25 之间的一个值，包括 0 和 25。</p>]]></description></item><item><title>蓝桥 卷“兔”来袭编程竞赛专场-09凯撒加密 题解</title><link>https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA09%E5%87%AF%E6%92%92%E5%8A%A0%E5%AF%86/</link><pubDate>Sun, 26 Feb 2023 17:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA09%E5%87%AF%E6%92%92%E5%8A%A0%E5%AF%86/</guid><description><![CDATA[<h2 id="赛题介绍">赛题介绍</h2>
+<h3 id="挑战介绍">挑战介绍</h3>
+<p>恺撒密码也称恺撒加密、恺撒变换、变换加密，是一种最简单且最广为人知的加密技术。采用的是替换方法对信息中的英文字符循环替换为字母表序列中该字符后面或前面的第 N 个字符。例如当  <code>N = 2</code>  时，所有的字母 A 都会被替换成 C，B 替换成 D，以此类推。即字母表的对照关系如下：</p>]]></description></item><item><title>蓝桥 卷“兔”来袭编程竞赛专场-08列置换加密 题解</title><link>https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA08%E5%88%97%E7%BD%AE%E6%8D%A2%E5%8A%A0%E5%AF%86/</link><pubDate>Sun, 26 Feb 2023 16:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA08%E5%88%97%E7%BD%AE%E6%8D%A2%E5%8A%A0%E5%AF%86/</guid><description><![CDATA[<h2 id="赛题介绍">赛题介绍</h2>
+<h3 id="挑战介绍">挑战介绍</h3>
+<ul>
+<li>列置换加密是明文以每行固定字数（key 的字母种类数，一般情况下 key 会选择字母不重复的单词）一行一行写下，如果最后一行字数小于每行的固定字数，则使用特殊符号补充，这样就形成了一个矩阵。然后依照 key 的字母顺序对矩阵列的位置进行调整，最后再将排列好的列依次读取，得到密文。例如：</li>
+<li>明文： <code>welcometolq</code></li>
+<li>key： <code>qiao</code></li>
+<li>补充字符： <code>,</code></li>
+<li>首先确定 qiao 有 4 个字母，长度为 4。然后按照 26 个英文字母的顺序对 qiao 进行编号，越靠前的字母编号越小，可以得到的编号依次是 4-2-1-3。</li>
+<li>然后对明文分行。每行 4 （key 的长度）个字母，则可以写成 4 列：</li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>1</th>
+          <th>2</th>
+          <th>3</th>
+          <th>4</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>w</td>
+          <td>e</td>
+          <td>l</td>
+          <td>c</td>
+      </tr>
+      <tr>
+          <td>o</td>
+          <td>m</td>
+          <td>e</td>
+          <td>t</td>
+      </tr>
+      <tr>
+          <td>o</td>
+          <td>l</td>
+          <td>q</td>
+          <td>,</td>
+      </tr>
+  </tbody>
+</table>
+<ul>
+<li>由于最后一行缺一个字母，就使用补充字符填充。</li>
+<li>最后根据 key 的编号顺序对矩阵的列顺序调整，就有：</li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>4</th>
+          <th>2</th>
+          <th>1</th>
+          <th>3</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>c</td>
+          <td>e</td>
+          <td>w</td>
+          <td>l</td>
+      </tr>
+      <tr>
+          <td>t</td>
+          <td>m</td>
+          <td>o</td>
+          <td>e</td>
+      </tr>
+      <tr>
+          <td>,</td>
+          <td>l</td>
+          <td>o</td>
+          <td>q</td>
+      </tr>
+  </tbody>
+</table>
+<ul>
+<li>然后一列一列地依次读取内容，就得到密文：ct,emlwooleq</li>
+<li>解密的方式和加密时的顺序相反，通过字母总数和 key 的长度获得列数，其次根据列数将密文一列一列地展开，然后通过 key 的编号顺序调整列位置，最后一行一行读取内容就可以得到明文。</li>
+</ul>
+<h3 id="挑战目标">挑战目标</h3>
+<ul>
+<li>补充文件  <code>column_permutation.py</code>  下  <code>column_permutation_encryption(text)</code>  函数中的 TODO 部分，使其实现我们需要的功能：</li>
+<li>输入一段文本，使用 key： <code>qiao</code>  和补充字符： <code>,</code> （英文逗号）对内容进行列置换加密，并将密文返回。</li>
+<li>如果输入的文本中没有内容，则返回  <code>None</code> 。</li>
+</ul>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">column_permutation_encryption</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;TODO
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">encryption_text</span> <span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">encryption_text</span></span></span></code></pre></div></div>
+<h3 id="挑战要求">挑战要求</h3>
+<ul>
+<li>题目需使用 Python3 完成，不能使用标准库和第三方库。</li>
+<li>函数传入的 text 为字符串类型，可能为空、 <code>None</code>  等值。</li>
+<li>不得修改文件路径、文件名  <code>column_permutation.py</code>  以及函数名  <code>column_permutation_encryption(text)</code> 。</li>
+<li>请只保留文件  <code>column_permutation.py</code>  及文件中函数，不要添加测试或执行代码，避免检测时出错。</li>
+<li>线上环境调试代码时，请使用  <code>python3 column_permutation.py</code>  命令调用 Python3。</li>
+</ul>
+<h3 id="参考样例">参考样例</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># 样例 1</span>
+</span></span><span class="line"><span class="cl"><span class="n">text</span> <span class="o">=</span> <span class="s2">&#34;welcometolq&#34;</span><span class="p">;</span> <span class="n">encryption_text</span> <span class="o">=</span> <span class="s2">&#34;ct,emlwooleq&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 样例 2</span>
+</span></span><span class="line"><span class="cl"><span class="n">text</span> <span class="o">=</span> <span class="s2">&#34;welcometolq &#34;</span><span class="p">;</span> <span class="n">encryption_text</span> <span class="o">=</span> <span class="s2">&#34;ct emlwooleq&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 样例 3</span>
+</span></span><span class="line"><span class="cl"><span class="n">text</span> <span class="o">=</span> <span class="s2">&#34;w&#34;</span><span class="p">;</span> <span class="n">encryption_text</span> <span class="o">=</span> <span class="s2">&#34;,,w,&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 样例 4</span>
+</span></span><span class="line"><span class="cl"><span class="n">text</span> <span class="o">=</span> <span class="kc">None</span><span class="p">;</span> <span class="n">encryption_text</span> <span class="o">=</span> <span class="kc">None</span></span></span></code></pre></div></div>
+<p>注意：最终实现效果以完全满足要求为准，而不是仅满足如上样例。</p>]]></description></item><item><title>蓝桥 卷“兔”来袭编程竞赛专场-07明码加密 题解</title><link>https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA07%E6%98%8E%E7%A0%81%E5%8A%A0%E5%AF%86/</link><pubDate>Sun, 26 Feb 2023 15:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA07%E6%98%8E%E7%A0%81%E5%8A%A0%E5%AF%86/</guid><description><![CDATA[<h2 id="赛题介绍">赛题介绍</h2>
+<h3 id="挑战介绍">挑战介绍</h3>
+<ul>
+<li>清末，电报技术进入中国。上海大北水线电报公司在 1871 年选用了六千八百九十七个汉字，代以四码数字，编写成了中国最早的电报明码本。为了传输的内容可以保密，又设计出了将明码本加密的方法，于是就有了比较复杂的密码。后来，这种加密技术被应用在军事和商业情报机构中。</li>
+<li>加密的具体方法是：例如“布”这个字的电报电码为 1530，加密和减密的钥匙均为 9853。先用明码的四个数字分别与加密钥匙的四个数字相加，例如第一位数相加  <code>1 + 9 = 10</code> ，凡 10 都作  <code>0</code> ；第二位数相加  <code>5 + 8 = 13</code> ，隐去 10，只作  <code>3</code> ；第三位数相加  <code>3 + 5 = 8</code> ；第四位数相加（如果是 0，则作 10 ）  <code>10 + 3 = 13</code> ，隐去 10，只作  <code>3</code> 。那么“布”的明码 1530 就成了密码 0383。解密时相反，使用密码减去解密钥匙的四个数字，即可获得明码，从而找到对应的文字。</li>
+</ul>
+<h3 id="挑战目标">挑战目标</h3>
+<p>补充文件  <code>plain_code.py</code>  下  <code>plain_code_encryption(numb)</code>  函数中的 TODO 部分，使其实现我们需要的功能：</p>]]></description></item><item><title>蓝桥 卷“兔”来袭编程竞赛专场-06姜子牙阴书加密 题解</title><link>https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA06%E5%A7%9C%E5%AD%90%E7%89%99%E9%98%B4%E4%B9%A6%E5%8A%A0%E5%AF%86/</link><pubDate>Sun, 26 Feb 2023 14:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA06%E5%A7%9C%E5%AD%90%E7%89%99%E9%98%B4%E4%B9%A6%E5%8A%A0%E5%AF%86/</guid><description><![CDATA[<h2 id="赛题介绍">赛题介绍</h2>
+<h3 id="挑战介绍">挑战介绍</h3>
+<p>姜子牙阴书密码是将一封完整的书信分割成三份，然后由三个送信者各送一份，收信人收到三份书信后再合并成一封完整的情报。如此，即使某个信使被敌军抓获，敌军也不会获得完整的情报。</p>]]></description></item><item><title>蓝桥 卷“兔”来袭编程竞赛专场-05棋盘加密 题解</title><link>https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA05%E6%A3%8B%E7%9B%98%E5%8A%A0%E5%AF%86/</link><pubDate>Sun, 26 Feb 2023 13:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA05%E6%A3%8B%E7%9B%98%E5%8A%A0%E5%AF%86/</guid><description><![CDATA[<h2 id="赛题介绍">赛题介绍</h2>
+<h3 id="挑战介绍">挑战介绍</h3>
+<p>棋盘密码是一种坐标加密法。棋盘密码通过将 26 个字母设法变成十位数来达到加密的目的，密钥是一个 5×5 的棋盘，将 26 个英文字母填在棋盘的格子里，其中 i 和 j 在同一个方格中，这样就构造出一个完整的棋盘。每一个字母对应有横和纵两个坐标，这两个坐标的组合就是该字母的密文。如下棋盘：</p>]]></description></item><item><title>蓝桥 卷“兔”来袭编程竞赛专场-04栅栏加密 题解</title><link>https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA04%E6%A0%85%E6%A0%8F%E5%8A%A0%E5%AF%86/</link><pubDate>Sun, 26 Feb 2023 11:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA04%E6%A0%85%E6%A0%8F%E5%8A%A0%E5%AF%86/</guid><description><![CDATA[<h2 id="赛题介绍">赛题介绍</h2>
+<h3 id="挑战介绍">挑战介绍</h3>
+<p>栅栏密码是一种简单的移动字符位置的加密方法，规则简单。加密方式是将明文按照一定的字数分成多个组，取每组第一个字连起来得到密文 1，再取每组第二个字连起来得到密文 2，以此类推，最后将密文 1、密文 2&hellip;密文 N 连成整段密文。例如：</p>]]></description></item><item><title>蓝桥 卷“兔”来袭编程竞赛专场-03破解三角形密码 题解</title><link>https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA03%E7%A0%B4%E8%A7%A3%E4%B8%89%E8%A7%92%E5%BD%A2%E5%AF%86%E7%A0%81/</link><pubDate>Sun, 26 Feb 2023 10:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA03%E7%A0%B4%E8%A7%A3%E4%B8%89%E8%A7%92%E5%BD%A2%E5%AF%86%E7%A0%81/</guid><description><![CDATA[<h2 id="赛题介绍">赛题介绍</h2>
+<h3 id="挑战介绍">挑战介绍</h3>
+<p>三角形密码指的是将一串字符串按照正直角三角形的形状排列，传递的信息隐藏在每一行的最后一个字符，然后将所有的行的最后一个字符依次连接，就是需要传递的信息。</p>]]></description></item><item><title>蓝桥 卷“兔”来袭编程竞赛专场-02破解曾公亮密码 题解</title><link>https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA02%E7%A0%B4%E8%A7%A3%E6%9B%BE%E5%85%AC%E4%BA%AE%E5%AF%86%E7%A0%81/</link><pubDate>Sun, 26 Feb 2023 09:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20230226-%E8%93%9D%E6%A1%A5%E5%8D%B7%E5%85%94%E6%9D%A5%E8%A2%AD%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B%E4%B8%93%E5%9C%BA02%E7%A0%B4%E8%A7%A3%E6%9B%BE%E5%85%AC%E4%BA%AE%E5%AF%86%E7%A0%81/</guid><description><![CDATA[<h2 id="赛题介绍">赛题介绍</h2>
+<h3 id="挑战介绍">挑战介绍</h3>
+<p>曾公亮编撰的《武经总要》中记载了一套严谨的军事通信密码，这也是目前发现我国古代战争中最早使用的军用密码表。将战场上可能常用到的情况，用 40 个短语归纳表示，且每个短语前编有固定的数字代码，这 40 个短语及数字代码如下：</p>]]></description></item></channel></rss>

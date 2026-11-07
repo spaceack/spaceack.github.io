@@ -1,1 +1,46 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>browser - 标签 - 春和景明-Spaceack's Blog</title><link>https://spaceack.github.io/tags/browser/</link><description>browser - 标签 - 春和景明-Spaceack's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>spaceack@qq.com (Spaceack)</managingEditor><webMaster>spaceack@qq.com (Spaceack)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 29 Dec 2019 22:00:00 +0000</lastBuildDate><atom:link href="https://spaceack.github.io/tags/browser/" rel="self" type="application/rss+xml"/><item><title>浏览器常用扩展</title><link>https://spaceack.github.io/20191229-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B8%B8%E7%94%A8%E6%89%A9%E5%B1%95/</link><pubDate>Sun, 29 Dec 2019 22:00:00 +0000</pubDate><author>Spaceack</author><guid>https://spaceack.github.io/20191229-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B8%B8%E7%94%A8%E6%89%A9%E5%B1%95/</guid><description>name desc Wappalyzer 网站技术架构分析，分析目标网站所采用的平台构架、网站环境、服务器配置环境、JavaScript框架、编程语言等参数 User-Agent Switcher and Manager User-Agent 管理 EditThisCookie Cookie 管</description></item></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Browser - 标签 - 春和景明-Spaceack's Blog</title><link>https://spaceack.github.io/tags/browser/</link><description>Browser - 标签 - 春和景明-Spaceack's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>spaceack@qq.com (Spaceack)</managingEditor><webMaster>spaceack@qq.com (Spaceack)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 29 Dec 2019 22:00:00 +0000</lastBuildDate><atom:link href="https://spaceack.github.io/tags/browser/" rel="self" type="application/rss+xml"/><item><title>浏览器常用扩展</title><link>https://spaceack.github.io/20191229-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B8%B8%E7%94%A8%E6%89%A9%E5%B1%95/</link><pubDate>Sun, 29 Dec 2019 22:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20191229-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B8%B8%E7%94%A8%E6%89%A9%E5%B1%95/</guid><description><![CDATA[<table>
+  <thead>
+      <tr>
+          <th>name</th>
+          <th>desc</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Wappalyzer</td>
+          <td>网站技术架构分析，分析目标网站所采用的平台构架、网站环境、服务器配置环境、JavaScript框架、编程语言等参数</td>
+      </tr>
+      <tr>
+          <td>User-Agent Switcher and Manager</td>
+          <td>User-Agent  管理</td>
+      </tr>
+      <tr>
+          <td>EditThisCookie</td>
+          <td>Cookie 管理</td>
+      </tr>
+      <tr>
+          <td>QR Code Generator</td>
+          <td>QR Code</td>
+      </tr>
+      <tr>
+          <td>Tampermonkey</td>
+          <td>用户脚本管理器 <a href="https://greasyfork.org/zh-CN" target="_blank" rel="noopener noreffer ">greasyfork</a></td>
+      </tr>
+      <tr>
+          <td>SwitchyOmega</td>
+          <td>代理设置工具</td>
+      </tr>
+      <tr>
+          <td>Vimum</td>
+          <td>使用vim键位操作浏览器</td>
+      </tr>
+      <tr>
+          <td>Video Download Professional</td>
+          <td>媒体下载工具</td>
+      </tr>
+      <tr>
+          <td>highlight multiple</td>
+          <td>多关键词高亮</td>
+      </tr>
+  </tbody>
+</table>]]></description></item></channel></rss>
