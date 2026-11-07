@@ -9,7 +9,6 @@ tags:
   - mysql
   - Docker
   - docker-compose
-weight: 3
 ---
 ## MariaDB双主模式测试
 ### 1. 环境准备
