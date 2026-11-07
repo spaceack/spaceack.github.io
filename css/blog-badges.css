@@ -1,0 +1,52 @@
+/* Site-level badges & counters row (开往 / 博友圈履约 / 十年之约 / 虫洞 / Vercount)
+   Placed in footer via config.toml [params.footer] custom, rendered with safeHTML.
+
+   LoveIt toggles dark mode by setting document.body[theme] = "dark" | "light"
+   (see assets/js/theme.js). We use that attribute to swap the two image
+   variants so each badge stays readable in both themes. */
+
+.site-badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 0.25rem 0;
+}
+
+.site-badges a {
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+}
+
+.site-badges img {
+  height: 32px;
+  width: auto;
+  vertical-align: middle;
+}
+
+/* default (light theme): show light-only images */
+.badge-dark-only {
+  display: none;
+}
+
+/* dark theme: swap */
+body[theme="dark"] .badge-light-only {
+  display: none;
+}
+
+body[theme="dark"] .badge-dark-only {
+  display: inline;
+}
+
+/* Vercount counter line */
+.vercount-line {
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  opacity: 0.85;
+}
+
+.vercount-line span {
+  font-weight: 600;
+}
