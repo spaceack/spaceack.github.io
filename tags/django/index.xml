@@ -110,7 +110,7 @@
 </span></span><span class="line"><span class="cl"><span class="n">MEDIA_URL</span> <span class="o">=</span>  <span class="s1">&#39;/media/&#39;</span>
 </span></span><span class="line"><span class="cl"><span class="n">MEDIA_ROOT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s2">&#34;media&#34;</span><span class="p">)</span></span></span></code></pre></div></div>
 <h2 id="logging-模板">LOGGING 模板</h2>
-<div class="code-block code-line-numbers" style="counter-reset: code-block 0">
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
     <div class="code-header language-python">
         <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
         <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>

@@ -10,7 +10,7 @@
 </span></span><span class="line"><span class="cl">git clone --depth=1 https://github.com/Xuyuanp/nerdtree-git-plugin.git ~/.vim/bundle/nerdtree-git-plugin</span></span></code></pre></div></div>
 <h1 id="更新配置文件">更新配置文件</h1>
 <p>vim ~/.vimrc</p>
-<div class="code-block code-line-numbers" style="counter-reset: code-block 0">
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
     <div class="code-header language-">
         <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
         <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>

@@ -81,7 +81,7 @@
 </li>
 <li>
 <p>step2: 编写docker-compose.yml</p>
-<div class="code-block code-line-numbers" style="counter-reset: code-block 0">
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
     <div class="code-header language-yaml">
         <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
         <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
@@ -209,7 +209,7 @@
 <h4 id="uninstall-old-versions">Uninstall old versions</h4>
 <p><code>sudo apt-get remove docker docker-engine docker.io containerd runc</code></p>
 <h4 id="install-using-the-repository">Install using the repository</h4>
-<div class="code-block code-line-numbers" style="counter-reset: code-block 0">
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
     <div class="code-header language-">
         <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
         <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>

@@ -49,7 +49,7 @@ Mac <code>Shift+option+鼠标列选择</code></p>
     </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">git remote add origin git@github.com:user/project_name.git
 </span></span><span class="line"><span class="cl">git push -u origin master</span></span></code></pre></div></div>
 <h3 id="tag">tag</h3>
-<div class="code-block code-line-numbers" style="counter-reset: code-block 0">
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
     <div class="code-header language-bash">
         <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
         <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>

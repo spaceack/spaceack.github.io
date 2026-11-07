@@ -1,5 +1,5 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Leetcode - 标签 - 春和景明-Spaceack's Blog</title><link>https://spaceack.github.io/tags/leetcode/</link><description>Leetcode - 标签 - 春和景明-Spaceack's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>spaceack@qq.com (Spaceack)</managingEditor><webMaster>spaceack@qq.com (Spaceack)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 26 Apr 2022 21:01:00 +0000</lastBuildDate><atom:link href="https://spaceack.github.io/tags/leetcode/" rel="self" type="application/rss+xml"/><item><title>leetcode-1757-可回收且低脂的产品</title><link>https://spaceack.github.io/1757-%E5%8F%AF%E5%9B%9E%E6%94%B6%E4%B8%94%E4%BD%8E%E8%84%82%E7%9A%84%E4%BA%A7%E5%93%81/</link><pubDate>Tue, 26 Apr 2022 21:01:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/1757-%E5%8F%AF%E5%9B%9E%E6%94%B6%E4%B8%94%E4%BD%8E%E8%84%82%E7%9A%84%E4%BA%A7%E5%93%81/</guid><description><![CDATA[<h2 id="题目描述">题目描述</h2>
-<div class="code-block code-line-numbers" style="counter-reset: code-block 0">
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
     <div class="code-header language-">
         <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
         <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
@@ -48,7 +48,7 @@
 </span></span><span class="line"><span class="cl"><span class="err">著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</span></span></span></code></pre></div></div>
 <h2 id="题解">题解</h2>
 <p>非常简单的多条件查询，考察了 <code>AND</code> 的使用，一次通过～</p>]]></description></item><item><title>leetcode-595-大的国家</title><link>https://spaceack.github.io/595-%E5%A4%A7%E7%9A%84%E5%9B%BD%E5%AE%B6/</link><pubDate>Tue, 26 Apr 2022 21:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/595-%E5%A4%A7%E7%9A%84%E5%9B%BD%E5%AE%B6/</guid><description><![CDATA[<h2 id="题目描述">题目描述</h2>
-<div class="code-block code-line-numbers" style="counter-reset: code-block 0">
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
     <div class="code-header language-">
         <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
         <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
@@ -106,7 +106,7 @@
 </span></span><span class="line"><span class="cl"><span class="err">著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</span></span></span></code></pre></div></div>
 <h2 id="题解">题解</h2>
 <p>非常简单的多条件查询，考察了 <code>OR</code> 的使用，一次通过～</p>]]></description></item><item><title>leetcode-175-组合两个表</title><link>https://spaceack.github.io/175-%E7%BB%84%E5%90%88%E4%B8%A4%E4%B8%AA%E8%A1%A8/</link><pubDate>Sat, 23 Apr 2022 21:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/175-%E7%BB%84%E5%90%88%E4%B8%A4%E4%B8%AA%E8%A1%A8/</guid><description><![CDATA[<h2 id="题目描述">题目描述</h2>
-<div class="code-block code-line-numbers" style="counter-reset: code-block 0">
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
     <div class="code-header language-">
         <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
         <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
@@ -175,7 +175,7 @@
 </span></span><span class="line"><span class="cl"><span class="n">addressId</span> <span class="o">=</span> <span class="mi">1</span> <span class="err">包含了</span> <span class="n">personId</span> <span class="o">=</span> <span class="mi">2</span> <span class="err">的地址信息。</span></span></span></code></pre></div></div>
 <h2 id="题解">题解</h2>
 <p>非常典型的左外链接查询。</p>]]></description></item><item><title>leetcode-350-两个数组的交集 II</title><link>https://spaceack.github.io/20210624-leetcode-350-%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86-ii/</link><pubDate>Thu, 24 Jun 2021 23:01:18 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20210624-leetcode-350-%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86-ii/</guid><description><![CDATA[<h3 id="题目">题目</h3>
-<div class="code-block code-line-numbers" style="counter-reset: code-block 0">
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
     <div class="code-header language-">
         <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
         <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
@@ -223,7 +223,7 @@
 </span></span><span class="line"><span class="cl">                    <span class="k">break</span>
 </span></span><span class="line"><span class="cl">       <span class="k">return</span> <span class="n">result</span>          </span></span></code></pre></div></div>
 <h3 id="题解2">题解2</h3>
-<div class="code-block code-line-numbers" style="counter-reset: code-block 0">
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
     <div class="code-header language-python">
         <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
         <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>

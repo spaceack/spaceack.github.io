@@ -1,5 +1,5 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>数据库 - 分类 - 春和景明-Spaceack's Blog</title><link>https://spaceack.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</link><description>数据库 - 分类 - 春和景明-Spaceack's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>spaceack@qq.com (Spaceack)</managingEditor><webMaster>spaceack@qq.com (Spaceack)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 26 Apr 2022 21:01:00 +0000</lastBuildDate><atom:link href="https://spaceack.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="self" type="application/rss+xml"/><item><title>leetcode-1757-可回收且低脂的产品</title><link>https://spaceack.github.io/1757-%E5%8F%AF%E5%9B%9E%E6%94%B6%E4%B8%94%E4%BD%8E%E8%84%82%E7%9A%84%E4%BA%A7%E5%93%81/</link><pubDate>Tue, 26 Apr 2022 21:01:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/1757-%E5%8F%AF%E5%9B%9E%E6%94%B6%E4%B8%94%E4%BD%8E%E8%84%82%E7%9A%84%E4%BA%A7%E5%93%81/</guid><description><![CDATA[<h2 id="题目描述">题目描述</h2>
-<div class="code-block code-line-numbers" style="counter-reset: code-block 0">
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
     <div class="code-header language-">
         <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
         <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
@@ -48,7 +48,7 @@
 </span></span><span class="line"><span class="cl"><span class="err">著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</span></span></span></code></pre></div></div>
 <h2 id="题解">题解</h2>
 <p>非常简单的多条件查询，考察了 <code>AND</code> 的使用，一次通过～</p>]]></description></item><item><title>leetcode-595-大的国家</title><link>https://spaceack.github.io/595-%E5%A4%A7%E7%9A%84%E5%9B%BD%E5%AE%B6/</link><pubDate>Tue, 26 Apr 2022 21:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/595-%E5%A4%A7%E7%9A%84%E5%9B%BD%E5%AE%B6/</guid><description><![CDATA[<h2 id="题目描述">题目描述</h2>
-<div class="code-block code-line-numbers" style="counter-reset: code-block 0">
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
     <div class="code-header language-">
         <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
         <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
@@ -106,7 +106,7 @@
 </span></span><span class="line"><span class="cl"><span class="err">著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</span></span></span></code></pre></div></div>
 <h2 id="题解">题解</h2>
 <p>非常简单的多条件查询，考察了 <code>OR</code> 的使用，一次通过～</p>]]></description></item><item><title>leetcode-175-组合两个表</title><link>https://spaceack.github.io/175-%E7%BB%84%E5%90%88%E4%B8%A4%E4%B8%AA%E8%A1%A8/</link><pubDate>Sat, 23 Apr 2022 21:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/175-%E7%BB%84%E5%90%88%E4%B8%A4%E4%B8%AA%E8%A1%A8/</guid><description><![CDATA[<h2 id="题目描述">题目描述</h2>
-<div class="code-block code-line-numbers" style="counter-reset: code-block 0">
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
     <div class="code-header language-">
         <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
         <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
@@ -323,7 +323,7 @@
 </span></span><span class="line"><span class="cl"><span class="n">collection_obj</span><span class="o">.</span><span class="n">update_one</span><span class="p">({</span><span class="s2">&#34;id&#34;</span><span class="p">:</span> <span class="s2">&#34;1&#34;</span><span class="p">},</span> <span class="p">{</span><span class="s2">&#34;$set&#34;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&#34;id&#34;</span><span class="p">:</span> <span class="s2">&#34;1&#34;</span><span class="p">,</span> <span class="s2">&#34;age&#34;</span><span class="p">:</span> <span class="mi">18</span><span class="p">}},</span> <span class="n">upsert</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></span></span></code></pre></div></div>
 <h3 id="统计-collection信息">统计 collection信息</h3>
 <p><code>db.getCollection('collection_name').stats()</code></p>]]></description></item><item><title>ubuntu16.04(18.04)下编译安装 postgresql v10.3</title><link>https://spaceack.github.io/20180426-ubuntu16.0418.04%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85postgresql/</link><pubDate>Thu, 26 Apr 2018 21:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20180426-ubuntu16.0418.04%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85postgresql/</guid><description><![CDATA[<h3 id="编译安装">编译安装</h3>
-<div class="code-block code-line-numbers" style="counter-reset: code-block 0">
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
     <div class="code-header language-bash">
         <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
         <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>

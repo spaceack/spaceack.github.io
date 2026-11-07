@@ -103,7 +103,7 @@
       </tr>
   </tbody>
 </table>]]></description></item><item><title>Nginx配置SSL证书</title><link>https://spaceack.github.io/20190923-nginx%E9%85%8D%E7%BD%AEssl%E8%AF%81%E4%B9%A6/</link><pubDate>Mon, 23 Sep 2019 21:00:00 +0000</pubDate><author>spaceack@qq.com (Spaceack)</author><guid>https://spaceack.github.io/20190923-nginx%E9%85%8D%E7%BD%AEssl%E8%AF%81%E4%B9%A6/</guid><description><![CDATA[<h3 id="配置示例">配置示例</h3>
-<div class="code-block code-line-numbers" style="counter-reset: code-block 0">
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
     <div class="code-header language-">
         <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
         <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
